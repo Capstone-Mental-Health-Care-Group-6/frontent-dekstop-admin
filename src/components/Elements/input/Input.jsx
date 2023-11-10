@@ -4,7 +4,7 @@ const Input = ({ type, className, id, onChange, name, placeholder, value }) => {
   return (
     <input
       type={type ? type : "text"}
-      className={className}
+      className={`form-control ${className}`}
       id={id}
       name={name}
       placeholder={placeholder}
