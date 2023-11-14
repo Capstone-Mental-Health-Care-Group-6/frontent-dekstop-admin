@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
 import SidebarItem from "./../../Elements/SidebarItem/SidebarItem";
 import "./Sidebar.styles.css";
+import { BsGrid,  BsFileEarmarkText } from "react-icons/bs";
+import { LuUsers, LuStethoscope, LuFolderHeart, LuWallet } from "react-icons/lu";
+import { FaMoneyBills } from "react-icons/fa6";
 
 const Sidebar = () => {
   return (
@@ -56,36 +58,49 @@ const Sidebar = () => {
             <span className="emphati">Emphati</span>{" "}
             <span className="care">Care</span>
           </a>
-            <SidebarItem
-              link="/"
-              iconSrc="./src/assets/category.png"
-              text="Dashboard"
+          <SidebarItem
+            path="/"
+            iconSrc="./src/assets/category.png"
+            text="Dashboard"
+            svg={<BsGrid size={25} strokeWidth={0.5} />}
+          />
+          <SidebarItem
+            path="admin-manage-user"
+            iconSrc="./src/assets/people outline.png"
+            text="Manage User"
+            svg={<LuUsers size={25} strokeWidth={2.5} />}
+          />
+          <SidebarItem
+            path="admin-transaksi-user"
+            iconSrc="./src/assets/payments.png"
+            text="Transaksi User"
+            svg={<FaMoneyBills size={27} strokeWidth={2.5} />}
+          />
+          <SidebarItem
+            path="admin-paket-konseling"
+            iconSrc="./src/assets/psychology.png"
+            text="Paket Konseling"
+            svg={<LuFolderHeart size={27} strokeWidth={2.5} />}
+          />
+          <hr />
+          <SidebarItem
+            path="admin-manage-dokter"
+            iconSrc="./src/assets/stethoscope.png"
+            text="Manage Dokter"
+            svg={<LuStethoscope size={27} strokeWidth={2.3} />}
             />
-            <SidebarItem
-              iconSrc="./src/assets/people outline.png"
-              text="Manage User"
+          <SidebarItem
+            path="admin-dana-dokter"
+            iconSrc="./src/assets/account_balance_wallet.png"
+            text="Dana Dokter"
+            svg={<LuWallet size={27} strokeWidth={2.3} />}
             />
-            <SidebarItem
-              iconSrc="./src/assets/payments.png"
-              text="Transaksi User"
-            />
-            <SidebarItem
-              iconSrc="./src/assets/psychology.png"
-              text="Paket Konseling"
-            />
-            <hr />
-            <SidebarItem
-              iconSrc="./src/assets/stethoscope.png"
-              text="Manage Dokter"
-            />
-            <SidebarItem
-              iconSrc="./src/assets/account_balance_wallet.png"
-              text="Dana Dokter"
-            />
-            <hr />
-            <SidebarItem
-              iconSrc="./src/assets/description.png"
-              text="Manage Artikel"
+          <hr />
+          <SidebarItem
+            path="admin-manage-artikel"
+            iconSrc="./src/assets/description.png"
+            text="Manage Artikel"
+            svg={<BsFileEarmarkText size={28} strokeWidth={0.4} />}
             />
         </div>
       </div>

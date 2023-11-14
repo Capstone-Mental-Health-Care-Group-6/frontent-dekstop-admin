@@ -5,3 +5,10 @@
 #iconNavbar{
   margin-left: 40px;
 }
+
+.notif-icon{
+  background-color: white;
+  border-radius: 50%;
+  padding: 7%;
+
+}
