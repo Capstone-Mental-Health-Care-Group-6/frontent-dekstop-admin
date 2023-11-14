@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap");
+
+
+
+.emphati {
+  width: Hug (84.97px);
+  height: Hug (24.97px);
+  padding: 3.49px;
+  border-radius: 4.36px;
+  gap: 3.49px;
+  background-color: #0085ff;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 17.431px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17.431px; /* 100% */
+  margin-left: 10px;
+}
+
+.care {
+  color: var(--primary-500, #0085ff);
+  font-family: Montserrat;
+  font-size: 17.431px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17.431px; /* 100% */
+}
+
+.nav {
+  margin-top: 30px;
+  gap: 5px;
+  margin-left: 75px;
+}
+
+hr {
+  height: 0px;
+  align-self: stretch;
+  stroke-width: 1px;
+  stroke: #dadada;
+  width: 228px;
+}
