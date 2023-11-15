@@ -1,10 +1,8 @@
-import React from 'react'
-import Layouts from '../../Layouts/Layouts'
+import React from "react";
+import Layouts from "../../Layouts/Layouts";
 
 const PaketKonseling = () => {
-  return (
-    <Layouts>PaketKonseling</Layouts>
-  )
-}
+  return <Layouts titlePage={"Paket Konseling"}>PaketKonseling</Layouts>;
+};
 
-export default PaketKonseling
+export default PaketKonseling;

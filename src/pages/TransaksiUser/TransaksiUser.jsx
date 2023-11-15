@@ -1,10 +1,8 @@
-import React from 'react'
-import Layouts from '../../Layouts/Layouts'
+import React from "react";
+import Layouts from "../../Layouts/Layouts";
 
 const TransaksiUser = () => {
-  return (
-    <Layouts>TransaksiUser</Layouts>
-  )
-}
+  return <Layouts titlePage={"Transaksi User"}>TransaksiUser</Layouts>;
+};
 
-export default TransaksiUser
+export default TransaksiUser;
