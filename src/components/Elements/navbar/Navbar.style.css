@@ -2,13 +2,17 @@
   padding: 15px 70px 15px 70px;
 }
 
-#iconNavbar{
+#iconNavbar {
   margin-left: 40px;
 }
 
-.notif-icon{
+.navbar h1 {
+  font-size: 34px;
+  color: #323232;
+}
+
+.notif-icon {
   background-color: white;
   border-radius: 50%;
   padding: 7%;
-
 }
