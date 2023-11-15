@@ -1,12 +1,8 @@
-import React from 'react'
-import Layouts from '../../Layouts/Layouts'
+import React from "react";
+import Layouts from "../../Layouts/Layouts";
 
 const DanaDokter = () => {
-  return (
-    <Layouts>
-      dana dokter
-    </Layouts>
-  )
-}
+  return <Layouts titlePage={"Dana Dokter"}>dana dokter</Layouts>;
+};
 
-export default DanaDokter
+export default DanaDokter;

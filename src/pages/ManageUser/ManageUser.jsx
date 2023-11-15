@@ -1,10 +1,8 @@
-import React from 'react'
-import Layouts from '../../Layouts/Layouts'
+import React from "react";
+import Layouts from "../../Layouts/Layouts";
 
 const ManageUser = () => {
-  return (
-    <Layouts>ManageUser</Layouts>
-  )
-}
+  return <Layouts titlePage={"Manage User"}>ManageUser</Layouts>;
+};
 
-export default ManageUser
+export default ManageUser;
