@@ -1,8 +1,11 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <Layouts titlePage={'Hallo'} >
+      Dashboard
+    </Layouts>
   )
 }
 

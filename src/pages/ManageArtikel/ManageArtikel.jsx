@@ -1,8 +1,11 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const ManageArtikel = () => {
   return (
-    <div>ManageArtikel</div>
+    <Layouts titlePage={'Manage artikel'}>
+
+    </Layouts>
   )
 }
 

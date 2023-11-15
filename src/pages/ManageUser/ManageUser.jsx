@@ -1,8 +1,9 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const ManageUser = () => {
   return (
-    <div>ManageUser</div>
+    <Layouts>ManageUser</Layouts>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const PaketKonseling = () => {
   return (
-    <div>PaketKonseling</div>
+    <Layouts>PaketKonseling</Layouts>
   )
 }
 

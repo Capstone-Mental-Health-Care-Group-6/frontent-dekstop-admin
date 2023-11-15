@@ -5,9 +5,7 @@ import Routing from "./Route/Routing";
 function App() {
   return (
     <>
-      <Layouts>
-        <Routing />
-      </Layouts>
+      <Routing />
     </>
   );
 }

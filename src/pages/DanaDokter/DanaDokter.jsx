@@ -1,8 +1,11 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const DanaDokter = () => {
   return (
-    <div>DanaDokter</div>
+    <Layouts>
+      dana dokter
+    </Layouts>
   )
 }
 

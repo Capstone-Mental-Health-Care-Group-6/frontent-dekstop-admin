@@ -1,8 +1,9 @@
 import React from 'react'
+import Layouts from '../../Layouts/Layouts'
 
 const TransaksiUser = () => {
   return (
-    <div>TransaksiUser</div>
+    <Layouts>TransaksiUser</Layouts>
   )
 }
 
