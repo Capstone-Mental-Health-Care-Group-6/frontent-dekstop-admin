@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Layouts from "../../Layouts/Layouts";
 
 const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+  return <Layouts titlePage={"Dashboard"}>Dashboard</Layouts>;
+};
 
-export default Dashboard
+export default Dashboard;
