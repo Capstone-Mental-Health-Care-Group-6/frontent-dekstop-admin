@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+
+
+
+body {
+    margin: 0;
+
+}
+
+.sidebar {
+    background-color: #FFFFFF;
+    bottom: 0;
+    height: 100vh;
+    width: 20vw;
+    position: fixed;
+    top: 0;
+    transition: left .5s ease-out;
+    font-family: 'Inter', sans-serif;
+}
+
+.sidebar .offcanvas .btn-close {
+    color: #3F8CFF;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 280px;
+}
+
+
+.sidebar .menu .sidebar-link {
+    align-items: center;
+    border-radius: .5rem;
+    color: #808191;
+    display: block;
+    display: flex;
+    font-size: 1rem;
+    padding: .7rem 1rem;
+    text-decoration: none;
+    transition: all .5s
+}
+
+
+
+.sidebar .menu .sidebar-link i:before {
+    vertical-align: top
+}
+
+.sidebar .menu .sidebar-link span {
+    margin-left: 10px;
+    margin-top: 3px;
+
+}
+
+
+
+.sidebar .menu .sidebar-link:hover {
+    background-color: #7d90db;
+    color: #fff;
+}
+
+.sidebar .menu .sidebar-link.active {
+    background-color: #435ebe;
+    color: #fff;
+}
+
+.sidebar .menu .sidebar-item button {
+    background-color: transparent;
+    border: none;
+
+}
+
+.sidebar .menu .sidebar-item {
+    list-style: none;
+    margin-top: .5rem;
+    position: relative
+}
+
+
+.sidebar .menu .submenu {
+    display: none;
+    list-style: none;
+    overflow: hidden;
+    transition: max-height 2s cubic-bezier(0, .55, .45, 1)
+}
+
+.notif-icon {
+    width: 50px;
+    height: 50px;
+}
+
+main {
+    height: 100vh;
+    width: 80vw;
+    float: right;
+    background: #DCDCDC;
+}
+
+.offcanvass-body {
+    height: 80vh
+}
+
+.offcanvass-body ul a {
+    width: 18vw;
+}

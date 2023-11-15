@@ -6,9 +6,8 @@ function App() {
   return (
     <>
       <Layouts>
-        <Routing/>
+        <Routing />
       </Layouts>
-
     </>
   );
 }
