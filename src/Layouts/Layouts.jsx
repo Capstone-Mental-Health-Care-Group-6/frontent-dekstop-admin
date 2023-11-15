@@ -2,7 +2,7 @@ import React from 'react'
 import SidebarItem from '../components/Elements/SidebarItem/SidebarItem'
 import "./Layout.styles.css";
 import { IoNotifications } from 'react-icons/io5'
-import { logoEmpathiCare } from '../../image'
+import { logoEmpathiCare, logoEmpathiCareMobile } from '../../image'
 import { BsFileEarmarkText, BsGrid } from 'react-icons/bs';
 import { LuFolderHeart, LuStethoscope, LuUsers, LuWallet } from 'react-icons/lu';
 import { FaMoneyBills } from 'react-icons/fa6';
@@ -14,8 +14,9 @@ function Layouts({ children, titlePage }) {
     <>
       <div className="sidebar">
         <div className="offcanvass offcanvas-start " >
-          <div className="offcanvas-header p-5 d-grid justify-content-center">
+          <div className="offcanvas-header d-grid justify-content-center">
             <img src={logoEmpathiCare} alt="" />
+            <img src={logoEmpathiCareMobile} alt="" />
           </div>
           <div className="offcanvass-body d-grid align-items-center ">
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 gap-4">
@@ -40,7 +41,7 @@ function Layouts({ children, titlePage }) {
           <h1 className="fw-semibold">{titlePage}</h1>
           <div className="d-flex align-items-center gap-2" >
             <IoNotifications className="notif-icon" />
-            <img id="iconNavbar" src="icon-face.png" alt="" />
+            <img className="iconNavbar" src="icon-face.png" alt="" />
           </div>
         </nav>
         {children}
