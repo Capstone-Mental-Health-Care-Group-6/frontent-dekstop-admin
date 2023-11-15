@@ -24,9 +24,10 @@ function Layouts({ children, titlePage }) {
               <SidebarItem icon={<LuUsers />} title='Manage User' location='/admin-manage-user' />
               <SidebarItem icon={<FaMoneyBills />} title='Transaksi User' location='/admin-transaksi-user' />
               <SidebarItem icon={<LuFolderHeart />} title='Paket Konseling' location="/admin-paket-konseling" />
-
+              <hr />
               <SidebarItem icon={<LuStethoscope />} title='Manage Dokter' location="/admin-manage-dokter" />
               <SidebarItem icon={<LuWallet />} title='Dana Dokter' location="/admin-dana-dokter" />
+              <hr />
               <SidebarItem icon={<BsFileEarmarkText />} title='Manage Artikel' location="/admin-manage-artikel" />
             </ul>
           </div>
