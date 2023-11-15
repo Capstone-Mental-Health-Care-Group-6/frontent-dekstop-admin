@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
 
-
-
-
 body {
     margin: 0;
 
@@ -19,15 +16,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-.sidebar .offcanvas .btn-close {
-    color: #3F8CFF;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    cursor: pointer;
-    margin-left: 280px;
-}
-
 
 .sidebar .menu .sidebar-link {
     align-items: center;
@@ -38,7 +26,13 @@ body {
     font-size: 1rem;
     padding: .7rem 1rem;
     text-decoration: none;
-    transition: all .5s
+    transition: all .5s;
+    font-weight: 500;
+}
+
+.sidebar .menu .sidebar-link .iconNavbar svg {
+    width: 22px;
+    height: 22px;
 }
 
 
@@ -56,13 +50,14 @@ body {
 
 
 .sidebar .menu .sidebar-link:hover {
-    background-color: #7d90db;
-    color: #fff;
+    color: #0085FF;
+    background-color: #EBF5FF;
 }
 
 .sidebar .menu .sidebar-link.active {
-    background-color: #435ebe;
-    color: #fff;
+    background-color: #0085FF;
+    color: white;
+    border-radius: 12px;
 }
 
 .sidebar .menu .sidebar-item button {
@@ -88,6 +83,7 @@ body {
 .notif-icon {
     width: 50px;
     height: 50px;
+    color: #FFFFFF;
 }
 
 main {
@@ -98,7 +94,7 @@ main {
 }
 
 .offcanvass-body {
-    height: 80vh
+    height: 100%;
 }
 
 .offcanvass-body ul a {

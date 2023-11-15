@@ -3,6 +3,9 @@ import SidebarItem from '../components/Elements/SidebarItem/SidebarItem'
 import "./Layout.styles.css";
 import { IoNotifications } from 'react-icons/io5'
 import { logoEmpathiCare } from '../../image'
+import { BsFileEarmarkText, BsGrid } from 'react-icons/bs';
+import { LuFolderHeart, LuStethoscope, LuUsers, LuWallet } from 'react-icons/lu';
+import { FaMoneyBills } from 'react-icons/fa6';
 
 
 
@@ -16,14 +19,14 @@ function Layouts({ children, titlePage }) {
           </div>
           <div className="offcanvass-body d-grid align-items-center ">
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 gap-4">
-              <SidebarItem title='Dasboard' location='/' />
-              <SidebarItem title='Manage User' location='/admin-manage-user' />
-              <SidebarItem title='Transaksi User' location='/admin-transaksi-user' />
-              <SidebarItem title='Paket Konseling' location="/admin-paket-konseling" />
+              <SidebarItem icon={<BsGrid />} title='Dasboard' location='/' />
+              <SidebarItem icon={<LuUsers />} title='Manage User' location='/admin-manage-user' />
+              <SidebarItem icon={<FaMoneyBills />} title='Transaksi User' location='/admin-transaksi-user' />
+              <SidebarItem icon={<LuFolderHeart />} title='Paket Konseling' location="/admin-paket-konseling" />
 
-              <SidebarItem title='Manage Dokter' location="/admin-manage-dokter" />
-              <SidebarItem title='Dana Dokter' location="/admin-dana-dokter" />
-              <SidebarItem title='Manage Artikel' location="/admin-manage-artikel" />
+              <SidebarItem icon={<LuStethoscope />} title='Manage Dokter' location="/admin-manage-dokter" />
+              <SidebarItem icon={<LuWallet />} title='Dana Dokter' location="/admin-dana-dokter" />
+              <SidebarItem icon={<BsFileEarmarkText />} title='Manage Artikel' location="/admin-manage-artikel" />
             </ul>
           </div>
         </div>
@@ -35,7 +38,7 @@ function Layouts({ children, titlePage }) {
           className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between px-3"
         >
           <h1 className="fw-semibold">{titlePage}</h1>
-          <div className="">
+          <div className="d-flex align-items-center gap-2" >
             <IoNotifications className="notif-icon" />
             <img id="iconNavbar" src="icon-face.png" alt="" />
           </div>
