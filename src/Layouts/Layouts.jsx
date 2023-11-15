@@ -17,12 +17,12 @@ function Layouts({ children, titlePage }) {
     <>
       <div className="sidebar">
         <div className="offcanvass offcanvas-start ">
-          <div className="offcanvas-header d-grid justify-content-center">
+          <div className="offcanvas-header d-flex justify-content-center">
             <img src={logoEmpathiCare} alt="" />
             <img src={logoEmpathiCareMobile} alt="" />
           </div>
-          <div className="offcanvass-body d-grid align-items-center ">
-            <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 gap-2">
+          <div className="offcanvass-body d-grid  align-items-stretch ">
+            <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
               <SidebarItem icon={<BsGrid />} title="Dasboard" location="/" />
               <SidebarItem
                 icon={<LuUsers />}
@@ -39,7 +39,7 @@ function Layouts({ children, titlePage }) {
                 title="Paket Konseling"
                 location="/admin-paket-konseling"
               />
-              <hr />
+              <hr className="p-0 m-0" />
               <SidebarItem
                 icon={<LuStethoscope />}
                 title="Manage Dokter"
@@ -50,7 +50,7 @@ function Layouts({ children, titlePage }) {
                 title="Dana Dokter"
                 location="/admin-dana-dokter"
               />
-              <hr />
+              <hr className="p-0 m-0" />
               <SidebarItem
                 icon={<BsFileEarmarkText />}
                 title="Manage Artikel"
@@ -64,9 +64,9 @@ function Layouts({ children, titlePage }) {
       <main className="p-3">
         <nav
           id="navbar"
-          className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between px-3"
+          className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"
         >
-          <h1 className="fw-semibold">{titlePage}</h1>
+          <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
             <IoNotifications className="notif-icon" />
             <img className="iconNavbar" src="icon-face.png" alt="" />
