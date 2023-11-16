@@ -6,10 +6,11 @@ import {
   iconCardUser,
   iconCardArtikel,
   iconCardDokter,
-  iconInstan,
-  iconPremium,
+  paket1,
+  paket2,
 } from "../../../image";
 import Card from "../../components/Fragments/card/Card";
+import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
 
 const Dashboard = () => {
   return (
@@ -37,7 +38,7 @@ const Dashboard = () => {
 
       <div className="row mt-3">
         {/* Kolom 1 - Total User dan Total Dokter */}
-        <div className="col-6 d-flex flex-column gap-3">
+        <div className="col-6 d-flex flex-column card__dashboard gap-3">
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
@@ -51,35 +52,33 @@ const Dashboard = () => {
             />
           </div>
 
-          <div className="wrapper__artikel">
-            <div className="card-body">
+          <div className="card__artikel">
+            <div className="card__body__artikel">
               <img src={iconCardArtikel} alt="icon-artikel" />
-              <h6 className="card-subtitle mb-2 text-body-secondary fw-normal">
+              <h6 className="card__subtitle__artikel mb-2 fw-normal">
                 Total Artikel
               </h6>
-              <h5 className="card-title">17.000</h5>
+              <h5 className="">17.000</h5>
             </div>
           </div>
         </div>
 
         {/* Kolom 2 - Paket Teratas */}
         <div className="col-6">
-          <div className="wrapper__paketKonseling ">
-            <h5 className="fw-bold mb-4">Paket Teratas</h5>
-
-            <div className="konseling__instant">
-              <div className="body__konseling d-flex align-items-center">
-                <img src={iconInstan} alt="" />
-                <p className="fw-semibold ms-3">Paket Konseling</p>
-              </div>
-            </div>
-
-            <div className="konseling__premium mt-3">
-              <div className="body__konseling d-flex align-items-center">
-                <img src={iconPremium} alt="" />
-                <p className="fw-semibold ms-3">Paket Konseling</p>
-              </div>
-            </div>
+          <div className="paket-teratas p-4">
+            <h4>Paket Teratas</h4>
+            <PaketTeratas
+              className={"paket-1 d-flex gap-2 align-items-center"}
+              title={"Paket Konseling"}
+              text={"Instant"}
+              image={paket1}
+            />
+            <PaketTeratas
+              className={"paket-2 d-flex gap-2 align-items-center"}
+              title={"Paket Konseling"}
+              text={"Premium"}
+              image={paket2}
+            />
           </div>
         </div>
       </div>

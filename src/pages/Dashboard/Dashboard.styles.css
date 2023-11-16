@@ -10,27 +10,99 @@
   color: #7c7c7c;
 }
 
-.wrapper__artikel {
+/* card dashboard */
+.row .card__dashboard .d-flex .card {
+  border-radius: 12px;
+  width: 243px;
+  height: 186px;
+}
+
+.row .card__dashboard .d-flex .card .card-body {
+  padding: 32px 16px;
+}
+
+.row .card__dashboard .d-flex .card h6 {
+  color: #a7a7a7;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 16px 0 6px 0 !important;
+}
+
+.row .card__dashboard .d-flex .card h5 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #323232;
+}
+
+.card__artikel {
   background-color: white;
   padding: 36px 16px;
   border-radius: 12px;
 }
 
-.wrapper__paketKonseling {
-  width: 450px;
-  border-radius: 12px;
-  background-color: white;
-  padding: 24px;
+.card__body__artikel {
+  padding: 8px 16px;
 }
 
-.konseling__instant {
+.card__subtitle__artikel {
+  color: #a7a7a7;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 16px 0 6px 0 !important;
+}
+
+.card__body__artikel h5 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #323232;
+}
+/* End card dashboard */
+
+/* paket teratas */
+
+.paket-teratas {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.paket-teratas h4 {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px 0px;
+}
+
+.paket-teratas .paket-1 {
+  padding: 20px;
   background-color: #fffeeb;
-  border-radius: 12px;
-  padding: 12px 20px;
+  border-radius: 10px;
+  margin-bottom: 18px;
 }
 
-.konseling__premium {
-  background-color: #f7f7f7;
-  border-radius: 12px;
-  padding: 12px 20px;
+.paket-teratas .paket-2 {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f4f4f4;
 }
+
+.paket-teratas .paket-1 span {
+  font-weight: 500;
+  color: #f9981a;
+}
+
+.paket-teratas .paket-2 span {
+  font-weight: 500;
+  color: #959595;
+}
+
+.paket-teratas .paket-1 h5 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #323232;
+}
+
+.paket-teratas .paket-2 h5 {
+  font-weight: 600;
+  font-size: 18px;
+  color: #323232;
+}
+/* End paket teratas */

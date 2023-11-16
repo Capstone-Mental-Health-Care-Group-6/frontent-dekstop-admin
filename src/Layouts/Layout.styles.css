@@ -98,6 +98,7 @@ main {
   padding: 0 50px;
   float: right;
   background: #dcdcdc;
+  padding: 0px 50px;
 }
 
 .offcanvas-header {
@@ -110,6 +111,10 @@ main {
 
 .offcanvass-body ul a {
   width: 18vw;
+}
+
+main .navbar .fw-semibold {
+  font-family: 'Montserrat', sans-serif;
 }
 
 @media screen and (max-width: 1289px) {
@@ -167,6 +172,7 @@ main {
 
   main {
     width: 86vw;
+    padding: 0px 20px;
   }
 }
 
