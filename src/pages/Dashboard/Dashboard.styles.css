@@ -1,0 +1,36 @@
+.wrapper__card {
+  padding: 20px 34px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+.text__subtitle {
+  font-weight: 400;
+  font-size: 14px;
+  color: #7c7c7c;
+}
+
+.wrapper__artikel {
+  background-color: white;
+  padding: 36px 16px;
+  border-radius: 12px;
+}
+
+.wrapper__paketKonseling {
+  width: 450px;
+  border-radius: 12px;
+  background-color: white;
+  padding: 24px;
+}
+
+.konseling__instant {
+  background-color: #fffeeb;
+  border-radius: 12px;
+  padding: 12px 20px;
+}
+
+.konseling__premium {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  padding: 12px 20px;
+}
