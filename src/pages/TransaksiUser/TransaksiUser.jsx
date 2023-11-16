@@ -1,7 +1,7 @@
 import "./TransaksiUser.style.css";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
-import { iconBerhasilCard, iconFGagalCard, iconTertundaCard, iconTransaksiCard, paket1, paket2 } from "../../../image";
+import { paket1, paket2 } from "../../../image";
 import { Link } from "react-router-dom";
 import { cardTransaksiUser, riwayatTransaksi1 } from "../../components/DataComponents/dataComponents";
 import RiwayatTransaksi from "../../components/Fragments/riwayat-transaksi-user/RiwayatTransaksi";

@@ -92,26 +92,26 @@
     border-radius: 10px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-1 span {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span {
     font-size: 16px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-1 span:nth-child(1) {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(1) {
     font-weight: 600;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-1 span:nth-child(2) {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(2) {
     color: #959595;
     font-size: 14px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 span:nth-child(1),
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
 .doctor {
     color: #959595;
     font-size: 15px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 .status-failed {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
     padding: 3px 10px;
     background-color: #FFDFD7;
     color: #D44E2D;
@@ -119,7 +119,7 @@
     font-size: 13px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 .status-completed {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
     padding: 3px 10px;
     background-color: #E3F6E9;
     color: #229845;
@@ -127,7 +127,7 @@
     font-size: 13px;
 }
 
-.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 .status-pending {
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
     padding: 3px 10px;
     background-color: #FEF7DB;
     color: #7D6D25;
@@ -144,15 +144,115 @@
 
 @media screen and (max-width: 1079px) {
 
-    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 span:nth-child(1),
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
     .doctor {
         color: #959595;
         font-size: 12px;
     }
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 991px) {
     .riwayat-dan-paket .col .riwayat-transaksi {
         margin-top: 36px;
+        margin-bottom: 36px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-1 img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 436px) {
+    .riwayat-dan-paket .paket-teratas .paket-1 img {
+        width: 40px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 img {
+        width: 40px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-1 span {
+        font-size: 12px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 span {
+        font-size: 12px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-1 h5 {
+        font-size: 16px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 h5 {
+        font-size: 16px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span {
+        font-size: 15px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
+    .doctor {
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .paket-teratas h4 {
+        font-size: 18px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .d-flex {
+        flex-direction: column;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .circle {
+        display: none;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(2) {
+        color: #959595;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+
+    .riwayat-dan-paket .paket-teratas .paket-1 {
+        padding: 8px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 {
+        padding: 8px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
+        font-size: 10px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
+
+        font-size: 10px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
+
+        font-size: 10px;
     }
 }
