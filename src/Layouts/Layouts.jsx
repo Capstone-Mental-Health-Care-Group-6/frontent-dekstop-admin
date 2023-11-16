@@ -61,7 +61,7 @@ function Layouts({ children, titlePage }) {
         </div>
       </div>
 
-      <main className="p-3">
+      <main>
         <nav
           id="navbar"
           className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"

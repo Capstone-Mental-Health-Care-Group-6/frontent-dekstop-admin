@@ -97,6 +97,7 @@ main {
   width: 80vw;
   float: right;
   background: #dcdcdc;
+  padding: 0px 50px;
 }
 
 .offcanvas-header {
