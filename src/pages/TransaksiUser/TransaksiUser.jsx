@@ -3,8 +3,9 @@ import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import { iconBerhasilCard, iconFGagalCard, iconTertundaCard, iconTransaksiCard, paket1, paket2 } from "../../../image";
 import { Link } from "react-router-dom";
-import { riwayatTransaksi1 } from "../../components/DataComponents/dataComponents";
+import { cardTransaksiUser, riwayatTransaksi1 } from "../../components/DataComponents/dataComponents";
 import RiwayatTransaksi from "../../components/Fragments/riwayat-transaksi-user/RiwayatTransaksi";
+import Button from "../../components/Elements/button/Button";
 
 
 const TransaksiUser = () => {
@@ -13,20 +14,13 @@ const TransaksiUser = () => {
     <Layouts titlePage={"Transaksi User"}>
       <section className="transaksi-user" id="transaksi-user">
         <div className="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
-          <div className="col">
-            <Link to={'/'}>
-              <Card src={iconTransaksiCard} cardSubtitle={'Total Berhasil'} cardTitle={'24.000'} />
-            </Link>
-          </div>
-          <div className="col">
-            <Card src={iconBerhasilCard} cardSubtitle={'Transaksi Berhasil'} cardTitle={'20.000'} />
-          </div>
-          <div className="col">
-            <Card src={iconTertundaCard} cardSubtitle={'Transaksi Tertunda'} cardTitle={'3900'} />
-          </div>
-          <div className="col">
-            <Card src={iconFGagalCard} cardSubtitle={' Transaksi Gagal'} cardTitle={'100'} />
-          </div>
+          {cardTransaksiUser.map((item, index) => (
+            <div className="col" key={index}>
+              <Link to={item.location}>
+                <Card src={item.image} cardSubtitle={item.text} cardTitle={item.total} />
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -63,7 +57,9 @@ const TransaksiUser = () => {
                   status={item.status} image={item.image} />
               </div>
             ))}
-
+            <div className="d-flex justify-content-center" >
+              <Button className={'btn text-primary '} text={'Lihat Semua'} />
+            </div>
 
           </div>
         </div>

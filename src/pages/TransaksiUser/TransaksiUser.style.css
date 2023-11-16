@@ -7,6 +7,7 @@
 
 .transaksi-user .row .col a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .transaksi-user .row .col .card h6 {
@@ -133,5 +134,24 @@
     font-size: 13px;
 }
 
+.riwayat-transaksi .d-flex button {
+    border: 1px solid #0085FF;
+}
 
 /* riwayat transaksi end */
+
+
+@media screen and (max-width: 1079px) {
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-11 .line-2 span:nth-child(1),
+    .doctor {
+        color: #959595;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .riwayat-dan-paket .col .riwayat-transaksi {
+        margin-top: 36px;
+    }
+}

@@ -28,7 +28,7 @@ function RiwayatTransaksi({ image, name, date, status, paket }) {
                 <div className="line-2 d-flex justify-content-between align-items-center">
                     <div className="d-flex">
                         <span>{paket}</span>
-                        <span className="doctor" > <span className="me-1 ms-1 circle" > <BsDot /> </span> Dr. Richard lee</span>
+                        <span className="doctor" > <span> <BsDot /> </span> Dr. Richard lee</span>
                     </div>
                     <span className={styleStatus}>{status}</span>
                 </div>

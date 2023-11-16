@@ -1,4 +1,4 @@
-import { human1, human2, human3, human4 } from "../../../image";
+import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard } from "../../../image";
 
 export const riwayatTransaksi1 = [
     {
@@ -33,5 +33,32 @@ export const riwayatTransaksi1 = [
         doctor: 'Dr. Yusuf Mansyur',
         status: 'Completed',
         image: human4
+    },
+]
+
+export const cardTransaksiUser = [
+    {
+        location: '/',
+        image: iconTransaksiCard,
+        text: 'Total Berhasil',
+        total: '24.000'
+    },
+    {
+        location: '/',
+        image: iconBerhasilCard,
+        text: 'Transaksi Berhasil',
+        total: '20.000'
+    },
+    {
+        location: '/',
+        image: iconTertundaCard,
+        text: 'Transaksi Tertunda',
+        total: '3900'
+    },
+    {
+        location: '/',
+        image: iconFGagalCard,
+        text: 'Transaksi Gagal',
+        total: '100'
     },
 ]
