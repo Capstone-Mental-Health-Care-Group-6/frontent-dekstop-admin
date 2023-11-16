@@ -30,7 +30,7 @@ const TransaksiUser = () => {
         </div>
       </section>
 
-      <section className="row riwayat-dan-paket" id="riwayat-dan-paket">
+      <section className="row row-cols-1 row-cols-lg-2 riwayat-dan-paket" id="riwayat-dan-paket">
         <div className="col">
           <div className="paket-teratas p-4">
             <h4>Paket Teratas</h4>

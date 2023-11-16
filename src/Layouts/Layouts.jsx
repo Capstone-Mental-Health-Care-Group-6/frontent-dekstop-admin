@@ -64,7 +64,7 @@ function Layouts({ children, titlePage }) {
       <main>
         <nav
           id="navbar"
-          className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"
+          className="navbar bg-transparant d-flex align-items-center justify-content-between"
         >
           <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
