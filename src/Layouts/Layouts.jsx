@@ -79,7 +79,7 @@ function Layouts({ children, titlePage }) {
         </div>
       </div>
 
-      <main className="">
+      <main className="p-3">
         <nav
           id="navbar"
           className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"

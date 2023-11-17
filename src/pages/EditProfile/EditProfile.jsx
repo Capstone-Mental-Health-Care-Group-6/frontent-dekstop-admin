@@ -77,7 +77,7 @@ const EditProfile = () => {
               <span
                 className="btn btn-secondary eye-icon-btn"
                 onClick={() => togglePasswordVisibility("oldPassword")}
-                style={{ background: "transparent", color: "#636363",  border: "0px"}}
+                style={{ background: "transparent", color: "#636363", border: "0px" }}
               >
                 {showOldPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
               </span>
@@ -97,9 +97,9 @@ const EditProfile = () => {
               <span
                 className="btn btn-secondary mb-2 eye-icon-btn"
                 onClick={() => togglePasswordVisibility("newPassword")}
-                style={{ background: "transparent", color: "#636363", border: "0px"}}
+                style={{ background: "transparent", color: "#636363", border: "0px" }}
               >
-                {showNewPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
+                {showOldPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
               </span>
           </div>
 
