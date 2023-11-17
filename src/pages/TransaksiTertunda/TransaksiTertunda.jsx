@@ -16,6 +16,7 @@ function TransaksiTertunda() {
 
     useEffect(() => {
 
+        // nanti nya nama negara nya berdasarkan data transaksi yang ada di backend
         if (transaksiManualClicked) {
             CustomerService.getCustomersMedium().then((data) => {
                 const filteredData = data.filter(
