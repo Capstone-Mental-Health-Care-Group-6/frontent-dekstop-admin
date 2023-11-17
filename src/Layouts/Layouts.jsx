@@ -23,7 +23,11 @@ function Layouts({ children, titlePage }) {
           </div>
           <div className="offcanvass-body d-grid  align-items-stretch ">
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
-              <SidebarItem icon={<BsGrid />} title="Dasboard" location="/" />
+              <SidebarItem
+                icon={<BsGrid />}
+                title="Dasboard"
+                location="/dashboard"
+              />
               <SidebarItem
                 icon={<LuUsers />}
                 title="Manage User"
