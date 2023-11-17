@@ -39,7 +39,7 @@ const EditProfile = () => {
 
   return (
     <Layouts titlePage={"Edit Profile"}>
-      <div className="row">
+      <div className="container">
         <form className="custom-form">
           <Label htmlFor="name">Nama</Label>
           <Input
