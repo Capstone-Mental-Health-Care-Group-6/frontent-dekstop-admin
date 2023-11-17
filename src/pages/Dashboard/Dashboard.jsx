@@ -16,10 +16,10 @@ const Dashboard = () => {
   return (
     <Layouts titlePage={"Dashboard"}>
       <div className="row">
-        <div className="col-12">
+        <div className="col-lg-12 col-md">
           <div className="wrapper__card">
             <div className="row d-flex align-items-center">
-              <div className="col-6">
+              <div className="col-lg-6 col-md">
                 <h4 className="fw-semibold text__title mb-4">
                   Selamat Datang Kembali,Admin!
                 </h4>
@@ -38,7 +38,7 @@ const Dashboard = () => {
 
       <div className="row mt-3">
         {/* Kolom 1 - Total User dan Total Dokter */}
-        <div className="col-6 d-flex flex-column card__dashboard gap-3">
+        <div className="col-lg-6 col-sm d-flex flex-column card__dashboard gap-3">
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
@@ -64,7 +64,7 @@ const Dashboard = () => {
         </div>
 
         {/* Kolom 2 - Paket Teratas */}
-        <div className="col-6">
+        <div className="col-lg-6 col-sm">
           <div className="paket-teratas p-4">
             <h4>Paket Teratas</h4>
             <PaketTeratas

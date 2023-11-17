@@ -106,3 +106,75 @@
   color: #323232;
 }
 /* End paket teratas */
+
+@media screen and (max-width: 991px) {
+  .text__title {
+    line-height: 2rem;
+  }
+
+  .paket-teratas {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  .row .col-lg-12 .wrapper__card .row .col-6 img {
+    display: none;
+  }
+  .wrapper__card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text__title {
+    line-height: 2rem;
+  }
+
+  .card__dashboard .d-flex .card .card-body h6 {
+    font-size: 16px;
+  }
+
+  .card__dashboard .d-flex .card .card-body h5 {
+    font-size: 26px;
+  }
+
+  .card__artikel {
+    padding: 20px 16px;
+  }
+
+  .card__subtitle__artikel {
+    font-size: 16px;
+  }
+
+  .card__artikel .card__body__artikel h5 {
+    font-size: 26px;
+  }
+
+  .paket-teratas {
+    margin-top: 1rem;
+  }
+
+  .paket-teratas .paket-1 img {
+    width: 40px;
+  }
+
+  .paket-teratas .paket-2 img {
+    width: 40px;
+  }
+
+  .paket-teratas .paket-1 span {
+    font-size: 12px;
+  }
+
+  .paket-teratas .paket-2 span {
+    font-size: 12px;
+  }
+
+  .paket-teratas .paket-1 h5 {
+    font-size: 16px;
+  }
+
+  .paket-teratas .paket-2 h5 {
+    font-size: 16px;
+  }
+}
