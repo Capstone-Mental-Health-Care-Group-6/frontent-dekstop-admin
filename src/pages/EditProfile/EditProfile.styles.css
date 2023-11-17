@@ -12,21 +12,21 @@
   .custom-form label {
     display: flex;
     width: 200px;
-    height: 20px;
-    padding-right: 0px;
+    height: 10px;
     align-items: center;
     color: #000;
     font-family: 'Montserrat', sans-serif; 
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: normal;
+    line-height: 0px;
   }
   
   .custom-form .form-control {
     display: flex;
     padding: 6px 24px;
     align-items: flex-start;
+    margin-top: -10px;
     gap: var(--corner-radius-0, 0px);
     align-self: stretch;
     border-radius: var(--corner-radius-2, 8px);
@@ -42,7 +42,20 @@
     max-width: 100%;
     overflow: hidden;
   }
+
+  .password-input-container {
+    position: relative;
+  }
   
+  .eye-icon-btn {
+    position: absolute;
+    right: 5px; 
+    top: 20%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
 
   @media (max-width: 768px) {
     .custom-form {

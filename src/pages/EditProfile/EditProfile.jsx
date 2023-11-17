@@ -4,6 +4,7 @@ import Button from "../../components/Elements/button/Button";
 import Input from "../../components/Elements/input/Input";
 import Label from "../../components/Elements/input/Label";
 import "./EditProfile.styles.css"
+import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 
 const EditProfile = () => {
   const [name, setName] = useState("");
@@ -11,6 +12,8 @@ const EditProfile = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [image, setImage] = useState(null);
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
@@ -24,6 +27,14 @@ const EditProfile = () => {
 
   const handleSaveChanges = () => {
     console.log("Changes saved!");
+  };
+
+  const togglePasswordVisibility = (field) => {
+    if (field === "oldPassword") {
+      setShowOldPassword(!showOldPassword);
+    } else if (field === "newPassword") {
+      setShowNewPassword(!showNewPassword);
+    }
   };
 
   return (
@@ -53,26 +64,44 @@ const EditProfile = () => {
           />
 
           <Label htmlFor="oldPassword">Kata Sandi Lama</Label>
-          <Input
-            type="password"
-            className="form-control mb-2"
-            id="oldPassword"
-            name="oldPassword"
-            placeholder="12345678"
-            onChange={(e) => setOldPassword(e.target.value)}
-            value={oldPassword}
-          />
+          <div className="password-input-container">
+            <Input
+              type={showOldPassword ? "text" : "password"}
+              className="form-control mb-2"
+              id="oldPassword"
+              name="oldPassword"
+              placeholder="12345678"
+              onChange={(e) => setOldPassword(e.target.value)}
+              value={oldPassword}
+            />
+              <span
+                className="btn btn-secondary eye-icon-btn"
+                onClick={() => togglePasswordVisibility("oldPassword")}
+                style={{ background: "transparent", color: "#636363",  border: "0px"}}
+              >
+                {showOldPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
+              </span>
+          </div>
 
           <Label htmlFor="newPassword">Kata Sandi Baru</Label>
-          <Input
-            type="password"
-            className="form-control mb-2"
-            id="newPassword"
-            name="newPassword"
-            placeholder="abcdefghij"
-            onChange={(e) => setNewPassword(e.target.value)}
-            value={newPassword}
-          />
+          <div className="password-input-container">
+            <Input
+              type={showNewPassword ? "text" : "password"}
+              className="form-control mb-2"
+              id="newPassword"
+              name="newPassword"
+              placeholder="abcdefghij"
+              onChange={(e) => setNewPassword(e.target.value)}
+              value={newPassword}
+            />
+              <span
+                className="btn btn-secondary mb-2 eye-icon-btn"
+                onClick={() => togglePasswordVisibility("newPassword")}
+                style={{ background: "transparent", color: "#636363", border: "0px"}}
+              >
+                {showNewPassword ? <IoEyeOutline /> : <IoEyeOffOutline />}
+              </span>
+          </div>
 
           <div className="mb-2">
             {image ? (
