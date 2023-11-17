@@ -8,11 +8,15 @@ import ManageDokter from "../pages/ManageDokter/ManageDokter";
 import DanaDokter from "../pages/DanaDokter/DanaDokter";
 import ManageArtikel from "../pages/ManageArtikel/ManageArtikel";
 import EditProfile from "../pages/EditProfile/EditProfile";
+import LoginForm from "../pages/Login/Login";
+import RegisterForm from "../pages/Register/Register";
 
 const Routing = () => {
   return (
     <Routes>
-      <Route element={<Dashboard />} path="/" />
+      <Route element={<LoginForm />} path="/" />
+      <Route element={<RegisterForm />} path="register-admin" />
+      <Route element={<Dashboard />} path="/dashboard" />
       <Route element={<ManageUser />} path="admin-manage-user" />
       <Route element={<TransaksiUser />} path="admin-transaksi-user" />
       <Route element={<PaketKonseling />} path="admin-paket-konseling" />

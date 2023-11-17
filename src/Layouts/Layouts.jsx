@@ -41,7 +41,11 @@ function Layouts({ children, titlePage }) {
           </div>
           <div className="offcanvass-body d-grid  align-items-stretch ">
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
-              <SidebarItem icon={<BsGrid />} title="Dasboard" location="/" />
+              <SidebarItem
+                icon={<BsGrid />}
+                title="Dasboard"
+                location="/dashboard"
+              />
               <SidebarItem
                 icon={<LuUsers />}
                 title="Manage User"
@@ -82,7 +86,7 @@ function Layouts({ children, titlePage }) {
       <main>
         <nav
           id="navbar"
-          className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"
+          className="navbar bg-transparant d-flex align-items-center justify-content-between"
         >
           <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
