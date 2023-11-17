@@ -1,0 +1,21 @@
+#transaksi-tertunda {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.transaksi-tertunda .routes span {
+    color: #959595;
+}
+
+#transaksi-tertunda .transaksi-tertunda-content {
+    min-height: 70vh;
+}
+
+.transaksi-tertunda-content .card {
+    padding: 30px;
+}
+
+.transaksi-tertunda-content .card .d-flex h4 {
+    padding: 30px 0;
+    font-weight: 600;
+    font-size: 18px;
+}
