@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    gap: 20px;
+    background-color: #fff;
+  }
+  
+  .custom-form label {
+    display: flex;
+    width: 200px;
+    height: 20px;
+    padding-right: 0px;
+    align-items: center;
+    color: #000;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  
+  .custom-form .form-control {
+    display: flex;
+    padding: 6px 24px;
+    align-items: flex-start;
+    gap: var(--corner-radius-0, 0px);
+    align-self: stretch;
+    border-radius: var(--corner-radius-2, 8px);
+    border: 1px solid var(--neutral-1000, #000);
+  }
+
+  .custom-form img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .custom-form .mb-2 {
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+
+  @media (max-width: 768px) {
+    .custom-form {
+      padding: var(--spc-16, 16px) 20px;
+    }
+    
+    .custom-form label {
+      width: 100%;
+    }
+    
+    .custom-form .form-control {
+      padding: 6px 12px;
+    }
+  }
+  
+  
