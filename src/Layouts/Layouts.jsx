@@ -4,7 +4,7 @@ import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
 import { logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
-import { BsFileEarmarkText, BsGrid } from "react-icons/bs";
+import { BsArrowRight, BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
   LuStethoscope,
@@ -13,7 +13,7 @@ import {
 } from "react-icons/lu";
 import { FaMoneyBills } from "react-icons/fa6";
 import Dropdown from "../components/Elements/Dropdown/Dropdown";
-import { BsFillPersonFill, BsPower } from "react-icons/bs";
+import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
@@ -94,12 +94,12 @@ function Layouts({ children, titlePage }) {
                 <>
                   <li>
                     <NavLink className="dropdown-item" to="/admin-edit-profile">
-                      <BsFillPersonFill /> Edit Profile
+                      <BsPerson /> Edit Profile
                     </NavLink>
                   </li>
                   <li>
                     <a className="dropdown-item" onClick={handleLogoutClick}>
-                      <BsPower /> Logout
+                      <BsBoxArrowRight /> Logout
                     </a>
                   </li>
                 </>
