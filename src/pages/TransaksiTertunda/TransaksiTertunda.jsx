@@ -20,7 +20,7 @@ function TransaksiTertunda() {
         if (transaksiManualClicked) {
             CustomerService.getCustomersMedium().then((data) => {
                 const filteredData = data.filter(
-                    (customer) => customer.country.name === "Algeria"
+                    (customer) => customer.metode_pembayaran === "Manual"
                 );
                 setFilteredCustomers(filteredData);
             });
@@ -28,8 +28,9 @@ function TransaksiTertunda() {
         } else if (transaksiOtomatisClicked) {
             CustomerService.getCustomersMedium().then((data) => {
                 const filteredData = data.filter(
-                    (customer) => customer.country.name === "Panama"
+                    (customer) => customer.metode_pembayaran === "Otomatis"
                 );
+                console.log(customers);
                 setFilteredCustomers(filteredData);
             });
 
