@@ -51,6 +51,16 @@ function TransaksiTertunda() {
         setBgTransaction(transactionType);
     };
 
+    const bodyTemplate = (rowData) => {
+        return (
+            <>
+                <img src={rowData.image} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
+                <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
+                    {rowData.name}
+                </Link>
+            </>
+        );
+    };
 
     return (
         <Layouts titlePage={"Transaksi Tertunda"}>
@@ -99,11 +109,7 @@ function TransaksiTertunda() {
                                     key={index}
                                     header={item.header}
                                     field={item.field}
-                                    body={(rowData) => (
-                                        <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
-                                            {getValue(rowData, item.field)}
-                                        </Link>
-                                    )}
+                                    body={item.field === 'name' ? bodyTemplate : (rowData) => getValue(rowData, item.field)}
                                 />
                             ))}
                         </DataTable>

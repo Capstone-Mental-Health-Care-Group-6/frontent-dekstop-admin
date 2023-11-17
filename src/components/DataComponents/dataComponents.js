@@ -69,6 +69,7 @@ export const CustomerService = {
             {
                 id: 1000,
                 name: 'James Butt',
+                image: human1,
                 id_transaksi: 222,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'sudah bayar',
@@ -81,6 +82,7 @@ export const CustomerService = {
             {
                 id: 3256,
                 name: 'Alice Johnson',
+                image: human2,
                 id_transaksi: 789,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'sudah bayar',
@@ -93,6 +95,7 @@ export const CustomerService = {
             {
                 id: 1234,
                 name: 'Bob Smith',
+                image: human3,
                 id_transaksi: 456,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'sudah bayar',
@@ -105,6 +108,7 @@ export const CustomerService = {
             {
                 id: 9876,
                 name: 'Eva Davis',
+                image: human4,
                 id_transaksi: 654,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'belum bayar',
@@ -118,6 +122,7 @@ export const CustomerService = {
                 id: 5432,
                 name: 'Charlie Wilson',
                 id_transaksi: 987,
+                image: human3,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'belum bayar',
                 paket_konseling: 'unqualified',
@@ -130,6 +135,7 @@ export const CustomerService = {
                 id: 6789,
                 name: 'David Miller',
                 id_transaksi: 321,
+                image: human4,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'sudah bayar',
                 paket_konseling: 'unqualified',
@@ -142,6 +148,7 @@ export const CustomerService = {
                 id: 2345,
                 name: 'Fiona Taylor',
                 id_transaksi: 135,
+                image: human1,
                 paket_langganan: 'Paket Instan',
                 status_pembayaran: 'belum bayar',
                 paket_konseling: 'unqualified',
