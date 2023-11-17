@@ -72,23 +72,25 @@ function TransaksiTertunda() {
                             <Search size={20} placeholder={"Search"} />
                         </div>
 
-                        <DataTable value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers}
+                        <DataTable
+                            value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers}
                             paginator
                             rows={5}
                             rowsPerPageOptions={[5, 10, 25, 50]}
-                            tableStyle={{ minWidth: "50rem" }}
+                            tableStyle={{ minWidth: '50rem' }}
                         >
-                            {dataColumnsTertunda.map((item, index) => {
-                                console.log(item.id); // Pindahkan log ini ke dalam blok map
-                                return (
-                                    <ColumnTable key={index} header={item.header} body={(rowData) => (
-                                        <Link to={'/'}>
+                            {dataColumnsTertunda.map((item, index) => (
+                                <ColumnTable
+                                    key={index}
+                                    header={item.header}
+                                    field={item.field}
+                                    body={(rowData) => (
+                                        <Link to={`/${getValue(rowData, 'id')}`}>
                                             {getValue(rowData, item.field)}
                                         </Link>
-                                    )} />
-                                );
-                            })}
-
+                                    )}
+                                />
+                            ))}
                         </DataTable>
                     </div>
                 </div>
