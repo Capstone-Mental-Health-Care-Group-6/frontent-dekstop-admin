@@ -13,7 +13,7 @@ import {
 } from "react-icons/lu";
 import { FaMoneyBills } from "react-icons/fa6";
 import Dropdown from "../components/Elements/Dropdown/Dropdown";
-import { BsFillPersonFill, BsPower } from 'react-icons/bs';
+import { BsFillPersonFill, BsPower } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
@@ -79,7 +79,7 @@ function Layouts({ children, titlePage }) {
         </div>
       </div>
 
-      <main className="p-3">
+      <main className="">
         <nav
           id="navbar"
           className="navbar bg-transparant sticky-top d-flex align-items-center justify-content-between"
