@@ -7,6 +7,7 @@ import PaketKonseling from "../pages/PaketKonseling/PaketKonseling";
 import ManageDokter from "../pages/ManageDokter/ManageDokter";
 import DanaDokter from "../pages/DanaDokter/DanaDokter";
 import ManageArtikel from "../pages/ManageArtikel/ManageArtikel";
+import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
 
@@ -22,6 +23,7 @@ const Routing = () => {
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
+      <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
   );
 };
