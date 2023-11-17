@@ -50,7 +50,7 @@ export const cardTransaksiUser = [
         total: '20.000'
     },
     {
-        location: '/',
+        location: '/admin-transaksi-user/transaksi-tertunda',
         image: iconTertundaCard,
         text: 'Transaksi Tertunda',
         total: '3900'
