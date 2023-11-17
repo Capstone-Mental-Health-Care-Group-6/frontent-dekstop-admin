@@ -8,6 +8,7 @@ import ManageDokter from "../pages/ManageDokter/ManageDokter";
 import DanaDokter from "../pages/DanaDokter/DanaDokter";
 import ManageArtikel from "../pages/ManageArtikel/ManageArtikel";
 import TransaksiTertunda from "../pages/TransaksiTertunda/TransaksiTertunda";
+import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUser";
 
 const Routing = () => {
   return (
@@ -20,6 +21,7 @@ const Routing = () => {
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
       <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
+      <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
     </Routes>
   );
 };

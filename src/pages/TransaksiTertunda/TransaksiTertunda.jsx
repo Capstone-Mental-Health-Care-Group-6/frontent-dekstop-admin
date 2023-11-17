@@ -13,10 +13,12 @@ function TransaksiTertunda() {
     const [filteredCustomers, setFilteredCustomers] = useState([]);
     const [transaksiManualClicked, setTransaksiManualClicked] = useState(false);
     const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] = useState(false);
+    const [bgTransaction, setBgTransaction] = useState(false);
 
     useEffect(() => {
 
-        // nanti nya nama negara nya berdasarkan data transaksi yang ada di backend
+
+        // nanti nya nama pembayarannya berdasarkan data transaksi yang ada di backend
         if (transaksiManualClicked) {
             CustomerService.getCustomersMedium().then((data) => {
                 const filteredData = data.filter(
@@ -45,6 +47,10 @@ function TransaksiTertunda() {
         return properties.reduce((acc, property) => acc && acc[property], object);
     };
 
+    const handleClick = (transactionType) => {
+        setBgTransaction(transactionType);
+    };
+
 
     return (
         <Layouts titlePage={"Transaksi Tertunda"}>
@@ -55,21 +61,28 @@ function TransaksiTertunda() {
                 <div className="transaksi-tertunda-content d-grid align-items-center">
                     <div className="card">
                         <div className="d-flex justify-content-between">
-                            <div className="d-flex gap-4">
-                                <h4 onClick={() => {
-                                    setTransaksiManualClicked(true);
-                                    setTransaksiOtomatisClicked(false)
-                                }}>
+                            <div className="d-flex gap-4 mb-3">
+                                <h4 className={bgTransaction === 'manual' ? 'active' : ''}
+                                    onClick={() => {
+                                        setTransaksiManualClicked(true);
+                                        setTransaksiOtomatisClicked(false);
+                                        handleClick('manual')
+                                    }}
+
+                                >
                                     Transaksi Manual
                                 </h4>
 
-                                <h4 onClick={() => {
-                                    setTransaksiOtomatisClicked(true);
-                                    setTransaksiManualClicked(false); // Reset the other button
-                                }}
+                                <h4 className={bgTransaction === 'otomatis' ? 'active' : ''}
+                                    onClick={() => {
+                                        setTransaksiOtomatisClicked(true);
+                                        setTransaksiManualClicked(false);
+                                        handleClick('otomatis')
+                                    }}
                                 >
                                     Transaksi Otomatis
                                 </h4>
+
                             </div>
                             <Search size={20} placeholder={"Search"} />
                         </div>
@@ -87,7 +100,7 @@ function TransaksiTertunda() {
                                     header={item.header}
                                     field={item.field}
                                     body={(rowData) => (
-                                        <Link to={`/${getValue(rowData, 'id')}`}>
+                                        <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
                                             {getValue(rowData, item.field)}
                                         </Link>
                                     )}
