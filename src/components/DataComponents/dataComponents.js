@@ -9095,3 +9095,26 @@ export const CustomerService = {
         return fetch('https://www.primefaces.org/data/customers?' + queryParams).then((res) => res.json());
     }
 };
+
+export const dataColumnsTertunda = [
+    {
+        field: 'name',
+        header: 'Name',
+    },
+    {
+        field: 'country.name',
+        header: 'Country',
+    },
+    {
+        field: 'company',
+        header: 'Company',
+    },
+    {
+        field: 'representative.name',
+        header: 'Representative',
+    },
+    {
+        field: 'id'
+    }
+
+]
