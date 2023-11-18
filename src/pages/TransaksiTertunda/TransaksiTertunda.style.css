@@ -70,6 +70,10 @@
         color: #323232;
         font-size: 15px;
     }
+
+    .transaksi-tertunda-content .card {
+        padding: 7px;
+    }
 }
 
 @media screen and (max-width: 620px) {
@@ -85,8 +89,8 @@
 
 }
 
-@media screen and (max-width: 432px) {
+/* @media screen and (max-width: 432px) {
     .transaksi-tertunda-content .card {
         padding: 7px;
     }
-}
+} */
