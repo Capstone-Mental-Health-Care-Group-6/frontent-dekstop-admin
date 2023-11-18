@@ -6,3 +6,8 @@
 .check-value {
   font-size: 3px;
 }
+
+.searchbar {
+  padding: 0 14px 0 14px;
+  margin: 0 14px 0 14px;
+}

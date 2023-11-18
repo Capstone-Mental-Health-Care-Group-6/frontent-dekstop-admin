@@ -1,0 +1,10 @@
+.row .col .card h5{
+  font-size: 32px;
+  font-weight: bold;
+}
+.row .col .card h6{
+  margin-top: 16px;
+  color: #A7A7A7;
+  font-weight: 400;
+  font-size: 18px;
+}

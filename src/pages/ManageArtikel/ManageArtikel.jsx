@@ -2,19 +2,23 @@ import React from "react";
 import Layouts from "../../Layouts/Layouts";
 import Table from "../../components/Fragments/dataTable/TableData";
 import Card from "../../components/Fragments/card/Card";
+import { iconArtikelAdmin, pendingArtikelAdmin, tambahArtikelAdmin } from "../../../image";
+import "./ManageArtikel.style.css"
 
 const ManageArtikel = () => {
-  const titleCard = ["Total Artikel", "Artikel Baru", "Pengajuan Artikel"];
-
   return (
     <Layouts titlePage={"Manage artikel"}>
       <div>
         <div className="row my-4">
-          {titleCard.map((item, index) => (
-            <div key={index} className="col">
-              <Card cardTitle={item} cardSubtitle={17000} />
-            </div>
-          ))}
+          <div className="col">
+          <Card src={iconArtikelAdmin} cardTitle="17000" cardSubtitle="Total Artikel" />
+          </div>
+          <div className="col">
+          <Card src={tambahArtikelAdmin} cardSubtitle="Artikel Baru" cardTitle="250"/>
+          </div>
+          <div className="col">
+          <Card src={pendingArtikelAdmin } cardSubtitle="Pengajuan Artikel" cardTitle="12" />
+          </div>
         </div>
       </div>
       <div>
