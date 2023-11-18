@@ -65,36 +65,38 @@ function TransaksiTertunda() {
     return (
         <Layouts titlePage={"Transaksi Tertunda"}>
             <section className="transaksi-tertunda mb-2" id="transaksi-tertunda">
-                <p className="routes">
-                    <span>Transaksi</span> / Transaksi Tertunda
-                </p>
+                <p className="routes"> <span>Transaksi</span> / Transaksi Tertunda  </p>
+
                 <div className="transaksi-tertunda-content d-grid align-items-center">
                     <div className="card">
-                        <div className="d-flex justify-content-between">
+                        <div className="d-flex row row-cols-lg-2 row-cols-1 justify-content-between">
                             <div className="d-flex gap-4 mb-3">
-                                <h4 className={bgTransaction === 'manual' ? 'active' : ''}
-                                    onClick={() => {
-                                        setTransaksiManualClicked(true);
-                                        setTransaksiOtomatisClicked(false);
-                                        handleClick('manual')
-                                    }}
+                                <div className=" col d-flex gap-3 filtering-data-manual ">
+                                    <h4 className={bgTransaction === 'manual' ? 'active' : ''}
+                                        onClick={() => {
+                                            setTransaksiManualClicked(true);
+                                            setTransaksiOtomatisClicked(false);
+                                            handleClick('manual')
+                                        }}
 
-                                >
-                                    Transaksi Manual
-                                </h4>
+                                    >
+                                        Transaksi Manual
+                                    </h4>
 
-                                <h4 className={bgTransaction === 'otomatis' ? 'active' : ''}
-                                    onClick={() => {
-                                        setTransaksiOtomatisClicked(true);
-                                        setTransaksiManualClicked(false);
-                                        handleClick('otomatis')
-                                    }}
-                                >
-                                    Transaksi Otomatis
-                                </h4>
+                                    <h4 className={bgTransaction === 'otomatis' ? 'active' : ''}
+                                        onClick={() => {
+                                            setTransaksiOtomatisClicked(true);
+                                            setTransaksiManualClicked(false);
+                                            handleClick('otomatis')
+                                        }}
+                                    >
+                                        Transaksi Otomatis
+                                    </h4>
+
+                                </div>
 
                             </div>
-                            <Search size={20} placeholder={"Search"} />
+                            <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} />
                         </div>
 
                         <DataTable
@@ -103,6 +105,7 @@ function TransaksiTertunda() {
                             rows={5}
                             rowsPerPageOptions={[5, 10, 25, 50]}
                             tableStyle={{ minWidth: '50rem' }}
+                            className="table-customers"
                         >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable

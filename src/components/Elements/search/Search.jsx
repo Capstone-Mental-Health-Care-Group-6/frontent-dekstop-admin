@@ -2,9 +2,9 @@ import React from 'react'
 import "./Search.style.css";
 import { LuSearch } from 'react-icons/lu'
 
-function Search({ size, placeholder }) {
+function Search({ size, placeholder, className }) {
     return (
-        <div className="search-container">
+        <div className={`search-container  ${className}`}>
             <button className="search__button">
                 <LuSearch size={size} />
             </button>

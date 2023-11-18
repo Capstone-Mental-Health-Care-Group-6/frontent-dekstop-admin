@@ -32,3 +32,61 @@
     text-decoration: none;
     color: #323232;
 }
+
+@media screen and (max-width: 1070px) {
+    .transaksi-tertunda-content .card .d-flex h4 {
+        font-size: 16px;
+        line-height: 0;
+    }
+
+    .transaksi-tertunda-content .card .d-flex .input-search {
+        width: 100% !important;
+    }
+
+    .transaksi-tertunda-content .card .d-flex {
+        margin-bottom: 10px;
+    }
+
+    .transaksi-tertunda-content .card .d-flex .filtering-data-manual {
+        justify-content: center;
+    }
+
+}
+
+
+@media screen and (max-width: 784px) {
+    .transaksi-tertunda-content .card .d-flex h4 {
+        font-size: 14px;
+        line-height: 0;
+    }
+
+    .transaksi-tertunda-content .card .p-datatable-wrapper table thead tr th {
+        font-size: 14px
+    }
+
+    .transaksi-tertunda-content .card .p-datatable-wrapper table tbody,
+    .transaksi-tertunda-content .card .p-datatable-wrapper table tbody a {
+        text-decoration: none;
+        color: #323232;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .transaksi-tertunda-content .card .d-flex h4 {
+        font-size: 12px;
+        line-height: 0;
+    }
+
+    .transaksi-tertunda-content .card .p-datatable-wrapper table tbody,
+    .transaksi-tertunda-content .card .p-datatable-wrapper table tbody a {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 432px) {
+    .transaksi-tertunda-content .card {
+        padding: 7px;
+    }
+}
