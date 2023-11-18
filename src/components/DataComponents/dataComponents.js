@@ -1,4 +1,4 @@
-import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard } from "../../../image";
+import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer } from "../../../image";
 
 export const riwayatTransaksi1 = [
     {
@@ -222,6 +222,7 @@ export const detailDataTransaksi = [
         harga: 'Rp50.000',
         nama_dokter: 'Lika Angelina S.Psi, M.Psi. Psikolog',
         durasi_Konseling: '60 Menit',
+        buktiTransfer: buktiTransfer
 
     },
 ]

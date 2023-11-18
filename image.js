@@ -12,7 +12,8 @@ import human3 from "./src/assets/human3.svg"
 import human4 from "./src/assets/human4.svg"
 import iconFace from "./src/assets/icon-face.png"
 import buktiTransfer from "./src/assets/bukti-transfer.png"
+import alertMessageBlue from "./src/assets/alert-message-blue.svg"
 export {
     logoEmpathiCare, logoEmpathiCareMobile, iconBerhasilCard, iconFGagalCard, iconTransaksiCard,
-    iconTertundaCard, paket1, paket2, human1, human2, human3, human4, iconFace, buktiTransfer
+    iconTertundaCard, paket1, paket2, human1, human2, human3, human4, iconFace, buktiTransfer, alertMessageBlue
 }

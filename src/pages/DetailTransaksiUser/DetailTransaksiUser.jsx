@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./DetailTransaksiUser.style.css";
 import Layouts from '../../Layouts/Layouts'
 import { useParams } from 'react-router-dom';
@@ -6,17 +6,32 @@ import ItemDataTransaksi from '../../components/Fragments/item-data-transaksi/It
 import { detailDataTransaksi } from '../../components/DataComponents/dataComponents';
 import { buktiTransfer } from '../../../image';
 import Button from '../../components/Elements/button/Button';
+import { PhotoSwipe } from 'react-photoswipe';
+import 'react-photoswipe/lib/photoswipe.css';
+
 
 function DetailTransaksiUser() {
     const id = useParams()
     console.log(id);
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openPhotoSwipe = () => {
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        setIsOpen(false);
+    };
+
     return (
         <Layouts titlePage={'Detail Transaksi User'}>
             <section className='detail-transaksi' id='detail-transaksi' >
                 <p className='routes' > <span> Transaksi / Transaksi Tertunda /</span> Detail Transaksi User</p>
-                <div className="row  row-cols-lg-2 row-cols-1">
-                    {detailDataTransaksi.map((item, index) => (
-                        <div key={index} className="col  d-flex flex-column justify-content-between ">
+
+                {detailDataTransaksi.map((item, index) => (
+                    <div key={index} className="row  row-cols-lg-2 row-cols-1">
+                        <div className="col  d-flex flex-column justify-content-between ">
                             <ItemDataTransaksi title={'Nama User'} text={item.name} />
                             <ItemDataTransaksi title={'Paket Konseling'} text={item.paket} />
                             <ItemDataTransaksi title={'Metode Pembayaran'} text={item.metode_pembayaran} />
@@ -33,15 +48,27 @@ function DetailTransaksiUser() {
                             </div>
                         </div>
 
-                    ))}
+                        <div className="col">
+                            <p>Bukti Transfer : </p>
+                            <div className="bukti-transfer">
+                                <img
+                                    src={item.buktiTransfer}
+                                    onClick={() => openPhotoSwipe()}
+                                />
 
-                    <div className="col">
-                        <p>Bukti Transfer : </p>
-                        <div className="bukti-transfer">
-                            <img src={buktiTransfer} alt="" />
+                                <PhotoSwipe
+                                    isOpen={isOpen}
+                                    items={[{ w: 500, h: 500, src: item.buktiTransfer }]}
+                                    options={{ bgOpacity: 0.7 }}
+                                    onClose={handleClose}
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
+                ))}
+
+
+
 
             </section>
         </Layouts>
