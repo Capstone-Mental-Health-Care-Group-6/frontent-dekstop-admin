@@ -7,6 +7,7 @@ import Search from "../../components/Elements/search/Search";
 import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataColumnsTertunda } from "../../components/DataComponents/dataComponents";
 import { Link } from "react-router-dom";
+import Table from "../../components/Fragments/tabel/Table";
 
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
@@ -99,14 +100,8 @@ function TransaksiTertunda() {
                             <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} />
                         </div>
 
-                        <DataTable
-                            value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers}
-                            paginator
-                            rows={5}
-                            rowsPerPageOptions={[5, 10, 25, 50]}
-                            tableStyle={{ minWidth: '50rem' }}
-                            className="table-customers"
-                        >
+
+                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers} >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable
                                     key={index}
@@ -115,7 +110,7 @@ function TransaksiTertunda() {
                                     body={item.field === 'name' ? bodyTemplate : (rowData) => getValue(rowData, item.field)}
                                 />
                             ))}
-                        </DataTable>
+                        </Table>
                     </div>
                 </div>
             </section>
