@@ -211,3 +211,17 @@ export const dataColumnsTertunda = [
     },
 
 ]
+
+export const detailDataTransaksi = [
+    {
+        name: 'Rafael Leao',
+        paket: 'Konseling Premium',
+        metode_pembayaran: 'Transfer Bank (Manual)',
+        status_pembayaran: 'Sudah Bayar',
+        id_Transaksi: '129834',
+        harga: 'Rp50.000',
+        nama_dokter: 'Lika Angelina S.Psi, M.Psi. Psikolog',
+        durasi_Konseling: '60 Menit',
+
+    },
+]

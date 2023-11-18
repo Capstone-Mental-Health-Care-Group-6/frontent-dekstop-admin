@@ -64,7 +64,7 @@ function TransaksiTertunda() {
 
     return (
         <Layouts titlePage={"Transaksi Tertunda"}>
-            <section className="transaksi-tertunda" id="transaksi-tertunda">
+            <section className="transaksi-tertunda mb-2" id="transaksi-tertunda">
                 <p className="routes">
                     <span>Transaksi</span> / Transaksi Tertunda
                 </p>
