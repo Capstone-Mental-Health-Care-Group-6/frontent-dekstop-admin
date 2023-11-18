@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ type, className, onClick, id, text }) => {
   return (
-    <div>
+    <>
       <button
         type={type ? type : "button"}
         className={className}
@@ -11,7 +11,7 @@ const Button = ({ type, className, onClick, id, text }) => {
       >
         {text}
       </button>
-    </div>
+    </>
   );
 };
 
