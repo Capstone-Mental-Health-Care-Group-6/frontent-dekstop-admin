@@ -1,0 +1,31 @@
+/* FilterManageUser.style.css */
+
+/* Style for the filter container */
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the filter button */
+.filter__button {
+  background-color: #fff; 
+  border: 3px solid #888; /* Border */
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the filter icon */
+.filter__icon {
+  color: #888;
+  margin-right: 5px;
+}
+
+/* Style for the filter text */
+.filter__text {
+  font-size: 16px;
+}
