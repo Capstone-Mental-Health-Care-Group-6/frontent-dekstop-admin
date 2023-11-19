@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
-import { logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
+import { iconFace, logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
 import { BsArrowRight, BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
@@ -93,7 +93,7 @@ function Layouts({ children, titlePage }) {
             <IoNotifications className="notif-icon" />
             <Dropdown
               className="iconNavbar"
-              imageSrc="icon-face.png"
+              imageSrc={iconFace}
               dropdownContent={
                 <>
                   <li>
