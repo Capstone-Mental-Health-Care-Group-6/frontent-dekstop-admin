@@ -17,7 +17,7 @@
   padding: 4px 12px;
 }
 
-/* Gaya untuk status Tidak Aktif */
+/* style untuk status Tidak Aktif */
 .inactive-status {
   display: inline-block;
   text-align: center;
@@ -36,7 +36,7 @@
   padding: 4px 12px;
 }
 
-/* Gaya untuk border atas dan bawah pada header tabel */
+/* style untuk border atas dan bawah pada header tabel */
 .table-header-border {
   border-top: 1px solid #dcdcdc;
   border-bottom: 1px solid #dcdcdc;
@@ -48,8 +48,27 @@
   line-height: normal;
 }
 
-/* Gaya untuk setiap baris dalam tabel */
+/* style untuk setiap baris dalam tabel */
 .table-row-height {
   height: 48px !important;
 }
 
+/* Style pada bagian dialog action */
+.dialog-footer {
+  height: auto;
+  width: 218px;
+  background-color: #ffffff;
+}
+
+.dialog-footer button {
+  font-family: ontserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+.modal-dialog {
+    width: 420px;
+
+}

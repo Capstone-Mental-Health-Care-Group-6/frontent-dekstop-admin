@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Paginator } from "primereact/paginator";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import { dataUsers } from "../../components/DataUsers/dataUsers";
