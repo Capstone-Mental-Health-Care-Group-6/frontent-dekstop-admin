@@ -30,7 +30,7 @@ const RegisterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    navigate("/login-admin")
+    navigate("/")
     console.log("Name:", name)
     console.log("Email:", email)
     console.log("Password:", password)
@@ -48,11 +48,7 @@ const RegisterForm = () => {
           Daftar Admin <br /> EmphatiCare
         </h2>
         <form className="login-form-container">
-          <FloatingLabel
-            // controlId="floatingInput"
-            label="Name"
-            className="mb-3"
-          >
+          <FloatingLabel label="Name" className="mb-3">
             <Form.Control
               type="text"
               id="name"
@@ -62,11 +58,7 @@ const RegisterForm = () => {
               onChange={handleNameChange}
             />
           </FloatingLabel>
-          <FloatingLabel
-            // controlId="floatingInput"
-            label="Email address"
-            className="mb-3"
-          >
+          <FloatingLabel label="Email address" className="mb-3">
             <Form.Control
               type="email"
               placeholder="name@example.com"
@@ -102,7 +94,7 @@ const RegisterForm = () => {
           />
 
           <p>
-            Sudah punya akun? <Link to="/login-admin">Login</Link>
+            Sudah punya akun? <Link to="/">Login</Link>
           </p>
         </form>
       </div>

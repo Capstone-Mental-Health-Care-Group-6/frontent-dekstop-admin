@@ -106,7 +106,7 @@ const ResetPassword = () => {
             className={`mt-4 btn btn-primary w-100 fw-bold ${
               !isFormFilled ? "disabled" : ""
             }`}
-            text="Atur Kata Sandi Baru"
+            text="Atur ulang kata sandi"
             disabled={!isFormFilled}
           />
         </form>

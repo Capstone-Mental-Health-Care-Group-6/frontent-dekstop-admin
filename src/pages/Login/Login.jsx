@@ -1,6 +1,6 @@
 import "./Login.style.css"
-// import styles from "./Testing.module.css"
-import * as React from "react"
+import React, { useState } from "react"
+// import * as React from "react"
 import Button from "../../components/Elements/button/Button"
 import EmpathiCare from "../../assets/emphatiCare.jpg"
 import { BsEye, BsEyeSlash } from "react-icons/bs"
@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 const LoginForm = () => {
-  const [email, setEmail] = React.useState("")
-  const [password, setPassword] = React.useState("")
-  const [showPass, setShowPass] = React.useState(false)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [showPass, setShowPass] = useState(false)
   const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
@@ -39,7 +39,7 @@ const LoginForm = () => {
         <h2 className="textAdmin">
           Masuk Admin <br /> EmphatiCare
         </h2>
-        {/* <p className={styles.test}>Testing using Modules</p> */}
+
         <form className="login-form-container">
           <div className="floating2">
             <input
