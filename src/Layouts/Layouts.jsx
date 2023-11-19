@@ -93,7 +93,7 @@ function Layouts({ children, titlePage }) {
             <IoNotifications className="notif-icon" />
             <Dropdown
               className="iconNavbar"
-              imageSrc="icon-face.png"
+              imageSrc={iconFace}
               dropdownContent={
                 <>
                   <li>
