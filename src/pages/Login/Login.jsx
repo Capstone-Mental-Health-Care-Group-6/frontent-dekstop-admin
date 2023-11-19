@@ -1,18 +1,17 @@
-// LoginForm.jsx
-import React, { useState } from "react"
-import Input from "../../components/Elements/input/Input"
-import Label from "../../components/Elements/input/Label"
+import "./Login.style.css"
+// import styles from "./Testing.module.css"
+
+import * as React from "react"
 import Button from "../../components/Elements/button/Button"
 import EmpathiCare from "../../assets/emphatiCare.jpg"
 import { BsEye, BsEyeSlash } from "react-icons/bs"
-import "./Login.style.css"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPass, setShowPass] = useState(false)
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [showPass, setShowPass] = React.useState(false)
   const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
@@ -37,50 +36,56 @@ const LoginForm = () => {
   return (
     <div className="content-center">
       <div className="container">
-        <img src={EmpathiCare} alt="Login" className="center-image" />
+        <img src={EmpathiCare} alt="Login" className="logo" />
         <h2 className="textAdmin">
           Masuk Admin <br /> EmphatiCare
         </h2>
+        {/* <p className={styles.test}>Testing using Modules</p> */}
         <form className="login-form-container">
-          <Input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <div className="position-relative">
-            <Input
-              type={showPass ? "text" : "password"}
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
+          <div className="floating2">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder=""
             />
-            <Button
-              type="button"
-              className="btn-float"
-              text={showPass ? <BsEyeSlash /> : <BsEye />}
-              onClick={handleTogglePassword}
-            />
+            <label htmlFor="email">Email</label>
           </div>
 
-          <a className="text-end mt-1" href="#">
+          <div className="floating2">
+            <input
+              type={showPass ? "text" : "password"}
+              name="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+              placeholder=""
+            />
+            <label htmlFor="password">Password</label>
+            <span className="icon right">
+              {showPass ? (
+                <BsEyeSlash onClick={handleTogglePassword} />
+              ) : (
+                <BsEye onClick={handleTogglePassword} />
+              )}
+            </span>
+          </div>
+
+          <Link to="/forgot-password" className="text-end mt-1">
             Forgot Password?
-          </a>
+          </Link>
 
           <Button
             type="submit"
             id="btn-submit"
-            className="btn btn-primary w-100"
+            className="btn btn-primary w-100 fw-bold"
             text="Masuk"
             onClick={handleSubmit}
           />
-
-          <p>
-            Belum punya akun? <Link to="/register-admin">Signup</Link>
+          <p className="fw-bold text-center mt-3">
+            Belum punya akun? <Link to="/register-admin">Sign Up</Link>{" "}
           </p>
         </form>
       </div>

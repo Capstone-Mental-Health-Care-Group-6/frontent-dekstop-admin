@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import Input from "../../components/Elements/input/Input"
-import Label from "../../components/Elements/input/Label"
+import FloatingLabel from "react-bootstrap/FloatingLabel"
+import Form from "react-bootstrap/Form"
 import Button from "../../components/Elements/button/Button"
 import EmpathiCare from "../../assets/emphatiCare.jpg"
 import { BsEye, BsEyeSlash } from "react-icons/bs"
@@ -47,31 +48,43 @@ const RegisterForm = () => {
           Daftar Admin <br /> EmphatiCare
         </h2>
         <form className="login-form-container">
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Nama"
-            value={name}
-            onChange={handleNameChange}
-          />
-          <Input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <div className="position-relative">
-            <Input
-              type={showPass ? "text" : "password"}
-              id="password"
-              name="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
+          <FloatingLabel
+            // controlId="floatingInput"
+            label="Name"
+            className="mb-3"
+          >
+            <Form.Control
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Nama"
+              value={name}
+              onChange={handleNameChange}
             />
+          </FloatingLabel>
+          <FloatingLabel
+            // controlId="floatingInput"
+            label="Email address"
+            className="mb-3"
+          >
+            <Form.Control
+              type="email"
+              placeholder="name@example.com"
+              value={email}
+              onChange={handleEmailChange}
+            />
+          </FloatingLabel>
+          <div className="position-relative">
+            <FloatingLabel label="Password">
+              <Form.Control
+                type={showPass ? "text" : "password"}
+                id="password"
+                name="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </FloatingLabel>
             <Button
               type="button"
               className="btn-float"
