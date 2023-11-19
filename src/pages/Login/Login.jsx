@@ -1,36 +1,36 @@
-import "./Login.style.css"
-import React, { useState } from "react"
+import "./Login.style.css";
+import React, { useState } from "react";
 // import * as React from "react"
-import Button from "../../components/Elements/button/Button"
-import EmpathiCare from "../../assets/emphatiCare.jpg"
-import { BsEye, BsEyeSlash } from "react-icons/bs"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import Button from "../../components/Elements/button/Button";
+import EmpathiCare from "../../assets/emphatiCare.jpg";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPass, setShowPass] = useState(false)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    navigate("/")
-    console.log("Email:", email)
-    console.log("Password:", password)
-  }
+    e.preventDefault();
+    navigate("/dashboard-admin");
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
 
   const handleTogglePassword = () => {
-    setShowPass(!showPass)
-  }
+    setShowPass(!showPass);
+  };
 
   return (
     <div className="content-center">
@@ -89,7 +89,7 @@ const LoginForm = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

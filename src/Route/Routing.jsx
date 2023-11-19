@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -13,15 +12,14 @@ import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUse
 import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
-import ForgotPw from "../pages/ForgotPassword/ForgotPassword"
-import ResetPassword from "../pages/AturSandi/AturSandi"
-
+import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../pages/AturSandi/AturSandi";
 
 const Routing = () => {
   return (
     <Routes>
-      <Route element={<Dashboard />} path="/" />
-      <Route element={<LoginForm />} path="login-admin" />
+      <Route element={<LoginForm />} path="/" />
+      <Route element={<Dashboard />} path="/dashboard-admin" />
       <Route element={<RegisterForm />} path="register-admin" />
       <Route element={<ForgotPw />} path="forgot-password" />
       <Route element={<ResetPassword />} path="reset-password" />
@@ -31,11 +29,17 @@ const Routing = () => {
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
-      <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
-      <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
+      <Route
+        element={<TransaksiTertunda />}
+        path="admin-transaksi-user/transaksi-tertunda"
+      />
+      <Route
+        element={<DetailTransaksiUser />}
+        path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id"
+      />
       <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
-  )
-}
+  );
+};
 
-export default Routing
+export default Routing;

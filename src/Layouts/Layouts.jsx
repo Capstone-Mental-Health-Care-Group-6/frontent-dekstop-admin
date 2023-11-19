@@ -44,7 +44,7 @@ function Layouts({ children, titlePage }) {
               <SidebarItem
                 icon={<BsGrid />}
                 title="Dasboard"
-                location="/dashboard"
+                location="/dashboard-admin"
               />
               <SidebarItem
                 icon={<LuUsers />}
