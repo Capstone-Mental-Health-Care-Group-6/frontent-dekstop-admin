@@ -1,0 +1,258 @@
+/* Card */
+
+#transaksi-user {
+    font-family: 'Montserrat',
+        sans-serif;
+}
+
+.transaksi-user .row .col a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.transaksi-user .row .col .card h6 {
+    color: #A7A7A7;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.transaksi-user .row .col .card h5 {
+    color: #323232;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+#riwayat-dan-paket {
+    margin-top: 30px;
+    font-family: 'Montserrat',
+        sans-serif;
+
+}
+
+/* card end */
+
+
+
+/* paket */
+.riwayat-dan-paket .paket-teratas {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.riwayat-dan-paket .paket-teratas h4 {
+    font-weight: 600;
+    padding: 10px 0px;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-1 {
+    padding: 20px;
+    background-color: #FFFEEB;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-2 {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F4F4F4;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-1 span {
+    font-weight: 500;
+    color: #F9981A;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-2 span {
+    font-weight: 500;
+    color: #959595;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-1 h5 {
+    font-weight: 600;
+    color: #323232;
+}
+
+.riwayat-dan-paket .paket-teratas .paket-2 h5 {
+    font-weight: 600;
+    color: #323232;
+}
+
+/* paket end*/
+
+
+/* riwayat transaksi */
+
+.riwayat-transaksi h4 {
+    font-weight: 600;
+    padding: 10px 0px;
+}
+
+.riwayat-dan-paket .riwayat-transaksi {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span {
+    font-size: 16px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(1) {
+    font-weight: 600;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(2) {
+    color: #959595;
+    font-size: 14px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
+.doctor {
+    color: #959595;
+    font-size: 15px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
+    padding: 3px 10px;
+    background-color: #FFDFD7;
+    color: #D44E2D;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
+    padding: 3px 10px;
+    background-color: #E3F6E9;
+    color: #229845;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
+    padding: 3px 10px;
+    background-color: #FEF7DB;
+    color: #7D6D25;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+.riwayat-transaksi .d-flex button {
+    border: 1px solid #0085FF;
+}
+
+/* riwayat transaksi end */
+
+
+@media screen and (max-width: 1079px) {
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
+    .doctor {
+        color: #959595;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .riwayat-dan-paket .col .riwayat-transaksi {
+        margin-top: 36px;
+        margin-bottom: 36px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-1 img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 436px) {
+    .riwayat-dan-paket .paket-teratas .paket-1 img {
+        width: 40px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 img {
+        width: 40px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-1 span {
+        font-size: 12px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 span {
+        font-size: 12px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-1 h5 {
+        font-size: 16px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 h5 {
+        font-size: 16px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span {
+        font-size: 15px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 span:nth-child(1),
+    .doctor {
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
+
+        font-size: 13px;
+    }
+
+    .riwayat-dan-paket .paket-teratas h4 {
+        font-size: 18px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .d-flex {
+        flex-direction: column;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .circle {
+        display: none;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-1 span:nth-child(2) {
+        color: #959595;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+
+    .riwayat-dan-paket .paket-teratas .paket-1 {
+        padding: 8px;
+    }
+
+    .riwayat-dan-paket .paket-teratas .paket-2 {
+        padding: 8px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-failed {
+        font-size: 10px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-completed {
+
+        font-size: 10px;
+    }
+
+    .riwayat-dan-paket .col .riwayat-transaksi .d-grid .row .col-lg-11 .line-2 .status-pending {
+
+        font-size: 10px;
+    }
+}

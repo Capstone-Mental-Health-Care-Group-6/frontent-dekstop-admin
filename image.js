@@ -14,10 +14,10 @@ import iconUserAktif from "./src/assets/iconUserAktif.svg"
 import iconUserTidakAktif from "./src/assets/iconUserTidakAktif.svg"
 import NonAktifkanAkun from "./src/assets/NonAktif.svg"
 import DetailAkun from "./src/assets/DetailAkun.svg"
-import Success from "./src/assets/Success.svg";
-import iconFace from "./src/assets/icon-face.png"
 
 export {
     logoEmpathiCare, logoEmpathiCareMobile, avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8,
-    iconTotalUser, iconUserBaru, iconUserAktif, iconUserTidakAktif, NonAktifkanAkun, DetailAkun, Success, iconFace
+    iconTotalUser, iconUserBaru, iconUserAktif, iconUserTidakAktif, NonAktifkanAkun, DetailAkun
 }
+
+
