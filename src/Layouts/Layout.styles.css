@@ -95,7 +95,6 @@ body {
 main {
   min-height: 100vh;
   width: 80vw;
-  padding: 0 50px;
   float: right;
   background: #dcdcdc;
   padding: 0px 50px;
@@ -115,6 +114,30 @@ main {
 
 main .navbar .fw-semibold {
   font-family: 'Montserrat', sans-serif;
+}
+
+.modal-title {
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal-body p {
+  width: 440px;
+  flex-shrink: 0;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dropdown {
+  color: transparent;
 }
 
 @media screen and (max-width: 1289px) {
@@ -190,6 +213,23 @@ main .navbar .fw-semibold {
   }
 }
 
+@media screen and (max-width: 448px) {
+  .notif-icon {
+    width: 35px;
+    height: 35px;
+
+  }
+
+  .navbar .iconNavbar {
+    width: 35px;
+    height: 35px;
+  }
+
+  main nav h2 {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 379px) {
   .sidebar {
     width: 17vw;
@@ -206,16 +246,9 @@ main .navbar .fw-semibold {
   .notif-icon {
     width: 35px;
     height: 35px;
-    color: #636363;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 100%;
   }
 
-  .navbar .iconNavbar {
-    width: 35px;
-    height: 35px;
-  }
+
 }
 
 @media screen and (max-width: 259px) {

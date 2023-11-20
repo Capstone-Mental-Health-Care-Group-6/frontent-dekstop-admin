@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
-import { logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
-import { BsFileEarmarkText, BsGrid } from "react-icons/bs";
+import { iconFace, logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
+import { BsArrowRight, BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
   LuStethoscope,
@@ -11,8 +12,25 @@ import {
   LuWallet,
 } from "react-icons/lu";
 import { FaMoneyBills } from "react-icons/fa6";
+import Dropdown from "../components/Elements/Dropdown/Dropdown";
+import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
+import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutConfirm = () => {
+    setShowLogoutModal(false);
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutModal(false);
+  };
+
   return (
     <>
       <div className="sidebar">
@@ -26,7 +44,7 @@ function Layouts({ children, titlePage }) {
               <SidebarItem
                 icon={<BsGrid />}
                 title="Dasboard"
-                location="/dashboard"
+                location="/dashboard-admin"
               />
               <SidebarItem
                 icon={<LuUsers />}
@@ -73,10 +91,34 @@ function Layouts({ children, titlePage }) {
           <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
             <IoNotifications className="notif-icon" />
-            <img className="iconNavbar" src="icon-face.png" alt="" />
+            <Dropdown
+              className="iconNavbar"
+              imageSrc={iconFace}
+              dropdownContent={
+                <>
+                  <li>
+                    <NavLink className="dropdown-item" to="/admin-edit-profile">
+                      <BsPerson /> Edit Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" onClick={handleLogoutClick}>
+                      <BsBoxArrowRight /> Logout
+                    </a>
+                  </li>
+                </>
+              }
+            />
           </div>
         </nav>
         {children}
+
+        <ModalLogout
+          show={showLogoutModal}
+          title="Logout"
+          onClose={handleLogoutCancel}
+          onSubmit={handleLogoutConfirm}
+        />
       </main>
     </>
   );
