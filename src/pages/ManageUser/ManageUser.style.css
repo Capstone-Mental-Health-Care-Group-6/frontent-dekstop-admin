@@ -1,0 +1,22 @@
+#manage-user {
+  font-family: "Montserrat", sans-serif;
+}
+
+.manage-user .row .col .card h6 {
+  color: #a7a7a7;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.manage-user .row .col .card h5 {
+  color: #323232;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.data-user .card h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+
