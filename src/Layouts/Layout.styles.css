@@ -116,6 +116,30 @@ main .navbar .fw-semibold {
   font-family: 'Montserrat', sans-serif;
 }
 
+.modal-title {
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal-body p {
+  width: 440px;
+  flex-shrink: 0;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dropdown {
+  color: transparent;
+}
+
 @media screen and (max-width: 1289px) {
   .sidebar .offcanvass .offcanvas-header {
     width: 100%;

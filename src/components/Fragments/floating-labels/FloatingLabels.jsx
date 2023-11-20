@@ -1,5 +1,5 @@
 import React from "react";
-import Label from "../../Elements/input/label";
+import Label from "../../Elements/input/Label";
 import Input from "../../Elements/input/Input";
 
 const FloatingLabels = ({
