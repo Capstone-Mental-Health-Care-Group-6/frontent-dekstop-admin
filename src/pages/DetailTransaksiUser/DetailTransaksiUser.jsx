@@ -56,10 +56,9 @@ function DetailTransaksiUser() {
                             <ItemDataTransaksi title={'Nama Dokter'} text={item.nama_dokter} />
                             <ItemDataTransaksi title={'Durasi Konseling'} text={item.durasi_Konseling} />
                             <div className="button-pembayaran">
-                                <div className="d-flex gap-2">
-                                    <Button className='btn btn-primary w-100' text={'Terima Pembayaran '} />
-                                    <Button bsTogle={'modal'} bsTarget={'#exampleModal'} className='btn text-primary border-primary w-100' text={'Tolak  Pembayaran'} />
-
+                                <div className="d-flex flex-md-row flex-column  gap-2">
+                                    <Button className='btn btn-primary w-100 fw-medium' text={'Terima Pembayaran '} />
+                                    <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#exampleModal'} text={'Tolak  Pembayaran'} />
                                 </div>
                             </div>
 
@@ -105,7 +104,7 @@ function DetailTransaksiUser() {
                                             </div>
                                             <div className={`form-floating mt-3 ${modalTextArea}`}>
                                                 <h5 className='text-black'>Tuliskan alasan Penolakan</h5>
-                                                <textarea
+                                                <textarea style={{ minHeight: '10vh' }}
                                                     className="form-control w-100"
                                                     id="floatingTextarea2"
                                                 />
