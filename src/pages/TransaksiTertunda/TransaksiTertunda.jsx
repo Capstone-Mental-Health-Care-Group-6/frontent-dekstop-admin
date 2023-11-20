@@ -17,8 +17,6 @@ function TransaksiTertunda() {
     const [bgTransaction, setBgTransaction] = useState(false);
 
     useEffect(() => {
-
-
         // nanti nya nama pembayarannya berdasarkan data transaksi yang ada di backend
         if (transaksiManualClicked) {
             CustomerService.getCustomersMedium().then((data) => {
@@ -43,32 +41,9 @@ function TransaksiTertunda() {
     }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
 
-    const getValue = (object, path) => {
-        const properties = path.split('.');
-        return properties.reduce((acc, property) => acc && acc[property], object);
-    };
 
     const handleClick = (transactionType) => {
         setBgTransaction(transactionType);
-    };
-
-    const bodyTemplate = (rowData) => {
-        console.log(rowData);
-        return (
-            <>
-                <img src={rowData.image} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
-                {rowData.metode_pembayaran === "Otomatis"
-                    ?
-                    <Link to={`/admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/${getValue(rowData, 'id')}`}>
-                        {rowData.name}
-                    </Link>
-                    :
-                    <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
-                        {rowData.name}
-                    </Link>}
-
-            </>
-        );
     };
 
     return (
@@ -108,17 +83,12 @@ function TransaksiTertunda() {
                             <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} />
                         </div>
 
-
                         <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers} >
                             {dataColumnsTertunda.map((item, index) => (
-                                <ColumnTable
-                                    key={index}
-                                    header={item.header}
-                                    field={item.field}
-                                    body={item.field === 'name' ? bodyTemplate : (rowData) => getValue(rowData, item.field)}
-                                />
+                                <ColumnTable key={index} header={item.header} field={item.field} body={item.body} />
                             ))}
                         </Table>
+
                     </div>
                 </div>
             </section>
