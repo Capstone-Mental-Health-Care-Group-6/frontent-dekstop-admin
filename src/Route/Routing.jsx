@@ -13,13 +13,17 @@ import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
 import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
+import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../pages/AturSandi/AturSandi";
 
 const Routing = () => {
   return (
     <Routes>
       <Route element={<LoginForm />} path="/" />
+      <Route element={<Dashboard />} path="/dashboard-admin" />
       <Route element={<RegisterForm />} path="register-admin" />
-      <Route element={<Dashboard />} path="/dashboard" />
+      <Route element={<ForgotPw />} path="forgot-password" />
+      <Route element={<ResetPassword />} path="reset-password" />
       <Route element={<ManageUser />} path="admin-manage-user" />
       <Route element={<TransaksiUser />} path="admin-transaksi-user" />
       <Route element={<PaketKonseling />} path="admin-paket-konseling" />
@@ -28,7 +32,6 @@ const Routing = () => {
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
       <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
       <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
-      <Route element={<TransaksiOtomatis />} path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id" />
       <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
   );
