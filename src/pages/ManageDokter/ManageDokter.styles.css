@@ -30,6 +30,30 @@ th {
   text-align: left;
 }
 
+/* Card */
+
+.row .col .card {
+  border-radius: 12px;
+  height: 210px;
+}
+
+.row .col .card .card-body {
+  padding: 32px 16px;
+}
+
+.row .col .card h6 {
+  color: #a7a7a7;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 16px 0 6px 0 !important;
+}
+
+.row .col .card h5 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #323232;
+}
+
 @media screen and (max-width: 550px) {
   .wrap-card-items {
     display: flex;

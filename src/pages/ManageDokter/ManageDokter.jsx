@@ -53,82 +53,39 @@ const ManageDokter = () => {
     <>
       <Layouts titlePage={"Manage Dokter"}>
         <div className="mt-3">
-          <div className="wrap-card-items row d-flex gap-3">
-            <div className="card-items col card border-0">
-              <div className="col px-3 py-5">
-                <div>
-                  <img className="card-logo" src={Stetoscop} alt="" />
-                </div>
-                <div className="mt-3">
-                  <p className="text2-card">Total Dokter</p>
-                </div>
-                <div>
-                  <p className="fs-1 fw-semibold">17.000</p>
-                </div>
-              </div>
+          <div className="row d-flex">
+            <div className="col">
+              <Card
+                cardSubtitle="Total User"
+                cardTitle="17.000"
+                src={iconCardUser}
+              />
             </div>
 
-            <div className="card-items col card border-0">
-              <div className="px-3 py-5">
-                <div>
-                  <img className="card-logo" src={People} alt="" />
-                </div>
-                <div className="mt-3">
-                  <p className="text2-card">Dokter Baru</p>
-                </div>
-                <div className="fs-1 fw-semibold">250</div>
-              </div>
+            <div className="col">
+              <Card
+                cardSubtitle="Total Dokter"
+                cardTitle="17.000"
+                src={iconCardDokter}
+              />
             </div>
 
-            <div className="card-items col card border-0">
-              <div className="px-3 py-5">
-                <div>
-                  <img className="card-logo" src={Earth} alt="" />
-                </div>
-                <div className="mt-3">
-                  <p className="text2-card">Dokter Aktif</p>
-                </div>
-                <div className="fs-1 fw-semibold">250</div>
-              </div>
+            <div className="col">
+              <Card
+                cardSubtitle="Dokter Aktif"
+                cardTitle="250"
+                src={iconCardDokter}
+              />
             </div>
 
-            <div className="card-items col card border-0">
-              <div className="px-3 py-5">
-                <div>
-                  <img className="card-logo" src={SandClock} alt="" />
-                </div>
-                <div className="mt-3">
-                  <p className="text2-card">Pengajuan Dokter</p>
-                </div>
-                <div className="fs-1 fw-semibold">12</div>
-              </div>
+            <div className="col">
+              <Card
+                cardSubtitle="Total Dokter"
+                cardTitle="17.000"
+                src={iconCardDokter}
+              />
             </div>
           </div>
-
-          
-
-          {/* <div className="d-flex gap-3">
-            <Card
-              cardSubtitle="Total User"
-              cardTitle="17.000"
-              src={iconCardUser}
-            />
-            <Card
-              cardSubtitle="Total Dokter"
-              cardTitle="17.000"
-              src={iconCardDokter}
-            />
-            <Card
-              cardSubtitle="Total Dokter"
-              cardTitle="17.000"
-              src={iconCardDokter}
-            />
-            <Card
-              cardSubtitle="Total Dokter"
-              cardTitle="17.000"
-              src={iconCardDokter}
-            />
-          </div> */}
 
           {/* Data-Table */}
           <div className="card my-3  px-4 py-4 border-0">
