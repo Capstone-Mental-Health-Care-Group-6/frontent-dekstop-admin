@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Dialog } from 'primereact/dialog'; 
+import { Dialog } from 'primereact/dialog';
 import './UserTable.style.css';
-import { NonAktifkanAkun, DetailAkun } from '../../../../image';
+import { NonAktifkanAkun, DetailAkun, Success } from '../../../../image';
+import { Link } from 'react-router-dom';
 
 const UserTable = ({ data }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [displayModal, setDisplayModal] = useState(false);
     const [selectedAction, setSelectedAction] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const userBodyTemplate = (rowData) => {
         return (
@@ -33,10 +35,10 @@ const UserTable = ({ data }) => {
     const handleActionSelection = (action) => {
         setSelectedAction(action);
         setDisplayModal(false);
-        
 
-        if (action === 'Lihat detail akun') {    
+        if (action === 'Lihat detail akun') {
             // Action ketika lihat detail akun
+            window.location.href = '/admin-manage-user/detail-akun-user';
         } else if (action === 'Non aktifkan akun') {
             setShowConfirmation(true);
         }
@@ -45,6 +47,7 @@ const UserTable = ({ data }) => {
     const confirmNonAktifkan = () => {
         // Lakukan tindakan untuk menonaktifkan akun
         setShowConfirmation(false);
+        setShowSuccessModal(true); //menampilkan modal sukses setelah menonaktifkan akun
     };
 
     const cancelNonAktifkan = () => {
@@ -80,7 +83,9 @@ const UserTable = ({ data }) => {
             </DataTable>
 
             {/* Modal untuk menampilkan detail akun atau nonaktifkan akun */}
-            <Dialog visible={displayModal} onHide={() => setDisplayModal(false)} footer={dialogFooter} modal>
+            <Dialog
+                visible={displayModal}
+                onHide={() => setDisplayModal(false)} footer={dialogFooter} modal>
                 {selectedUser && (
                     <div>
                         <p></p>
@@ -92,16 +97,30 @@ const UserTable = ({ data }) => {
             <div className={`modal ${showConfirmation ? 'show' : ''}`} style={{ display: showConfirmation ? 'block' : 'none' }} id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
-                        <div className="modal-header">
+                        <div className="modal-header border-bottom-0">
                             <h1 className="modal-title fs-5 fw-bold" id="exampleModalLabel">Yakin ingin menonaktifkan akun ini?</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setShowConfirmation(false)}></button>
                         </div>
                         <div className="modal-body">
                             <p className='fs-6'>Akun ini tidak dapat melakukan segala aktifitas jika dinonaktfkan</p>
                         </div>
-                        <div className="modal-footer">
+                        <div className="modal-footer border-top-0">
                             <button type="button" className="btn text-primary" data-bs-dismiss="modal" onClick={cancelNonAktifkan}>Batal</button>
                             <button type="button" className="btn btn-primary" onClick={confirmNonAktifkan}>Yakin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Modal untuk menampilkan pesan sukses nonaktifkan akun */}
+            <div className={`modal ${showSuccessModal ? 'show' : ''}`} style={{ display: showSuccessModal ? 'block' : 'none' }} id="successModal" tabIndex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div className="modal-dialog fixed-bottom fixed-left modal-success">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="successModalLabel">
+                                <img src={Success} alt="" className='me-2' />
+                                Akun Berhasil dinonaktifkan</h5>
+                            <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowSuccessModal(false)}></button>
                         </div>
                     </div>
                 </div>

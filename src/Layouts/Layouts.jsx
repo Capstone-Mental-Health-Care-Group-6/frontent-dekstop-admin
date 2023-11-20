@@ -2,7 +2,7 @@ import React from "react";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
-import { logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
+import { logoEmpathiCare, logoEmpathiCareMobile, iconFace  } from "../../image";
 import { BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
@@ -69,7 +69,7 @@ function Layouts({ children, titlePage }) {
           <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
             <IoNotifications className="notif-icon" />
-            <img className="iconNavbar" src="icon-face.png" alt="" />
+            <img className="iconNavbar" src={iconFace} alt="" />
           </div>
         </nav>
         {children}
