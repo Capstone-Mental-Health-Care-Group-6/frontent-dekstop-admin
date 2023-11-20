@@ -46,7 +46,7 @@ function DetailTransaksiUser() {
 
                 {detailDataTransaksi.map((item, index) => (
                     <div key={index} className="row detail-wrapper row-cols-lg-2 row-cols-1">
-                        <div className="col babayo d-flex flex-column justify-content-between ">
+                        <div className="col d-flex flex-column justify-content-between ">
                             <ItemDataTransaksi title={'Nama User'} text={item.name} />
                             <ItemDataTransaksi title={'Paket Konseling'} text={item.paket} />
                             <ItemDataTransaksi title={'Metode Pembayaran'} text={item.metode_pembayaran} />
@@ -67,36 +67,36 @@ function DetailTransaksiUser() {
                                 <div className="modal-dialog modal-dialog-centered  modal-lg">
                                     <div className="modal-content">
                                         <div className="modal-body">
-                                            <div className="alert-modal-transaksi text-center ">
-                                                <img className='mb-2' src={alertMessageBlue} alt="" />
-                                                <p>Apakah kamu yakin ingin Tolak pembayaran User ?
-                                                    beri alasan yang akan diberikan ke User</p>
+                                            <div className="alert-modal-transaksi text-center mb-4">
+                                                <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
+                                                <h5>Apakah kamu yakin ingin Tolak pembayaran User ?
+                                                    beri alasan yang akan diberikan ke User</h5>
                                             </div>
                                             <div className="row d-flex row-cols-lg-2 row-cols-1  ">
                                                 <div className="col d-flex justify-content-center mb-2">
                                                     <Button
-                                                        className={`btn ${selectedButton === 1 ? 'btn-primary' : 'btn-secondary'}`}
+                                                        className={` ${selectedButton === 1 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
                                                         text={'Foto bukti pembayaran tidak jelas'}
                                                         onClick={() => handleButtonClick(1)}
                                                     />
                                                 </div>
                                                 <div className="col d-flex justify-content-lg-start justify-content-center mb-2">
                                                     <Button
-                                                        className={`btn ${selectedButton === 2 ? 'btn-primary' : 'btn-secondary'}`}
+                                                        className={` ${selectedButton === 2 ? 'changeColorButton  fw-medium' : 'btn border-secondary-subtle text-black fw-medium'}`}
                                                         text={'Foto bukti pembayaran tidak jelas'}
                                                         onClick={() => handleButtonClick(2)}
                                                     />
                                                 </div>
                                                 <div className="col d-flex order-last justify-content-center mb-2">
                                                     <Button
-                                                        className={`btn ${selectedButton === 3 ? 'btn-primary' : 'btn-secondary'}`}
+                                                        className={` ${selectedButton === 3 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
                                                         text={'Foto bukti pembayaran tidak jelas'}
                                                         onClick={() => handleButtonClick(3)}
                                                     />
                                                 </div>
                                                 <div className="col d-flex order-last justify-content-lg-start justify-content-center mb-2">
                                                     <Button
-                                                        className={`btn ${selectedButton === 4 ? 'btn-primary' : 'btn-secondary'}`}
+                                                        className={` ${selectedButton === 4 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
                                                         text={'Alasan Lain'}
                                                         onClick={() => handleButtonClick(4)}
                                                     />
@@ -108,14 +108,12 @@ function DetailTransaksiUser() {
                                                 <textarea
                                                     className="form-control w-100"
                                                     id="floatingTextarea2"
-
-                                                    defaultValue={""}
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="d-flex justify-content-end me-3 gap-3 mb-3">
-                                            <button type="button" className="btn border-secondary" data-bs-dismiss="modal">Batal</button>
+                                            <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
                                             <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}>Tolak Pembayaran</button>
                                         </div>
                                     </div>
