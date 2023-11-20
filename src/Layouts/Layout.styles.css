@@ -97,6 +97,7 @@ main {
   width: 80vw;
   float: right;
   background: #dcdcdc;
+  padding: 0px 50px;
 }
 
 .offcanvas-header {
@@ -109,6 +110,34 @@ main {
 
 .offcanvass-body ul a {
   width: 18vw;
+}
+
+main .navbar .fw-semibold {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-title {
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.modal-body p {
+  width: 440px;
+  flex-shrink: 0;
+  color: #666;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.dropdown {
+  color: transparent;
 }
 
 @media screen and (max-width: 1289px) {
@@ -166,6 +195,7 @@ main {
 
   main {
     width: 86vw;
+    padding: 0px 20px;
   }
 }
 
@@ -180,6 +210,23 @@ main {
 
   main nav h2 {
     font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 448px) {
+  .notif-icon {
+    width: 35px;
+    height: 35px;
+
+  }
+
+  .navbar .iconNavbar {
+    width: 35px;
+    height: 35px;
+  }
+
+  main nav h2 {
+    font-size: 14px;
   }
 }
 
@@ -199,16 +246,9 @@ main {
   .notif-icon {
     width: 35px;
     height: 35px;
-    color: #636363;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 100%;
   }
 
-  .navbar .iconNavbar {
-    width: 35px;
-    height: 35px;
-  }
+
 }
 
 @media screen and (max-width: 259px) {
