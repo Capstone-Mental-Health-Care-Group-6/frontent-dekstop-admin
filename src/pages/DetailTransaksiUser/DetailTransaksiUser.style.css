@@ -6,7 +6,7 @@
     color: #959595;
 }
 
-#detail-transaksi .row {
+#detail-transaksi .detail-wrapper {
     min-height: 80vh;
     padding: 20px;
     background-color: #FFFFFF;
