@@ -53,12 +53,20 @@ function TransaksiTertunda() {
     };
 
     const bodyTemplate = (rowData) => {
+        console.log(rowData);
         return (
             <>
                 <img src={rowData.image} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
-                <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
-                    {rowData.name}
-                </Link>
+                {rowData.metode_pembayaran === "Otomatis"
+                    ?
+                    <Link to={`/admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/${getValue(rowData, 'id')}`}>
+                        {rowData.name}
+                    </Link>
+                    :
+                    <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
+                        {rowData.name}
+                    </Link>}
+
             </>
         );
     };

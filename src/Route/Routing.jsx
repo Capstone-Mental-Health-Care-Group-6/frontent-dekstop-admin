@@ -12,6 +12,7 @@ import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUse
 import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
+import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
 
 const Routing = () => {
   return (
@@ -27,6 +28,7 @@ const Routing = () => {
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
       <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
       <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
+      <Route element={<TransaksiOtomatis />} path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id" />
       <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
   );
