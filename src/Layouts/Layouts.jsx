@@ -96,16 +96,12 @@ function Layouts({ children, titlePage }) {
               imageSrc={iconFace}
               dropdownContent={
                 <>
-                  <li>
-                    <NavLink className="dropdown-item" to="/admin-edit-profile">
-                      <BsPerson /> Edit Profile
-                    </NavLink>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" onClick={handleLogoutClick}>
-                      <BsBoxArrowRight /> Logout
-                    </a>
-                  </li>
+                  <NavLink className="dropdown-item" to="/admin-edit-profile">
+                    <BsPerson /> Edit Profile
+                  </NavLink>
+                  <a className="dropdown-item" onClick={handleLogoutClick}>
+                    <BsBoxArrowRight /> Logout
+                  </a>
                 </>
               }
             />
