@@ -4,7 +4,8 @@
 
 
 #detail-transaksi .custom-toast-payment {
-    min-width: 60vw
+    margin-top: 20px;
+    min-width: 56vw
 }
 
 #detail-transaksi .routes span {

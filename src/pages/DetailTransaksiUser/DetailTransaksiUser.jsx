@@ -40,7 +40,18 @@ function DetailTransaksiUser() {
         }
     };
 
-    const notify = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
+    const terimaToast = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
+        duration: 4000,
+        position: 'position="bottom-center',
+        className: 'custom-toast-payment',
+
+        // Aria
+        ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+        },
+    });
+    const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
         duration: 4000,
         position: 'position="bottom-center',
         className: 'custom-toast-payment',
@@ -83,7 +94,7 @@ function DetailTransaksiUser() {
                                         <p className='mt-3 mb-5' >Yakin ingin terima pembayaran User?</p>
                                         <div className="d-flex gap-2 justify-content-end">
                                             <Button className={'btn text-primary fw-semibold'} bsDismiss={'modal'} text={'Batal'} />
-                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={notify} bsDismiss={'modal'} />
+                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={terimaToast} bsDismiss={'modal'} />
                                         </div>
                                     </div>
                                 </div>
@@ -140,7 +151,8 @@ function DetailTransaksiUser() {
 
                                     <div className="d-flex justify-content-end me-3 gap-3 mb-3">
                                         <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
-                                        <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}>Tolak Pembayaran</button>
+                                        <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}
+                                            data-bs-dismiss="modal" onClick={tolakToast}>Tolak Pembayaran</button>
                                     </div>
                                 </div>
                             </ModalAlert>
