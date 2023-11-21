@@ -15,6 +15,8 @@ function TransaksiTertunda() {
     const [transaksiManualClicked, setTransaksiManualClicked] = useState(false);
     const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] = useState(false);
     const [bgTransaction, setBgTransaction] = useState(false);
+    const [searchData, setSearchData] = useState('');
+
 
     useEffect(() => {
         // nanti nya nama pembayarannya berdasarkan data transaksi yang ada di backend
@@ -41,6 +43,13 @@ function TransaksiTertunda() {
     }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
 
+    const handleSearch = (e) => {
+        setSearchData(e.target.value);
+    };
+
+    const filteredData = customers.filter(item => {
+        return item.name.toLowerCase().includes(searchData.toLowerCase())
+    })
 
     const handleClick = (transactionType) => {
         setBgTransaction(transactionType);
@@ -80,10 +89,10 @@ function TransaksiTertunda() {
                                 </div>
 
                             </div>
-                            <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} />
+                            <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
                         </div>
 
-                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : customers} >
+                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : filteredData} >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable key={index} header={item.header} field={item.field} body={item.body} />
                             ))}
