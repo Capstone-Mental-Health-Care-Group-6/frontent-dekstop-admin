@@ -8,6 +8,7 @@ import { alertMessageBlue, buktiTransfer } from '../../../image';
 import Button from '../../components/Elements/button/Button';
 import { PhotoSwipe } from 'react-photoswipe';
 import 'react-photoswipe/lib/photoswipe.css';
+import ModalAlert from '../../components/Fragments/modal-alert/ModalAlert';
 
 
 function DetailTransaksiUser() {
@@ -58,66 +59,65 @@ function DetailTransaksiUser() {
                             <div className="button-pembayaran">
                                 <div className="d-flex flex-md-row flex-column  gap-2">
                                     <Button className='btn btn-primary w-100 fw-medium' text={'Terima Pembayaran '} />
-                                    <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#exampleModal'} text={'Tolak  Pembayaran'} />
+                                    <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
                                 </div>
                             </div>
 
-                            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div className="modal-dialog modal-dialog-centered  modal-lg">
-                                    <div className="modal-content">
-                                        <div className="modal-body">
-                                            <div className="alert-modal-transaksi text-center mb-4">
-                                                <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
-                                                <h5>Apakah kamu yakin ingin Tolak pembayaran User ?
-                                                    beri alasan yang akan diberikan ke User</h5>
-                                            </div>
-                                            <div className="row d-flex row-cols-lg-2 row-cols-1  ">
-                                                <div className="col d-flex justify-content-center mb-2">
-                                                    <Button
-                                                        className={` ${selectedButton === 1 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
-                                                        text={'Foto bukti pembayaran tidak jelas'}
-                                                        onClick={() => handleButtonClick(1)}
-                                                    />
-                                                </div>
-                                                <div className="col d-flex justify-content-lg-start justify-content-center mb-2">
-                                                    <Button
-                                                        className={` ${selectedButton === 2 ? 'changeColorButton  fw-medium' : 'btn border-secondary-subtle text-black fw-medium'}`}
-                                                        text={'Foto bukti pembayaran tidak jelas'}
-                                                        onClick={() => handleButtonClick(2)}
-                                                    />
-                                                </div>
-                                                <div className="col d-flex order-last justify-content-center mb-2">
-                                                    <Button
-                                                        className={` ${selectedButton === 3 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
-                                                        text={'Foto bukti pembayaran tidak jelas'}
-                                                        onClick={() => handleButtonClick(3)}
-                                                    />
-                                                </div>
-                                                <div className="col d-flex order-last justify-content-lg-start justify-content-center mb-2">
-                                                    <Button
-                                                        className={` ${selectedButton === 4 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
-                                                        text={'Alasan Lain'}
-                                                        onClick={() => handleButtonClick(4)}
-                                                    />
-                                                </div>
-
-                                            </div>
-                                            <div className={`form-floating mt-3 ${modalTextArea}`}>
-                                                <h5 className='text-black'>Tuliskan alasan Penolakan</h5>
-                                                <textarea style={{ minHeight: '10vh' }}
-                                                    className="form-control w-100"
-                                                    id="floatingTextarea2"
+                            <ModalAlert id={'modal-reject-payment'}>
+                                <div className="modal-content">
+                                    <div className="modal-body">
+                                        <div className="alert-modal-transaksi text-center mb-4">
+                                            <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
+                                            <h5>Apakah kamu yakin ingin Tolak pembayaran User ?
+                                                beri alasan yang akan diberikan ke User</h5>
+                                        </div>
+                                        <div className="row d-flex row-cols-lg-2 row-cols-1  ">
+                                            <div className="col d-flex justify-content-center mb-2">
+                                                <Button
+                                                    className={` ${selectedButton === 1 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
+                                                    text={'Foto bukti pembayaran tidak jelas'}
+                                                    onClick={() => handleButtonClick(1)}
                                                 />
                                             </div>
-                                        </div>
+                                            <div className="col d-flex justify-content-lg-start justify-content-center mb-2">
+                                                <Button
+                                                    className={` ${selectedButton === 2 ? 'changeColorButton  fw-medium' : 'btn border-secondary-subtle text-black fw-medium'}`}
+                                                    text={'Foto bukti pembayaran tidak jelas'}
+                                                    onClick={() => handleButtonClick(2)}
+                                                />
+                                            </div>
+                                            <div className="col d-flex order-last justify-content-center mb-2">
+                                                <Button
+                                                    className={` ${selectedButton === 3 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
+                                                    text={'Foto bukti pembayaran tidak jelas'}
+                                                    onClick={() => handleButtonClick(3)}
+                                                />
+                                            </div>
+                                            <div className="col d-flex order-last justify-content-lg-start justify-content-center mb-2">
+                                                <Button
+                                                    className={` ${selectedButton === 4 ? 'changeColorButton  fw-medium ' : 'btn border-secondary-subtle text-black fw-medium'}`}
+                                                    text={'Alasan Lain'}
+                                                    onClick={() => handleButtonClick(4)}
+                                                />
+                                            </div>
 
-                                        <div className="d-flex justify-content-end me-3 gap-3 mb-3">
-                                            <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
-                                            <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}>Tolak Pembayaran</button>
+                                        </div>
+                                        <div className={`form-floating mt-3 ${modalTextArea}`}>
+                                            <h5 className='text-black'>Tuliskan alasan Penolakan</h5>
+                                            <textarea style={{ minHeight: '10vh' }}
+                                                className="form-control w-100"
+                                                id="floatingTextarea2"
+                                            />
                                         </div>
                                     </div>
+
+                                    <div className="d-flex justify-content-end me-3 gap-3 mb-3">
+                                        <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
+                                        <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}>Tolak Pembayaran</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </ModalAlert>
+
 
 
                         </div>
