@@ -32,6 +32,7 @@ const Routing = () => {
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
       <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
       <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
+      <Route element={<TransaksiOtomatis />} path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id" />
       <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
   );

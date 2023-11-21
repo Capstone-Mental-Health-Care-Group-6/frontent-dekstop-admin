@@ -198,7 +198,6 @@ const getValue = (object, path) => {
 
 
 const styleName = (rowData) => {
-    console.log(rowData);
     return (
         <>
             <img src={rowData.image} style={{ width: '50px', height: '50px', marginRight: '10px' }} />

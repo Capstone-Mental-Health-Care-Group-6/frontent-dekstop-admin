@@ -54,7 +54,7 @@ function TransaksiTertunda() {
         return item.name.toLowerCase().includes(searchData.toLowerCase())
     }))
 
-    console.log(filteredOtomatisManual);
+
 
     const handleClick = (transactionType) => {
         setBgTransaction(transactionType);
@@ -69,8 +69,8 @@ function TransaksiTertunda() {
                     <div className="card">
                         <div className="d-flex row row-cols-lg-2 row-cols-1 justify-content-between">
                             <div className="d-flex gap-4 mb-3">
-                                <div className=" col d-flex gap-3 filtering-data-manual ">
-                                    <h4 className={bgTransaction === 'manual' ? 'active' : ''}
+                                <div className=" col d-flex  filtering-data-manual ">
+                                    <h4 className={`px-2 ${bgTransaction === 'manual' ? 'active' : ''}`}
                                         onClick={() => {
                                             setTransaksiManualClicked(true);
                                             setTransaksiOtomatisClicked(false);
