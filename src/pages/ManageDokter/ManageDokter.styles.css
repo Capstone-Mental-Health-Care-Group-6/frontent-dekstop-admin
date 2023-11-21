@@ -1,0 +1,36 @@
+.d-flex .card {
+  border-radius: 12px;
+  width: 350px;
+  height: 186px;
+}
+
+.d-flex .card .card-body {
+  padding: 32px 16px;
+}
+
+.d-flex .card h6 {
+  color: #a7a7a7;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 16px 0 6px 0 !important;
+}
+
+.d-flex .card h5 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #323232;
+}
+
+@media screen and (max-width: 550px) {
+  .d-flex {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .d-flex .card {
+    border-radius: 12px;
+    width: 287px;
+    height: 186px;
+  }
+}
