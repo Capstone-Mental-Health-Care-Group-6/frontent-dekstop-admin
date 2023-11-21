@@ -9,6 +9,8 @@ import Button from '../../components/Elements/button/Button';
 import { PhotoSwipe } from 'react-photoswipe';
 import 'react-photoswipe/lib/photoswipe.css';
 import ModalAlert from '../../components/Fragments/modal-alert/ModalAlert';
+import toast from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 
 function DetailTransaksiUser() {
@@ -38,6 +40,17 @@ function DetailTransaksiUser() {
         }
     };
 
+    const notify = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
+        duration: 4000,
+        position: 'position="bottom-center',
+        className: 'custom-toast-payment',
+
+        // Aria
+        ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+        },
+    });
 
 
     return (
@@ -58,12 +71,26 @@ function DetailTransaksiUser() {
                             <ItemDataTransaksi title={'Durasi Konseling'} text={item.durasi_Konseling} />
                             <div className="button-pembayaran">
                                 <div className="d-flex flex-md-row flex-column  gap-2">
-                                    <Button className='btn btn-primary w-100 fw-medium' text={'Terima Pembayaran '} />
+                                    <Button className='btn btn-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
                                     <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
                                 </div>
                             </div>
 
-                            <ModalAlert id={'modal-reject-payment'}>
+                            <ModalAlert id={'modal-accept-payment'} >
+                                <div className="modal-content">
+                                    <div className="modal-body">
+                                        <button type="button" className="btn-close float-end" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <p className='mt-3 mb-5' >Yakin ingin terima pembayaran User?</p>
+                                        <div className="d-flex gap-2 justify-content-end">
+                                            <Button className={'btn text-primary fw-semibold'} bsDismiss={'modal'} text={'Batal'} />
+                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={notify} bsDismiss={'modal'} />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </ModalAlert>
+
+                            <ModalAlert id={'modal-reject-payment'} size={'modal-lg'}>
                                 <div className="modal-content">
                                     <div className="modal-body">
                                         <div className="alert-modal-transaksi text-center mb-4">
@@ -141,8 +168,7 @@ function DetailTransaksiUser() {
                     </div>
                 ))}
 
-
-
+                <Toaster />
 
             </section>
         </Layouts >

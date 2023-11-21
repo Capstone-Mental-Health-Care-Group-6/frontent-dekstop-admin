@@ -2,6 +2,11 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+
+#detail-transaksi .custom-toast-payment {
+    min-width: 60vw
+}
+
 #detail-transaksi .routes span {
     color: #959595;
 }
