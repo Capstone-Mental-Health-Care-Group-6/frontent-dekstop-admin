@@ -33,7 +33,6 @@ function TransaksiTertunda() {
                 const filteredData = data.filter(
                     (customer) => customer.metode_pembayaran === "Otomatis"
                 );
-                console.log(customers);
                 setFilteredCustomers(filteredData);
             });
 
@@ -50,6 +49,12 @@ function TransaksiTertunda() {
     const filteredData = customers.filter(item => {
         return item.name.toLowerCase().includes(searchData.toLowerCase())
     })
+
+    const filteredOtomatisManual = filteredCustomers.filter((item => {
+        return item.name.toLowerCase().includes(searchData.toLowerCase())
+    }))
+
+    console.log(filteredOtomatisManual);
 
     const handleClick = (transactionType) => {
         setBgTransaction(transactionType);
@@ -92,7 +97,7 @@ function TransaksiTertunda() {
                             <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
                         </div>
 
-                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredCustomers : filteredData} >
+                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData} >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable key={index} header={item.header} field={item.field} body={item.body} />
                             ))}

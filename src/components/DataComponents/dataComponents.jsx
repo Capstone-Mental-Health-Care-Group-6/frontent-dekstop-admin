@@ -223,10 +223,12 @@ const styleStatus = (rowData) => {
     useEffect(() => {
         if (rowData.status_pembayaran === 'sudah bayar') {
             setChangeItemStatus('changeItemStatusBayar')
-        } else {
+        } else if (rowData.status_pembayaran === 'belum bayar') {
             setChangeItemStatus('changeItemStatusBelum')
+        } else {
+            setChangeItemStatus('')
         }
-    }, []);
+    },);
 
     return (
         <>
