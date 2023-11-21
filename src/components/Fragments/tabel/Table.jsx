@@ -1,7 +1,7 @@
 import { DataTable } from 'primereact/datatable'
 import React from 'react'
 
-function Table({ value, children, globalFilter }) {
+function Table({ value, children, emptyMessage }) {
     return (
         <DataTable value={value}
             paginator
@@ -9,7 +9,7 @@ function Table({ value, children, globalFilter }) {
             rowsPerPageOptions={[5, 10, 25, 50]}
             tableStyle={{ minWidth: '50rem' }}
             className="table-customers"
-            globalFilter={globalFilter}
+            emptyMessage={emptyMessage}
         >
             {children}
         </DataTable>

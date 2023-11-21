@@ -8,6 +8,7 @@ import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataColumnsTertunda } from "../../components/DataComponents/dataComponents";
 import { Link } from "react-router-dom";
 import Table from "../../components/Fragments/tabel/Table";
+import { paymentFailed, searchFailed } from "../../../image";
 
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
@@ -55,6 +56,33 @@ function TransaksiTertunda() {
     }))
 
 
+    const emptyMessage = () => {
+        if (customers.length === 0) {
+            return (
+                <div className="d-grid justify-content-center" >
+                    <div className="w-50 d-grid justify-content-center mx-auto">
+                        <img className="mx-auto" src={paymentFailed} alt="" />
+                        <div className="text-justify">
+                            <h3  >Tidak ada data transaksi tertunda</h3>
+                            <p>Maaf, Saat ini belum ada data transaksi tertunda. Ini bisa jadi karena user belum melakukan transaksi atau data transaksi user sedang dimuat.</p>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="d-grid justify-content-center" >
+                    <div className="w-100 d-grid justify-content-center mx-auto">
+                        <img className="mx-auto" src={searchFailed} alt="" />
+                        <div className="text-justify">
+                            <h3>Maaf, Pencarian tidak dapat ditemukan</h3>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
 
     const handleClick = (transactionType) => {
         setBgTransaction(transactionType);
@@ -97,7 +125,8 @@ function TransaksiTertunda() {
                             <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
                         </div>
 
-                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData} >
+                        <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData}
+                            emptyMessage={emptyMessage} >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable key={index} header={item.header} field={item.field} body={item.body} />
                             ))}

@@ -31,10 +31,13 @@ import human4 from "./src/assets/human4.svg"
 import iconFace from "./src/assets/icon-face.png"
 import buktiTransfer from "./src/assets/bukti-transfer.png"
 import alertMessageBlue from "./src/assets/alert-message-blue.svg"
+import paymentFailed from "./src/assets/Payment-failed.png"
+import searchFailed from "./src/assets/search-failed.png"
 export {
-    logoEmpathiCare, logoEmpathiCareMobile, iconBerhasilCard, iconFGagalCard, iconTransaksiCard,  avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8,
+    logoEmpathiCare, logoEmpathiCareMobile, iconBerhasilCard, iconFGagalCard, iconTransaksiCard, avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8,
     iconTotalUser, iconUserBaru, iconUserAktif, iconUserTidakAktif, NonAktifkanAkun, DetailAkun,
-    iconTertundaCard, paket1, paket2, human1, human2, human3, human4, iconFace, buktiTransfer, alertMessageBlue,iconCardUser,iconCardArtikel,iconCardDokter,dashboardImg
+    iconTertundaCard, paket1, paket2, human1, human2, human3, human4, iconFace, buktiTransfer, alertMessageBlue,
+    iconCardUser, iconCardArtikel, iconCardDokter, dashboardImg, paymentFailed, searchFailed
 }
 
 
