@@ -17,7 +17,7 @@ const ManageDokter = () => {
   return (
     <>
       <Layouts titlePage={"Manage Dokter"}>
-        <div className="d-flex gap-2">
+        <div className="cardDokter d-flex gap-2">
           <Card
             cardSubtitle="Total Dokter"
             cardTitle="17.000"
