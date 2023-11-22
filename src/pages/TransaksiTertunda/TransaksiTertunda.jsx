@@ -2,13 +2,13 @@ import "./TransaksiTertunda.style.css";
 import Layouts from "../../Layouts/Layouts";
 import React, { useState, useEffect } from "react";
 import { CustomerService } from "../../components/DataComponents/dataComponents";
-import { DataTable } from "primereact/datatable";
 import Search from "../../components/Elements/search/Search";
 import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataColumnsTertunda } from "../../components/DataComponents/dataComponents";
-import { Link } from "react-router-dom";
 import Table from "../../components/Fragments/tabel/Table";
 import { paymentFailed, searchFailed } from "../../../image";
+import { BsFilter, BsFilterRight } from "react-icons/bs";
+import { LuFilter } from "react-icons/lu";
 
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
@@ -97,7 +97,7 @@ function TransaksiTertunda() {
                     <div className="card">
                         <div className="d-flex row row-cols-lg-2 row-cols-1 justify-content-between">
                             <div className="d-flex gap-4 mb-3">
-                                <div className=" col d-flex  filtering-data-manual ">
+                                <div className=" col  d-flex  filtering-data-manual ">
                                     <h4 className={`px-2 ${bgTransaction === 'manual' ? 'active' : ''}`}
                                         onClick={() => {
                                             setTransaksiManualClicked(true);
@@ -120,9 +120,47 @@ function TransaksiTertunda() {
                                     </h4>
 
                                 </div>
-
                             </div>
-                            <Search className={'col d-flex justify-content-end'} size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
+                            <div className="col gap-2 search-container d-flex justify-content-end">
+                                <Search size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
+                                <div className="btn-group">
+                                    <button
+                                        type="button"
+                                        className="btn border-secondary-subtle dropdown-toggle"
+                                        data-bs-toggle="dropdown"
+                                    >
+                                        <LuFilter />
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a className="dropdown-item" href="#">
+                                                Action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item" href="#">
+                                                Another action
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item" href="#">
+                                                Something else here
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <hr className="dropdown-divider" />
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item" href="#">
+                                                Separated link
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+
                         </div>
 
                         <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData}
