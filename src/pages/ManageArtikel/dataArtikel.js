@@ -17,4 +17,12 @@ export const dataArtikel = [
     kategori: ["Emosi", "Tips"],
     tanggal: "01 November 2023 11.30 WIB",
   },
+  {
+    id: 3,
+    judul: "Ini coba coba",
+    image: avatar1,
+    author: "dr. Satria Nugraha",
+    kategori: ["Tips"],
+    tanggal: "01 November 2023 11.30 WIB",
+  },
 ];

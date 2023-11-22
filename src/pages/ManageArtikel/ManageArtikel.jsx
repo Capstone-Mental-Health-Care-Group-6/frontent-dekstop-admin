@@ -20,10 +20,8 @@ const ManageArtikel = () => {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
 
-  const onRowSelect = (rowData) => {
-    navigate(`/admin-manage-artikel/${rowData.id}`);
-  };
 
+  // template untuk tiap body didalam table
   const authorBodyTemplate = (rowData) => {
     return (
       <div className="d-flex align-items-center">
@@ -52,7 +50,7 @@ const ManageArtikel = () => {
   };
 
   return (
-    <Layouts titlePage={"Manage artikel"}>
+    <Layouts titlePage={"Manage Artikel"}>
       <div className="row my-4">
         <div className="col">
           <Card
@@ -92,7 +90,10 @@ const ManageArtikel = () => {
               selectionMode="single"
               dataKey="id"
               selection={selected}
-              onRowSelect={selected ? onRowSelect(selected) : ""}
+              onRowSelect={(selected) => {
+                // console.log(selected.data.id)
+                navigate(`/admin-manage-artikel/${selected.data.id}`);
+              }}
               onSelectionChange={(e) => setSelected(e.value)}
             >
               <ColumnTable

@@ -14,7 +14,7 @@ import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
 import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/AturSandi/AturSandi";
-import DetailArtikel from "../pages/ManageArtikel/detailArtikel";
+import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
 
 const Routing = () => {
   return (
@@ -30,7 +30,7 @@ const Routing = () => {
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
-      <Route element={<DetailArtikel />} path="admin-manage-artikel/:id" />
+      <Route element={<DetailArtikel/>} path="admin-manage-artikel/:id" />
       <Route
         element={<TransaksiTertunda />}
         path="admin-transaksi-user/transaksi-tertunda"
