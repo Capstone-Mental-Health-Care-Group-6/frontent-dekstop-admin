@@ -31,9 +31,9 @@ function DetailTransaksiUser() {
     const [modalTextArea, setModalTextArea] = useState('d-none');
 
 
-    const handleButtonClick = (buttonId) => {
-        setSelectedButton(buttonId);
-        if (buttonId === 4) {
+    const handleButtonClick = (id) => {
+        setSelectedButton(id);
+        if (id === 4) {
             setModalTextArea('d-block')
         } else {
             setModalTextArea('d-none')
