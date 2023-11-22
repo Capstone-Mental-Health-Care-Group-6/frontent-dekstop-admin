@@ -9,6 +9,7 @@ import Table from "../../components/Fragments/tabel/Table";
 import { paymentFailed, searchFailed } from "../../../image";
 import { BsFilter, BsFilterRight } from "react-icons/bs";
 import { LuFilter } from "react-icons/lu";
+import FilterList from "../../components/Fragments/filter-list/FilterList";
 
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
@@ -132,29 +133,28 @@ function TransaksiTertunda() {
                                         <LuFilter />
                                     </button>
                                     <ul className="dropdown-menu">
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Action
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Another action
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a className="dropdown-item" href="#">
-                                                Something else here
-                                            </a>
-                                        </li>
+                                        <div className="d-flex justify-content-between fw-semibold p-3" >
+                                            <span >Filter</span>
+                                            <span className="text-primary" >Reset</span>
+                                        </div>
+                                        <span className="p-3 fw-medium" >Waktu transaksi : </span>
+                                        <FilterList title={'Transaksi Terbaru'} type={'radio'} />
+                                        <FilterList title={'7 Hari Terakhir'} type={'radio'} />
+                                        <FilterList title={'30 Hari Terakhir'} type={'radio'} />
+                                        <FilterList title={'30 Hari Terakhir'} type={'radio'} />
+                                        <FilterList title={'Semua Tanggal'} type={'radio'} />
                                         <li>
                                             <hr className="dropdown-divider" />
                                         </li>
+                                        <span className="p-3 fw-medium" >status transaksi : </span>
+                                        <FilterList title={'Sudah Bayar'} type={'checkbox'} />
+                                        <FilterList title={'Belum Bayar'} type={'checkbox'} />
                                         <li>
-                                            <a className="dropdown-item" href="#">
-                                                Separated link
-                                            </a>
+                                            <hr className="dropdown-divider" />
                                         </li>
+                                        <span className="p-3 fw-medium" >Paket: </span>
+                                        <FilterList title={'Konseling Instan'} type={'checkbox'} />
+                                        <FilterList title={'Konseling Premium'} type={'checkbox'} />
                                     </ul>
                                 </div>
                             </div>
