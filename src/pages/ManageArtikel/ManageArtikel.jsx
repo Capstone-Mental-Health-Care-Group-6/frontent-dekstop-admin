@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layouts from "../../Layouts/Layouts";
+import { LuFilter } from "react-icons/lu";
 import {
   iconArtikelAdmin,
   pendingArtikelAdmin,
@@ -14,12 +15,12 @@ import { Column } from "primereact/column";
 import { dataArtikel } from "./dataArtikel";
 import Search from "../../components/Elements/search/Search";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import FilterList from "../../components/Fragments/filter-list/FilterList";
 
 const ManageArtikel = () => {
   const [artikel, setArtikel] = useState(dataArtikel);
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
-
 
   // template untuk tiap body didalam table
   const authorBodyTemplate = (rowData) => {
@@ -77,12 +78,43 @@ const ManageArtikel = () => {
       </div>
       <div className="card">
         <div className="card-body">
-          <div>
-            <Search
-              className={"col d-flex justify-content-end"}
-              size={20}
-              placeholder={"Search"}
-            />
+          <div className="search-group d-flex justify-content-end my-2 align-items-start">
+              <Search
+                size={20}
+                placeholder={"Search"}
+              />
+            <div className="btn-group mx-5  align-items-start">
+              <button
+                type="button"
+                className="btn border-secondary-subtle dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                <LuFilter />
+                <span> Filter </span>
+              </button>
+              <ul className="dropdown-menu">
+                <div className="d-flex justify-content-between fw-semibold p-3">
+                  <span>Filter</span>
+                  <span className="text-primary">Reset</span>
+                </div>
+                <span className="p-3 fw-medium">Waktu transaksi : </span>
+                <FilterList title={"Publikasi Terbaru"} type={"radio"} />
+                <FilterList title={"7 Hari Terakhir"} type={"radio"} />
+                <FilterList title={"30 Hari Terakhir"} type={"radio"} />
+                <FilterList title={"Semua Tanggal"} type={"radio"} />
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <span className="p-3 fw-medium">Kategori : </span>
+                <FilterList title={"Anxiety"} type={"checkbox"} />
+                <FilterList title={"Depresi"} type={"checkbox"} />
+                <FilterList title={"Emosi"} type={"checkbox"} />
+                <FilterList title={"Kecemasan"} type={"checkbox"} />
+                <FilterList title={"Stress"} type={"checkbox"} />
+                <FilterList title={"Tips"} type={"checkbox"} />
+                <FilterList title={"Umum"} type={"checkbox"} />
+              </ul>
+            </div>
           </div>
           <div className="p-mt-4">
             <Table

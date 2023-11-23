@@ -82,3 +82,11 @@
   line-height: normal;
   width: 20%;
 }
+
+.card .card-body .search-group .btn-group .dropdown-menu   {
+  width: 240px;
+}
+
+.card .card-body .search-group .btn-group{
+  padding: 10px 8px 10px 8px;
+}
