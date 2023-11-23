@@ -33,6 +33,7 @@ import buktiTransfer from "./src/assets/bukti-transfer.png";
 import alertMessageBlue from "./src/assets/alert-message-blue.svg";
 import captivePortal from "./src/assets/captivePortal.png";
 import sandClock from "./src/assets/sandClock.png"
+import Success from "./src/assets/Success.svg"
 
 export {
   logoEmpathiCare,
@@ -69,5 +70,6 @@ export {
   iconCardDokter,
   dashboardImg,
   captivePortal,
-  sandClock
+  sandClock,
+  Success
 };

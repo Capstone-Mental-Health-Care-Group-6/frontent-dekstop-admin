@@ -60,12 +60,18 @@ const DetailUser = () => {
                             </div>
                         </div>
                     </div>
+                    {/* informasi akun (detail) */}
                     <div className="col-8">
-                        <div className="" style={{
-                            height: '500px',
-                            backgroundColor: "red"
-                        }}>
-                            ini kolom detail akun
+                        <div className="card card-3 ms-4">
+                            <h4>Informasi Akun</h4>
+                            <p className="label-detail">ID Akun</p>
+                            <p className="value-detail">idAccount</p>
+                            <p className="label-detail">Nama User</p>
+                            <p className="value-detail">ID Akun</p>
+                            <p className="label-detail">No Telp</p>
+                            <p className="value-detail">ID Akun</p>
+                            <p className="label-detail">ID Akun</p>
+                            <p className="value-detail">ID Akun</p>
                         </div>
                     </div>
                 </div>

@@ -13,6 +13,7 @@ const UserTable = ({ data }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+
     const userBodyTemplate = (rowData) => {
         return (
             <div className="d-flex align-items-center">
