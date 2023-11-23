@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
 import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer } from "../../../image";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export const riwayatTransaksi1 = [
     {
@@ -75,7 +78,7 @@ export const CustomerService = {
                 status_pembayaran: 'sudah bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Otomatis',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -88,7 +91,7 @@ export const CustomerService = {
                 status_pembayaran: 'sudah bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Otomatis',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -101,7 +104,7 @@ export const CustomerService = {
                 status_pembayaran: 'sudah bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Otomatis',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -114,7 +117,7 @@ export const CustomerService = {
                 status_pembayaran: 'belum bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Otomatis',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -127,7 +130,7 @@ export const CustomerService = {
                 status_pembayaran: 'belum bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Manual',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -140,7 +143,7 @@ export const CustomerService = {
                 status_pembayaran: 'sudah bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Manual',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -153,7 +156,7 @@ export const CustomerService = {
                 status_pembayaran: 'belum bayar',
                 paket_konseling: 'unqualified',
                 metode_pembayaran: 'Manual',
-                harga: 20.000,
+                harga: '20.000',
                 nama_dokter: 'Dr. Djaja Uhuy',
                 durasi_konseling: '60 menit',
             },
@@ -188,10 +191,62 @@ export const CustomerService = {
     }
 };
 
+const getValue = (object, path) => {
+    const properties = path.split('.');
+    return properties.reduce((acc, property) => acc && acc[property], object);
+};
+
+
+const styleName = (rowData) => {
+    return (
+        <>
+            <img src={rowData.image} style={{ width: '50px', height: '50px', marginRight: '10px' }} />
+
+            {rowData.metode_pembayaran === "Otomatis"
+                ?
+                <Link to={`/admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/${getValue(rowData, 'id')}`}>
+                    {rowData.name}
+                </Link>
+                :
+                <Link to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(rowData, 'id')}`}>
+                    {rowData.name}
+                </Link>
+            }
+        </>
+    );
+};
+
+const styleStatus = (rowData) => {
+    const [changeItemStatus, setChangeItemStatus] = useState('');
+
+    useEffect(() => {
+        if (rowData.status_pembayaran === 'sudah bayar') {
+            setChangeItemStatus('changeItemStatusBayar')
+        } else if (rowData.status_pembayaran === 'belum bayar') {
+            setChangeItemStatus('changeItemStatusBelum')
+        } else {
+            setChangeItemStatus('')
+        }
+    },);
+
+    return (
+        <>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div className={changeItemStatus}>
+                    {rowData.status_pembayaran}
+                </div>
+            </div>
+        </>
+    );
+
+}
+
+
 export const dataColumnsTertunda = [
     {
         field: 'name',
         header: 'Name',
+        body: styleName
     },
     {
         field: 'id_transaksi',
@@ -208,6 +263,7 @@ export const dataColumnsTertunda = [
     {
         field: 'status_pembayaran',
         header: 'Status Pembayaran',
+        body: styleStatus
     },
 
 ]

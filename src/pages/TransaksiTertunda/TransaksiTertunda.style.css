@@ -33,6 +33,24 @@
     color: #323232;
 }
 
+.transaksi-tertunda-content .card .p-datatable-wrapper table tbody .changeItemStatusBayar {
+    padding: 6px 16px;
+    background-color: #D4F1DD;
+    color: #1B7A37;
+    border-radius: 9px;
+}
+
+.transaksi-tertunda-content .card .p-datatable-wrapper table tbody .changeItemStatusBelum {
+    background-color: #FFDFD7;
+    color: #AA3E24;
+    padding: 6px 16px;
+    border-radius: 9px;
+}
+
+.transaksi-tertunda-content .card .d-flex .search-container .btn-group .dropdown-menu {
+    width: 240px;
+}
+
 @media screen and (max-width: 1070px) {
     .transaksi-tertunda-content .card .d-flex h4 {
         font-size: 16px;
