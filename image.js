@@ -22,54 +22,25 @@ import iconCardUser from "./src/assets/Frame 1000003348.svg";
 import iconCardArtikel from "./src/assets/iconArtikel.svg";
 import iconCardDokter from "./src/assets/icon-card-dokter.svg";
 import dashboardImg from "./src/assets/customer-support 1.png";
-import paket1 from "./src/assets/1st.svg";
-import paket2 from "./src/assets/2nd.svg";
-import human1 from "./src/assets/human1.svg";
-import human2 from "./src/assets/human2.svg";
-import human3 from "./src/assets/human3.svg";
-import human4 from "./src/assets/human4.svg";
-import iconFace from "./src/assets/icon-face.png";
-import buktiTransfer from "./src/assets/bukti-transfer.png";
-import alertMessageBlue from "./src/assets/alert-message-blue.svg";
+import paket1 from "./src/assets/1st.svg"
+import paket2 from "./src/assets/2nd.svg"
+import human1 from "./src/assets/human1.svg"
+import human2 from "./src/assets/human2.svg"
+import human3 from "./src/assets/human3.svg"
+import human4 from "./src/assets/human4.svg"
+import iconFace from "./src/assets/icon-face.png"
+import buktiTransfer from "./src/assets/bukti-transfer.png"
+import alertMessageBlue from "./src/assets/alert-message-blue.svg"
+import paymentFailed from "./src/assets/Payment-failed.png"
+import searchFailed from "./src/assets/search-failed.png"
 import captivePortal from "./src/assets/captivePortal.png";
 import sandClock from "./src/assets/sandClock.png"
-import Success from "./src/assets/Success.svg"
-
 export {
-  logoEmpathiCare,
-  logoEmpathiCareMobile,
-  iconBerhasilCard,
-  iconFGagalCard,
-  iconTransaksiCard,
-  avatar1,
-  avatar2,
-  avatar3,
-  avatar4,
-  avatar5,
-  avatar6,
-  avatar7,
-  avatar8,
-  iconTotalUser,
-  iconUserBaru,
-  iconUserAktif,
-  iconUserTidakAktif,
-  NonAktifkanAkun,
-  DetailAkun,
-  iconTertundaCard,
-  paket1,
-  paket2,
-  human1,
-  human2,
-  human3,
-  human4,
-  iconFace,
-  buktiTransfer,
-  alertMessageBlue,
-  iconCardUser,
-  iconCardArtikel,
-  iconCardDokter,
-  dashboardImg,
-  captivePortal,
-  sandClock,
-  Success
-};
+    logoEmpathiCare, logoEmpathiCareMobile, iconBerhasilCard, iconFGagalCard, iconTransaksiCard, avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8,
+    iconTotalUser, iconUserBaru, iconUserAktif, iconUserTidakAktif, NonAktifkanAkun, DetailAkun,
+    iconTertundaCard, paket1, paket2, human1, human2, human3, human4, iconFace, buktiTransfer, alertMessageBlue,
+    iconCardUser, iconCardArtikel, iconCardDokter, dashboardImg, paymentFailed, searchFailed, captivePortal,
+  sandClock
+}
+
+
