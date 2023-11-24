@@ -42,10 +42,10 @@ const ManageUser = () => {
                 <div className="btn-group">
                   <button
                     type="button"
-                    className="btn border-secondary-subtle dropdown-toggle d-flex justify-content-around"
+                    className="btn border-secondary-subtle"
                     data-bs-toggle="dropdown"
                   >
-                    <LuFilter />
+                    <LuFilter className="icon-filter"/>
                     <p>Filter</p>
                   </button>
                   <ul className="dropdown-menu">
