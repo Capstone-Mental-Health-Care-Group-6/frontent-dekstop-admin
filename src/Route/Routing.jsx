@@ -26,8 +26,7 @@ const Routing = () => {
       <Route element={<ForgotPw />} path="forgot-password" />
       <Route element={<ResetPassword />} path="reset-password" />
       <Route element={<ManageUser />} path="admin-manage-user" />
-      {/* <Route element={<DetailAkunUser />} path="admin-manage-user/detail-akun-user" /> */}
-      <Route element={<DetailAkunUser />} path="admin-manage-user/detail-akun-user" />
+      <Route element={<DetailAkunUser />} path="admin-manage-user/detail-akun-user/:id" />
       <Route element={<TransaksiUser />} path="admin-transaksi-user" />
       <Route element={<PaketKonseling />} path="admin-paket-konseling" />
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
