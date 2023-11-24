@@ -62,7 +62,7 @@ function TransaksiTertunda() {
             return (
                 <div className="d-grid justify-content-center" >
                     <div className="w-50 d-grid justify-content-center mx-auto">
-                        <img className="mx-auto" src={paymentFailed} alt="" />
+                        {/* <img className="mx-auto" src={paymentFailed} alt="" /> */}
                         <div className="text-justify">
                             <h3  >Tidak ada data transaksi tertunda</h3>
                             <p>Maaf, Saat ini belum ada data transaksi tertunda. Ini bisa jadi karena user belum melakukan transaksi atau data transaksi user sedang dimuat.</p>
@@ -74,7 +74,7 @@ function TransaksiTertunda() {
             return (
                 <div className="d-grid justify-content-center" >
                     <div className="w-100 d-grid justify-content-center mx-auto">
-                        <img className="mx-auto" src={searchFailed} alt="" />
+                        {/* <img className="mx-auto" src={searchFailed} alt="" /> */}
                         <div className="text-justify">
                             <h3>Maaf, Pencarian tidak dapat ditemukan</h3>
                         </div>
