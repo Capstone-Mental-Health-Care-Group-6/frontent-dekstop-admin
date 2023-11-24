@@ -16,11 +16,79 @@ import { dataArtikel } from "./dataArtikel";
 import Search from "../../components/Elements/search/Search";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
+import { FilterMatchMode } from "primereact/api";
+import Input from "../../components/Elements/input/Input";
 
 const ManageArtikel = () => {
   const [artikel, setArtikel] = useState(dataArtikel);
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
+  const [globalFilterValue, setGlobalFilterValue] = useState("");
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    judul: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    author: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+  });
+
+  // buat search
+  const onGlobalFilterChange = (e) => {
+    const value = e.target.value;
+    let _filters = { ...filters };
+
+    _filters["global"].value = value;
+
+    setFilters(_filters);
+    setGlobalFilterValue(value);
+  };
+
+  const renderHeader = () => {
+    return (
+      <div className="d-flex justify-content-end header">
+        <div className="search-group d-flex">
+          <Search
+            size={20}
+            placeholder={"Search"}
+            onChange={onGlobalFilterChange}
+            value={globalFilterValue}
+          />
+        </div>
+        <div className="btn-group mx-5  align-items-start">
+          <button
+            type="button"
+            className="btn border-secondary-subtle dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
+            <LuFilter />
+            <span> Filter </span>
+          </button>
+          <ul className="dropdown-menu">
+            <div className="d-flex justify-content-between fw-semibold p-3">
+              <span>Filter</span>
+              <span className="text-primary">Reset</span>
+            </div>
+            <p className="fw-medium">Waktu transaksi : </p>
+            <FilterList title={"Publikasi Terbaru"} type={"radio"} />
+            <FilterList title={"7 Hari Terakhir"} type={"radio"} />
+            <FilterList title={"30 Hari Terakhir"} type={"radio"} />
+            <FilterList title={"Semua Tanggal"} type={"radio"} />
+            <li>
+              <hr className="dropdown-divider" />
+            </li>
+            <p className="pt-2 fw-medium">Kategori : </p>
+            <FilterList title={"Anxiety"} type={"checkbox"} />
+            <FilterList title={"Depresi"} type={"checkbox"} />
+            <FilterList title={"Emosi"} type={"checkbox"} />
+            <FilterList title={"Kecemasan"} type={"checkbox"} />
+            <FilterList title={"Stress"} type={"checkbox"} />
+            <FilterList title={"Tips"} type={"checkbox"} />
+            <FilterList title={"Umum"} type={"checkbox"} />
+          </ul>
+        </div>
+      </div>
+    );
+  };
+
+  const header = renderHeader();
 
   // template untuk tiap body didalam table
   const authorBodyTemplate = (rowData) => {
@@ -78,55 +146,21 @@ const ManageArtikel = () => {
       </div>
       <div className="card">
         <div className="card-body">
-          <div className="search-group d-flex justify-content-end my-2 align-items-start">
-              <Search
-                size={20}
-                placeholder={"Search"}
-              />
-            <div className="btn-group mx-5  align-items-start">
-              <button
-                type="button"
-                className="btn border-secondary-subtle dropdown-toggle"
-                data-bs-toggle="dropdown"
-              >
-                <LuFilter />
-                <span> Filter </span>
-              </button>
-              <ul className="dropdown-menu">
-                <div className="d-flex justify-content-between fw-semibold p-3">
-                  <span>Filter</span>
-                  <span className="text-primary">Reset</span>
-                </div>
-                <span className="p-3 fw-medium">Waktu transaksi : </span>
-                <FilterList title={"Publikasi Terbaru"} type={"radio"} />
-                <FilterList title={"7 Hari Terakhir"} type={"radio"} />
-                <FilterList title={"30 Hari Terakhir"} type={"radio"} />
-                <FilterList title={"Semua Tanggal"} type={"radio"} />
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <span className="p-3 fw-medium">Kategori : </span>
-                <FilterList title={"Anxiety"} type={"checkbox"} />
-                <FilterList title={"Depresi"} type={"checkbox"} />
-                <FilterList title={"Emosi"} type={"checkbox"} />
-                <FilterList title={"Kecemasan"} type={"checkbox"} />
-                <FilterList title={"Stress"} type={"checkbox"} />
-                <FilterList title={"Tips"} type={"checkbox"} />
-                <FilterList title={"Umum"} type={"checkbox"} />
-              </ul>
-            </div>
-          </div>
           <div className="p-mt-4">
             <Table
+              filters={filters}
+              header={header}
               value={artikel}
               selectionMode="single"
               dataKey="id"
               selection={selected}
+              globalFilterFields={["judul", "author"]}
               onRowSelect={(selected) => {
                 // console.log(selected.data.id)
                 navigate(`/admin-manage-artikel/${selected.data.id}`);
               }}
               onSelectionChange={(e) => setSelected(e.value)}
+              emptyMessage="Tidak ada data yang sesuai"
             >
               <ColumnTable
                 field="judul"

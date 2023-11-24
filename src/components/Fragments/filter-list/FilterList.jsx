@@ -11,7 +11,7 @@ const FilterList = ({ title, onclick, type }) => {
                     id="reverseCheck1"
                     onClick={onclick}
                 />
-                <label className="form-check-label" htmlFor="reverseCheck1">
+                <label className="form-check-label fw-normal" htmlFor="reverseCheck1">
                     {title}
                 </label>
             </div>

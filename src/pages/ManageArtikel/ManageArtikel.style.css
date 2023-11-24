@@ -83,10 +83,16 @@
   width: 20%;
 }
 
-.card .card-body .search-group .btn-group .dropdown-menu   {
+.header  .btn-group .dropdown-menu   {
   width: 240px;
+  padding: 16px 20px 16px 20px;
 }
 
-.card .card-body .search-group .btn-group{
+.header  .btn-group{
   padding: 10px 8px 10px 8px;
+}
+
+.p-datatable-header{
+  background-color: white;
+  border-top: none;
 }
