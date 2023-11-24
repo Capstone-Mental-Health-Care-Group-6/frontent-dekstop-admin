@@ -16,11 +16,11 @@ const DokterTable = ({ data }) => {
       <div className="d-flex align-items-center">
         <img
           src={rowData.image}
-          alt={rowData.DokterName}
+          alt={rowData.doctorName}
           height="32px"
           className="me-2"
         />
-        <span>{rowData.DokterName}</span>
+        <span>{rowData.doctorName}</span>
       </div>
     );
   };
