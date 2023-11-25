@@ -8,6 +8,7 @@ export const dataArtikel = [
     author: "dr. Joko Nugroho",
     kategori: ["Kecemasan", "Tips", "Umum"],
     tanggal: "04 November 2023 17.00 WIB",
+    status: "pending"
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const dataArtikel = [
     author: "dr. Satria Nugraha",
     kategori: ["Emosi", "Tips"],
     tanggal: "01 November 2023 11.30 WIB",
+    status: "pending"
   },
   {
     id: 3,
@@ -24,5 +26,6 @@ export const dataArtikel = [
     author: "dr. Satria Nugraha",
     kategori: ["Tips"],
     tanggal: "01 November 2023 11.30 WIB",
+    status: "pending"
   },
 ];
