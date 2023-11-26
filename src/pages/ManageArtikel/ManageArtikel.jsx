@@ -43,16 +43,17 @@ const ManageArtikel = () => {
 
   const renderHeader = () => {
     return (
-      <div className="d-flex justify-content-end header">
-        <div className="search-group d-flex">
+      <div className="d-flex justify-content-end head">
+        <div className="search-div d-flex">
           <Search
             size={20}
             placeholder={"Search"}
             onChange={onGlobalFilterChange}
+            className={"m-0"}
             value={globalFilterValue}
           />
         </div>
-        <div className="btn-group mx-5  align-items-start">
+        <div className="btn-group mx-3  align-items-start">
           <button
             type="button"
             className="btn border-secondary-subtle dropdown-toggle"
@@ -121,7 +122,7 @@ const ManageArtikel = () => {
   return (
     <Layouts titlePage={"Manage Artikel"}>
       <div className="row my-4">
-        <div className="col">
+        <div className="col ">
           <Card
             src={iconArtikelAdmin}
             cardTitle="17000"
@@ -142,11 +143,10 @@ const ManageArtikel = () => {
             cardTitle="12"
           />
         </div>
-        <div></div>
       </div>
       <div className="card">
         <div className="card-body">
-          <div className="p-mt-4">
+          <div className="">
             <Table
               filters={filters}
               header={header}

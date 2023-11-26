@@ -122,8 +122,8 @@ function TransaksiTertunda() {
 
                                 </div>
                             </div>
-                            <div className="col gap-2 search-container d-flex justify-content-end">
-                                <Search size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
+                            <div className="col gap-2 search-container d-flex justify-content-end ">
+                                <Search size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} className={"m-0"} />
                                 <div className="btn-group">
                                     <button
                                         type="button"
