@@ -83,16 +83,36 @@
   width: 20%;
 }
 
-.head  .btn-group .dropdown-menu   {
+ /* .filter-dropdown .filter-menu   {
   width: 240px;
   padding: 16px 20px 16px 20px;
-}
+} */
 
-.head  .btn-group{
-  padding: 10px 8px 10px 8px;
-}
+
 
 .p-datatable-header{
   background-color: white;
   border-top: none;
+}
+
+@media screen and (max-width:768px) {
+
+  .row .col .card {
+    margin: 2% 0;
+  }
+
+  .row .col .card h5{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .row .col .card h6{
+    margin-top: 16px;
+    padding: 10px 0 10px 0;
+    color: #A7A7A7;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+
+
 }

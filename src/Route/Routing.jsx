@@ -12,10 +12,10 @@ import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUse
 import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import RegisterForm from "../pages/Register/Register";
+import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
+import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
 import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/AturSandi/AturSandi";
-import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
-
 const Routing = () => {
   return (
     <Routes>
@@ -31,14 +31,9 @@ const Routing = () => {
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
       <Route element={<DetailArtikel/>} path="admin-manage-artikel/:id" />
-      <Route
-        element={<TransaksiTertunda />}
-        path="admin-transaksi-user/transaksi-tertunda"
-      />
-      <Route
-        element={<DetailTransaksiUser />}
-        path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id"
-      />
+      <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
+      <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
+      <Route element={<TransaksiOtomatis />} path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id" />
       <Route element={<EditProfile />} path="admin-edit-profile" />
     </Routes>
   );

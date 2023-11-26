@@ -82,26 +82,26 @@ const DetailArtikel = () => {
         </NavLink>
         <p className="ms-2">/ Detail Artikel</p>
       </div>
-      <ModalAlert id={"confirm-artikel"}></ModalAlert>
+      {/* <ModalAlert id={"confirm-artikel"}></ModalAlert> */}
       <div className="card">
         <div className="card-body m-4">
           <h4 className="fw-bold">{artikel.judul}</h4>
-          <div className="d-flex flex-row my-3 align-items-center">
-            <div className="me-2">
+          <div className=" details d-flex my-4  ">
+            <div className="me-2 kategori-div ">
               {artikel.kategori &&
                 artikel.kategori.map((item, index) => (
                   <div key={index} className="d-inline-block">
-                    <div className="kategori-div-template">
-                      <p className="kategori-text-template">{item}</p>
+                    <div className="kategori-div-template-detail">
+                      <p className="kategori-text-template-detail m-0">{item}</p>
                     </div>
                   </div>
                 ))}
             </div>
-            <div>
-              <p className="subtitle-text">Ditinjau oleh {artikel.author}</p>
+            <div className="author-div mx-2 d-flex align-items-center">
+              <p className="subtitle-text ">Ditinjau oleh {artikel.author}</p>
             </div>
-            <div>
-              <p className="subtitle-text">| {artikel.tanggal} </p>
+            <div className="tanggal-div  d-flex align-items-center ">
+              <p className="subtitle-text ps-2"> {artikel.tanggal} </p>
             </div>
           </div>
           <img

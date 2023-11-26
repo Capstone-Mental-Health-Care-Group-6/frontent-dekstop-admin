@@ -18,6 +18,7 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { FilterMatchMode } from "primereact/api";
 import Input from "../../components/Elements/input/Input";
+import { IoSearch } from "react-icons/io5";
 
 const ManageArtikel = () => {
   const [artikel, setArtikel] = useState(dataArtikel);
@@ -43,17 +44,21 @@ const ManageArtikel = () => {
 
   const renderHeader = () => {
     return (
-      <div className="d-flex justify-content-end head">
-        <div className="search-div d-flex">
-          <Search
+      <div className="d-flex justify-content-end ">
+        <span className="p-input-icon-left">
+          <Input
+            value={globalFilterValue}
+            onChange={onGlobalFilterChange}
+            placeholder="Search"
+          />
+        </span>
+        {/* <Search
             size={20}
             placeholder={"Search"}
             onChange={onGlobalFilterChange}
-            className={"m-0"}
             value={globalFilterValue}
-          />
-        </div>
-        <div className="btn-group mx-3  align-items-start">
+          /> */}
+        <div className="filter-dropdown mx-3  align-items-start">
           <button
             type="button"
             className="btn border-secondary-subtle dropdown-toggle"
@@ -62,7 +67,7 @@ const ManageArtikel = () => {
             <LuFilter />
             <span> Filter </span>
           </button>
-          <ul className="dropdown-menu">
+          <ul className="dropdown-menu px-3">
             <div className="d-flex justify-content-between fw-semibold p-3">
               <span>Filter</span>
               <span className="text-primary">Reset</span>

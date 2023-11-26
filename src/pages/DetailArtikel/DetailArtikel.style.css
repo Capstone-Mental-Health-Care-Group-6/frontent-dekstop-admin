@@ -1,6 +1,81 @@
 .subtitle-text {
   font-size: 12px;
   align-items: center;
-  margin-left: 5px;
+  /* margin-left: 5px; */
+  margin: 0;
+
   color: rgb(137, 137, 137);
+}
+
+.kategori-text-template-detail{
+  font-size: 12px;
+  padding: 4px 8px 4px 8px;
+  color: #065dac;
+  text-align: center;
+  font-weight: bold;
+}
+
+.kategori-div-template-detail{
+  background-color: 
+  #e5f2ff;
+  border-radius: 20px;
+  margin: 0 3px 0 3px;
+}
+
+
+
+@media screen and (max-width:1080px) {
+  .kategori-div-template-detail{
+    background-color: 
+    #e5f2ff;
+    border-radius: 20px;
+  }
+
+  .kategori-text-template-detail{
+    font-size: 12px;
+    padding: 4px 8px 4px 8px;
+    color: #065dac;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .kategori-div{
+    display: flex;
+    /* margin: 2% 0; */
+  }
+
+  /* .author-div, .tanggal-div{
+    display: block;
+  } */
+
+}
+
+@media screen and (max-width:768px){
+  /* .details {
+    display: flex;
+    flex-direction: column;
+  } */
+  /* .card .card-body .details {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .subtitle-text{
+    font-size: 10px;
+  }
+
+
+}
+
+@media screen and (max-width:568px){
+.author-div{
+  margin-top: 4%;
+  margin-bottom: 2%;
+}
+
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+
 }

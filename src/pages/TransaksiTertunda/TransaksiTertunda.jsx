@@ -6,7 +6,7 @@ import Search from "../../components/Elements/search/Search";
 import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataColumnsTertunda } from "../../components/DataComponents/dataComponents";
 import Table from "../../components/Fragments/tabel/Table";
-// import { paymentFailed, searchFailed } from "../../../image";
+import { paymentFailed, searchFailed } from "../../../image";
 import { BsFilter, BsFilterRight } from "react-icons/bs";
 import { LuFilter } from "react-icons/lu";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
@@ -62,7 +62,7 @@ function TransaksiTertunda() {
             return (
                 <div className="d-grid justify-content-center" >
                     <div className="w-50 d-grid justify-content-center mx-auto">
-                        {/* <img className="mx-auto" src={paymentFailed} alt="" /> */}
+                        <img className="mx-auto" src={paymentFailed} alt="" />
                         <div className="text-justify">
                             <h3  >Tidak ada data transaksi tertunda</h3>
                             <p>Maaf, Saat ini belum ada data transaksi tertunda. Ini bisa jadi karena user belum melakukan transaksi atau data transaksi user sedang dimuat.</p>
@@ -74,7 +74,7 @@ function TransaksiTertunda() {
             return (
                 <div className="d-grid justify-content-center" >
                     <div className="w-100 d-grid justify-content-center mx-auto">
-                        {/* <img className="mx-auto" src={searchFailed} alt="" /> */}
+                        <img className="mx-auto" src={searchFailed} alt="" />
                         <div className="text-justify">
                             <h3>Maaf, Pencarian tidak dapat ditemukan</h3>
                         </div>
@@ -122,8 +122,8 @@ function TransaksiTertunda() {
 
                                 </div>
                             </div>
-                            <div className="col gap-2 search-container d-flex justify-content-end ">
-                                <Search size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} className={"m-0"} />
+                            <div className="col gap-2 search-container d-flex justify-content-end">
+                                <Search size={20} placeholder={"Search"} value={searchData} onChange={handleSearch} />
                                 <div className="btn-group">
                                     <button
                                         type="button"
