@@ -5,9 +5,11 @@ import { dataUsers } from "../../components/DataUsers/dataUsers";
 import { cardManageUsers } from "../../components/DataUsers/dataUsers";
 import { Link } from "react-router-dom";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
-import Filter from "../../components/Elements/FilterManageUser/FilterManageUser";
+import FilterList from "../../components/Fragments/filter-list/FilterList";
+import { LuFilter } from "react-icons/lu";
 import UserTable from "../../components/Fragments/userTable/userTable";
 import "./ManageUser.style.css";
+
 
 const ManageUser = () => {
 
@@ -37,7 +39,33 @@ const ManageUser = () => {
                 <Search size={20} placeholder={"Search"} />
               </div>
               <div className="col-md-2">
-                <Filter size={20} placeholder={"Filter"} />
+                <div className="btn-group">
+                  <button
+                    type="button"
+                    className="btn border-secondary-subtle"
+                    data-bs-toggle="dropdown"
+                  >
+                    <LuFilter className="icon-filter"/>
+                    <p>Filter</p>
+                  </button>
+                  <ul className="dropdown-menu">
+                    <div className="d-flex justify-content-between fw-semibold p-3" >
+                      <span >Filter</span>
+                      <span className="text-primary" >Reset</span>
+                    </div>
+                    <span className="p-3 fw-medium" >Status Akun : </span>
+                    <FilterList title={'Aktif'} type={'checkbox'} />
+                    <FilterList title={'Non Aktif'} type={'checkbox'} />
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <span className="p-3 fw-medium" >Paket : </span>
+                    <FilterList title={'Konseling Instan'} type={'checkbox'} />
+                    <FilterList title={'Konseling Premium'} type={'checkbox'} />
+                    <FilterList title={'Non Aktif'} type={'checkbox'} />
+                  </ul>
+                </div>
+
               </div>
             </div>
             <UserTable data={dataUsers} />

@@ -1,0 +1,133 @@
+#detail-user {
+  font-family: "Montserrat", sans-serif;
+}
+
+#detail-user .routes span {
+  color: #959595;
+}
+
+/* style card-1 username dan avatar */
+.detail-user-id .row .col-4 .row .col-12 .card {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fff;
+  width: 337px;
+  padding: 12px;
+  margin-bottom: 24px;
+}
+
+.detail-user-id .row .col-4 .row .col-12 .card-1 img {
+  width: 78px;
+  height: 78px;
+}
+
+.detail-user-id .row .col-4 .row .col-12 .card-1 h4 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.detail-user-id .row .col-4 .row .col-12 .card-1 p.detail-label {
+  color: #666;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* style card-2 informasi akun(status akun) */
+.row .col-12 .card-2 .row .col-12 img {
+  height: 24px;
+  width: 24px;
+  margin-right: 16px;
+}
+
+.row .col-12 .card-2 .row span {
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.info-icon {
+  height: 24px;
+  width: 24px;
+  margin-left: 12px;
+}
+
+/* style switch on off akun */
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 51px;
+  height: 31px;
+  padding: 2px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 15px;
+  transition: background-color 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 27px;
+  width: 27px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* style informasi akun (sebelah kanan) */
+.card-3 {
+  border-radius: 12px;
+  background: #fff;
+  padding: 32px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.card-3 h4 {
+  color: #323232;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.card .label-detail {
+  color: #7c7c7c;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card .value-label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  color: #323232;
+}
+

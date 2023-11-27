@@ -58,10 +58,12 @@
   height: auto;
   width: 218px;
   background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .dialog-footer button {
-  font-family: ontserrat, sans-serif;
+  font-family: montserrat, sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -69,6 +71,17 @@
 }
 
 .modal-dialog {
-    width: 420px;
+  width: 420px;
+}
 
+/* Modal success */
+.modal-success {
+  width: 674px;
+}
+
+.modal-success h5 {
+  font-family: montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
 }
