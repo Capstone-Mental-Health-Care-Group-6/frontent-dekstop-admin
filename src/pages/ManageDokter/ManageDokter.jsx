@@ -62,7 +62,6 @@ const ManageDokter = () => {
           </div>
         </section>
       </Layouts>
-      ;
     </>
   );
 };
