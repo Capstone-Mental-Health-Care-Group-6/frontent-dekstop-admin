@@ -85,3 +85,25 @@
   font-style: normal;
   font-weight: 500;
 }
+
+/* Search Failed */
+
+.img-search-failed {
+  width: 320px;
+  height: 239.749px;
+}
+
+.h2-search-failed {
+  font-family: montserrat, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.search-failed-text {
+  font-family: montserrat, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  color: #636363;
+}

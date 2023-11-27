@@ -3,13 +3,24 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import './UserTable.style.css';
 import { NonAktifkanAkun, DetailAkun, Success } from '../../../../image';
+import { searchFailed } from '../../../../image';
 
-const UserTable = ({ data }) => {
+const UserTable = ({ data, searchValue }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [first, setFirst] = useState(0); // State untuk menangani index awal data yang ditampilkan
     const [rows, setRows] = useState(5); // State untuk menangani jumlah baris per halaman
+
+    // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
+    const filteredData = data.filter((user) => {
+        return (
+            user.userName.toLowerCase().includes(searchValue.toLowerCase()) ||
+            user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+            user.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
+            user.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    });
 
     const onPageChange = (event) => {
         setFirst(event.first);
@@ -60,39 +71,53 @@ const UserTable = ({ data }) => {
 
     return (
         <div className="p-mt-4">
-            <DataTable
-                value={data}
-                className="p-datatable-sm"
-                rowClassName="table-row-height"
-                first={first}
-                rows={rows}
-                paginator // Mengaktifkan pagination
-                paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-                onPage={onPageChange}
-                rowsPerPageOptions={[5, 10, 15]}
-                totalRecords={data.length}
-            >
-                <Column body={userBodyTemplate} header="Nama" headerClassName="table-header-border" />
-                <Column field="email" header="Email" headerClassName="table-header-border" />
-                <Column field="telephone" header="No. Telp" headerClassName="table-header-border" />
-                <Column field="statusAkun" header="Status Akun" body={statusBodyTemplate} headerClassName="table-header-border" />
-                <Column body={(rowData) => (
-                    <div className="dropdown">
-                        <button className="btn" type="button" id={`dropdownMenuButton-${rowData.id}`} data-bs-toggle="dropdown" aria-expanded="false">
-                            <span className="action-symbol fw-bold">...</span>
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby={`dropdownMenuButton-${rowData.id}`}>
-                            {actionItems.map((item, index) => (
-                                <li key={index}>
-                                    <button className="dropdown-item" onClick={() => handleActionSelection(item.action, rowData)}>
-                                        <img src={item.icon} alt={item.label} className="icon-before-label me-2" /> {item.label}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
+            {filteredData.length > 0 ? (
+                <DataTable
+                    // value={data}
+                    value={filteredData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
+                    className="p-datatable-sm"
+                    rowClassName="table-row-height"
+                    first={first}
+                    rows={rows}
+                    paginator // Mengaktifkan pagination
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+                    onPage={onPageChange}
+                    rowsPerPageOptions={[5, 10, 15]}
+                    totalRecords={data.length}
+                >
+                    <Column body={userBodyTemplate} header="Nama" headerClassName="table-header-border" />
+                    <Column field="email" header="Email" headerClassName="table-header-border" />
+                    <Column field="telephone" header="No. Telp" headerClassName="table-header-border" />
+                    <Column field="statusAkun" header="Status Akun" body={statusBodyTemplate} headerClassName="table-header-border" />
+                    <Column body={(rowData) => (
+                        <div className="dropdown">
+                            <button className="btn" type="button" id={`dropdownMenuButton-${rowData.id}`} data-bs-toggle="dropdown" aria-expanded="false">
+                                <span className="action-symbol fw-bold">...</span>
+                            </button>
+                            <ul className="dropdown-menu" aria-labelledby={`dropdownMenuButton-${rowData.id}`}>
+                                {actionItems.map((item, index) => (
+                                    <li key={index}>
+                                        <button className="dropdown-item" onClick={() => handleActionSelection(item.action, rowData)}>
+                                            <img src={item.icon} alt={item.label} className="icon-before-label me-2" /> {item.label}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )} header="Action" headerClassName="table-header-border" />
+                </DataTable>
+            ) : (
+                    <div className="text-center mt-4">
+                        <img src={searchFailed} className='img-search-failed' alt="No data found" />
+                        <h2 className='h2-search-failed'>
+                            Tidak ada data user
+                        </h2>
+                        <p className="mt-2 search-failed-text">
+                            Maaf, saat ini belum ada data user yang tersedia. Ini bisa jadi karena belum ada user yang terdaftar atau data user sedang dimuat.
+                        </p>
                     </div>
-                )} header="Action" headerClassName="table-header-border" />
-            </DataTable>
+            )}
+
 
             {/* Modal konfirmasi nonaktifkan akun */}
             <div className={`modal ${showConfirmation ? 'show' : ''}`} style={{ display: showConfirmation ? 'block' : 'none' }} id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

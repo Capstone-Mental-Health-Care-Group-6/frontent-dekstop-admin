@@ -54,6 +54,41 @@
   margin-left: 12px;
 }
 
+.info-tooltip {
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  max-height: 95px;
+  width: 270px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.info-tooltip.show {
+  display: block;
+}
+
+.h2-info-tooltip {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #323232;
+  margin-bottom: 8px;
+}
+
+.p-info-tooltip {
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #636363;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
 /* style switch on off akun */
 .switch {
   position: relative;
@@ -131,3 +166,42 @@ input:checked + .slider:before {
   color: #323232;
 }
 
+/* CSS Responsif untuk tampilan layar berukuran maksimum 768px */
+@media screen and (max-width: 768px) {
+  .detail-user-id .row .col-4 .row .col-12 .card,
+  .row .col-12 .card-2 {
+    width: 100%;
+  }
+
+  .detail-user-id .row .col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card-3 {
+    padding: 16px;
+    margin-left: 0;
+  }
+}
+
+/* CSS Responsif untuk tampilan layar berukuran maksimum 576px */
+@media screen and (max-width: 576px) {
+  .detail-user-id .row {
+    flex-direction: column;
+  }
+
+  .detail-user-id .row .col-4 .row .col-12 .card,
+  .row .col-12 .card-2 {
+    width: 100%;
+  }
+
+  .detail-user-id .row .col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card-3 {
+    padding: 16px;
+    margin-left: 0;
+  }
+}
