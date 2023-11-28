@@ -12,6 +12,11 @@ import "./ManageUser.style.css";
 
 
 const ManageUser = () => {
+  const [searchValue, setSearchValue] = useState(''); // State untuk nilai pencarian
+
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
+  };
 
 
   return (
@@ -20,9 +25,9 @@ const ManageUser = () => {
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {cardManageUsers.map((item, index) => (
             <div className="col" key={index}>
-              <Link to={item.location} className="text-decoration-none">
+              {/* <Link to={item.location} className="text-decoration-none"> */}
                 <Card src={item.image} cardSubtitle={item.text} cardTitle={item.total}></Card>
-              </Link>
+              {/* </Link> */}
             </div>
           ))}
         </div>
@@ -36,7 +41,7 @@ const ManageUser = () => {
                 <h4>Data User</h4>
               </div>
               <div className="col-md-2">
-                <Search size={20} placeholder={"Search"} />
+                <Search size={20} placeholder={"Search"} value={searchValue} onChange={handleSearchChange} /> {/* Menggunakan nilai pencarian dan fungsi onChange */}
               </div>
               <div className="col-md-2">
                 <div className="btn-group">
@@ -68,7 +73,7 @@ const ManageUser = () => {
 
               </div>
             </div>
-            <UserTable data={dataUsers} />
+            <UserTable data={dataUsers} searchValue={searchValue} /> {/* Meneruskan nilai pencarian ke UserTable */}
           </div>
         </div>
       </section>
