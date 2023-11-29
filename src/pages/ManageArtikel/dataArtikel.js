@@ -28,4 +28,32 @@ export const dataArtikel = [
     tanggal: "01 November 2023 11.30 WIB",
     status: "pending"
   },
+  {
+    id: 4,
+    judul: "kenapa bisa coba",
+    image: avatar1,
+    author: "dr. Satria Nugraha",
+    kategori: ["Tips"],
+    tanggal: "01 November 2023 11.30 WIB",
+    status: "pending"
+  },
+  {
+    id: 5,
+    judul: "apa iyah kalo sakit harus disembuhin",
+    image: avatar1,
+    author: "dr. Satria Nugraha",
+    kategori: ["Tips"],
+    tanggal: "01 November 2023 11.30 WIB",
+    status: "pending"
+  },
+  {
+    id: 6,
+    judul: "artikel 6",
+    image: avatar1,
+    author: "dr. Satria Nugraha",
+    kategori: ["Tips"],
+    tanggal: "01 November 2023 11.30 WIB",
+    status: "pending"
+  },
+  
 ];

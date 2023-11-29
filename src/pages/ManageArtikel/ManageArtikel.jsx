@@ -10,15 +10,12 @@ import Card from "../../components/Fragments/card/Card";
 import "./ManageArtikel.style.css";
 import Table from "../../components/Fragments/tabel/Table";
 import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import { dataArtikel } from "./dataArtikel";
 import Search from "../../components/Elements/search/Search";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { FilterMatchMode } from "primereact/api";
 import Input from "../../components/Elements/input/Input";
-import { IoSearch } from "react-icons/io5";
 
 const ManageArtikel = () => {
   const [artikel, setArtikel] = useState(dataArtikel);
@@ -52,12 +49,6 @@ const ManageArtikel = () => {
             placeholder="Search"
           />
         </span>
-        {/* <Search
-            size={20}
-            placeholder={"Search"}
-            onChange={onGlobalFilterChange}
-            value={globalFilterValue}
-          /> */}
         <div className="filter-dropdown mx-3  align-items-start">
           <button
             type="button"
@@ -73,14 +64,17 @@ const ManageArtikel = () => {
               <span className="text-primary">Reset</span>
             </div>
             <p className="fw-medium">Waktu transaksi : </p>
+            <div className="fw-normal">
             <FilterList title={"Publikasi Terbaru"} type={"radio"} />
             <FilterList title={"7 Hari Terakhir"} type={"radio"} />
             <FilterList title={"30 Hari Terakhir"} type={"radio"} />
             <FilterList title={"Semua Tanggal"} type={"radio"} />
+            </div>
             <li>
               <hr className="dropdown-divider" />
             </li>
             <p className="pt-2 fw-medium">Kategori : </p>
+            <div className="fw-normal">
             <FilterList title={"Anxiety"} type={"checkbox"} />
             <FilterList title={"Depresi"} type={"checkbox"} />
             <FilterList title={"Emosi"} type={"checkbox"} />
@@ -88,6 +82,7 @@ const ManageArtikel = () => {
             <FilterList title={"Stress"} type={"checkbox"} />
             <FilterList title={"Tips"} type={"checkbox"} />
             <FilterList title={"Umum"} type={"checkbox"} />
+            </div>
           </ul>
         </div>
       </div>
