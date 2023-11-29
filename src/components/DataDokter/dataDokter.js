@@ -7,16 +7,13 @@ import {
   avatar6,
   avatar7,
   avatar8,
-  iconTotalUser,
-  iconUserBaru,
-  iconUserAktif,
-  iconUserTidakAktif,
+
 } from "../../../image";
 
 export const dataDokter = [
   {
     image: avatar1,
-    userName: "Rafael Leao",
+    doctorName: "Rafael Leao",
     email: "alma.lawson@example.com",
     telephone: "08123189239",
     workTime: "200 Jam",
@@ -24,7 +21,7 @@ export const dataDokter = [
   },
   {
     image: avatar2,
-    userName: "Esther Howard",
+    doctorName: "Esther Howard",
     email: "willie.jennings@example.com",
     telephone: "08123189239",
     workTime: "1000 Jam",
@@ -32,7 +29,7 @@ export const dataDokter = [
   },
   {
     image: avatar3,
-    userName: "Bessie Cooper",
+    doctorName: "Bessie Cooper",
     email: "tim.jennings@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",
@@ -40,7 +37,7 @@ export const dataDokter = [
   },
   {
     image: avatar4,
-    userName: "Marvin McKinney",
+    doctorName: "Marvin McKinney",
     email: "michael.mitc@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",
@@ -48,7 +45,7 @@ export const dataDokter = [
   },
   {
     image: avatar5,
-    userName: "Ralph Edwards",
+    doctorName: "Ralph Edwards",
     email: "debra.holt@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",
@@ -56,7 +53,7 @@ export const dataDokter = [
   },
   {
     image: avatar6,
-    userName: "Albert Flores",
+    doctorName: "Albert Flores",
     email: "abill.sanders@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",
@@ -64,7 +61,7 @@ export const dataDokter = [
   },
   {
     image: avatar7,
-    userName: "Darrell Steward",
+    doctorName: "Darrell Steward",
     email: "kenzi.lawson@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",
@@ -72,7 +69,7 @@ export const dataDokter = [
   },
   {
     image: avatar8,
-    userName: "Kathryn Murphy",
+    doctorName: "Kathryn Murphy",
     email: "jessica.hanson@example.com",
     telephone: "08123189239",
     workTime: "525 Jam",

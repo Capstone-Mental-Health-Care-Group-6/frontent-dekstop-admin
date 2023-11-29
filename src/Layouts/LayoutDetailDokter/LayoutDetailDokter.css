@@ -1,0 +1,33 @@
+.profile-card {
+  width: 20vw;
+}
+
+.img-detailDokter {
+  width: 60px;
+}
+
+.detail-dokter-item {
+  background-color: #ffffff;
+  height: 50vh;
+  width: 20vw;
+  margin-bottom: 30px;
+  transition: left 0.5s ease-out;
+  font-family: "Inter", sans-serif;
+}
+
+.detail-dokter-item .menu .sidebar-link {
+  align-items: center;
+  border-radius: 0.5rem;
+  color: black;
+  display: block;
+  display: flex;
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  transition: all 0.5s;
+  font-weight: 600;
+}
+
+.offcanvas-body {
+  height: 10vh;
+}

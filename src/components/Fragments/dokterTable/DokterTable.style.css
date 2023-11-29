@@ -72,3 +72,8 @@
     width: 420px;
 
 }
+
+.doctor-name {
+  text-decoration: none;
+  color: black;
+}

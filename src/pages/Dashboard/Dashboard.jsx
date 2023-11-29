@@ -8,6 +8,7 @@ import {
   iconCardDokter,
   paket1,
   paket2,
+  iconCardTotalTransaksi,
 } from "../../../image";
 import Card from "../../components/Fragments/card/Card";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
@@ -36,7 +37,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="row mt-3">
+      <div className="row d-flex flex-wrap my-3 ">
         {/* Kolom 1 - Total User dan Total Dokter */}
         <div className="col-lg-6 col-sm d-flex flex-column card__dashboard gap-3">
           <div className="d-flex gap-3">
@@ -51,21 +52,23 @@ const Dashboard = () => {
               src={iconCardDokter}
             />
           </div>
-
-          <div className="card__artikel">
-            <div className="card__body__artikel">
-              <img src={iconCardArtikel} alt="icon-artikel" />
-              <h6 className="card__subtitle__artikel mb-2 fw-normal">
-                Total Artikel
-              </h6>
-              <h5 className="">17.000</h5>
-            </div>
+          <div className="d-flex gap-3">
+            <Card
+              cardSubtitle={"Total Artikel"}
+              cardTitle={"1.500"}
+              src={iconCardArtikel}
+            />
+            <Card
+              cardSubtitle={"Total Transaksi"}
+              cardTitle={"24.000"}
+              src={iconCardTotalTransaksi}
+            />
           </div>
         </div>
 
         {/* Kolom 2 - Paket Teratas */}
         <div className="col-lg-6 col-sm">
-          <div className="paket-teratas p-4">
+          <div className="paket-teratas h-100 d-flex flex-column justify-content-between p-4">
             <h4>Paket Teratas</h4>
             <PaketTeratas
               className={"paket-1 d-flex gap-2 align-items-center"}
