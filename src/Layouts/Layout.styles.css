@@ -96,7 +96,7 @@ main {
   min-height: 100vh;
   width: 80vw;
   float: right;
-  background: #dcdcdc;
+  background: #f4f5fa;
   padding: 0px 50px;
 }
 
@@ -113,7 +113,7 @@ main {
 }
 
 main .navbar .fw-semibold {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .modal-title {
@@ -217,7 +217,6 @@ main .navbar .fw-semibold {
   .notif-icon {
     width: 35px;
     height: 35px;
-
   }
 
   .navbar .iconNavbar {
@@ -247,8 +246,6 @@ main .navbar .fw-semibold {
     width: 35px;
     height: 35px;
   }
-
-
 }
 
 @media screen and (max-width: 259px) {

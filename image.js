@@ -20,6 +20,7 @@ import iconTertundaCard from "./src/assets/total-tertunda-icon.svg";
 import iconFGagalCard from "./src/assets/total-gagal-icon.svg";
 import iconCardUser from "./src/assets/Frame 1000003348.svg";
 import iconCardArtikel from "./src/assets/iconArtikel.svg";
+import iconCardTotalTransaksi from "./src/assets/iconTotalTransaksi.svg";
 import iconCardDokter from "./src/assets/icon-card-dokter.svg";
 import dashboardImg from "./src/assets/customer-support 1.png";
 import paket1 from "./src/assets/1st.svg";
@@ -39,7 +40,7 @@ import icon1 from "./src/assets/icon1.png";
 import icon2 from "./src/assets/icon2.png";
 import icon3 from "./src/assets/icon3.png";
 import icon4 from "./src/assets/icon4.png";
-import Success from "./src/assets/Success.svg"
+import Success from "./src/assets/Success.svg";
 
 export {
   logoEmpathiCare,
@@ -83,5 +84,6 @@ export {
   icon2,
   icon3,
   icon4,
-  Success
+  Success,
+  iconCardTotalTransaksi,
 };

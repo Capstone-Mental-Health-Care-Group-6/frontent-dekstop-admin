@@ -58,6 +58,10 @@
 }
 /* End card dashboard */
 
+.row .col-lg-6 {
+  flex: 1;
+}
+
 /* paket teratas */
 
 .paket-teratas {
