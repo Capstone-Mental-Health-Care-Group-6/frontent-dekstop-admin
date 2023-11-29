@@ -9,6 +9,9 @@ import avatar6 from "./src/assets/avatar6.svg";
 import avatar7 from "./src/assets/avatar7.svg";
 import avatar8 from "./src/assets/avatar8.svg";
 import iconTotalUser from "./src/assets/iconTotalUser.svg";
+import iconArtikelAdmin from "./src/assets/artikel-total-artikel.svg";
+import tambahArtikelAdmin from "./src/assets/artikel-baru-admin.svg";
+import pendingArtikelAdmin from "./src/assets/artikel-jam-pasir.svg";
 import iconUserBaru from "./src/assets/iconUserBaru.svg";
 import iconUserAktif from "./src/assets/iconUserAktif.svg";
 import iconUserTidakAktif from "./src/assets/iconUserTidakAktif.svg";
@@ -44,6 +47,9 @@ import Success from "./src/assets/Success.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
 
 export {
+  pendingArtikelAdmin,
+  tambahArtikelAdmin,
+  iconArtikelAdmin,
   logoEmpathiCare,
   logoEmpathiCareMobile,
   iconBerhasilCard,
