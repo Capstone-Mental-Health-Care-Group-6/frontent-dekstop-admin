@@ -20,6 +20,7 @@ import DetailAkunDokter from "../pages/DetailAkunDokter/InformasiDokter/informas
 import PengalamanDokter from "../pages/DetailAkunDokter/Pengalaman/PengalamanDokter";
 import DokumenDokter from "../pages/DetailAkunDokter/Dokumen/DokumenDokter";
 import ArtikelDokter from "../pages/DetailAkunDokter/Artikel/ArtikelDokter";
+import NotFound from "../pages/NotFound404/NotFound";
 
 const Routing = () => {
   return (
@@ -30,21 +31,47 @@ const Routing = () => {
       <Route element={<ForgotPw />} path="forgot-password" />
       <Route element={<ResetPassword />} path="reset-password" />
       <Route element={<ManageUser />} path="admin-manage-user" />
-      <Route element={<DetailAkunUser />} path="admin-manage-user/detail-akun-user/:id" />
+      <Route
+        element={<DetailAkunUser />}
+        path="admin-manage-user/detail-akun-user/:id"
+      />
       <Route element={<TransaksiUser />} path="admin-transaksi-user" />
       <Route element={<PaketKonseling />} path="admin-paket-konseling" />
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
-      <Route element={<DetailAkunDokter />} path="admin-manage-dokter/detail-akun-dokter" />
-      <Route element={<DokumenDokter />} path="admin-manage-dokter/detail-akun-dokter/dokumen" />
-      <Route element={<PengalamanDokter />} path="admin-manage-dokter/detail-akun-dokter/pengalaman" />
-      <Route element={<ArtikelDokter />} path="admin-manage-dokter/detail-akun-dokter/artikel" />
+      <Route
+        element={<DetailAkunDokter />}
+        path="admin-manage-dokter/detail-akun-dokter"
+      />
+      <Route
+        element={<DokumenDokter />}
+        path="admin-manage-dokter/detail-akun-dokter/dokumen"
+      />
+      <Route
+        element={<PengalamanDokter />}
+        path="admin-manage-dokter/detail-akun-dokter/pengalaman"
+      />
+      <Route
+        element={<ArtikelDokter />}
+        path="admin-manage-dokter/detail-akun-dokter/artikel"
+      />
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
-      <Route element={<TransaksiTertunda />} path="admin-transaksi-user/transaksi-tertunda" />
-      <Route element={<DetailTransaksiUser />} path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id" />
-      <Route element={<TransaksiOtomatis />} path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id" />
+      <Route
+        element={<TransaksiTertunda />}
+        path="admin-transaksi-user/transaksi-tertunda"
+      />
+      <Route
+        element={<DetailTransaksiUser />}
+        path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id"
+      />
+      <Route
+        element={<TransaksiOtomatis />}
+        path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id"
+      />
       <Route element={<EditProfile />} path="admin-edit-profile" />
-      
+
+      {/* route ketika url tidak sesuai */}
+      <Route element={<NotFound />} path="*" />
     </Routes>
   );
 };
