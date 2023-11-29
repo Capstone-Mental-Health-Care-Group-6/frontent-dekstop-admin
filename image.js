@@ -40,8 +40,10 @@ import icon2 from "./src/assets/icon2.png";
 import icon3 from "./src/assets/icon3.png";
 import icon4 from "./src/assets/icon4.png";
 import Success from "./src/assets/Success.svg"
+import konsultasiImage from "./src/assets/konsultasi-image1.svg"
 
 export {
+  konsultasiImage,
   logoEmpathiCare,
   logoEmpathiCareMobile,
   iconBerhasilCard,

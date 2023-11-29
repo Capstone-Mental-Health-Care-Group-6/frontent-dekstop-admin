@@ -1,0 +1,92 @@
+.paket-konseling .add-konseling .d-flex button {
+    color: #0085FF;
+    border: 1px solid #0085FF;
+}
+
+.paket-konseling .add-konseling .d-flex button svg {
+    height: 27px;
+    width: 27px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex img {
+    width: 45px;
+    height: 45px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+    font-size: 15px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+    font-size: 16px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex .dropdown-menu button {
+    color: #636363;
+    background-color: #F7F8F9;
+}
+
+@media screen and (min-width:1400px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 17px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 13px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex .dropdown-menu button {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 13px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 16px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 11px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body {
+        padding: 8px 16px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 12px;
+    }
+}
