@@ -41,9 +41,17 @@ import icon3 from "./src/assets/icon3.png";
 import icon4 from "./src/assets/icon4.png";
 import Success from "./src/assets/Success.svg"
 import konsultasiImage from "./src/assets/konsultasi-image1.svg"
+import konsultasiImage2 from "./src/assets/konsultasi-image2.svg"
+import konsultasiImage3 from "./src/assets/konsultasi-image3.svg"
+import defaultImageKonseling from "./src/assets/defaultImageKonseling.svg"
+import iconPencil from "./src/assets/iconPencil.svg"
 
 export {
+  iconPencil,
+  defaultImageKonseling,
   konsultasiImage,
+  konsultasiImage2,
+  konsultasiImage3,
   logoEmpathiCare,
   logoEmpathiCareMobile,
   iconBerhasilCard,

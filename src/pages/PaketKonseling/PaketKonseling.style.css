@@ -8,6 +8,26 @@
     width: 27px;
 }
 
+.paket-konseling .add-konseling .modal form .d-grid .image {
+    border: 10px solid #CCE7FF;
+    border-radius: 100%;
+    width: 180px;
+    height: 180px;
+}
+
+.paket-konseling .add-konseling .modal form .d-grid .position-relative {
+    width: 180px;
+    height: 180px;
+}
+
+/* .paket-konseling .add-konseling .modal form .d-grid .image button {
+    border: none;
+    right: 0;
+} */
+.paket-konseling .add-konseling .modal form .d-grid .image .image-button .file-input {
+    display: none;
+}
+
 .paket-konseling .add-konseling .d-flex h5 {
     margin-bottom: 0px;
 }

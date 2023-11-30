@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer } from "../../../image";
+import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer, konsultasiImage, konsultasiImage2, konsultasiImage3 } from "../../../image";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -280,5 +280,27 @@ export const detailDataTransaksi = [
         durasi_Konseling: '60 Menit',
         buktiTransfer: buktiTransfer
 
+    },
+]
+
+
+export const dataCardKonsultasi = [
+    {
+        image: konsultasiImage,
+        paket: 'Paket Pekenalan',
+        sesi: 'Rp 100.000 / 1 Sesi',
+        information: 'Metode Chat, Call, Video Call, atau Zoom,Jadwal bisa disesuaikan dengan kebutuhan,Garansi Ganti Psikolog'
+    },
+    {
+        image: konsultasiImage2,
+        paket: 'Paket Bikin Nyaman',
+        sesi: 'Rp 150.000 / 2 Sesi',
+        information: 'Metode Chat, Call, Vidcall, atau Zoom Jadwal bisa disesuai dengan kebutuhan Garansi Ganti Psikolog Masa aktif paket 1 bulan'
+    },
+    {
+        image: konsultasiImage3,
+        paket: 'Paket Selalu Ingat Dia',
+        sesi: 'Rp 2.000.000 / 4 Sesi',
+        information: 'Metode Chat, Call, Vidcall, atau Zoom Jadwal bisa disesuai dengan kebutuhan Garansi Ganti Psikolog Masa aktif paket 1 bulan'
     },
 ]
