@@ -56,8 +56,16 @@ const LayoutDetailDokter = ({ children }) => {
                       title="Artikel"
                       location="/admin-manage-dokter/detail-akun-dokter/artikel"
                     />
-                    <div className="">
-                      <div className="fw-semibold">Status Akun</div>
+                    <div className="d-flex">
+                      <div className="fw-semibold mx-3">Status Akun</div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="flexSwitchCheckDefault"
+                        />
+                      </div>
                     </div>
                   </ul>
                 </div>

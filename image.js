@@ -45,6 +45,7 @@ import icon3 from "./src/assets/icon3.png";
 import icon4 from "./src/assets/icon4.png";
 import Success from "./src/assets/Success.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
+import artikeldokter from "./src/assets/artikeldokter.png";
 
 export {
   pendingArtikelAdmin,
@@ -94,4 +95,5 @@ export {
   Success,
   iconCardTotalTransaksi,
   imgNotFound404,
+  artikeldokter,
 };
