@@ -44,7 +44,7 @@ const ManageDokter = () => {
         </div>
 
         <section className="data-user mt-3" id="data-user">
-          <div className="card">
+          <div className="card border-0">
             <div className="card-body">
               <div className="row my-auto">
                 <div className="col-8">

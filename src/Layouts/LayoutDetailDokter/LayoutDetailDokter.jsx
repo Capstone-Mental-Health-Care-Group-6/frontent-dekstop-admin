@@ -14,7 +14,7 @@ const LayoutDetailDokter = ({ children }) => {
           </p>
         </div>
         <div>
-          <div className="d-flex flex-row">
+          <div className="wrap-detail-card d-flex ">
             <div className="wrapper">
               <div className="profile-card card py-4 border-0">
                 <div className="d-flex justify-items-center">
@@ -56,14 +56,22 @@ const LayoutDetailDokter = ({ children }) => {
                       title="Artikel"
                       location="/admin-manage-dokter/detail-akun-dokter/artikel"
                     />
-                    <div className="">
-                      <div className="fw-semibold">Status Akun</div>
+                    <div className="d-flex">
+                      <div className="fw-semibold mx-3">Status Akun</div>
+                      <div class="form-check form-switch">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id="flexSwitchCheckDefault"
+                        />
+                      </div>
                     </div>
                   </ul>
                 </div>
               </div>
             </div>
-            <div className="wrapper mx-5">{children}</div>
+            <div className="children-wrap wrapper">{children}</div>
           </div>
         </div>
       </div>

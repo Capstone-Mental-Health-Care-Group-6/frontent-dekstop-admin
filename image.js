@@ -50,6 +50,7 @@ import konsultasiImage3 from "./src/assets/konsultasi-image3.svg";
 import defaultImageKonseling from "./src/assets/defaultImageKonseling.svg";
 import iconPencil from "./src/assets/iconPencil.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
+import artikeldokter from "./src/assets/artikeldokter.png";
 
 export {
   pendingArtikelAdmin,
@@ -99,6 +100,7 @@ export {
   Success,
   iconCardTotalTransaksi,
   imgNotFound404,
+  artikeldokter,
   iconPencil,
   defaultImageKonseling,
   konsultasiImage,
