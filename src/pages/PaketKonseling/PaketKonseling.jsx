@@ -127,7 +127,7 @@ const PaketKonseling = () => {
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
                         <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target="#modal-edit" > Edit </button> </li>
-                        <li > <button className="btn w-100 fw-semibold " > Hapus </button> </li>
+                        <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target="#alert-delete"  > Hapus </button> </li>
                       </ul>
 
                     </div>
@@ -174,10 +174,26 @@ const PaketKonseling = () => {
                         />
                       </div>
                       <div className="d-flex gap-2 float-end">
-                        <Button className={'btn'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                        <Button className={'btn bg-primary text-white'} text="Simpan" />
+                        <Button className={'btn border-primary text-primary fw-medium'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" />
                       </div>
                     </form>
+                  </ModalAlert>
+
+                  <ModalAlert id={'alert-delete'} >
+                    <div className="alert-modal-delete p-3">
+                      <div className="d-flex flex-column justify-content-center align-items-center mb-3">
+                        <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
+                        <div className="text-center">
+                          <h5 className="fw-bold" >Hapus Data Paket?</h5>
+                          <span>Tindakan ini akan menghapus data pada paket konseling ini, data yang dihapus tidak dapat dikembalikan</span>
+                        </div>
+                      </div>
+                      <div className="d-flex gap-2 justify-content-end">
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Batal" bsDismiss={'modal'} />
+                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} />
+                      </div>
+                    </div>
                   </ModalAlert>
 
                   <div className="card-body">
