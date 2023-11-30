@@ -1,0 +1,158 @@
+.paket-konseling .add-konseling .d-flex button {
+    color: #0085FF;
+    border: 1px solid #0085FF;
+}
+
+.paket-konseling .add-konseling .d-flex button svg {
+    height: 27px;
+    width: 27px;
+}
+
+.paket-konseling .add-konseling .modal form .image,
+.paket-konseling .all-konseling .modal form .image {
+    border: 10px solid #CCE7FF;
+    border-radius: 100%;
+    width: 180px;
+    height: 180px;
+    padding: 20px;
+}
+
+.paket-konseling .add-konseling .modal form .image img,
+.paket-konseling .all-konseling .modal form .image img {
+    width: 100%;
+    height: 100%;
+}
+
+.paket-konseling .add-konseling .modal form .position-relative,
+.paket-konseling .all-konseling .modal form .position-relative {
+    width: 180px;
+    height: 180px;
+}
+
+.paket-konseling .add-konseling .modal form .image .image-button .file-input {
+    display: none;
+}
+
+.paket-konseling .add-konseling .d-flex h5 {
+    margin-bottom: 0px;
+}
+
+.paket-konseling .all-konseling .row .col .card {
+    border-radius: 14px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex img {
+    width: 45px;
+    height: 45px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+    font-size: 15px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+    font-size: 16px;
+}
+
+.paket-konseling .all-konseling .row .col .card-header .d-flex .dropdown-menu button {
+    color: #636363;
+    background-color: #F7F8F9;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    background-color: #CCE7FF;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    background-color: #CCE7FF;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    border-radius: 14px 14px 0px 0px;
+}
+
+@media screen and (min-width:1400px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 17px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 13px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex .dropdown-menu button {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 13px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 16px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .paket-konseling .add-konseling .d-flex h5 {
+        margin-bottom: 15px;
+    }
+
+    .paket-konseling .add-konseling .d-flex .btn-add {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:433px) {
+    .paket-konseling .add-konseling .d-flex h5 {
+        font-size: 14px;
+    }
+
+    .paket-konseling .add-konseling .d-flex button {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
+        font-size: 11px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex h5 {
+        font-size: 12px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-header .d-flex img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body {
+        padding: 8px 16px;
+    }
+
+    .paket-konseling .all-konseling .row .col .card-body span {
+        font-size: 12px;
+    }
+}
