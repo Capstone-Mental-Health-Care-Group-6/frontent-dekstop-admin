@@ -114,7 +114,7 @@
         margin-bottom: 15px;
     }
 
-    .paket-konseling .add-konseling .d-flex button {
+    .paket-konseling .add-konseling .d-flex .btn-add {
         width: 100%;
     }
 }

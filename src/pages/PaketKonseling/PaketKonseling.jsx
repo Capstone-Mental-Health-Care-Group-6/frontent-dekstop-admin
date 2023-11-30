@@ -12,7 +12,8 @@ import { useState } from "react";
 const PaketKonseling = () => {
 
   const [image, setImage] = useState(null);
-  const handleAddKonseling = (e) => {
+  console.log(image);
+  const handleSubmit = (e) => {
     e.preventDefault()
   }
   const handleFileManager = () => {
@@ -32,11 +33,11 @@ const PaketKonseling = () => {
         <section className="add-konseling mt-4">
           <div className="d-flex align-items-center justify-content-between p-4 rounded-3 bg-white flex-md-row flex-column">
             <h5 >Paket Konseling Premium</h5>
-            <button className="d-flex btn align-items-center justify-content-center fw-semibold gap-1" data-bs-toggle="modal" data-bs-target="#modal-add" >
+            <button className="btn-add d-flex btn align-items-center justify-content-center fw-semibold gap-1" data-bs-toggle="modal" data-bs-target="#modal-add" >
               {<BsPlus />}Tambah Data
             </button>
             <ModalAlert id={'modal-add'} >
-              <form className="p-3">
+              <form onSubmit={handleSubmit} className="p-3">
                 <div className="d-flex justify-content-between">
                   Paket Konseling Premium
                   <Button className={'btn-close border-0'} bsDismiss={'modal'} />
