@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
@@ -17,6 +17,8 @@ import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
+  const navigate = useNavigate();
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogoutClick = () => {
@@ -24,6 +26,7 @@ function Layouts({ children, titlePage }) {
   };
 
   const handleLogoutConfirm = () => {
+    navigate("/");
     setShowLogoutModal(false);
   };
 
