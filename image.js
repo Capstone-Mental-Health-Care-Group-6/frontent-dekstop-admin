@@ -49,7 +49,6 @@ import konsultasiImage2 from "./src/assets/konsultasi-image2.svg";
 import konsultasiImage3 from "./src/assets/konsultasi-image3.svg";
 import defaultImageKonseling from "./src/assets/defaultImageKonseling.svg";
 import iconPencil from "./src/assets/iconPencil.svg";
-import Success from "./src/assets/Success.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
 
 export {
