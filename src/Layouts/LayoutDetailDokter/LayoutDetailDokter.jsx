@@ -14,7 +14,7 @@ const LayoutDetailDokter = ({ children }) => {
           </p>
         </div>
         <div>
-          <div className="d-flex flex-row">
+          <div className="wrap-detail-card d-flex ">
             <div className="wrapper">
               <div className="profile-card card py-4 border-0">
                 <div className="d-flex justify-items-center">
@@ -63,7 +63,7 @@ const LayoutDetailDokter = ({ children }) => {
                 </div>
               </div>
             </div>
-            <div className="wrapper mx-5">{children}</div>
+            <div className="children-wrap wrapper">{children}</div>
           </div>
         </div>
       </div>

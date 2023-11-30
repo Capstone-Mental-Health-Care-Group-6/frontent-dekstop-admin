@@ -8,7 +8,11 @@ const ArtikelDokter = () => {
     <>
       <Layouts titlePage={"Detail Akun Dokter"}>
         <LayoutDetailDokter>
-          <DetailDokterCard>Artikel</DetailDokterCard>
+          <DetailDokterCard>
+            <div className="title-card">
+              <p>Artikel</p>
+            </div>
+          </DetailDokterCard>
         </LayoutDetailDokter>
       </Layouts>
     </>
