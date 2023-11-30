@@ -12,8 +12,18 @@ import { useState } from "react";
 
 const PaketKonseling = () => {
 
-  const [image, setImage] = useState(null);
-  console.log(image);
+  const [formData, setFormData] = useState({
+    image: null,
+    nama_paket: '',
+    harga: '',
+    jumlah_sesi: '',
+    keterangan_paket: ''
+  })
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
   }
@@ -24,8 +34,10 @@ const PaketKonseling = () => {
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
-    setImage(selectedImage);
+    setFormData({ ...formData, image: selectedImage })
   };
+
+  console.log(formData);
 
   return (
     <Layouts titlePage={"Manage Dokter"}>
@@ -47,8 +59,8 @@ const PaketKonseling = () => {
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
-                    {image ? (
-                      <img src={URL.createObjectURL(image)} />
+                    {formData.image ? (
+                      <img src={URL.createObjectURL(formData.image)} />
                     ) : (
                       <img src={defaultImageKonseling} />
                     )}
@@ -62,16 +74,19 @@ const PaketKonseling = () => {
                   </div>
                 </div>
 
-                <InputForm title={'Nama Paket'} placeholder={'Masukan Nama'} />
-                <InputForm title={'Harga'} placeholder={'Masukan Harga'} />
-                <InputForm title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} />
-                <div className="form-floating mt-2 mb-2">
-                  <span className="fw-semibold " >Keterangan Paket</span>
+                <InputForm htmlFor={'nama_paket'} value={formData.nama_paket} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
+                <InputForm htmlFor={'harga'} value={formData.harga} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                <InputForm htmlFor={'jumlah_sesi'} value={formData.jumlah_sesi} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+
+                <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
+                <div className="form-floating ">
                   <textarea
                     className="form-control"
                     placeholder="Masukan Penjelasan Paket"
                     style={{ height: 100 }}
-                    defaultValue={""}
+                    name="keterangan_paket"
+                    value={formData.keterangan_paket}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="d-flex gap-2 float-end">
