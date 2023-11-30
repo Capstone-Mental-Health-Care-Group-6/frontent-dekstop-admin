@@ -8,6 +8,15 @@
     width: 27px;
 }
 
+.paket-konseling .add-konseling .d-flex h5 {
+    margin-bottom: 0px;
+}
+
+.paket-konseling .all-konseling .row .col .card {
+    border-radius: 14px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .paket-konseling .all-konseling .row .col .card-header .d-flex img {
     width: 45px;
     height: 45px;
@@ -24,6 +33,18 @@
 .paket-konseling .all-konseling .row .col .card-header .d-flex .dropdown-menu button {
     color: #636363;
     background-color: #F7F8F9;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    background-color: #CCE7FF;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    background-color: #CCE7FF;
+}
+
+.paket-konseling .all-konseling .row .col .card-header {
+    border-radius: 14px 14px 0px 0px;
 }
 
 @media screen and (min-width:1400px) {
@@ -65,6 +86,26 @@
 
     .paket-konseling .all-konseling .row .col .card-body span {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .paket-konseling .add-konseling .d-flex h5 {
+        margin-bottom: 15px;
+    }
+
+    .paket-konseling .add-konseling .d-flex button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:433px) {
+    .paket-konseling .add-konseling .d-flex h5 {
+        font-size: 14px;
+    }
+
+    .paket-konseling .add-konseling .d-flex button {
+        font-size: 13px;
     }
 }
 
