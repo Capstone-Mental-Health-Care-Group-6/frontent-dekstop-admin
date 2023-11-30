@@ -1,9 +1,20 @@
 import React from "react";
 
-const Button = ({ type, className, onClick, id, text, bsTogle, bsTarget, bsDismiss }) => {
+const Button = ({
+  type,
+  className,
+  onClick,
+  id,
+  text,
+  bsTogle,
+  bsTarget,
+  bsDismiss,
+  disabled,
+}) => {
   return (
     <>
       <button
+        disabled={disabled}
         type={type ? type : "button"}
         className={className}
         onClick={onClick}
