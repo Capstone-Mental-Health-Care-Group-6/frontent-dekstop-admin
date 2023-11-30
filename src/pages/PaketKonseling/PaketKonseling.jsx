@@ -74,7 +74,10 @@ const PaketKonseling = () => {
                     defaultValue={""}
                   />
                 </div>
-
+                <div className="d-flex gap-2 float-end">
+                  <Button className={'btn'} text="Batal" />
+                  <Button className={'btn bg-primary text-white'} text="Simpan" />
+                </div>
               </form>
             </ModalAlert>
           </div>
