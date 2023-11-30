@@ -304,3 +304,19 @@ export const dataCardKonsultasi = [
         information: 'Metode Chat, Call, Vidcall, atau Zoom Jadwal bisa disesuai dengan kebutuhan Garansi Ganti Psikolog Masa aktif paket 1 bulan'
     },
 ]
+
+// const InputKonselingField = [
+//     {
+//         title: 'Nama Paket',
+//         placeholder: 'Masukan Nama',
+//         value: 'formdata.value'
+//     },
+//     {
+//         title: 'Harga',
+//         placeholder: 'Masukan Harga',
+//     },
+//     {
+//         title: 'Banyak Sesi',
+//         placeholder: 'Masukan Jumlah Sesi',
+//     },
+// ]

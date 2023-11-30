@@ -8,7 +8,7 @@
     width: 27px;
 }
 
-.paket-konseling .add-konseling .modal form .d-grid .image {
+.paket-konseling .add-konseling .modal form .image {
     border: 10px solid #CCE7FF;
     border-radius: 100%;
     width: 180px;
@@ -16,17 +16,17 @@
     padding: 20px;
 }
 
-.paket-konseling .add-konseling .modal form .d-grid .image img {
+.paket-konseling .add-konseling .modal form .image img {
     width: 100%;
     height: 100%;
 }
 
-.paket-konseling .add-konseling .modal form .d-grid .position-relative {
+.paket-konseling .add-konseling .modal form .position-relative {
     width: 180px;
     height: 180px;
 }
 
-.paket-konseling .add-konseling .modal form .d-grid .image .image-button .file-input {
+.paket-konseling .add-konseling .modal form .image .image-button .file-input {
     display: none;
 }
 

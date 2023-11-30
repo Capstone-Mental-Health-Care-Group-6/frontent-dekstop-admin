@@ -6,6 +6,7 @@ import { defaultImageKonseling, iconPencil } from "../../../image";
 import { dataCardKonsultasi } from "../../components/DataComponents/dataComponents";
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
+import InputForm from "../../components/Fragments/inputForm/InputForm";
 import { useState } from "react";
 
 
@@ -37,30 +38,43 @@ const PaketKonseling = () => {
               {<BsPlus />}Tambah Data
             </button>
             <ModalAlert id={'modal-add'} >
-              <form onSubmit={handleSubmit} className="p-3">
-                <div className="d-flex justify-content-between">
-                  Paket Konseling Premium
-                  <Button className={'btn-close border-0'} bsDismiss={'modal'} />
-                </div>
-                <div className="d-grid">
-                  <div className="position-relative mx-auto">
-                    <div className="image d-flex justify-content-center ">
-                      {image ? (
-                        <img src={URL.createObjectURL(image)} />
-                      ) : (
-                        <img src={defaultImageKonseling} />
-                      )}
-                      <input
-                        type="file"
-                        className="d-none"
-                        id="imageInput"
-                        onChange={handleImageChange}
-                      />
-                      <button className="btn border-0 position-absolute bottom-0 end-0" type="button" ><img src={iconPencil} onClick={handleFileManager} /></button>
-                    </div>
-                  </div>
+              <div className="d-flex justify-content-between p-3 text-black fw-semibold">
+                Paket Konseling Premium
+                <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
+              </div>
 
+              <form onSubmit={handleSubmit} className="p-3">
+
+                <div className="position-relative mx-auto">
+                  <div className="image d-flex justify-content-center ">
+                    {image ? (
+                      <img src={URL.createObjectURL(image)} />
+                    ) : (
+                      <img src={defaultImageKonseling} />
+                    )}
+                    <input
+                      type="file"
+                      className="d-none"
+                      id="imageInput"
+                      onChange={handleImageChange}
+                    />
+                    <button className="btn border-0 position-absolute bottom-0 end-0" type="button" ><img src={iconPencil} onClick={handleFileManager} /></button>
+                  </div>
                 </div>
+
+                <InputForm title={'Nama Paket'} placeholder={'Masukan Nama'} />
+                <InputForm title={'Harga'} placeholder={'Masukan Harga'} />
+                <InputForm title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} />
+                <div className="form-floating mt-2 mb-2">
+                  <span className="fw-semibold " >Keterangan Paket</span>
+                  <textarea
+                    className="form-control"
+                    placeholder="Masukan Penjelasan Paket"
+                    style={{ height: 100 }}
+                    defaultValue={""}
+                  />
+                </div>
+
               </form>
             </ModalAlert>
           </div>
