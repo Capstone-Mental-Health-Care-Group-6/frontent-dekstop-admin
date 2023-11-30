@@ -23,3 +23,5 @@ export const useLogin = () => {
 
     return userName;
 };
+
+// pemanggilan nya cukup import useLogin dan panggilnya seperti ini useLogin()
