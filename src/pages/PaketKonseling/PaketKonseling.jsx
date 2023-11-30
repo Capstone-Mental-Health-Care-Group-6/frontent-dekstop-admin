@@ -44,8 +44,12 @@ const PaketKonseling = () => {
                 </div>
                 <div className="d-grid">
                   <div className="position-relative mx-auto">
-                    <div className="image d-flex justify-content-center p-2 ">
-                      <img src={defaultImageKonseling} />
+                    <div className="image d-flex justify-content-center ">
+                      {image ? (
+                        <img src={URL.createObjectURL(image)} />
+                      ) : (
+                        <img src={defaultImageKonseling} />
+                      )}
                       <input
                         type="file"
                         className="d-none"
