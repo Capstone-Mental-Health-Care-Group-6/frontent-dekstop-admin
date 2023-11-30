@@ -1,29 +1,25 @@
 import { useEffect, useState } from "react";
-import { getUsername } from "../API/login";
 import { useNavigate } from "react-router-dom";
-
+import { jwtDecode } from "jwt-decode";
 
 const getUsername = (token) => {
-    const decoded = jwt_decode(token)
+    const decoded = jwtDecode(token);
     console.log(decoded);
-    return decoded.data.name
-}
+    return decoded.data.name;
+};
 
 export const useLogin = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const [userName, setUsername] = useState('')
+    const [userName, setUsername] = useState('');
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('token');
         if (token) {
-            setUsername(getUsername(token))
+            setUsername(getUsername(token));
         } else {
-            navigate('/')
+            navigate('/');
         }
-
-
-
     }, []);
 
-    return userName
-}
+    return userName;
+};
