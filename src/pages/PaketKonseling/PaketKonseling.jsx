@@ -37,6 +37,16 @@ const PaketKonseling = () => {
     setFormData({ ...formData, image: selectedImage })
   };
 
+  const deleteState = () => {
+    setFormData({
+      image: null,
+      nama_paket: '',
+      harga: '',
+      sesi: '',
+      keterangan_paket: ''
+    })
+  }
+
   console.log(formData);
 
   return (
@@ -117,7 +127,7 @@ const PaketKonseling = () => {
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
-                        <li > <button className="btn w-100 fw-semibold mb-2"  > Edit </button> </li>
+                        <li > <button className="btn w-100 fw-semibold mb-2" > Edit </button> </li>
                         <li > <button className="btn w-100 fw-semibold "  > Hapus </button> </li>
                       </ul>
                     </div>
