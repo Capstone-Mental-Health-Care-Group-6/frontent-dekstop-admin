@@ -91,9 +91,9 @@ const PaketKonseling = () => {
                 <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                 <div className="form-floating ">
                   <textarea
-                    className="form-control"
+                    className="form-control p-2"
                     placeholder="Masukan Penjelasan Paket"
-                    style={{ height: 100 }}
+                    style={{ height: 200 }}
                     name="keterangan_paket"
                     value={formData.keterangan_paket}
                     onChange={handleChange}
@@ -165,9 +165,9 @@ const PaketKonseling = () => {
                       <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                       <div className="form-floating ">
                         <textarea
-                          className="form-control"
+                          className="form-control p-2"
                           placeholder="Masukan Penjelasan Paket"
-                          style={{ height: 100 }}
+                          style={{ height: 200 }}
                           name="keterangan_paket"
                           value={formData.keterangan_paket}
                           onChange={handleChange}
