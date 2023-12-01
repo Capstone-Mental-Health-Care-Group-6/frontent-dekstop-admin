@@ -5,8 +5,10 @@ import { Dialog } from "primereact/dialog";
 import "./DokterTable.style.css";
 import { NonAktifkanAkun, DetailAkun } from "../../../../image";
 import { Link, useNavigate } from "react-router-dom";
+import { dataDokter } from "../../../components/DataDokter/dataDokter";
 
-const DokterTable = ({ data }) => {
+const DokterTable = ({ data, id }) => {
+  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   const [selectedDokter, setSelectedDokter] = useState(null);
   const [displayModal, setDisplayModal] = useState(false);
   const [selectedAction, setSelectedAction] = useState(null);
@@ -16,7 +18,10 @@ const DokterTable = ({ data }) => {
 
   const DokterBodyTemplate = (rowData) => {
     return (
-      <Link className="doctor-name" to="/admin-manage-dokter/detail-akun-dokter">
+      <Link
+        className="doctor-name"
+        to={`/admin-manage-dokter/detail-akun-dokter/${rowData.id}`}
+      >
         <div className="d-flex align-items-center">
           <img
             src={rowData.image}
@@ -24,7 +29,7 @@ const DokterTable = ({ data }) => {
             height="32px"
             className="me-2"
           />
-          <span >{rowData.doctorName}</span>
+          <span>{rowData.doctorName}</span>
         </div>
       </Link>
     );

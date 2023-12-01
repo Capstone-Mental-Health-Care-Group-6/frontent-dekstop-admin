@@ -5,8 +5,12 @@ import { avatar1, icon1, icon2, icon3, icon4 } from "../../../image";
 import info from "../../../src/assets/info.svg";
 import { useState } from "react";
 import { Success } from "../../../image";
+import { useParams } from "react-router-dom";
+import { dataDokter } from "../../components/DataDokter/dataDokter";
 
 const LayoutDetailDokter = ({ children }) => {
+  const { id } = useParams();
+  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -39,6 +43,7 @@ const LayoutDetailDokter = ({ children }) => {
       setShowSuccessModal(false);
     }, 3000);
   };
+
   return (
     <>
       <div>
@@ -54,15 +59,15 @@ const LayoutDetailDokter = ({ children }) => {
               <div className="profile-card card py-4 border-0">
                 <div className="d-flex justify-items-center">
                   <div className="d-flex justify-items-center px-4">
-                    <img className="img-detailDokter" src={avatar1} />
+                    <img className="img-detailDokter" src={dokter.image} />
                   </div>
 
                   <div className="d-flex align-items-center">
                     <div className="grid gap-4">
                       <div className="nameDokter fw-semibold">
-                        dr. Lika Angelina
+                        {dokter.doctorName}
                       </div>
-                      <div className="titleDokter">Psikolog Klinis</div>
+                      <div className="titleDokter">{dokter.job}</div>
                     </div>
                   </div>
                 </div>
@@ -74,22 +79,22 @@ const LayoutDetailDokter = ({ children }) => {
                     <DetailDokterItem
                       img={icon1}
                       title="Informasi Dokter"
-                      location="/admin-manage-dokter/detail-akun-dokter"
+                      location={`/admin-manage-dokter/detail-akun-dokter/${id}`}
                     />
                     <DetailDokterItem
                       img={icon2}
                       title="Dokumen"
-                      location="/admin-manage-dokter/detail-akun-dokter/dokumen"
+                      location={`/admin-manage-dokter/detail-akun-dokter/dokumen/${id}`}
                     />
                     <DetailDokterItem
                       img={icon3}
                       title="Pengalaman"
-                      location="/admin-manage-dokter/detail-akun-dokter/pengalaman"
+                      location={`/admin-manage-dokter/detail-akun-dokter/pengalaman/${id}`}
                     />
                     <DetailDokterItem
                       img={icon4}
                       title="Artikel"
-                      location="/admin-manage-dokter/detail-akun-dokter/artikel"
+                      location={`/admin-manage-dokter/detail-akun-dokter/artikel/${id}`}
                     />
                     <div className="d-flex">
                       <div className="col-8 position-relative">
