@@ -118,10 +118,11 @@ function TransaksiTertunda() {
                                 <div className="btn-group">
                                     <button
                                         type="button"
-                                        className="btn border-secondary-subtle dropdown-toggle"
+                                        className="btn border-secondary-subtle text-secondary dropdown-toggle"
                                         data-bs-toggle="dropdown"
                                     >
                                         <LuFilter />
+                                        <span className="ms-1" >Filter</span>
                                     </button>
                                     <ul className="dropdown-menu">
                                         <div className="d-flex justify-content-between fw-semibold p-3" >
