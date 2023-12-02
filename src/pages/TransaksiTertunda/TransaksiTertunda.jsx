@@ -14,33 +14,24 @@ import FilterList from "../../components/Fragments/filter-list/FilterList";
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
     const [filteredCustomers, setFilteredCustomers] = useState([]);
-    const [transaksiManualClicked, setTransaksiManualClicked] = useState(false);
+    const [transaksiManualClicked, setTransaksiManualClicked] = useState(true);
     const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] = useState(false);
-    const [bgTransaction, setBgTransaction] = useState(false);
+    const [bgTransaction, setBgTransaction] = useState('manual');
     const [searchData, setSearchData] = useState('');
 
 
     useEffect(() => {
-        // nanti nya nama pembayarannya berdasarkan data transaksi yang ada di backend
-        if (transaksiManualClicked) {
-            CustomerService.getCustomersMedium().then((data) => {
-                const filteredData = data.filter(
-                    (customer) => customer.metode_pembayaran === "Manual"
-                );
+        CustomerService.getCustomersMedium().then((data) => {
+            if (transaksiManualClicked) {
+                const filteredData = data.filter((customer) => customer.metode_pembayaran === "Manual");
                 setFilteredCustomers(filteredData);
-            });
-
-        } else if (transaksiOtomatisClicked) {
-            CustomerService.getCustomersMedium().then((data) => {
-                const filteredData = data.filter(
-                    (customer) => customer.metode_pembayaran === "Otomatis"
-                );
+            } else if (transaksiOtomatisClicked) {
+                const filteredData = data.filter((customer) => customer.metode_pembayaran === "Otomatis");
                 setFilteredCustomers(filteredData);
-            });
-
-        } else {
-            CustomerService.getCustomersMedium().then((data) => setCustomers(data));
-        }
+            } else {
+                setCustomers(data);
+            }
+        });
     }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
 
