@@ -9,13 +9,13 @@ import {
 import Card from "../../components/Fragments/card/Card";
 import "./ManageArtikel.style.css";
 import Table from "../../components/Fragments/tabel/Table";
-import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataArtikel } from "./dataArtikel";
 import Search from "../../components/Elements/search/Search";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { FilterMatchMode } from "primereact/api";
 import Input from "../../components/Elements/input/Input";
+import ColumnTable from "../../components/Elements/ColumnTable/ColumnTable";
 
 const ManageArtikel = () => {
   const [artikel, setArtikel] = useState(dataArtikel);
