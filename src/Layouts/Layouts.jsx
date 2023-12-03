@@ -43,7 +43,7 @@ function Layouts({ children, titlePage }) {
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
               <SidebarItem
                 icon={<BsGrid />}
-                title="Dasboard"
+                title="Dashboard"
                 location="/dashboard-admin"
               />
               <SidebarItem

@@ -23,21 +23,29 @@ import iconTertundaCard from "./src/assets/total-tertunda-icon.svg";
 import iconFGagalCard from "./src/assets/total-gagal-icon.svg";
 import iconCardUser from "./src/assets/Frame 1000003348.svg";
 import iconCardArtikel from "./src/assets/iconArtikel.svg";
+import iconCardTotalTransaksi from "./src/assets/iconTotalTransaksi.svg";
 import iconCardDokter from "./src/assets/icon-card-dokter.svg";
 import dashboardImg from "./src/assets/customer-support 1.png";
-import paket1 from "./src/assets/1st.svg"
-import paket2 from "./src/assets/2nd.svg"
-import human1 from "./src/assets/human1.svg"
-import human2 from "./src/assets/human2.svg"
-import human3 from "./src/assets/human3.svg"
-import human4 from "./src/assets/human4.svg"
-import iconFace from "./src/assets/icon-face.png"
-import buktiTransfer from "./src/assets/bukti-transfer.png"
-import alertMessageBlue from "./src/assets/alert-message-blue.svg"
-import paymentFailed from "./src/assets/Payment-failed.png"
-import searchFailed from "./src/assets/search-failed.png"
+import paket1 from "./src/assets/1st.svg";
+import paket2 from "./src/assets/2nd.svg";
+import human1 from "./src/assets/human1.svg";
+import human2 from "./src/assets/human2.svg";
+import human3 from "./src/assets/human3.svg";
+import human4 from "./src/assets/human4.svg";
+import iconFace from "./src/assets/icon-face.png";
+import buktiTransfer from "./src/assets/bukti-transfer.png";
+import alertMessageBlue from "./src/assets/alert-message-blue.svg";
+import paymentFailed from "./src/assets/Payment-failed.png";
+import searchFailed from "./src/assets/search-failed.png";
 import captivePortal from "./src/assets/captivePortal.png";
-import sandClock from "./src/assets/sandClock.png"
+import sandClock from "./src/assets/sandClock.png";
+import icon1 from "./src/assets/icon1.png";
+import icon2 from "./src/assets/icon2.png";
+import icon3 from "./src/assets/icon3.png";
+import icon4 from "./src/assets/icon4.png";
+import Success from "./src/assets/Success.svg";
+import imgNotFound404 from "./src/assets/imgNotFound404.png";
+
 export {
   pendingArtikelAdmin,
   tambahArtikelAdmin,
@@ -75,6 +83,15 @@ export {
   iconCardArtikel,
   iconCardDokter,
   dashboardImg,
-  paymentFailed, searchFailed, captivePortal,
-  sandClock
+  paymentFailed,
+  searchFailed,
+  captivePortal,
+  sandClock,
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  Success,
+  iconCardTotalTransaksi,
+  imgNotFound404,
 };

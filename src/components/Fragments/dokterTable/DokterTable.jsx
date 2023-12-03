@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { Dialog } from "primereact/dialog";
 import "./DokterTable.style.css";
 import { NonAktifkanAkun, DetailAkun } from "../../../../image";
+import { Link, useNavigate } from "react-router-dom";
 
 const DokterTable = ({ data }) => {
   const [selectedDokter, setSelectedDokter] = useState(null);
@@ -11,17 +12,21 @@ const DokterTable = ({ data }) => {
   const [selectedAction, setSelectedAction] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+  const navigation = useNavigate();
+
   const DokterBodyTemplate = (rowData) => {
     return (
-      <div className="d-flex align-items-center">
-        <img
-          src={rowData.image}
-          alt={rowData.DokterName}
-          height="32px"
-          className="me-2"
-        />
-        <span>{rowData.DokterName}</span>
-      </div>
+      <Link className="doctor-name" to="/admin-manage-dokter/detail-akun-dokter">
+        <div className="d-flex align-items-center">
+          <img
+            src={rowData.image}
+            alt={rowData.doctorName}
+            height="32px"
+            className="me-2"
+          />
+          <span >{rowData.doctorName}</span>
+        </div>
+      </Link>
     );
   };
 
@@ -83,6 +88,7 @@ const DokterTable = ({ data }) => {
         value={data}
         className="p-datatable-sm"
         rowClassName="table-row-height"
+        onSelect={navigation("/")}
       >
         <Column
           body={DokterBodyTemplate}
