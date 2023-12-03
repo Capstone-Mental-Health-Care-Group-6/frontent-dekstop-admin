@@ -25,52 +25,63 @@ const LoginForm = () => {
   })
   const navigate = useNavigate()
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
+  const LoginForm = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [showPass, setShowPass] = useState(false)
+    const navigate = useNavigate()
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
+    const handleEmailChange = (e) => {
+      setEmail(e.target.value)
+    }
 
-  const handleSubmit = (e) => {
+    const handlePasswordChange = (e) => {
+      setPassword(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+
+      // Validate email
+      if (!emailChecker(email)) {
+        setErrorMessages((prevState) => ({
+          ...prevState,
+          email:
+            "Pastikan menggunakan alamat email bisnis anda untuk masuk ke dalam sistem kami",
+        }))
+        return
+      } else {
+        setErrorMessages((prevState) => ({
+          ...prevState,
+          email: "",
+        }))
+      }
+
+      // Validate password
+      if (!passwordChecker(password)) {
+        setErrorMessages((prevState) => ({
+          ...prevState,
+          password: "Password minimal 8 karakter",
+        }))
+        return
+      } else {
+        setErrorMessages((prevState) => ({
+          ...prevState,
+          password: "",
+        }))
+      }
+
+      // Proceed with login if validation is successful
+      if (email && password) {
+        navigate("/")
+        console.log("Email:", email)
+        console.log("Password:", password)
+      }
+    }
     e.preventDefault()
-
-    // Validate email
-    if (!emailChecker(email)) {
-      setErrorMessages((prevState) => ({
-        ...prevState,
-        email:
-          "Pastikan menggunakan alamat email bisnis anda untuk masuk ke dalam sistem kami",
-      }))
-      return
-    } else {
-      setErrorMessages((prevState) => ({
-        ...prevState,
-        email: "",
-      }))
-    }
-
-    // Validate password
-    if (!passwordChecker(password)) {
-      setErrorMessages((prevState) => ({
-        ...prevState,
-        password: "Password minimal 8 karakter",
-      }))
-      return
-    } else {
-      setErrorMessages((prevState) => ({
-        ...prevState,
-        password: "",
-      }))
-    }
-
-    // Proceed with login if validation is successful
-    if (email && password) {
-      navigate("/")
-      console.log("Email:", email)
-      console.log("Password:", password)
-    }
+    navigate("/dashboard-admin")
+    console.log("Email:", email)
+    console.log("Password:", password)
   }
 
   const handleTogglePassword = () => {
@@ -80,17 +91,6 @@ const LoginForm = () => {
   useEffect(() => {
     setIsSubmitButtonDisabled(!(email.trim() !== "" && password.trim() !== ""))
   }, [email, password])
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   navigate("/")
-  //   console.log("Email:", email)
-  //   console.log("Password:", password)
-  // }
-
-  // const handleTogglePassword = () => {
-  //   setShowPass(!showPass)
-  // }
 
   return (
     <div className="content-center">

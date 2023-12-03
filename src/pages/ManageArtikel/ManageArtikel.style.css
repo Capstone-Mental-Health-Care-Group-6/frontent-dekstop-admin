@@ -1,0 +1,118 @@
+.row .col .card h5{
+  font-size: 32px;
+  font-weight: bold;
+}
+.row .col .card h6{
+  /* margin-top: 16px; */
+  padding: 10px 0 10px 0;
+  color: #A7A7A7;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.author-text-template, .judul-text-template{
+  font-size: 14px;
+}
+
+.kategori-text-template{
+  font-size: 12px;
+  padding: 4px 8px 4px 8px;
+  color: #065dac;
+  text-align: center;
+  font-weight: bold;
+}
+
+.tanggal-text-template{
+  font-size: 10px;
+}
+
+.kategori-div-template{
+  background-color: 
+  #e5f2ff;
+  border-radius: 20px;
+  margin: 0 3px 0 3px;
+} 
+
+.table-header-border-judul {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 35%;
+}
+
+.table-header-border-kategori{
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 20%;
+}
+
+
+
+.table-header-border-author {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 25%;
+}
+
+.table-header-border-tanggal {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 20%;
+}
+
+ /* .filter-dropdown .filter-menu   {
+  width: 240px;
+  padding: 16px 20px 16px 20px;
+} */
+
+
+
+.p-datatable-header{
+  background-color: white;
+  border-top: none;
+}
+
+@media screen and (max-width:768px) {
+
+  .row .col .card {
+    margin: 2% 0;
+  }
+
+  .row .col .card h5{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .row .col .card h6{
+    margin-top: 16px;
+    padding: 10px 0 10px 0;
+    color: #A7A7A7;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+
+
+}

@@ -96,7 +96,7 @@ main {
   min-height: 100vh;
   width: 80vw;
   float: right;
-  background: #dcdcdc;
+  background: #f4f5fa;
   padding: 0px 50px;
 }
 
@@ -113,7 +113,7 @@ main {
 }
 
 main .navbar .fw-semibold {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .modal-title {
@@ -213,6 +213,22 @@ main .navbar .fw-semibold {
   }
 }
 
+@media screen and (max-width: 448px) {
+  .notif-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .navbar .iconNavbar {
+    width: 35px;
+    height: 35px;
+  }
+
+  main nav h2 {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 379px) {
   .sidebar {
     width: 17vw;
@@ -227,15 +243,6 @@ main .navbar .fw-semibold {
   }
 
   .notif-icon {
-    width: 35px;
-    height: 35px;
-    color: #636363;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 100%;
-  }
-
-  .navbar .iconNavbar {
     width: 35px;
     height: 35px;
   }

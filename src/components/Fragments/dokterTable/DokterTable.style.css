@@ -1,0 +1,79 @@
+/* Gaya untuk status Aktif */
+.active-status {
+  display: inline-block;
+  text-align: center;
+  background-color: #d4f1dd;
+  color: #1b7a37;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 10px;
+  height: 30px;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+/* style untuk status Tidak Aktif */
+.inactive-status {
+  display: inline-block;
+  text-align: center;
+  background-color: #ffdfd7;
+  color: #aa3e24;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 10px;
+  height: 30px;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+/* style untuk border atas dan bawah pada header tabel */
+.table-header-border {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* style untuk setiap baris dalam tabel */
+.table-row-height {
+  height: 48px !important;
+}
+
+/* Style pada bagian dialog action */
+.dialog-footer {
+  height: auto;
+  width: 218px;
+  background-color: #ffffff;
+}
+
+.dialog-footer button {
+  font-family: ontserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+.modal-dialog {
+    width: 420px;
+
+}
+
+.doctor-name {
+  text-decoration: none;
+  color: black;
+}

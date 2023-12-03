@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
-import { logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
+import { iconFace, logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
 import { BsArrowRight, BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
@@ -17,6 +17,8 @@ import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
+  const navigate = useNavigate();
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogoutClick = () => {
@@ -24,6 +26,7 @@ function Layouts({ children, titlePage }) {
   };
 
   const handleLogoutConfirm = () => {
+    navigate("/");
     setShowLogoutModal(false);
   };
 
@@ -43,8 +46,8 @@ function Layouts({ children, titlePage }) {
             <ul className="menu d-grid justify-content-center align-items-center mx-auto p-0 ">
               <SidebarItem
                 icon={<BsGrid />}
-                title="Dasboard"
-                location="/dashboard"
+                title="Dashboard"
+                location="/dashboard-admin"
               />
               <SidebarItem
                 icon={<LuUsers />}
@@ -93,19 +96,15 @@ function Layouts({ children, titlePage }) {
             <IoNotifications className="notif-icon" />
             <Dropdown
               className="iconNavbar"
-              imageSrc="icon-face.png"
+              imageSrc={iconFace}
               dropdownContent={
                 <>
-                  <li>
-                    <NavLink className="dropdown-item" to="/admin-edit-profile">
-                      <BsPerson /> Edit Profile
-                    </NavLink>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" onClick={handleLogoutClick}>
-                      <BsBoxArrowRight /> Logout
-                    </a>
-                  </li>
+                  <NavLink className="dropdown-item" to="/admin-edit-profile">
+                    <BsPerson /> Edit Profile
+                  </NavLink>
+                  <a className="dropdown-item" onClick={handleLogoutClick}>
+                    <BsBoxArrowRight /> Logout
+                  </a>
                 </>
               }
             />
