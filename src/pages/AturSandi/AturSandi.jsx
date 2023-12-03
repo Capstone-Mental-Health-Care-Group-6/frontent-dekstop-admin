@@ -63,9 +63,9 @@ const ResetPassword = () => {
               id="password"
               value={password}
               onChange={handlepasswordChange}
-              placeholder=""
+              placeholder="Password Baru"
             />
-            <label htmlFor="password">Password Baru</label>
+            {/* <label htmlFor="password">Password Baru</label> */}
             <span className="icon left">
               <RiLockPasswordLine />
             </span>
@@ -85,9 +85,9 @@ const ResetPassword = () => {
               id="confirmation"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              placeholder=""
+              placeholder="Konfirmasi Password Baru"
             />
-            <label htmlFor="confirmation">Konfirmasi Password Baru</label>
+            {/* <label htmlFor="confirmation">Konfirmasi Password Baru</label> */}
             <span className="icon left">
               <RiLockPasswordLine />
             </span>

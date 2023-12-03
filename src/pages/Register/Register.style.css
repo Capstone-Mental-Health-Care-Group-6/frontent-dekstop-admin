@@ -17,7 +17,8 @@
 
 .content-center {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;

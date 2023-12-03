@@ -48,9 +48,9 @@ const ForgotPw = () => {
               id="email"
               value={email}
               onChange={handleEmailChange}
-              placeholder=""
+              placeholder="Email"
             />
-            <label htmlFor="email">Email</label>
+            {/* <label htmlFor="email">Email</label> */}
             <span className="icon left">
               <MdOutlineEmail />
             </span>
