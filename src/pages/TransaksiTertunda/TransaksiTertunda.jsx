@@ -127,7 +127,7 @@ function TransaksiTertunda() {
                                     <ul className="dropdown-menu">
                                         <div className="d-flex justify-content-between fw-semibold p-3" >
                                             <span >Filter</span>
-                                            <span className="text-primary" >Reset</span>
+                                            <button className="text-primary btn border-0 m-0 p-0 fw-semibold" >Reset</button>
                                         </div>
                                         <span className="p-3 fw-medium" >Waktu transaksi : </span>
                                         <FilterList title={'Transaksi Terbaru'} type={'radio'} />
