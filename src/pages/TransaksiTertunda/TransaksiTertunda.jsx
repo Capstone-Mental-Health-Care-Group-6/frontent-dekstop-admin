@@ -1,46 +1,35 @@
 import "./TransaksiTertunda.style.css";
 import Layouts from "../../Layouts/Layouts";
 import React, { useState, useEffect } from "react";
-import { CustomerService } from "../../components/DataComponents/dataComponents";
+import { CustomerService, emptyMessageTransaksiTertunda } from "../../components/DataComponents/dataComponents";
 import Search from "../../components/Elements/search/Search";
 import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
 import { dataColumnsTertunda } from "../../components/DataComponents/dataComponents";
 import Table from "../../components/Fragments/tabel/Table";
-import { paymentFailed, searchFailed } from "../../../image";
-import { BsFilter, BsFilterRight } from "react-icons/bs";
 import { LuFilter } from "react-icons/lu";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 
 function TransaksiTertunda() {
     const [customers, setCustomers] = useState([]);
     const [filteredCustomers, setFilteredCustomers] = useState([]);
-    const [transaksiManualClicked, setTransaksiManualClicked] = useState(false);
+    const [transaksiManualClicked, setTransaksiManualClicked] = useState(true);
     const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] = useState(false);
-    const [bgTransaction, setBgTransaction] = useState(false);
+    const [bgTransaction, setBgTransaction] = useState('manual');
     const [searchData, setSearchData] = useState('');
 
 
     useEffect(() => {
-        // nanti nya nama pembayarannya berdasarkan data transaksi yang ada di backend
-        if (transaksiManualClicked) {
-            CustomerService.getCustomersMedium().then((data) => {
-                const filteredData = data.filter(
-                    (customer) => customer.metode_pembayaran === "Manual"
-                );
+        CustomerService.getCustomersMedium().then((data) => {
+            if (transaksiManualClicked) {
+                const filteredData = data.filter((customer) => customer.metode_pembayaran === "Manual");
                 setFilteredCustomers(filteredData);
-            });
-
-        } else if (transaksiOtomatisClicked) {
-            CustomerService.getCustomersMedium().then((data) => {
-                const filteredData = data.filter(
-                    (customer) => customer.metode_pembayaran === "Otomatis"
-                );
+            } else if (transaksiOtomatisClicked) {
+                const filteredData = data.filter((customer) => customer.metode_pembayaran === "Otomatis");
                 setFilteredCustomers(filteredData);
-            });
-
-        } else {
-            CustomerService.getCustomersMedium().then((data) => setCustomers(data));
-        }
+            } else {
+                setCustomers(data);
+            }
+        });
     }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
 
@@ -56,33 +45,6 @@ function TransaksiTertunda() {
         return item.name.toLowerCase().includes(searchData.toLowerCase())
     }))
 
-
-    const emptyMessage = () => {
-        if (customers.length === 0) {
-            return (
-                <div className="d-grid justify-content-center" >
-                    <div className="w-50 d-grid justify-content-center mx-auto">
-                        <img className="mx-auto" src={paymentFailed} alt="" />
-                        <div className="text-justify">
-                            <h3  >Tidak ada data transaksi tertunda</h3>
-                            <p>Maaf, Saat ini belum ada data transaksi tertunda. Ini bisa jadi karena user belum melakukan transaksi atau data transaksi user sedang dimuat.</p>
-                        </div>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <div className="d-grid justify-content-center" >
-                    <div className="w-100 d-grid justify-content-center mx-auto">
-                        <img className="mx-auto" src={searchFailed} alt="" />
-                        <div className="text-justify">
-                            <h3>Maaf, Pencarian tidak dapat ditemukan</h3>
-                        </div>
-                    </div>
-                </div>
-            )
-        }
-    }
 
 
     const handleClick = (transactionType) => {
@@ -127,17 +89,18 @@ function TransaksiTertunda() {
                                 <div className="btn-group">
                                     <button
                                         type="button"
-                                        className="btn border-secondary-subtle dropdown-toggle"
+                                        className="btn border-secondary-subtle text-secondary dropdown-toggle"
                                         data-bs-toggle="dropdown"
                                     >
                                         <LuFilter />
+                                        <span className="ms-1" >Filter</span>
                                     </button>
                                     <ul className="dropdown-menu">
                                         <div className="d-flex justify-content-between fw-semibold p-3" >
                                             <span >Filter</span>
-                                            <span className="text-primary" >Reset</span>
+                                            <button className="text-primary btn border-0 m-0 p-0 fw-semibold" >Reset</button>
                                         </div>
-                                        <span className="p-3 fw-medium" >Waktu transaksi : </span>
+                                        <span className="p-3 fw-semibold" >Waktu transaksi : </span>
                                         <FilterList title={'Transaksi Terbaru'} type={'radio'} />
                                         <FilterList title={'7 Hari Terakhir'} type={'radio'} />
                                         <FilterList title={'30 Hari Terakhir'} type={'radio'} />
@@ -146,13 +109,13 @@ function TransaksiTertunda() {
                                         <li>
                                             <hr className="dropdown-divider" />
                                         </li>
-                                        <span className="p-3 fw-medium" >status transaksi : </span>
+                                        <span className="p-3 fw-semibold" >status transaksi : </span>
                                         <FilterList title={'Sudah Bayar'} type={'checkbox'} />
                                         <FilterList title={'Belum Bayar'} type={'checkbox'} />
                                         <li>
                                             <hr className="dropdown-divider" />
                                         </li>
-                                        <span className="p-3 fw-medium" >Paket: </span>
+                                        <span className="p-3 fw-semibold" >Paket: </span>
                                         <FilterList title={'Konseling Instan'} type={'checkbox'} />
                                         <FilterList title={'Konseling Premium'} type={'checkbox'} />
                                     </ul>
@@ -164,7 +127,7 @@ function TransaksiTertunda() {
                         </div>
 
                         <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData}
-                            emptyMessage={emptyMessage} >
+                            emptyMessage={emptyMessageTransaksiTertunda(customers)} >
                             {dataColumnsTertunda.map((item, index) => (
                                 <ColumnTable key={index} header={item.header} field={item.field} body={item.body} />
                             ))}
