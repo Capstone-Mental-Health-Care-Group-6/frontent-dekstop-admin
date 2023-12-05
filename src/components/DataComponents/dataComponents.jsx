@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer, konsultasiImage, konsultasiImage2, konsultasiImage3 } from "../../../image";
+import { human1, human2, human3, human4, iconBerhasilCard, iconTertundaCard, iconFGagalCard, iconTransaksiCard, buktiTransfer, konsultasiImage, konsultasiImage2, konsultasiImage3, paymentFailed } from "../../../image";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -190,6 +190,33 @@ export const CustomerService = {
         return fetch('https://www.primefaces.org/data/customers?' + queryParams).then((res) => res.json());
     }
 };
+
+export const emptyMessageTransaksiTertunda = (custumers) => {
+    if (custumers.length < 1) {
+        return (
+            <div className="d-grid justify-content-center" >
+                <div className="w-50 d-grid justify-content-center mx-auto">
+                    <img className="mx-auto" src={paymentFailed} alt="" />
+                    <div className="text-justify">
+                        <h3  >Tidak ada data transaksi tertunda</h3>
+                        <p>Maaf, Saat ini belum ada data transaksi tertunda. Ini bisa jadi karena user belum melakukan transaksi atau data transaksi user sedang dimuat.</p>
+                    </div>
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div className="d-grid justify-content-center" >
+                <div className="w-100 d-grid justify-content-center mx-auto">
+                    <img className="mx-auto" src={searchFailed} alt="" />
+                    <div className="text-justify">
+                        <h3>Maaf, Pencarian tidak dapat ditemukan</h3>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
 
 const getValue = (object, path) => {
     const properties = path.split('.');
