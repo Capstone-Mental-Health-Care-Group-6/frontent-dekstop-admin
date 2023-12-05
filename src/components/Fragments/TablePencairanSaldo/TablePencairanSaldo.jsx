@@ -7,10 +7,47 @@ import ModalDanaPencairan from "../modal/ModalDanaPencairan";
 const TablePencairanSaldo = ({ data, searchValue }) => {
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState(null);
 
   const filterData = data.filter((dokter) => {
     return dokter.nama_dokter.toLowerCase().includes(searchValue.toLowerCase());
   });
+
+  const statusOptions = [
+    { label: "Pending", value: "Pending" },
+    { label: "Proses", value: "Proses" },
+    { label: "Sukses", value: "Sukses" },
+  ];
+
+  // const handleStatusChange = (e) => {
+  //   setSelectedStatus(e.value);
+  // };
+
+  const userStatusTemplate = (rowData) => {
+    return (
+      <div className="dropdown">
+        <button
+          className="btn"
+          type="button"
+          id={`dropdownMenuButton-${rowData.nama_dokter}`}
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span className="fw-semibold">...</span>
+        </button>
+        <ul
+          className="dropdown-menu"
+          aria-labelledby={`dropdownMenuButton-${rowData.id}`}
+        >
+          {statusOptions.map((item, index) => (
+            <li key={index}>
+              <button className="dropdown-item">{item.label}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
 
   const userBodyTemplate = (rowData) => {
     return (
@@ -45,6 +82,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
   const handleModalClose = () => {
     setIsModalVisible(false);
   };
+
   return (
     <div className="table__pencairan__saldo">
       {filterData.length > 0 ? (
@@ -87,6 +125,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
             <Column
               header="Action"
               field="action"
+              body={userStatusTemplate}
               headerClassName="table-header-border"
             />
           </DataTable>
