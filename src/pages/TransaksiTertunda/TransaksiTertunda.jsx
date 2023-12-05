@@ -100,7 +100,7 @@ function TransaksiTertunda() {
                                             <span >Filter</span>
                                             <button className="text-primary btn border-0 m-0 p-0 fw-semibold" >Reset</button>
                                         </div>
-                                        <span className="p-3 fw-medium" >Waktu transaksi : </span>
+                                        <span className="p-3 fw-semibold" >Waktu transaksi : </span>
                                         <FilterList title={'Transaksi Terbaru'} type={'radio'} />
                                         <FilterList title={'7 Hari Terakhir'} type={'radio'} />
                                         <FilterList title={'30 Hari Terakhir'} type={'radio'} />
@@ -109,13 +109,13 @@ function TransaksiTertunda() {
                                         <li>
                                             <hr className="dropdown-divider" />
                                         </li>
-                                        <span className="p-3 fw-medium" >status transaksi : </span>
+                                        <span className="p-3 fw-semibold" >status transaksi : </span>
                                         <FilterList title={'Sudah Bayar'} type={'checkbox'} />
                                         <FilterList title={'Belum Bayar'} type={'checkbox'} />
                                         <li>
                                             <hr className="dropdown-divider" />
                                         </li>
-                                        <span className="p-3 fw-medium" >Paket: </span>
+                                        <span className="p-3 fw-semibold" >Paket: </span>
                                         <FilterList title={'Konseling Instan'} type={'checkbox'} />
                                         <FilterList title={'Konseling Premium'} type={'checkbox'} />
                                     </ul>
