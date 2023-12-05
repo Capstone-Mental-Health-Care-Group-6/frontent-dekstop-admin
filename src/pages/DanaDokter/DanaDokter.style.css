@@ -21,7 +21,6 @@
 .wrapper__dana__dokter .table__pencairan__saldo .process-status,
 .wrapper__dana__dokter .table__pencairan__saldo .insuccess-status {
   display: inline-block;
-  text-align: center;
   justify-content: center;
   align-items: center;
   font-size: 14px;
@@ -56,6 +55,64 @@
   padding: 0 10rem;
 }
 /* end table dana dokter kosong */
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  p {
+  font-size: 16px;
+  color: #7c7c7c;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .nominal {
+  font-size: 24px;
+  color: #006fd4;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .success-background {
+  background-color: #d4f1dd;
+  color: #1b7a37;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .process-background {
+  background-color: #edf6ff;
+  color: #006fd4;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .insuccess-background {
+  background-color: #fff9db;
+  color: #aaa20b;
+}
 
 @media screen and (max-width: 800px) {
   .wrapper__dana__dokter .dana__dokter__kosong p {
