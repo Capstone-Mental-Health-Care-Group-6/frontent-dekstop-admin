@@ -10,6 +10,7 @@ const Button = ({
   bsTarget,
   bsDismiss,
   disabled,
+  ariaLabel,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const Button = ({
         className={className}
         onClick={onClick}
         id={id ? id : ""}
+        aria-label={ariaLabel}
         data-bs-toggle={bsTogle}
         data-bs-target={bsTarget}
         data-bs-dismiss={bsDismiss}
