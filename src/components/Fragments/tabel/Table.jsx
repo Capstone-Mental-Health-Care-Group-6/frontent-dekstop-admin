@@ -18,7 +18,7 @@ function Table({
 }) {
   return (
     <DataTable
-    header={header}
+      header={header}
       value={value}
       selectionMode={selectionMode}
       onRowUnselect={onRowUnselect}
@@ -32,7 +32,7 @@ function Table({
       filters={filters}
       globalFilterFields={globalFilterFields}
       rowsPerPageOptions={[5, 10, 25, 50]}
-      tableStyle={{ minWidth: "50rem" }}
+      tableStyle={{ minWidth: "50rem", minHeight: "55vh", maxHeight: "55vh" }}
       className="table-customers"
     >
       {children}
