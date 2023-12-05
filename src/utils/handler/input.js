@@ -2,7 +2,7 @@ export const nameHandler = (value, errState) => {
   if (value.trim() === "") {
     errState((prevState) => ({
       ...prevState,
-      name: "Nama tidak boleh kosong",
+      name: "Username tidak boleh kosong",
     }));
   } else if (value.length < 4) {
     errState((prevState) => ({
@@ -64,7 +64,7 @@ export const confirmPasswordHandler = (value, errState, password) => {
   if (value !== password) {
     errState((prevState) => ({
       ...prevState,
-      confirmPassword: "Password Tidak Sama",
+      confirmPassword: "Password Tidak Sesuai",
     }));
   } else {
     errState((prevState) => ({

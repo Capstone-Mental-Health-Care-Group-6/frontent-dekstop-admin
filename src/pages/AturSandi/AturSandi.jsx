@@ -1,6 +1,6 @@
 import "./AturSandi.style.css"
-
 import * as React from "react"
+import { useState } from "react"
 import Button from "../../components/Elements/button/Button"
 import ModalReset from "../../components/Fragments/modalReset/modalReset"
 import kunci from "../../assets/kunci.jpeg"
@@ -8,12 +8,12 @@ import { BsEye, BsEyeSlash, BsShieldLock } from "react-icons/bs"
 import { RiLockPasswordLine } from "react-icons/ri"
 
 const ResetPassword = () => {
-  const [password, setpassword] = React.useState("")
-  const [confirmPassword, setConfirmPassword] = React.useState("")
-  const [showPassNew, setShowPassNew] = React.useState(false)
-  const [showPassConfirm, setShowPassConfirm] = React.useState(false)
-  const [showModal, setShowModal] = React.useState(false)
-  const [isFormFilled, setIsFormFilled] = React.useState(false)
+  const [password, setpassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [showPassNew, setShowPassNew] = useState(false)
+  const [showPassConfirm, setShowPassConfirm] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [isFormFilled, setIsFormFilled] = useState(false)
 
   const handlepasswordChange = (e) => {
     setpassword(e.target.value)

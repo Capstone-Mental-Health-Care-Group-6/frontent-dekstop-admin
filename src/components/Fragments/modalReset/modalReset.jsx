@@ -42,7 +42,7 @@ const ModalReset = ({ onClose }) => {
           </p>
           <div className="modal-footer-container">
             <center>
-              <Button variant="link" onClick={onClose}>
+              <Button className="btt-ok" onClick={onClose}>
                 Oke
               </Button>
             </center>

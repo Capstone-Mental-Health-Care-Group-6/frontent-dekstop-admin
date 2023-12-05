@@ -130,7 +130,6 @@ const LoginForm = () => {
                   errorMessages.password !== "" ? "error" : ""
                 }`}
               />
-              {/* <label htmlFor="password">Password</label> */}
               <span className="icon-right">
                 {errorMessages.password !== "" && (
                   <BsExclamationCircle className="icon-error" />

@@ -42,8 +42,8 @@ const CustomModal = ({ title, email, btnSuccess, onClose }) => {
           </p>
           <div className="modal-footer-container">
             <center>
-              <Button variant="link" onClick={onClose}>
-                {btnSuccess}
+              <Button className="btt-ok" onClick={onClose}>
+                Oke
               </Button>
             </center>
           </div>

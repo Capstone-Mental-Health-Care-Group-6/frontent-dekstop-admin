@@ -1,5 +1,6 @@
 import "./ForgetPassword.style.css"
 import { Link } from "react-router-dom"
+import { useState } from "react"
 import * as React from "react"
 import Button from "../../components/Elements/button/Button"
 import CustomModal from "../../components/Fragments/modalLogin/modalLogin"
@@ -8,10 +9,10 @@ import { MdOutlineEmail } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 
 const ForgotPw = () => {
-  const [email, setEmail] = React.useState("")
-  const [isEmailSent, setIsEmailSent] = React.useState(false)
-  const [isEmailVerified, setIsEmailVerified] = React.useState(false)
-  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const [email, setEmail] = useState("")
+  const [isEmailSent, setIsEmailSent] = useState(false)
+  const [isEmailVerified, setIsEmailVerified] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const navigate = useNavigate()
 
   const handleEmailChange = (e) => {
@@ -50,7 +51,6 @@ const ForgotPw = () => {
               onChange={handleEmailChange}
               placeholder="Masukkan Email"
             />
-            {/* <label htmlFor="email">Email</label> */}
             <span className="icon left">
               <MdOutlineEmail />
             </span>
