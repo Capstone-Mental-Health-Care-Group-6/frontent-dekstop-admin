@@ -9,7 +9,7 @@ const ModalReset = ({ onClose }) => {
     <Modal show onHide={onClose} centered>
       <Modal.Body className="modal-content-container">
         <div>
-          <div style={{ marginBottom: 64 }}>
+          <div style={{ marginBottom: 65 }}>
             <center>
               <FaCheckCircle size={77} color="#29B753" />
             </center>
@@ -37,13 +37,13 @@ const ModalReset = ({ onClose }) => {
               textAlign: "center",
             }}
           >
-            Kata sandimu berhasil dirubah. Next time, inget-inget ya, kalo perlu
-            dicatet!
+            Kata sandimu berhasil dirubah. untuk mengatasi lupa pasword
+            dikemudian hari, mohon dicatat password barunya, ya.
           </p>
           <div className="modal-footer-container">
             <center>
-              <Button variant="success" onClick={onClose}>
-                Siap, salah 🙏
+              <Button variant="link" onClick={onClose}>
+                Oke
               </Button>
             </center>
           </div>

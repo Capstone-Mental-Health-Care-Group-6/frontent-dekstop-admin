@@ -103,7 +103,7 @@ const ResetPassword = () => {
           <Button
             type="submit"
             id="btn-submit"
-            className={`mt-4 btn btn-primary w-100 fw-bold ${
+            className={`mt-4 btn btn-secondary w-100 fw-bold ${
               !isFormFilled ? "disabled" : ""
             }`}
             text="Atur ulang kata sandi"

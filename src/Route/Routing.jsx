@@ -1,34 +1,32 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import ManageUser from "../pages/ManageUser/ManageUser";
-import DetailAkunUser from "../pages/DetailAkunUser/DetailAkunUser";
-import TransaksiUser from "../pages/TransaksiUser/TransaksiUser";
-import PaketKonseling from "../pages/PaketKonseling/PaketKonseling";
-import ManageDokter from "../pages/ManageDokter/ManageDokter";
-import DanaDokter from "../pages/DanaDokter/DanaDokter";
-import ManageArtikel from "../pages/ManageArtikel/ManageArtikel";
-import TransaksiTertunda from "../pages/TransaksiTertunda/TransaksiTertunda";
-import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUser";
-import EditProfile from "../pages/EditProfile/EditProfile";
-import LoginForm from "../pages/Login/Login";
-import RegisterForm from "../pages/Register/Register";
-import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
-import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
-import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
-import ResetPassword from "../pages/AturSandi/AturSandi";
-import DetailAkunDokter from "../pages/DetailAkunDokter/InformasiDokter/informasiDokter";
-import PengalamanDokter from "../pages/DetailAkunDokter/Pengalaman/PengalamanDokter";
-import DokumenDokter from "../pages/DetailAkunDokter/Dokumen/DokumenDokter";
-import ArtikelDokter from "../pages/DetailAkunDokter/Artikel/ArtikelDokter";
-import NotFound from "../pages/NotFound404/NotFound";
+import React from "react"
+import { Routes, Route } from "react-router-dom"
+import Dashboard from "../pages/Dashboard/Dashboard"
+import ManageUser from "../pages/ManageUser/ManageUser"
+import DetailAkunUser from "../pages/DetailAkunUser/DetailAkunUser"
+import TransaksiUser from "../pages/TransaksiUser/TransaksiUser"
+import PaketKonseling from "../pages/PaketKonseling/PaketKonseling"
+import ManageDokter from "../pages/ManageDokter/ManageDokter"
+import DanaDokter from "../pages/DanaDokter/DanaDokter"
+import ManageArtikel from "../pages/ManageArtikel/ManageArtikel"
+import TransaksiTertunda from "../pages/TransaksiTertunda/TransaksiTertunda"
+import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUser"
+import EditProfile from "../pages/EditProfile/EditProfile"
+import LoginForm from "../pages/Login/Login"
+import DetailArtikel from "../pages/DetailArtikel/DetailArtikel"
+import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis"
+import ForgotPw from "../pages/ForgotPassword/ForgotPassword"
+import ResetPassword from "../pages/AturSandi/AturSandi"
+import DetailAkunDokter from "../pages/DetailAkunDokter/InformasiDokter/informasiDokter"
+import PengalamanDokter from "../pages/DetailAkunDokter/Pengalaman/PengalamanDokter"
+import DokumenDokter from "../pages/DetailAkunDokter/Dokumen/DokumenDokter"
+import ArtikelDokter from "../pages/DetailAkunDokter/Artikel/ArtikelDokter"
+import NotFound from "../pages/NotFound404/NotFound"
 
 const Routing = () => {
   return (
     <Routes>
       <Route element={<LoginForm />} path="/" />
       <Route element={<Dashboard />} path="/dashboard-admin" />
-      <Route element={<RegisterForm />} path="register-admin" />
       <Route element={<ForgotPw />} path="forgot-password" />
       <Route element={<ResetPassword />} path="reset-password" />
       <Route element={<ManageUser />} path="admin-manage-user" />
@@ -87,7 +85,7 @@ const Routing = () => {
       {/* route ketika url tidak sesuai */}
       <Route element={<NotFound />} path="*" />
     </Routes>
-  );
-};
+  )
+}
 
-export default Routing;
+export default Routing

@@ -25,63 +25,51 @@ const LoginForm = () => {
   })
   const navigate = useNavigate()
 
-  const LoginForm = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [showPass, setShowPass] = useState(false)
-    const navigate = useNavigate()
+  const handleEmailChange = (e) => {
+    emailHandler(e.target.value, setErrorMessages)
+    setEmail(e.target.value)
+  }
 
-    const handleEmailChange = (e) => {
-      setEmail(e.target.value)
-    }
+  const handlePasswordChange = (e) => {
+    passwordHandler(e.target.value, setErrorMessages)
+    setPassword(e.target.value)
+  }
 
-    const handlePasswordChange = (e) => {
-      setPassword(e.target.value)
-    }
-
-    const handleSubmit = (e) => {
-      e.preventDefault()
-
-      // Validate email
-      if (!emailChecker(email)) {
-        setErrorMessages((prevState) => ({
-          ...prevState,
-          email:
-            "Pastikan menggunakan alamat email bisnis anda untuk masuk ke dalam sistem kami",
-        }))
-        return
-      } else {
-        setErrorMessages((prevState) => ({
-          ...prevState,
-          email: "",
-        }))
-      }
-
-      // Validate password
-      if (!passwordChecker(password)) {
-        setErrorMessages((prevState) => ({
-          ...prevState,
-          password: "Password minimal 8 karakter",
-        }))
-        return
-      } else {
-        setErrorMessages((prevState) => ({
-          ...prevState,
-          password: "",
-        }))
-      }
-
-      // Proceed with login if validation is successful
-      if (email && password) {
-        navigate("/")
-        console.log("Email:", email)
-        console.log("Password:", password)
-      }
-    }
+  const handleSubmit = (e) => {
     e.preventDefault()
-    navigate("/dashboard-admin")
-    console.log("Email:", email)
-    console.log("Password:", password)
+
+    if (!emailChecker(email)) {
+      setErrorMessages((prevState) => ({
+        ...prevState,
+        email:
+          "Pastikan menggunakan alamat email bisnis anda untuk masuk ke dalam sistem kami",
+      }))
+      return
+    } else {
+      setErrorMessages((prevState) => ({
+        ...prevState,
+        email: "",
+      }))
+    }
+
+    if (!passwordChecker(password)) {
+      setErrorMessages((prevState) => ({
+        ...prevState,
+        password: "Password minimal 8 karakter",
+      }))
+      return
+    } else {
+      setErrorMessages((prevState) => ({
+        ...prevState,
+        password: "",
+      }))
+    }
+
+    if (email && password) {
+      navigate("/dashboard-admin")
+      console.log("Email:", email)
+      console.log("Password:", password)
+    }
   }
 
   const handleTogglePassword = () => {
@@ -159,14 +147,14 @@ const LoginForm = () => {
             )}
           </div>
 
-          <Link to="/forgot-password" className="text-end mt-1">
+          <Link to="/forgot-password" className="text-end mt-1 forgot-password">
             Forgot Password?
           </Link>
 
           <Button
             type="submit"
             id="btn-submit"
-            className={`btn btn-primary w-100 fw-bold ${
+            className={`btn btn-secondary w-100 fw-bold ${
               isSubmitButtonDisabled ? "disabled" : ""
             }`}
             text="Masuk"
@@ -174,7 +162,7 @@ const LoginForm = () => {
             disabled={isSubmitButtonDisabled}
           />
           <p className="fw-bold text-center mt-3">
-            Belum punya akun? <Link to="/register-admin">Sign Up</Link>{" "}
+            Belum punya akun? <span className="sign">Sign Up</span>
           </p>
         </form>
       </div>

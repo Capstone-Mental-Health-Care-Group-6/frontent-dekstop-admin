@@ -127,3 +127,44 @@ input.error,
   border-color: #f08080;
   color: #f08080;
 }
+
+.forgot-password-link {
+  color: gray;
+}
+
+.btn:disabled {
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+
+}
+
+
+.btn:not(:disabled) {
+  background-color: blue;
+  color: white;
+
+}
+
+/* .btn-secondary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+} */
+
+.forgot-password {
+  color: grey;
+  /* text-decoration: none; */
+}
+
+.btn-secondary:hover {
+  background-color: #0056b3 !important;
+}
+
+.btn-secondary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.sign {
+  color: #0056b3;
+}

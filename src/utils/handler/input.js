@@ -45,7 +45,7 @@ export const passwordHandler = (value, errState) => {
   if (value.length < 8) {
     errState((prevState) => ({
       ...prevState,
-      password: "Password Minimal 8 Karakter",
+      password: "Password harus terdiri dari minimal 8 karakter dengan kombinasi huruf besar, huruf kecil, angka, dan karakter khusus",
     }));
   } else if (!(hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar)) {
     errState((prevState) => ({
