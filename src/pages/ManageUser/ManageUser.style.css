@@ -1,0 +1,49 @@
+#manage-user {
+  font-family: "Montserrat", sans-serif;
+}
+
+.manage-user .row .col .card h6 {
+  color: #a7a7a7;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.manage-user .row .col .card h5 {
+  color: #323232;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.data-user .card h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+
+.data-user .card .card-body .col-md-2 .btn-group {
+  width: 100%;
+  height: 42px;
+  text-align: left;
+  
+}
+
+.data-user .card .card-body .col-md-2 .btn-group button {
+  border-radius: 8px;
+  display: flex;
+}
+
+.data-user .card .card-body .col-md-2 .btn-group button .icon-filter {
+  color: #7C7C7C;
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.data-user .card .card-body .col-md-2 .btn-group button p {
+  color: #7C7C7C;
+  margin-top: 5px;
+}
+
+.data-user .card .card-body .col-md-2 .btn-group .dropdown-menu {
+  width: 232px;
+}
