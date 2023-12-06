@@ -10,41 +10,50 @@ const DokumenDokter = () => {
         <LayoutDetailDokter>
           <DetailDokterCard>
             <div>
-              <div className="title-card">
+              <div classNameName="title-card">
                 <p>Dokumen</p>
               </div>
 
               <div>
-                <div class="mb-3">
-                  <label for="formFileMultiple" class="form-label fw-semibold">
+                <div className="mb-3">
+                  <label
+                    for="formFileMultiple"
+                    className="form-label fw-semibold"
+                  >
                     CV/Resume
                   </label>
                   <input
-                    class="form-control"
+                    className="form-control"
                     type="file"
                     id="formFileMultiple"
                     multiple
                   />
                 </div>
 
-                <div class="mb-3">
-                  <label for="formFileMultiple" class="form-label fw-semibold">
+                <div classNameName="mb-3">
+                  <label
+                    for="formFileMultiple"
+                    className="form-label fw-semibold"
+                  >
                     Surat Ijin Praktik (SIP)
                   </label>
                   <input
-                    class="form-control"
+                    classNameName="form-control"
                     type="file"
                     id="formFileMultiple"
                     multiple
                   />
                 </div>
 
-                <div class="mb-3">
-                  <label for="formFileMultiple" class="form-label fw-semibold">
+                <div className="mb-3">
+                  <label
+                    for="formFileMultiple"
+                    className="form-label fw-semibold"
+                  >
                     Ijazah
                   </label>
                   <input
-                    class="form-control"
+                    classNameName="form-control"
                     type="file"
                     id="formFileMultiple"
                     multiple
