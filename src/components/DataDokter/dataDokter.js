@@ -12,6 +12,7 @@ import {
 export const dataDokter = [
   {
     id: 1,
+    statusAkun: "Aktif",
     image: avatar1,
     doctorName: "dr. Darlene Robertson",
     email: "alma.lawson@example.com",
@@ -29,6 +30,7 @@ export const dataDokter = [
   },
   {
     id: 2,
+    statusAkun: "Aktif",
     image: avatar2,
     doctorName: "dr. Albert Flores",
     email: "willie.jennings@example.com",
@@ -46,6 +48,7 @@ export const dataDokter = [
   },
   {
     id: 3,
+    statusAkun: "Aktif",
     image: avatar3,
     doctorName: "dr. Bessie Cooper",
     email: "tim.jennings@example.com",
@@ -63,6 +66,7 @@ export const dataDokter = [
   },
   {
     id: 4,
+    statusAkun: "Aktif",
     image: avatar4,
     doctorName: "dr. Marvin McKinney",
     email: "michael.mitc@example.com",
@@ -80,6 +84,7 @@ export const dataDokter = [
   },
   {
     id: 5,
+    statusAkun: "Aktif",
     image: avatar5,
     doctorName: "dr. Ralph Edwards",
     email: "debra.holt@example.com",
@@ -97,6 +102,7 @@ export const dataDokter = [
   },
   {
     id: 6,
+    statusAkun: "Aktif",
     image: avatar6,
     doctorName: "dr. Esther Howard",
     email: "abill.sanders@example.com",
@@ -114,6 +120,7 @@ export const dataDokter = [
   },
   {
     id: 7,
+    statusAkun: "Aktif",
     image: avatar7,
     doctorName: "dr. Darrell Steward",
     email: "kenzi.lawson@example.com",
@@ -131,6 +138,7 @@ export const dataDokter = [
   },
   {
     id: 8,
+    statusAkun: "Aktif",
     image: avatar8,
     doctorName: "dr. Alika Angelina",
     email: "jessica.hanson@example.com",

@@ -59,8 +59,8 @@ const DetailAkunDokter = () => {
                 </div>
               </div>
 
-              <div class="sb sb-5">
-                <hr class="section-break-5" />
+              <div className="sb sb-5">
+                <hr className="section-break-5" />
               </div>
 
               <div className="title-card">
