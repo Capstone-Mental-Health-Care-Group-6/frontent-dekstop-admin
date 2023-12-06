@@ -10,14 +10,12 @@ import { LuFilter } from "react-icons/lu";
 import UserTable from "../../components/Fragments/userTable/userTable";
 import "./ManageUser.style.css";
 
-
 const ManageUser = () => {
-  const [searchValue, setSearchValue] = useState(''); // State untuk nilai pencarian
+  const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
-
 
   return (
     <Layouts titlePage={"Manage User"}>
@@ -26,7 +24,11 @@ const ManageUser = () => {
           {cardManageUsers.map((item, index) => (
             <div className="col" key={index}>
               {/* <Link to={item.location} className="text-decoration-none"> */}
-                <Card src={item.image} cardSubtitle={item.text} cardTitle={item.total}></Card>
+              <Card
+                src={item.image}
+                cardSubtitle={item.text}
+                cardTitle={item.total}
+              ></Card>
               {/* </Link> */}
             </div>
           ))}
@@ -41,7 +43,13 @@ const ManageUser = () => {
                 <h4>Data User</h4>
               </div>
               <div className="col-md-2">
-                <Search size={20} placeholder={"Search"} value={searchValue} onChange={handleSearchChange} /> {/* Menggunakan nilai pencarian dan fungsi onChange */}
+                <Search
+                  size={20}
+                  placeholder={"Search"}
+                  value={searchValue}
+                  onChange={handleSearchChange}
+                />{" "}
+                {/* Menggunakan nilai pencarian dan fungsi onChange */}
               </div>
               <div className="col-md-2">
                 <div className="btn-group">
@@ -50,30 +58,30 @@ const ManageUser = () => {
                     className="btn border-secondary-subtle"
                     data-bs-toggle="dropdown"
                   >
-                    <LuFilter className="icon-filter"/>
+                    <LuFilter className="icon-filter" />
                     <p>Filter</p>
                   </button>
                   <ul className="dropdown-menu">
-                    <div className="d-flex justify-content-between fw-semibold p-3" >
-                      <span >Filter</span>
-                      <span className="text-primary" >Reset</span>
+                    <div className="d-flex justify-content-between fw-semibold p-3">
+                      <span>Filter</span>
+                      <span className="text-primary">Reset</span>
                     </div>
-                    <span className="p-3 fw-medium" >Status Akun : </span>
-                    <FilterList title={'Aktif'} type={'checkbox'} />
-                    <FilterList title={'Non Aktif'} type={'checkbox'} />
+                    <span className="p-3 fw-medium">Status Akun : </span>
+                    <FilterList title={"Aktif"} type={"checkbox"} />
+                    <FilterList title={"Non Aktif"} type={"checkbox"} />
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
-                    <span className="p-3 fw-medium" >Paket : </span>
-                    <FilterList title={'Konseling Instan'} type={'checkbox'} />
-                    <FilterList title={'Konseling Premium'} type={'checkbox'} />
-                    <FilterList title={'Non Aktif'} type={'checkbox'} />
+                    <span className="p-3 fw-medium">Paket : </span>
+                    <FilterList title={"Konseling Instan"} type={"checkbox"} />
+                    <FilterList title={"Konseling Premium"} type={"checkbox"} />
+                    <FilterList title={"Non Aktif"} type={"checkbox"} />
                   </ul>
                 </div>
-
               </div>
             </div>
-            <UserTable data={dataUsers} searchValue={searchValue} /> {/* Meneruskan nilai pencarian ke UserTable */}
+            <UserTable data={dataUsers} searchValue={searchValue} />{" "}
+            {/* Meneruskan nilai pencarian ke UserTable */}
           </div>
         </div>
       </section>

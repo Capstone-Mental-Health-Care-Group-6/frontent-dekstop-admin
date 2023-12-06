@@ -39,19 +39,19 @@ const Routing = () => {
       <Route element={<ManageDokter />} path="admin-manage-dokter" />
       <Route
         element={<DetailAkunDokter />}
-        path="admin-manage-dokter/detail-akun-dokter"
+        path="admin-manage-dokter/detail-akun-dokter/:id"
       />
       <Route
         element={<DokumenDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/dokumen"
+        path="admin-manage-dokter/detail-akun-dokter/dokumen/:id"
       />
       <Route
         element={<PengalamanDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/pengalaman"
+        path="admin-manage-dokter/detail-akun-dokter/pengalaman/:id"
       />
       <Route
         element={<ArtikelDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/artikel"
+        path="admin-manage-dokter/detail-akun-dokter/artikel/:id"
       />
       <Route element={<DanaDokter />} path="admin-dana-dokter" />
       <Route element={<ManageArtikel />} path="admin-manage-artikel" />
@@ -81,7 +81,6 @@ const Routing = () => {
         path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id"
       />
       <Route element={<EditProfile />} path="admin-edit-profile" />
-
       {/* route ketika url tidak sesuai */}
       <Route element={<NotFound />} path="*" />
     </Routes>

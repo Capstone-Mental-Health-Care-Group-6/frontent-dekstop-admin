@@ -4,8 +4,12 @@ import LayoutDetailDokter from "../../../Layouts/LayoutDetailDokter/LayoutDetail
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
 import ArtikelCard from "../../../components/Fragments/card/artikel-card/ArtikelCard";
 import { artikeldokter } from "../../../../image";
+import { useParams } from "react-router-dom";
+import { dataDokter } from "../../../components/DataDokter/dataDokter";
 
 const ArtikelDokter = () => {
+  const { id } = useParams();
+  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   return (
     <>
       <Layouts titlePage={"Detail Akun Dokter"}>
