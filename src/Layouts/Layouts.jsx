@@ -26,6 +26,7 @@ function Layouts({ children, titlePage }) {
   };
 
   const handleLogoutConfirm = () => {
+    localStorage.removeItem('token')
     navigate("/");
     setShowLogoutModal(false);
   };
