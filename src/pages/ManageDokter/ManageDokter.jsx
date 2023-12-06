@@ -9,11 +9,10 @@ import {
   sandClock,
 } from "../../../image";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
-import Filter from "../../components/Elements/FilterManageUser/FilterManageUser";
-import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
-import { dataDokter } from "../../components/DataDokter/dataDokter";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
+import { dataDokter } from "../../components/DataDokter/dataDokter";
 import { LuFilter } from "react-icons/lu";
+import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
 
 const ManageDokter = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -102,7 +101,7 @@ const ManageDokter = () => {
                   </div>
                 </div>
               </div>
-              <DokterTable data={dataDokter} searchValue={searchValue} />
+              <DokterTable data={dataDokter} searchValue={searchValue} />{" "}
             </div>
           </div>
         </section>

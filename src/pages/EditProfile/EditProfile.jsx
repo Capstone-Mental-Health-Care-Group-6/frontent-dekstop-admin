@@ -6,6 +6,7 @@ import Label from "../../components/Elements/input/Label";
 import "./EditProfile.styles.css";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
+import { Gambar } from "../../../image";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -241,11 +242,7 @@ const EditProfile = () => {
               />
             ) : (
               <div className="card" style={{ width: "18rem" }}>
-                <img
-                  src="../src/assets/Gambar.png"
-                  className="card-img-top"
-                  alt="Placeholder"
-                />
+                <img src={Gambar} className="card-img-top" alt="Placeholder" />
               </div>
             )}
           </div>
