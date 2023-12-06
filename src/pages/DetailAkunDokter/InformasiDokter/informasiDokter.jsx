@@ -15,7 +15,7 @@ const DetailAkunDokter = () => {
       <Layouts titlePage={"Detail Akun Dokter"}>
         <LayoutDetailDokter>
           <DetailDokterCard>
-            <div className="">
+            <div className="d-flex flex-column gap-3">
               <div className="title-card">
                 <p>Informasi Umum</p>
               </div>
@@ -58,7 +58,33 @@ const DetailAkunDokter = () => {
                   </div>
                 </div>
               </div>
-              <div></div>
+
+              <div class="sb sb-5">
+                <hr class="section-break-5" />
+              </div>
+
+              <div className="title-card">
+                <div>
+                  <p>Informasi Akademik</p>
+                </div>
+              </div>
+
+              <div>
+                <div className="informasi-umum1 d-flex flex-column gap-3">
+                  <div className="">
+                    Nama Universitas <br />
+                    <span className="fw-semibold">{dokter.university}</span>
+                  </div>
+                  <div className="">
+                    Jurusan <br />
+                    <span className="fw-semibold">{dokter.departement}</span>
+                  </div>
+                  <div className="">
+                    Periode <br />
+                    <span className="fw-semibold">{dokter.period}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </DetailDokterCard>
         </LayoutDetailDokter>

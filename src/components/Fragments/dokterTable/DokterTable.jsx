@@ -5,7 +5,7 @@ import { Dialog } from "primereact/dialog";
 import "./DokterTable.style.css";
 import { NonAktifkanAkun, DetailAkun } from "../../../../image";
 import { Link, useNavigate } from "react-router-dom";
-import { dataDokter } from "../../../components/DataDokter/dataDokter";
+import { dataDokter } from "../../DataDokter/dataDokter";
 
 const DokterTable = ({ data, id }) => {
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
@@ -67,6 +67,20 @@ const DokterTable = ({ data, id }) => {
     setShowConfirmation(false);
   };
 
+  const actionItems = [
+    { icon: DetailAkun, label: "Lihat detail akun", action: "view" },
+    { icon: NonAktifkanAkun, label: "Non aktifkan akun", action: "deactivate" },
+  ];
+
+  // const filteredData = data.filter((user) => {
+  //   return (
+  //     user.userName.toLowerCase().includes(searchValue.toLowerCase()) ||
+  //     user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+  //     user.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
+  //     user.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
+  //   );
+  // });
+
   const dialogFooter = (
     <div className="dialog-footer">
       <button
@@ -91,6 +105,7 @@ const DokterTable = ({ data, id }) => {
     <div className="p-mt-4">
       <DataTable
         value={data}
+        // value={filteredData}
         className="p-datatable-sm"
         rowClassName="table-row-height"
         onSelect={navigation("/")}
@@ -116,7 +131,7 @@ const DokterTable = ({ data, id }) => {
           headerClassName="table-header-border"
         />
 
-        <Column
+        {/* <Column
           body={(rowData) => (
             <button
               className="border-0 bg-light fw-bold"
@@ -124,6 +139,45 @@ const DokterTable = ({ data, id }) => {
             >
               ...
             </button>
+          )}
+          header="Action"
+          headerClassName="table-header-border"
+        /> */}
+        <Column
+          body={(rowData) => (
+            <div className="dropdown">
+              <button
+                className="btn"
+                type="button"
+                id={`dropdownMenuButton-${rowData.id}`}
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="action-symbol fw-bold">...</span>
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby={`dropdownMenuButton-${rowData.id}`}
+              >
+                {actionItems.map((item, index) => (
+                  <li key={index}>
+                    <button
+                      className="dropdown-item"
+                      onClick={() =>
+                        handleActionSelection(item.action, rowData)
+                      }
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.label}
+                        className="icon-before-label me-2"
+                      />{" "}
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
           header="Action"
           headerClassName="table-header-border"

@@ -20,9 +20,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "364723648632647",
-    gender:"Perempuan",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Perempuan",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 2,
@@ -34,9 +37,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "274763287647326",
-    gender:"Laki-laki",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Laki-laki",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 3,
@@ -48,9 +54,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "3479382798372499",
-    gender:"Wanita",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Wanita",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 4,
@@ -62,10 +71,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "394763274893274",
-    gender:"Laki-laki",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
-
+    gender: "Laki-laki",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 5,
@@ -77,9 +88,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "847587236497334",
-    gender:"Laki-laki",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Laki-laki",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 6,
@@ -91,9 +105,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "374589237489732",
-    gender:"Laki-laki",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Laki-laki",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 7,
@@ -105,9 +122,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "754832768773298",
-    gender:"Laki-laki",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Laki-laki",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
   {
     id: 8,
@@ -119,9 +139,12 @@ export const dataDokter = [
     action: "...",
     job: "Psikologi Klinis",
     nik: "384932840982394",
-    gender:"Perempuan",
-    birth:"31 Desember 2023",
-    hometown: "Surabaya"
+    gender: "Perempuan",
+    birth: "31 Desember 2023",
+    hometown: "Surabaya",
+    university: "Universitas Indonesia",
+    departement: "S1 - Psikologi",
+    period: "2020-2024",
   },
 ];
 
