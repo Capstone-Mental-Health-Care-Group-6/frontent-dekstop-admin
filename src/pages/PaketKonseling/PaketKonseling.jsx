@@ -120,7 +120,7 @@ const PaketKonseling = () => {
                       <div className=" d-flex gap-3 align-items-center ">
                         <img className="image-konsultasi" src={item.image} />
                         <div>
-                          <h6 className="m-0" >{item.paket}</h6>
+                          <h6 className="m-0 text-black fw-medium" >{item.paket}</h6>
                           <h5 className="m-0 fw-bold" >{item.sesi}</h5>
                         </div>
                       </div>

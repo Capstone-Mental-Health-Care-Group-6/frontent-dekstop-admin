@@ -1,6 +1,6 @@
 import "./AturSandi.style.css"
-
 import * as React from "react"
+import { useState } from "react"
 import Button from "../../components/Elements/button/Button"
 import ModalReset from "../../components/Fragments/modalReset/modalReset"
 import kunci from "../../assets/kunci.jpeg"
@@ -8,12 +8,12 @@ import { BsEye, BsEyeSlash, BsShieldLock } from "react-icons/bs"
 import { RiLockPasswordLine } from "react-icons/ri"
 
 const ResetPassword = () => {
-  const [password, setpassword] = React.useState("")
-  const [confirmPassword, setConfirmPassword] = React.useState("")
-  const [showPassNew, setShowPassNew] = React.useState(false)
-  const [showPassConfirm, setShowPassConfirm] = React.useState(false)
-  const [showModal, setShowModal] = React.useState(false)
-  const [isFormFilled, setIsFormFilled] = React.useState(false)
+  const [password, setpassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [showPassNew, setShowPassNew] = useState(false)
+  const [showPassConfirm, setShowPassConfirm] = useState(false)
+  const [showModal, setShowModal] = useState(false)
+  const [isFormFilled, setIsFormFilled] = useState(false)
 
   const handlepasswordChange = (e) => {
     setpassword(e.target.value)
@@ -63,9 +63,9 @@ const ResetPassword = () => {
               id="password"
               value={password}
               onChange={handlepasswordChange}
-              placeholder=""
+              placeholder="Password Baru"
             />
-            <label htmlFor="password">Password Baru</label>
+            {/* <label htmlFor="password">Password Baru</label> */}
             <span className="icon left">
               <RiLockPasswordLine />
             </span>
@@ -85,9 +85,9 @@ const ResetPassword = () => {
               id="confirmation"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              placeholder=""
+              placeholder="Konfirmasi Password Baru"
             />
-            <label htmlFor="confirmation">Konfirmasi Password Baru</label>
+            {/* <label htmlFor="confirmation">Konfirmasi Password Baru</label> */}
             <span className="icon left">
               <RiLockPasswordLine />
             </span>
@@ -103,7 +103,7 @@ const ResetPassword = () => {
           <Button
             type="submit"
             id="btn-submit"
-            className={`mt-4 btn btn-primary w-100 fw-bold ${
+            className={`mt-4 btn btn-secondary w-100 fw-bold ${
               !isFormFilled ? "disabled" : ""
             }`}
             text="Atur ulang kata sandi"
