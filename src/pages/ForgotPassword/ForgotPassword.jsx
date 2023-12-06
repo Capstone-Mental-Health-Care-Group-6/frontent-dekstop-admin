@@ -1,36 +1,36 @@
-import "./ForgetPassword.style.css"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import * as React from "react"
-import Button from "../../components/Elements/button/Button"
-import CustomModal from "../../components/Fragments/modalLogin/modalLogin"
-import EmpathiCare from "../../assets/emphatiCare.jpg"
-import { MdOutlineEmail } from "react-icons/md"
-import { useNavigate } from "react-router-dom"
+import "./ForgetPassword.style.css";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import * as React from "react";
+import Button from "../../components/Elements/button/Button";
+import CustomModal from "../../components/Fragments/modalLogin/modalLogin";
+import EmpathiCare from "../../assets/emphatiCare.jpg";
+import { MdOutlineEmail } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPw = () => {
-  const [email, setEmail] = useState("")
-  const [isEmailSent, setIsEmailSent] = useState(false)
-  const [isEmailVerified, setIsEmailVerified] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [isEmailVerified, setIsEmailVerified] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handleForgotPassword = async () => {
     try {
-      setIsEmailSent(true)
-      setIsEmailVerified(true)
+      setIsEmailSent(true);
+      setIsEmailVerified(true);
       setTimeout(() => {
-        setIsModalOpen(true)
-      }, 1000)
+        setIsModalOpen(true);
+      }, 1000);
       // navigate('/ModalLogin');
     } catch (error) {
-      console.error("Gagal mengirim email reset:", error)
+      console.error("Gagal mengirim email reset:", error);
     }
-  }
+  };
 
   return (
     <div className="content-center">
@@ -65,12 +65,6 @@ const ForgotPw = () => {
             onClick={handleForgotPassword}
             disabled={!email}
           />
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0 text-muted">Atau</p>
-          </div>
-          <p className="text-center fw-bold mx-3 mb-0 text-muted">
-            <span className="akun">Buat Akun Baru </span>
-          </p>
         </form>
       </div>
 
@@ -83,7 +77,7 @@ const ForgotPw = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPw
+export default ForgotPw;

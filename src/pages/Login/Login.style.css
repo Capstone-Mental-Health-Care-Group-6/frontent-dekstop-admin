@@ -71,7 +71,7 @@
   position: relative;
 }
 
-.floating2~span {
+.floating2 ~ span {
   text-align: left !important;
   font-size: 9pt;
   color: #f08080;
@@ -113,8 +113,8 @@
   gap: 0.75rem;
 }
 
-.floating2 input:focus+label,
-.floating2 input:not(:placeholder-shown)+label {
+.floating2 input:focus + label,
+.floating2 input:not(:placeholder-shown) + label {
   top: 0;
   color: #61a1fe;
   background: white;
@@ -139,8 +139,8 @@ input.error,
 
 } */
 
-.btn:not(:disabled) {
-  background-color: blue;
+#btn-submit:not(:disabled) {
+  background-color: #0085ff;
   color: white;
 }
 

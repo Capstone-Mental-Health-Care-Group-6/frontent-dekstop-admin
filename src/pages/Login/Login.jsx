@@ -1,84 +1,87 @@
-import "./Login.style.css"
-import React, { useState, useEffect } from "react"
-// import * as React from "react"
-import Button from "../../components/Elements/button/Button"
-import EmpathiCare from "../../assets/emphatiCare.jpg"
-import { BsEye, BsEyeSlash, BsExclamationCircle } from "react-icons/bs"
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import "./Login.style.css";
+import React, { useState, useEffect } from "react";
+import Button from "../../components/Elements/button/Button";
+import EmpathiCare from "../../assets/emphatiCare.jpg";
+import { BsEye, BsEyeSlash, BsExclamationCircle } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   confirmPasswordHandler,
   emailChecker,
   emailHandler,
   passwordChecker,
   passwordHandler,
-} from "../../utils/handler/input"
+} from "../../utils/handler/input";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPass, setShowPass] = useState(false)
-  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
   const [errorMessages, setErrorMessages] = useState({
     email: "",
     password: "",
-  })
-  const navigate = useNavigate()
+  });
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
-    emailHandler(e.target.value, setErrorMessages)
-    setEmail(e.target.value)
-  }
+    emailHandler(e.target.value, setErrorMessages);
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e) => {
-    passwordHandler(e.target.value, setErrorMessages)
-    setPassword(e.target.value)
-  }
+    passwordHandler(e.target.value, setErrorMessages);
+    setPassword(e.target.value);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!emailChecker(email)) {
       setErrorMessages((prevState) => ({
         ...prevState,
         email:
           "Pastikan menggunakan alamat email bisnis anda untuk masuk ke dalam sistem kami",
-      }))
-      return
+      }));
+      return;
     } else {
       setErrorMessages((prevState) => ({
         ...prevState,
         email: "",
-      }))
+      }));
     }
 
     if (!passwordChecker(password)) {
       setErrorMessages((prevState) => ({
         ...prevState,
         password: "Password minimal 8 karakter",
-      }))
-      return
+      }));
+      return;
     } else {
       setErrorMessages((prevState) => ({
         ...prevState,
         password: "",
-      }))
+      }));
     }
 
     if (email && password) {
-      navigate("/dashboard-admin")
-      console.log("Email:", email)
-      console.log("Password:", password)
+      navigate("/dashboard-admin");
+      console.log("Email:", email);
+      console.log("Password:", password);
     }
-  }
+  };
 
   const handleTogglePassword = () => {
-    setShowPass(!showPass)
-  }
+    setShowPass(!showPass);
+  };
 
   useEffect(() => {
-    setIsSubmitButtonDisabled(!(email.trim() !== "" && password.trim() !== ""))
-  }, [email, password])
+    setIsSubmitButtonDisabled(
+      !(email.trim() !== "" && password.trim() !== "") ||
+        errorMessages.email !== "" ||
+        errorMessages.password !== ""
+    );
+  }, [email, password, errorMessages]);
 
   return (
     <div className="content-center">
@@ -160,13 +163,10 @@ const LoginForm = () => {
             onClick={handleSubmit}
             disabled={isSubmitButtonDisabled}
           />
-          <p className="fw-bold text-center mt-3">
-            Belum punya akun? <span className="sign">Sign Up</span>
-          </p>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
