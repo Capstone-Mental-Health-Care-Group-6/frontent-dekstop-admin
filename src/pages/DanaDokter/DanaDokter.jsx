@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import "./DanaDokter.style.css";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
-import TablePencairanSaldo from "../../components/Fragments/TablePencairansaldo/TablePencairanSaldo";
+import TablePencairanSaldo from "../../components/Fragments/TablePencairanSaldo/TablePencairanSaldo";
 import { dataTableDanaDokter } from "../../components/DataComponents/dataComponents";
 import { searchFailed } from "../../../image";
 // import Search from "../../components/Elements/search/Search";
