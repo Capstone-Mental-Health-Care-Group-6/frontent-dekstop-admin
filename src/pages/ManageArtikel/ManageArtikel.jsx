@@ -9,7 +9,7 @@ import {
 import Card from "../../components/Fragments/card/Card";
 import "./ManageArtikel.style.css";
 import Table from "../../components/Fragments/tabel/Table";
-import ColumnTable from "../../components/Elements/columnTable/ColumnTable";
+import ColumnTable from "../../components/Elements/ColumnTable/ColumnTable";
 import { dataArtikel } from "./dataArtikel";
 import Search from "../../components/Elements/search/Search";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
@@ -65,23 +65,23 @@ const ManageArtikel = () => {
             </div>
             <p className="fw-medium">Waktu transaksi : </p>
             <div className="fw-normal">
-            <FilterList title={"Publikasi Terbaru"} type={"radio"} />
-            <FilterList title={"7 Hari Terakhir"} type={"radio"} />
-            <FilterList title={"30 Hari Terakhir"} type={"radio"} />
-            <FilterList title={"Semua Tanggal"} type={"radio"} />
+              <FilterList title={"Publikasi Terbaru"} type={"radio"} />
+              <FilterList title={"7 Hari Terakhir"} type={"radio"} />
+              <FilterList title={"30 Hari Terakhir"} type={"radio"} />
+              <FilterList title={"Semua Tanggal"} type={"radio"} />
             </div>
             <li>
               <hr className="dropdown-divider" />
             </li>
             <p className="pt-2 fw-medium">Kategori : </p>
             <div className="fw-normal">
-            <FilterList title={"Anxiety"} type={"checkbox"} />
-            <FilterList title={"Depresi"} type={"checkbox"} />
-            <FilterList title={"Emosi"} type={"checkbox"} />
-            <FilterList title={"Kecemasan"} type={"checkbox"} />
-            <FilterList title={"Stress"} type={"checkbox"} />
-            <FilterList title={"Tips"} type={"checkbox"} />
-            <FilterList title={"Umum"} type={"checkbox"} />
+              <FilterList title={"Anxiety"} type={"checkbox"} />
+              <FilterList title={"Depresi"} type={"checkbox"} />
+              <FilterList title={"Emosi"} type={"checkbox"} />
+              <FilterList title={"Kecemasan"} type={"checkbox"} />
+              <FilterList title={"Stress"} type={"checkbox"} />
+              <FilterList title={"Tips"} type={"checkbox"} />
+              <FilterList title={"Umum"} type={"checkbox"} />
             </div>
           </ul>
         </div>
