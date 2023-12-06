@@ -12,8 +12,10 @@ import {
 } from "../../../image";
 import Card from "../../components/Fragments/card/Card";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
+import { useLogin } from "../../hooks/useLogin";
 
 const Dashboard = () => {
+  useLogin()
   return (
     <Layouts titlePage={"Dashboard"}>
       <div className="row">
