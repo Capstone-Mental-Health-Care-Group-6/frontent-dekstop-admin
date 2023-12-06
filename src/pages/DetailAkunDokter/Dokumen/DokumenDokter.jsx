@@ -37,8 +37,9 @@ const DokumenDokter = () => {
                   >
                     Surat Ijin Praktik (SIP)
                   </label>
+
                   <input
-                    classNameName="form-control"
+                    className="form-control"
                     type="file"
                     id="formFileMultiple"
                     multiple
@@ -53,7 +54,7 @@ const DokumenDokter = () => {
                     Ijazah
                   </label>
                   <input
-                    classNameName="form-control"
+                    className="form-control"
                     type="file"
                     id="formFileMultiple"
                     multiple
