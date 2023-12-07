@@ -131,7 +131,7 @@ const EditProfile = () => {
     console.log("Changes saved!");
 
     if (isFormValid) {
-      navigate("/dashboard-admin");
+      navigate("/admin/dashboard");
     }
   };
 

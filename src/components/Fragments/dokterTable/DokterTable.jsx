@@ -39,7 +39,7 @@ const DokterTable = ({ data, id, searchValue }) => {
     return (
       <Link
         className="doctor-name"
-        to={`/admin-manage-dokter/detail-akun-dokter/${rowData.id}`}
+        to={`/admin/manage/dokter/detail/${rowData.id}`}
       >
         <div className="d-flex align-items-center">
           <img
@@ -70,7 +70,7 @@ const DokterTable = ({ data, id, searchValue }) => {
 
     if (action === "view") {
       if (rowData) {
-        window.location.href = `/admin-manage-dokter/detail-akun-dokter/${rowData.id}`;
+        window.location.href = `/admin/manage/dokter/detail/${rowData.id}`;
       }
     } else if (action === "deactivate") {
       setShowConfirmation(true);

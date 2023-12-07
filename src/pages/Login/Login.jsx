@@ -19,6 +19,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
+  const [alertLogin, setAlertLogin] = useState('d-none')
   const [errorMessages, setErrorMessages] = useState({
     email: "",
     password: "",
@@ -68,17 +69,18 @@ const LoginForm = () => {
     const formLogin = {
       email,
       password,
-    }
+    };
 
     if (email && password) {
       login(formLogin, (status, res) => {
         if (status) {
-          navigate("/dashboard-admin");
-          localStorage.setItem('token', res.data.token.access_token);
+          navigate("/admin/dashboard");
+          localStorage.setItem("token", res.data.token.access_token);
         } else {
+          setAlertLogin('d-block')
           console.log(res);
         }
-      })
+      });
     }
   };
 
@@ -157,7 +159,7 @@ const LoginForm = () => {
               <span>{errorMessages.password}</span>
             )}
           </div>
-
+          <p className={`text-start text-danger m-0 fw-medium ${alertLogin}`}>Email dan Password tidak valid </p>
           <Link to="/forgot-password" className="text-end mt-1 forgot-password">
             Forgot Password?
           </Link>
