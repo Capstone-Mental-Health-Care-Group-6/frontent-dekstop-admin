@@ -19,6 +19,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
+  const [alertLogin, setAlertLogin] = useState('d-none')
   const [errorMessages, setErrorMessages] = useState({
     email: "",
     password: "",
@@ -76,6 +77,7 @@ const LoginForm = () => {
           navigate("/admin/dashboard");
           localStorage.setItem("token", res.data.token.access_token);
         } else {
+          setAlertLogin('d-block')
           console.log(res);
         }
       });
@@ -89,8 +91,8 @@ const LoginForm = () => {
   useEffect(() => {
     setIsSubmitButtonDisabled(
       !(email.trim() !== "" && password.trim() !== "") ||
-        errorMessages.email !== "" ||
-        errorMessages.password !== ""
+      errorMessages.email !== "" ||
+      errorMessages.password !== ""
     );
   }, [email, password, errorMessages]);
 
@@ -117,9 +119,8 @@ const LoginForm = () => {
                   value={email}
                   onChange={handleEmailChange}
                   placeholder="Masukkan Email"
-                  className={`bg-transparent ${
-                    errorMessages.email !== "" ? "error" : ""
-                  }
+                  className={`bg-transparent ${errorMessages.email !== "" ? "error" : ""
+                    }
               `}
                 />
                 <span className="icon-right">
@@ -140,9 +141,8 @@ const LoginForm = () => {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder=" Masukkan Kata Sandi"
-                className={`bg-transparent ${
-                  errorMessages.password !== "" ? "error" : ""
-                }`}
+                className={`bg-transparent ${errorMessages.password !== "" ? "error" : ""
+                  }`}
               />
               <span className="icon-right">
                 {errorMessages.password !== "" && (
@@ -159,7 +159,7 @@ const LoginForm = () => {
               <span>{errorMessages.password}</span>
             )}
           </div>
-
+          <p className={`text-start text-danger m-0 fw-medium ${alertLogin}`}>Email dan Password tidak valid </p>
           <Link to="/forgot-password" className="text-end mt-1 forgot-password">
             Forgot Password?
           </Link>
@@ -167,9 +167,8 @@ const LoginForm = () => {
           <Button
             type="submit"
             id="btn-submit"
-            className={`btn btn-secondary w-100 fw-bold ${
-              isSubmitButtonDisabled ? "disabled" : ""
-            }`}
+            className={`btn btn-secondary w-100 fw-bold ${isSubmitButtonDisabled ? "disabled" : ""
+              }`}
             text="Masuk"
             onClick={handleSubmit}
             disabled={isSubmitButtonDisabled}
