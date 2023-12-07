@@ -3,14 +3,19 @@ import Layouts from "../../../Layouts/Layouts";
 import LayoutDetailDokter from "../../../Layouts/LayoutDetailDokter/LayoutDetailDokter";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
 import "./informasiDokter.style.css";
+import { useParams } from "react-router-dom";
+import { dataDokter } from "../../../components/DataDokter/dataDokter";
 
 const DetailAkunDokter = () => {
+  const { id } = useParams();
+  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
+
   return (
     <div>
       <Layouts titlePage={"Detail Akun Dokter"}>
         <LayoutDetailDokter>
           <DetailDokterCard>
-            <div className="">
+            <div className="d-flex flex-column gap-3">
               <div className="title-card">
                 <p>Informasi Umum</p>
               </div>
@@ -19,53 +24,67 @@ const DetailAkunDokter = () => {
                 <div className="informasi-umum1 d-flex flex-column gap-3">
                   <div className="">
                     ID Akun <br />
-                    <span className="fw-semibold">{/* {id} */} 1234567890</span>
+                    <span className="fw-semibold">{dokter.id}</span>
                   </div>
                   <div>
                     Nama Lengkap <br />
-                    <span className="fw-semibold">
-                      {/* {namaLengkap} */} Lika Angelina
-                    </span>
+                    <span className="fw-semibold">{dokter.doctorName}</span>
                   </div>
                   <div>
                     No Telp <br />
-                    <span className="fw-semibold">
-                      {/* {notelp} */} 08123456789
-                    </span>
+                    <span className="fw-semibold">{dokter.telephone}</span>
                   </div>
                   <div>
                     Email <br />
-                    <span className="fw-semibold">
-                      {/* {email} */} leao90@gmail.com
-                    </span>
+                    <span className="fw-semibold">{dokter.email}</span>
                   </div>
                 </div>
                 <div className="informasi-umum2 d-flex flex-column gap-3">
                   <div>
                     NIK <br />
-                    <span className="fw-semibold">
-                      {/* {nik} */} 1927391782039
-                    </span>
+                    <span className="fw-semibold">{dokter.nik}</span>
                   </div>
                   <div>
                     Tanggal Lahir <br />
-                    <span className="fw-semibold">
-                      {/* tanggalLahir */} 08 September 1996
-                    </span>
+                    <span className="fw-semibold">{dokter.birth}</span>
                   </div>
                   <div>
                     Asal Kota <br />
-                    <span className="fw-semibold">{/* {asalKota} */} Solo</span>
+                    <span className="fw-semibold">{dokter.hometown}</span>
                   </div>
                   <div>
                     Jenis Kelamin <br />
-                    <span className="fw-semibold">
-                      {/* {jenisKelamin} */} Perempuan
-                    </span>
+                    <span className="fw-semibold">{dokter.gender}</span>
                   </div>
                 </div>
               </div>
-              <div></div>
+
+              <div class="sb sb-5">
+                <hr class="section-break-5" />
+              </div>
+
+              <div className="title-card">
+                <div>
+                  <p>Informasi Akademik</p>
+                </div>
+              </div>
+
+              <div>
+                <div className="informasi-umum1 d-flex flex-column gap-3">
+                  <div className="">
+                    Nama Universitas <br />
+                    <span className="fw-semibold">{dokter.university}</span>
+                  </div>
+                  <div className="">
+                    Jurusan <br />
+                    <span className="fw-semibold">{dokter.departement}</span>
+                  </div>
+                  <div className="">
+                    Periode <br />
+                    <span className="fw-semibold">{dokter.period}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </DetailDokterCard>
         </LayoutDetailDokter>
