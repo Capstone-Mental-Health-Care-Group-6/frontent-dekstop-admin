@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { LuFilter } from "react-icons/lu";
-import UserTable from "../../components/Fragments/userTable/userTable";
+import UserTable from "../../components/Fragments/userTable/UserTable";
 import "./ManageUser.style.css";
 
 const ManageUser = () => {
