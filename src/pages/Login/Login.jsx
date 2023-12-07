@@ -68,17 +68,17 @@ const LoginForm = () => {
     const formLogin = {
       email,
       password,
-    }
+    };
 
     if (email && password) {
       login(formLogin, (status, res) => {
         if (status) {
-          navigate("/dashboard-admin");
-          localStorage.setItem('token', res.data.token.access_token);
+          navigate("/admin/dashboard");
+          localStorage.setItem("token", res.data.token.access_token);
         } else {
           console.log(res);
         }
-      })
+      });
     }
   };
 
@@ -89,8 +89,8 @@ const LoginForm = () => {
   useEffect(() => {
     setIsSubmitButtonDisabled(
       !(email.trim() !== "" && password.trim() !== "") ||
-      errorMessages.email !== "" ||
-      errorMessages.password !== ""
+        errorMessages.email !== "" ||
+        errorMessages.password !== ""
     );
   }, [email, password, errorMessages]);
 
@@ -117,8 +117,9 @@ const LoginForm = () => {
                   value={email}
                   onChange={handleEmailChange}
                   placeholder="Masukkan Email"
-                  className={`bg-transparent ${errorMessages.email !== "" ? "error" : ""
-                    }
+                  className={`bg-transparent ${
+                    errorMessages.email !== "" ? "error" : ""
+                  }
               `}
                 />
                 <span className="icon-right">
@@ -139,8 +140,9 @@ const LoginForm = () => {
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder=" Masukkan Kata Sandi"
-                className={`bg-transparent ${errorMessages.password !== "" ? "error" : ""
-                  }`}
+                className={`bg-transparent ${
+                  errorMessages.password !== "" ? "error" : ""
+                }`}
               />
               <span className="icon-right">
                 {errorMessages.password !== "" && (
@@ -165,8 +167,9 @@ const LoginForm = () => {
           <Button
             type="submit"
             id="btn-submit"
-            className={`btn btn-secondary w-100 fw-bold ${isSubmitButtonDisabled ? "disabled" : ""
-              }`}
+            className={`btn btn-secondary w-100 fw-bold ${
+              isSubmitButtonDisabled ? "disabled" : ""
+            }`}
             text="Masuk"
             onClick={handleSubmit}
             disabled={isSubmitButtonDisabled}
