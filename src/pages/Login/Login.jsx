@@ -12,12 +12,14 @@ import {
   passwordChecker,
   passwordHandler,
 } from "../../utils/handler/input";
+import { login } from "../../service/authentication";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
+  const [alertLogin, setAlertLogin] = useState("d-none");
   const [errorMessages, setErrorMessages] = useState({
     email: "",
     password: "",
@@ -64,10 +66,21 @@ const LoginForm = () => {
       }));
     }
 
+    const formLogin = {
+      email,
+      password,
+    };
+
     if (email && password) {
-      navigate("/dashboard-admin");
-      console.log("Email:", email);
-      console.log("Password:", password);
+      login(formLogin, (status, res) => {
+        if (status) {
+          navigate("/admin/dashboard");
+          localStorage.setItem("token", res.data.token.access_token);
+        } else {
+          setAlertLogin("d-block");
+          console.log(res);
+        }
+      });
     }
   };
 
@@ -148,7 +161,9 @@ const LoginForm = () => {
               <span>{errorMessages.password}</span>
             )}
           </div>
-
+          <p className={`text-start text-danger m-0 fw-medium ${alertLogin}`}>
+            Email atau Password tidak valid{" "}
+          </p>
           <Link to="/forgot-password" className="text-end mt-1 forgot-password">
             Forgot Password?
           </Link>

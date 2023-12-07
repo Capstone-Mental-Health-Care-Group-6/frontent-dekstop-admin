@@ -157,7 +157,7 @@ const ManageArtikel = () => {
               globalFilterFields={["judul", "author"]}
               onRowSelect={(selected) => {
                 // console.log(selected.data.id)
-                navigate(`/admin-manage-artikel/${selected.data.id}`);
+                navigate(`/admin/manage/artikel/${selected.data.id}`);
               }}
               onSelectionChange={(e) => setSelected(e.value)}
               emptyMessage="Tidak ada data yang sesuai"

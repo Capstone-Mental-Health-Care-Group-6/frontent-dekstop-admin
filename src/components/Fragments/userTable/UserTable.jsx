@@ -57,7 +57,7 @@ const UserTable = ({ data, searchValue }) => {
 
     if (action === "view") {
       if (rowData) {
-        window.location.href = `/admin-manage-user/detail-akun-user/${rowData.id}`;
+        window.location.href = `/admin/manage/user/detail/${rowData.id}`;
       }
     } else if (action === "deactivate") {
       setShowConfirmation(true);

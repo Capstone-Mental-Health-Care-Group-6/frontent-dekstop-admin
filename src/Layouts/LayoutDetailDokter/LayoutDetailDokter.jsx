@@ -79,22 +79,22 @@ const LayoutDetailDokter = ({ children }) => {
                     <DetailDokterItem
                       img={icon1}
                       title="Informasi Dokter"
-                      location={`/admin-manage-dokter/detail-akun-dokter/${id}`}
+                      location={`/admin/manage/dokter/detail/${id}`}
                     />
                     <DetailDokterItem
                       img={icon2}
                       title="Dokumen"
-                      location={`/admin-manage-dokter/detail-akun-dokter/dokumen/${id}`}
+                      location={`/admin/manage/dokter/detail/dokumen/${id}`}
                     />
                     <DetailDokterItem
                       img={icon3}
                       title="Pengalaman"
-                      location={`/admin-manage-dokter/detail-akun-dokter/pengalaman/${id}`}
+                      location={`/admin/manage/dokter/detail/pengalaman/${id}`}
                     />
                     <DetailDokterItem
                       img={icon4}
                       title="Artikel"
-                      location={`/admin-manage-dokter/detail-akun-dokter/artikel/${id}`}
+                      location={`/admin/manage/dokter/detail/artikel/${id}`}
                     />
                     <div className="d-flex">
                       <div className="col-8 position-relative">

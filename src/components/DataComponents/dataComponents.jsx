@@ -134,7 +134,7 @@ export const cardTransaksiUser = [
     total: "20.000",
   },
   {
-    location: "/admin-transaksi-user/transaksi-tertunda",
+    location: "/admin/transaksi/user/tertunda",
     image: iconTertundaCard,
     text: "Transaksi Tertunda",
     total: "3900",
@@ -321,7 +321,7 @@ const styleName = (rowData) => {
 
       {rowData.metode_pembayaran === "Otomatis" ? (
         <Link
-          to={`/admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/${getValue(
+          to={`/admin/transaksi/user/tertunda/otomatis/${getValue(
             rowData,
             "id"
           )}`}
@@ -330,7 +330,7 @@ const styleName = (rowData) => {
         </Link>
       ) : (
         <Link
-          to={`/admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/${getValue(
+          to={`/admin/transaksi/user/tertunda/detail/${getValue(
             rowData,
             "id"
           )}`}

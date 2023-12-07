@@ -7,6 +7,7 @@ import CustomModal from "../../components/Fragments/modalLogin/modalLogin";
 import EmpathiCare from "../../assets/emphatiCare.jpg";
 import { MdOutlineEmail } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { forgetPassword } from "../../service/authentication";
 
 const ForgotPw = () => {
   const [email, setEmail] = useState("");
@@ -23,10 +24,16 @@ const ForgotPw = () => {
     try {
       setIsEmailSent(true);
       setIsEmailVerified(true);
-      setTimeout(() => {
-        setIsModalOpen(true);
-      }, 1000);
-      // navigate('/ModalLogin');
+      const dataEmail = { email: email }
+
+      forgetPassword(dataEmail, (status, res) => {
+        if (status) {
+          setIsModalOpen(true)
+          setEmail("")
+        } else {
+          console.log(res);
+        }
+      })
     } catch (error) {
       console.error("Gagal mengirim email reset:", error);
     }
@@ -58,9 +65,8 @@ const ForgotPw = () => {
           <Button
             type="button"
             id="btn-submit"
-            className={`btn btn-secondary w-100 fw-bold ${
-              email ? "bg-primary" : "disabled bg-gray-300"
-            }`}
+            className={`btn btn-secondary w-100 fw-bold ${email ? "bg-primary" : "disabled bg-gray-300"
+              }`}
             text="Kirim link verifikasi"
             onClick={handleForgotPassword}
             disabled={!email}
