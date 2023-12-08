@@ -7,17 +7,30 @@ import { dataCardKonsultasi } from "../../components/DataComponents/dataComponen
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAllBundle } from "../../service/bundleCounseling";
 
 
 const PaketKonseling = () => {
+  const [bundle, setBundle] = useState([])
+
+  // useEffect(() => {
+  //   getAllBundle((res) => {
+  //     setBundle(res)
+  //   })
+  // }, []);
+
+  // console.log(bundle);
+
 
   const [formData, setFormData] = useState({
-    image: null,
-    nama_paket: '',
-    harga: '',
-    jumlah_sesi: '',
-    keterangan_paket: ''
+    avatar: null,
+    name: '',
+    price: '',
+    sessions: '',
+    description: '',
+    active_priode: '1',
+    type: 'PREMIUM',
   })
 
   const handleChange = (e) => {
@@ -34,23 +47,25 @@ const PaketKonseling = () => {
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
-    setFormData({ ...formData, image: selectedImage })
+    setFormData({ ...formData, avatar: selectedImage })
   };
 
   const deleteState = () => {
     setFormData({
-      image: null,
-      nama_paket: '',
-      harga: '',
-      jumlah_sesi: '',
-      keterangan_paket: ''
+      avatar: null,
+      name: '',
+      price: '',
+      sessions: '',
+      description: '',
+      active_priode: '1',
+      type: 'PREMIUM',
     })
   }
 
   console.log(formData);
 
   return (
-    <Layouts titlePage={"Manage Dokter"}>
+    <Layouts titlePage={"Paket Konseling"}>
       <section className="paket-konseling" id="paket-konseling" >
 
         <section className="add-konseling mt-4">
@@ -69,8 +84,8 @@ const PaketKonseling = () => {
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
-                    {formData.image ? (
-                      <img src={URL.createObjectURL(formData.image)} />
+                    {formData.avatar ? (
+                      <img src={URL.createObjectURL(formData.avatar)} />
                     ) : (
                       <img src={defaultImageKonseling} />
                     )}
@@ -84,18 +99,18 @@ const PaketKonseling = () => {
                   </div>
                 </div>
 
-                <InputForm htmlFor={'nama_paket'} value={formData.nama_paket} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
-                <InputForm htmlFor={'harga'} value={formData.harga} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
-                <InputForm htmlFor={'jumlah_sesi'} value={formData.jumlah_sesi} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+                <InputForm htmlFor={'name'} value={formData.name} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
+                <InputForm htmlFor={'price'} value={formData.price} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                <InputForm htmlFor={'sessions'} value={formData.sessions} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
 
-                <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
+                <label htmlFor="description" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                 <div className="form-floating ">
                   <textarea
                     className="form-control p-2"
                     placeholder="Masukan Penjelasan Paket"
                     style={{ height: 200 }}
-                    name="keterangan_paket"
-                    value={formData.keterangan_paket}
+                    name="description"
+                    value={formData.description}
                     onChange={handleChange}
                   />
                 </div>
