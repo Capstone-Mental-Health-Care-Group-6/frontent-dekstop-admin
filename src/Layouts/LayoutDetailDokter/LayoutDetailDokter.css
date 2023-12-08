@@ -31,3 +31,30 @@
 .offcanvas-body {
   height: 10vh;
 }
+
+.wrap-detail-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.children-wrap {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 436px) {
+  .profile-card {
+    width: 75vw;
+  }
+
+  .detail-dokter-item {
+    width: 75vw;
+  }
+
+  .wrap-detail-card {
+    flex-direction: column;
+  }
+
+  .children-wrap {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,138 @@
+.wrapper__dana__dokter .d-flex h5 {
+  font-size: 20px;
+}
+
+/* table dana pencairan dokter */
+.wrapper__dana__dokter .table__pencairan__saldo .table-header-border {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  height: 48px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.wrapper__dana__dokter .table__pencairan__saldo .p-datatable-sm .nama__dokter {
+  cursor: pointer;
+}
+
+.wrapper__dana__dokter .table__pencairan__saldo .success-status,
+.wrapper__dana__dokter .table__pencairan__saldo .process-status,
+.wrapper__dana__dokter .table__pencairan__saldo .insuccess-status {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 10px;
+  height: 30px;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+.wrapper__dana__dokter .table__pencairan__saldo .success-status {
+  background-color: #d4f1dd;
+  color: #1b7a37;
+}
+
+.wrapper__dana__dokter .table__pencairan__saldo .process-status {
+  background-color: #edf6ff;
+  color: #006fd4;
+}
+
+.wrapper__dana__dokter .table__pencairan__saldo .insuccess-status {
+  background-color: #fff9db;
+  color: #aaa20b;
+}
+/* end table dana pencairan dokter */
+
+/* table dana dokter kosong */
+.wrapper__dana__dokter .dana__dokter__kosong p {
+  font-size: 16px;
+  color: #636363;
+  padding: 0 10rem;
+}
+/* end table dana dokter kosong */
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  p {
+  font-size: 16px;
+  color: #7c7c7c;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .nominal {
+  font-size: 24px;
+  color: #006fd4;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .success-background {
+  background-color: #d4f1dd;
+  color: #1b7a37;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .process-background {
+  background-color: #edf6ff;
+  color: #006fd4;
+}
+
+.wrapper__dana__dokter
+  .table__pencairan__saldo
+  .modal__dana__pencairan
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .d-flex
+  .insuccess-background {
+  background-color: #fff9db;
+  color: #aaa20b;
+}
+
+@media screen and (max-width: 800px) {
+  .wrapper__dana__dokter .dana__dokter__kosong p {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  .wrapper__dana__dokter .d-flex h5 {
+    font-size: 16px;
+  }
+  .wrapper__dana__dokter .dana__dokter__kosong img {
+    width: 80%;
+    height: 80%;
+  }
+  .wrapper__dana__dokter .dana__dokter__kosong h5 {
+    font-size: 18px;
+  }
+  .wrapper__dana__dokter .dana__dokter__kosong p {
+    font-size: 12px;
+    padding: 0;
+  }
+}

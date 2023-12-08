@@ -75,7 +75,7 @@ const DetailArtikel = () => {
       </ModalAlert>
       <div className="d-flex flex-row">
         <NavLink
-          to={"/admin-manage-artikel"}
+          to={"/admin/manage/artikel"}
           className="text-decoration-none text-muted"
         >
           Manage Artikel
@@ -92,7 +92,9 @@ const DetailArtikel = () => {
                 artikel.kategori.map((item, index) => (
                   <div key={index} className="d-inline-block">
                     <div className="kategori-div-template-detail">
-                      <p className="kategori-text-template-detail m-0">{item}</p>
+                      <p className="kategori-text-template-detail m-0">
+                        {item}
+                      </p>
                     </div>
                   </div>
                 ))}

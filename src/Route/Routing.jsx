@@ -12,7 +12,6 @@ import TransaksiTertunda from "../pages/TransaksiTertunda/TransaksiTertunda";
 import DetailTransaksiUser from "../pages/DetailTransaksiUser/DetailTransaksiUser";
 import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
-import RegisterForm from "../pages/Register/Register";
 import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
 import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
 import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
@@ -27,63 +26,54 @@ const Routing = () => {
   return (
     <Routes>
       <Route element={<LoginForm />} path="/" />
-      <Route element={<Dashboard />} path="/dashboard-admin" />
-      <Route element={<RegisterForm />} path="register-admin" />
-      <Route element={<ForgotPw />} path="forgot-password" />
-      <Route element={<ResetPassword />} path="reset-password" />
-      <Route element={<ManageUser />} path="admin-manage-user" />
+      <Route element={<Dashboard />} path="/admin/dashboard" />
+      <Route element={<ForgotPw />} path="/forgot-password" />
+      <Route element={<ResetPassword />} path="/reset-password/:id" />
+      <Route element={<ManageUser />} path="/admin/manage/user" />
       <Route
         element={<DetailAkunUser />}
-        path="admin-manage-user/detail-akun-user/:id"
+        path="/admin/manage/user/detail/:id"
       />
-      <Route element={<TransaksiUser />} path="admin-transaksi-user" />
-      <Route element={<PaketKonseling />} path="admin-paket-konseling" />
-      <Route element={<ManageDokter />} path="admin-manage-dokter" />
+      <Route element={<TransaksiUser />} path="/admin/transaksi/user" />
+      <Route element={<PaketKonseling />} path="/admin/paket/konseling" />
+      <Route element={<ManageDokter />} path="/admin/manage/dokter" />
       <Route
         element={<DetailAkunDokter />}
-        path="admin-manage-dokter/detail-akun-dokter"
+        path="/admin/manage/dokter/detail/:id"
       />
       <Route
         element={<DokumenDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/dokumen"
+        path="/admin/manage/dokter/detail/dokumen/:id"
       />
       <Route
         element={<PengalamanDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/pengalaman"
+        path="/admin/manage/dokter/detail/pengalaman/:id"
       />
       <Route
         element={<ArtikelDokter />}
-        path="admin-manage-dokter/detail-akun-dokter/artikel"
+        path="/admin/manage/dokter/detail/artikel/:id"
       />
-      <Route element={<DanaDokter />} path="admin-dana-dokter" />
-      <Route element={<ManageArtikel />} path="admin-manage-artikel" />
-      <Route element={<DetailArtikel />} path="admin-manage-artikel/:id" />
+      <Route element={<DanaDokter />} path="/admin/dana/dokter" />
+      <Route element={<ManageArtikel />} path="/admin/manage/artikel" />
+      <Route element={<DetailArtikel />} path="/admin/manage/artikel/:id" />
       <Route
         element={<TransaksiTertunda />}
-        path="admin-transaksi-user/transaksi-tertunda"
+        path="/admin/transaksi/user/tertunda"
       />
       <Route
         element={<DetailTransaksiUser />}
-        path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id"
+        path="/admin/transaksi/user/tertunda/detail/:id"
       />
       <Route
         element={<TransaksiOtomatis />}
-        path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id"
+        path="/admin/transaksi/user/tertunda/otomatis/:id"
       />
       <Route
         element={<TransaksiTertunda />}
-        path="admin-transaksi-user/transaksi-tertunda"
+        path="/admin/transaksi/user/tertunda"
       />
-      <Route
-        element={<DetailTransaksiUser />}
-        path="admin-transaksi-user/transaksi-tertunda/detail-transaksi-user/:id"
-      />
-      <Route
-        element={<TransaksiOtomatis />}
-        path="admin-transaksi-user/transaksi-tertunda/transaksi-otomatis/:id"
-      />
-      <Route element={<EditProfile />} path="admin-edit-profile" />
 
+      <Route element={<EditProfile />} path="/admin/profile" />
       {/* route ketika url tidak sesuai */}
       <Route element={<NotFound />} path="*" />
     </Routes>

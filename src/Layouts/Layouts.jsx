@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
@@ -17,6 +17,8 @@ import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
 
 function Layouts({ children, titlePage }) {
+  const navigate = useNavigate();
+
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleLogoutClick = () => {
@@ -24,6 +26,8 @@ function Layouts({ children, titlePage }) {
   };
 
   const handleLogoutConfirm = () => {
+    localStorage.removeItem("token");
+    navigate("/");
     setShowLogoutModal(false);
   };
 
@@ -44,39 +48,39 @@ function Layouts({ children, titlePage }) {
               <SidebarItem
                 icon={<BsGrid />}
                 title="Dashboard"
-                location="/dashboard-admin"
+                location="/admin/dashboard"
               />
               <SidebarItem
                 icon={<LuUsers />}
                 title="Manage User"
-                location="/admin-manage-user"
+                location="/admin/manage/user"
               />
               <SidebarItem
                 icon={<FaMoneyBills />}
                 title="Transaksi User"
-                location="/admin-transaksi-user"
+                location="/admin/transaksi/user"
               />
               <SidebarItem
                 icon={<LuFolderHeart />}
                 title="Paket Konseling"
-                location="/admin-paket-konseling"
+                location="/admin/paket/konseling"
               />
               <hr className="p-0 m-0" />
               <SidebarItem
                 icon={<LuStethoscope />}
                 title="Manage Dokter"
-                location="/admin-manage-dokter"
+                location="/admin/manage/dokter"
               />
               <SidebarItem
                 icon={<LuWallet />}
                 title="Dana Dokter"
-                location="/admin-dana-dokter"
+                location="/admin/dana/dokter"
               />
               <hr className="p-0 m-0" />
               <SidebarItem
                 icon={<BsFileEarmarkText />}
                 title="Manage Artikel"
-                location="/admin-manage-artikel"
+                location="/admin/manage/artikel"
               />
             </ul>
           </div>
@@ -96,7 +100,7 @@ function Layouts({ children, titlePage }) {
               imageSrc={iconFace}
               dropdownContent={
                 <>
-                  <NavLink className="dropdown-item" to="/admin-edit-profile">
+                  <NavLink className="dropdown-item" to="/admin/profile">
                     <BsPerson /> Edit Profile
                   </NavLink>
                   <a className="dropdown-item" onClick={handleLogoutClick}>

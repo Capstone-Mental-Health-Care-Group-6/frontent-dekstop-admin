@@ -1,7 +1,7 @@
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
-import "./ModalLogin.style.css"
-import { FaCheckCircle } from "react-icons/fa"
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import "./modalLogin.style.css";
+import { FaCheckCircle } from "react-icons/fa";
 
 const CustomModal = ({ title, email, btnSuccess, onClose }) => {
   return (
@@ -42,15 +42,19 @@ const CustomModal = ({ title, email, btnSuccess, onClose }) => {
           </p>
           <div className="modal-footer-container">
             <center>
-              <Button variant="link" onClick={onClose}>
-                {btnSuccess}
+              <Button
+                variant="light"
+                className="bg-transparent text-primary fw-semibold border-0"
+                onClick={onClose}
+              >
+                Oke
               </Button>
             </center>
           </div>
         </div>
       </Modal.Body>
     </Modal>
-  )
-}
+  );
+};
 
-export default CustomModal
+export default CustomModal;
