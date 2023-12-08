@@ -7,7 +7,7 @@ export const axiosInterceptor = axios.create({
     timeout: 5000,
     headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': token,
+        'Authorization': token,
     },
 });
 // untuk pemanggilan nya seperti yang di boilerPlate dokter
