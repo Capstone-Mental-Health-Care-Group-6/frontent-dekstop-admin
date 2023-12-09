@@ -24,13 +24,13 @@ const PaketKonseling = () => {
     type: 'PREMIUM',
   })
 
-  // useEffect(() => {
-  //   getAllBundle((res) => {
-  //     setBundle(res)
-  //   })
-  // }, []);
+  useEffect(() => {
+    getAllBundle((res) => {
+      setBundle(res.data)
+    })
+  }, []);
 
-  // console.log(bundle);
+  console.log(bundle);
 
 
 
@@ -66,8 +66,8 @@ const PaketKonseling = () => {
 
 
   const handleDelete = (id) => {
-    // deleleBundle(id)
-    // setBundle(bundle.filter((item) => item.id !== id))
+    deleleBundle(id)
+    setBundle(bundle.filter((item) => item.id !== id))
     console.log('ini adalah id yang akan di hapus', id);
 
   }
@@ -172,17 +172,22 @@ const PaketKonseling = () => {
         <section className="all-konseling mt-4" >
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-            {dataCardKonsultasi.map((item, index) => (
+            {bundle.map((item, index) => (
               <div className="col " key={index}>
 
                 <div className="card bg-white " >
                   <div className="card-header border-0">
                     <div className="d-flex align-items-center justify-content-between">
                       <div className=" d-flex gap-3 align-items-center ">
-                        <img className="image-konsultasi" src={item.image} />
+                        <img className="image-konsultasi" src={item.avatar} />
                         <div>
-                          <h6 className="m-0 text-black fw-medium" >{item.paket}</h6>
-                          <h5 className="m-0 fw-bold" >{item.sesi}</h5>
+                          <h6 className="m-0 text-black fw-medium" >{item.name}</h6>
+                          <h5 className="m-0 fw-bold">
+                            {new Intl.NumberFormat('id-ID', {
+                              style: 'currency',
+                              currency: 'IDR',
+                            }).format(item.price)} / {item.sessions} Sesi
+                          </h5>
                         </div>
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
@@ -205,7 +210,7 @@ const PaketKonseling = () => {
                       <div className="position-relative mx-auto">
                         <div className="image d-flex justify-content-center ">
                           {formData.image ? (
-                            <img src={URL.createObjectURL(formData.image)} />
+                            <img src={URL.createObjectURL(formData.avatar)} />
                           ) : (
                             <img src={defaultImageKonseling} />
                           )}
@@ -236,7 +241,7 @@ const PaketKonseling = () => {
                       </div>
                       <div className="d-flex gap-2 float-end">
                         <Button className={'btn border-primary text-primary fw-medium'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle('99 update')} />
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle(item.id)} />
                       </div>
                     </form>
                   </ModalAlert>
@@ -259,7 +264,7 @@ const PaketKonseling = () => {
 
                   <div className="card-body">
                     <span>
-                      {item.information}
+                      {item.description}
                     </span>
                   </div>
                 </div>
