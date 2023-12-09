@@ -10,13 +10,20 @@ export const getAllBundle = (callback) => {
 }
 
 export const createBundle = (formBundle, callback) => {
-    axiosInterceptor.post('/bundle', formBundle)
+    axiosInterceptor.post('/bundle', formBundle, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
         .then((res) => {
-            callback(true, res.data)
-        }).catch((err) => {
+            callback(true, res.data);
+        })
+        .catch((err) => {
             console.log(err);
+            callback(false, err.message);
         });
-}
+};
+
 
 export const detailBundle = (id, callback) => {
     axiosInterceptor.get(`/bundle/${id}`)
