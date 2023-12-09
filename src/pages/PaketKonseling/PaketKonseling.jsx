@@ -76,7 +76,7 @@ const PaketKonseling = () => {
   const handleUpdateBundle = async (id) => {
     await updateBundle(id, apiData)
     deleteState()
-    console.log(id);
+
     getAllBundle((res) => {
       setBundle(res.data)
     })
@@ -169,7 +169,7 @@ const PaketKonseling = () => {
                       <div className=" d-flex gap-3 align-items-center ">
                         <img className="image-konsultasi" src={item.avatar} />
                         <div>
-                          <h6 className="m-0 text-black fw-medium" >{item.name} {item.id}</h6>
+                          <h6 className="m-0 text-black fw-medium" >{item.name} </h6>
                           <h5 className="m-0 fw-bold">
                             {new Intl.NumberFormat('id-ID', {
                               style: 'currency',
@@ -189,7 +189,7 @@ const PaketKonseling = () => {
 
                   <ModalAlert id={`modal-edit${item.id}`} >
                     <div className="d-flex justify-content-between p-3 text-black fw-semibold">
-                      Edit Paket Konseling Premium {item.id}
+                      Edit Paket Konseling Premiums
                       <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
                     </div>
 
