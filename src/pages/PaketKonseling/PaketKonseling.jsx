@@ -67,6 +67,7 @@ const PaketKonseling = () => {
 
   const handleDelete = (id) => {
     // deleleBundle(id)
+    // setBundle(bundle.filter((item) => item.id !== id))
     console.log('ini adalah id yang akan di hapus', id);
 
   }
@@ -236,7 +237,7 @@ const PaketKonseling = () => {
                       </div>
                       <div className="d-flex gap-2 justify-content-end">
                         <Button className={'btn bg-primary text-white fw-medium'} text="Batal" bsDismiss={'modal'} />
-                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} />
+                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} onClick={() => handleDelete('20 aman')} />
                       </div>
                     </div>
                   </ModalAlert>
