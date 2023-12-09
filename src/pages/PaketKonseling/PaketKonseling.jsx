@@ -65,6 +65,12 @@ const PaketKonseling = () => {
   }
 
 
+  const handleDelete = (id) => {
+    // deleleBundle(id)
+    console.log('ini adalah id yang akan di hapus', id);
+
+  }
+
 
   const handleCreateBundle = (e) => {
     const apiData = new FormData();
@@ -100,7 +106,7 @@ const PaketKonseling = () => {
             <ModalAlert id={'modal-add'} >
               <div className="d-flex justify-content-between p-3 text-black fw-semibold">
                 Paket Konseling Premium
-                <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
+                <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
               </div>
 
               <form className="p-3" >
@@ -175,7 +181,7 @@ const PaketKonseling = () => {
                   <ModalAlert id={'modal-edit'} >
                     <div className="d-flex justify-content-between p-3 text-black fw-semibold">
                       Edit Paket Konseling Premium
-                      <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
+                      <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
                     </div>
 
                     <form onSubmit={handleSubmit} className="p-3">
@@ -197,18 +203,18 @@ const PaketKonseling = () => {
                         </div>
                       </div>
 
-                      <InputForm htmlFor={'nama_paket'} value={formData.nama_paket} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
-                      <InputForm htmlFor={'harga'} value={formData.harga} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
-                      <InputForm htmlFor={'jumlah_sesi'} value={formData.jumlah_sesi} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+                      <InputForm htmlFor={'name'} value={formData.name} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
+                      <InputForm htmlFor={'price'} value={formData.price} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                      <InputForm htmlFor={'sessions'} value={formData.sessions} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
 
-                      <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
+                      <label htmlFor="description" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                       <div className="form-floating ">
                         <textarea
                           className="form-control p-2"
                           placeholder="Masukan Penjelasan Paket"
                           style={{ height: 200 }}
-                          name="keterangan_paket"
-                          value={formData.keterangan_paket}
+                          name="description"
+                          value={formData.description}
                           onChange={handleChange}
                         />
                       </div>
