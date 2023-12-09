@@ -9,8 +9,8 @@ export const getAllBundle = (callback) => {
         });
 }
 
-export const createBundle = (formBundle, callback) => {
-    axiosInterceptor.post('/bundle', formBundle, {
+export const createBundle = async (formBundle, callback) => {
+    await axiosInterceptor.post('/bundle', formBundle, {
         headers: {
             'Content-Type': 'multipart/form-data',
         },

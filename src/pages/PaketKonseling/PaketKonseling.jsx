@@ -8,7 +8,7 @@ import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
 import { useState, useEffect } from "react";
-import { createBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
+import { createBundle, deleleBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
 
 
 const PaketKonseling = () => {
@@ -29,11 +29,6 @@ const PaketKonseling = () => {
       setBundle(res.data)
     })
   }, []);
-
-  console.log(bundle);
-
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -62,50 +57,40 @@ const PaketKonseling = () => {
       active_priode: 1,
       type: 'PREMIUM',
     })
+    setErrorMsg('d-none')
   }
 
+  const formDataKeys = ['avatar', 'name', 'price', 'sessions', 'description', 'active_priode', 'type'];
+  const apiData = new FormData();
+  formDataKeys.forEach((key) => {
+    const value = key === 'price' ? parseFloat(formData[key]) : key === 'sessions' || key === 'active_priode' ? parseInt(formData[key]) : formData[key];
+    apiData.append(key, value);
+  });
 
   const handleDelete = (id) => {
     deleleBundle(id)
     setBundle(bundle.filter((item) => item.id !== id))
-    console.log('ini adalah id yang akan di hapus', id);
-
   }
 
 
   const handleUpdateBundle = async (id) => {
-    console.log('ini adalah update id', id);
-    const apiData = new FormData();
-    apiData.append('avatar', formData.avatar);
-    apiData.append('name', formData.name);
-    apiData.append('price', parseFloat(formData.price));
-    apiData.append('sessions', parseInt(formData.sessions));
-    apiData.append('description', formData.description);
-    apiData.append('active_priode', parseInt(formData.active_priode))
-    apiData.append('type', formData.type);
     await updateBundle(id, apiData)
     deleteState()
-
+    console.log(id);
     getAllBundle((res) => {
       setBundle(res.data)
     })
   }
 
-  const handleCreateBundle = (e) => {
-    const apiData = new FormData();
-    apiData.append('avatar', formData.avatar);
-    apiData.append('name', formData.name);
-    apiData.append('price', parseFloat(formData.price));
-    apiData.append('sessions', parseInt(formData.sessions));
-    apiData.append('description', formData.description);
-    apiData.append('active_priode', parseInt(formData.active_priode))
-    apiData.append('type', formData.type);
-
+  const handleCreateBundle = async (e) => {
     e.preventDefault()
-    createBundle(apiData, (status, res) => {
+    await createBundle(apiData, (status, res) => {
       if (status) {
         console.log(res);
         deleteState()
+        getAllBundle((res) => {
+          setBundle(res.data)
+        })
       } else {
         setErrorMsg('d-block')
       }
@@ -184,7 +169,7 @@ const PaketKonseling = () => {
                       <div className=" d-flex gap-3 align-items-center ">
                         <img className="image-konsultasi" src={item.avatar} />
                         <div>
-                          <h6 className="m-0 text-black fw-medium" >{item.name}</h6>
+                          <h6 className="m-0 text-black fw-medium" >{item.name} {item.id}</h6>
                           <h5 className="m-0 fw-bold">
                             {new Intl.NumberFormat('id-ID', {
                               style: 'currency',
@@ -195,16 +180,16 @@ const PaketKonseling = () => {
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
-                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target="#modal-edit" > Edit </button> </li>
-                        <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target="#alert-delete"  > Hapus </button> </li>
+                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} > Edit </button> </li>
+                        <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target={`#alert-delete${item.id}`}  > Hapus </button> </li>
                       </ul>
 
                     </div>
                   </div>
 
-                  <ModalAlert id={'modal-edit'} >
+                  <ModalAlert id={`modal-edit${item.id}`} >
                     <div className="d-flex justify-content-between p-3 text-black fw-semibold">
-                      Edit Paket Konseling Premium
+                      Edit Paket Konseling Premium {item.id}
                       <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
                     </div>
 
@@ -249,18 +234,18 @@ const PaketKonseling = () => {
                     </form>
                   </ModalAlert>
 
-                  <ModalAlert id={'alert-delete'} >
+                  <ModalAlert id={`alert-delete${item.id}`} >
                     <div className="alert-modal-delete p-3">
                       <div className="d-flex flex-column justify-content-center align-items-center mb-3">
                         <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
                         <div className="text-center">
-                          <h5 className="fw-bold" >Hapus Data Paket?</h5>
+                          <h5 className="fw-bold" >Hapus Data Paket? </h5>
                           <span>Tindakan ini akan menghapus data pada paket konseling ini, data yang dihapus tidak dapat dikembalikan</span>
                         </div>
                       </div>
                       <div className="d-flex gap-2 justify-content-end">
                         <Button className={'btn bg-primary text-white fw-medium'} text="Batal" bsDismiss={'modal'} />
-                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} onClick={() => handleDelete('20 aman')} />
+                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} onClick={() => handleDelete(item.id)} />
                       </div>
                     </div>
                   </ModalAlert>
