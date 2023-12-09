@@ -80,6 +80,7 @@ const PaketKonseling = () => {
     createBundle(apiData, (status, res) => {
       if (status) {
         console.log(res);
+        deleteState()
       } else {
         setErrorMsg('d-block')
       }
