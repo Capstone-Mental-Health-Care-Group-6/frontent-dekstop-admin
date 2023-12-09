@@ -83,9 +83,12 @@ const PaketKonseling = () => {
     apiData.append('description', formData.description);
     apiData.append('active_priode', parseInt(formData.active_priode))
     apiData.append('type', formData.type);
-
-    // await updateBundle(id, apiData)
+    await updateBundle(id, apiData)
     deleteState()
+
+    getAllBundle((res) => {
+      setBundle(res.data)
+    })
   }
 
   const handleCreateBundle = (e) => {
@@ -209,7 +212,7 @@ const PaketKonseling = () => {
 
                       <div className="position-relative mx-auto">
                         <div className="image d-flex justify-content-center ">
-                          {formData.image ? (
+                          {formData.avatar ? (
                             <img src={URL.createObjectURL(formData.avatar)} />
                           ) : (
                             <img src={defaultImageKonseling} />
