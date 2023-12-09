@@ -8,7 +8,7 @@ import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
 import { useState, useEffect } from "react";
-import { createBundle, getAllBundle } from "../../service/bundleCounseling";
+import { createBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
 
 
 const PaketKonseling = () => {
@@ -72,6 +72,21 @@ const PaketKonseling = () => {
 
   }
 
+
+  const handleUpdateBundle = async (id) => {
+    console.log('ini adalah update id', id);
+    const apiData = new FormData();
+    apiData.append('avatar', formData.avatar);
+    apiData.append('name', formData.name);
+    apiData.append('price', parseFloat(formData.price));
+    apiData.append('sessions', parseInt(formData.sessions));
+    apiData.append('description', formData.description);
+    apiData.append('active_priode', parseInt(formData.active_priode))
+    apiData.append('type', formData.type);
+
+    // await updateBundle(id, apiData)
+    deleteState()
+  }
 
   const handleCreateBundle = (e) => {
     const apiData = new FormData();
@@ -221,7 +236,7 @@ const PaketKonseling = () => {
                       </div>
                       <div className="d-flex gap-2 float-end">
                         <Button className={'btn border-primary text-primary fw-medium'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" />
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle('99 update')} />
                       </div>
                     </form>
                   </ModalAlert>

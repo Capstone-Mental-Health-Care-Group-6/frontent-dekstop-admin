@@ -34,8 +34,8 @@ export const detailBundle = (id, callback) => {
         });
 }
 
-export const updateBundle = (id, formBundle) => {
-    axiosInterceptor.put(`/bundle/${id}`, formBundle)
+export const updateBundle = async (id, formBundle) => {
+    await axiosInterceptor.put(`/bundle/${id}`, formBundle)
         .then((res) => {
             console.log(res);
         })
