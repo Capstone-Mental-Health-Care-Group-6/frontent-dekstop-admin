@@ -8,11 +8,21 @@ import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
 import { useState, useEffect } from "react";
-import { getAllBundle } from "../../service/bundleCounseling";
+import { createBundle, getAllBundle } from "../../service/bundleCounseling";
 
 
 const PaketKonseling = () => {
   const [bundle, setBundle] = useState([])
+  const [errorMsg, setErrorMsg] = useState('d-none')
+  const [formData, setFormData] = useState({
+    avatar: null,
+    name: '',
+    price: '',
+    sessions: '',
+    description: '',
+    active_priode: '1',
+    type: 'PREMIUM',
+  })
 
   // useEffect(() => {
   //   getAllBundle((res) => {
@@ -23,15 +33,7 @@ const PaketKonseling = () => {
   // console.log(bundle);
 
 
-  const [formData, setFormData] = useState({
-    avatar: null,
-    name: '',
-    price: '',
-    sessions: '',
-    description: '',
-    active_priode: '1',
-    type: 'PREMIUM',
-  })
+
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -57,12 +59,32 @@ const PaketKonseling = () => {
       price: '',
       sessions: '',
       description: '',
-      active_priode: '1',
+      active_priode: 1,
       type: 'PREMIUM',
     })
   }
 
-  console.log(formData);
+
+
+  const handleCreateBundle = (e) => {
+    const apiData = new FormData();
+    apiData.append('avatar', formData.avatar);
+    apiData.append('name', formData.name);
+    apiData.append('price', parseFloat(formData.price));
+    apiData.append('sessions', parseInt(formData.sessions));
+    apiData.append('description', formData.description);
+    apiData.append('active_priode', parseInt(formData.active_priode))
+    apiData.append('type', formData.type);
+
+    e.preventDefault()
+    createBundle(apiData, (status, res) => {
+      if (status) {
+        console.log(res);
+      } else {
+        setErrorMsg('d-block')
+      }
+    })
+  }
 
   return (
     <Layouts titlePage={"Paket Konseling"}>
@@ -80,7 +102,7 @@ const PaketKonseling = () => {
                 <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
               </div>
 
-              <form onSubmit={handleSubmit} className="p-3">
+              <form className="p-3" >
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
@@ -100,8 +122,8 @@ const PaketKonseling = () => {
                 </div>
 
                 <InputForm htmlFor={'name'} value={formData.name} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
-                <InputForm htmlFor={'price'} value={formData.price} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
-                <InputForm htmlFor={'sessions'} value={formData.sessions} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+                <InputForm htmlFor={'price'} value={formData.price} type={'number'} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                <InputForm htmlFor={'sessions'} value={formData.sessions} type={'number'} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
 
                 <label htmlFor="description" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                 <div className="form-floating ">
@@ -114,9 +136,10 @@ const PaketKonseling = () => {
                     onChange={handleChange}
                   />
                 </div>
+                <p className={`text-danger ${errorMsg}`} >Tolong masukan data dengan benar</p>
                 <div className="d-flex gap-2 float-end">
                   <Button className={'btn'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                  <Button className={'btn bg-primary text-white'} text="Simpan" />
+                  <Button className={'btn bg-primary text-white'} text="Simpan" type={'submit'} onClick={handleCreateBundle} />
                 </div>
               </form>
             </ModalAlert>
