@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import { dataUsers } from "../../components/DataUsers/dataUsers";
-// import { cardManageUsers } from "../../components/DataUsers/dataUsers";
 import { Link } from "react-router-dom";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
