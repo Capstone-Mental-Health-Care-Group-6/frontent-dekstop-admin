@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import "./Dashboard.styles.css";
 import {
@@ -13,8 +13,37 @@ import {
 import Card from "../../components/Fragments/card/Card";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
 import { useLogin } from "../../hooks/useLogin";
+import { getAllPatient } from "../../service/patient";
+import { getAllDoctor } from "../../service/doctor";
+import { getAllArticle } from "../../service/article";
+import { getAllWithDraw } from "../../service/withDraw";
 
 const Dashboard = () => {
+  const [totalUser, setTotalUser] = useState(null);
+
+  const [totalDokter, setTotalDokter] = useState(null);
+
+  const [totalArticle, setTotalArticle] = useState(null);
+
+  const [totalTransaksi, setTotalTransaksi] = useState(null);
+
+  useEffect(() => {
+    getAllPatient((data) => {
+      setTotalUser(data.data.total_user);
+    });
+
+    getAllDoctor((data) => {
+      setTotalDokter(data.data.length);
+    });
+
+    getAllArticle((data) => {
+      setTotalArticle(data.data.length);
+    });
+
+    getAllWithDraw((data) => {
+      setTotalTransaksi(data.data.length);
+    });
+  }, []);
 
   return (
     <Layouts titlePage={"Dashboard"}>
@@ -45,24 +74,24 @@ const Dashboard = () => {
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
-              cardTitle="17.000"
+              cardTitle={totalUser !== null ? totalUser : "0"}
               src={iconCardUser}
             />
             <Card
               cardSubtitle="Total Dokter"
-              cardTitle="17.000"
+              cardTitle={totalDokter !== null ? totalDokter : "0"}
               src={iconCardDokter}
             />
           </div>
           <div className="d-flex gap-3">
             <Card
               cardSubtitle={"Total Artikel"}
-              cardTitle={"1.500"}
+              cardTitle={totalArticle !== null ? totalArticle : "0"}
               src={iconCardArtikel}
             />
             <Card
               cardSubtitle={"Total Transaksi"}
-              cardTitle={"24.000"}
+              cardTitle={totalTransaksi !== null ? totalTransaksi : "0"}
               src={iconCardTotalTransaksi}
             />
           </div>
