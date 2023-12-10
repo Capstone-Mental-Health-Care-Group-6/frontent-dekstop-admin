@@ -13,9 +13,13 @@ import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { dataDokter } from "../../components/DataDokter/dataDokter";
 import { LuFilter } from "react-icons/lu";
 import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ManageDokter = () => {
+const ManageDokter = ({ location }) => {
   const [searchValue, setSearchValue] = useState("");
+  const { id } = useParams();
+  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
@@ -43,11 +47,21 @@ const ManageDokter = () => {
             src={captivePortal}
           />
 
-          <Card
-            cardSubtitle="Pengajuan Dokter"
-            cardTitle="12"
-            src={sandClock}
-          />
+          <Link className="card-pengajuan" to={`/admin/manage/dokter/pengajuan`}>
+            {/* <Card
+              cardSubtitle="Pengajuan Dokter"
+              cardTitle="12"
+              src={sandClock}
+            /> */}
+
+            <div className="card bg-white border-white">
+              <div className="card-body">
+                <img className="mb-2" src={sandClock} />
+                <h6 className="card-subtitle">Pengajuan Dokter</h6>
+                <h5 className="card-title">12</h5>
+              </div>
+            </div>
+          </Link>
         </div>
 
         <section className="data-user mt-3" id="data-user">

@@ -1,43 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "./UserTable.style.css";
-import { NonAktifkanAkun, DetailAkun, Success } from "../../../../image";
+import { Success } from "../../../../image";
+import "./PengajuanTable.style.css";
+import { NonAktifkanAkun, DetailAkun } from "../../../../image";
+import { Link, useNavigate } from "react-router-dom";
+import { dataPengajuan } from "../../DataDokter/DataPengajuan/dataPengajuan";
 import { searchFailed } from "../../../../image";
 
-const UserTable = ({ data, searchValue }) => {
-  const [selectedUser, setSelectedUser] = useState(null);
+const PengajuanTable = ({ data, id, searchValue, status }) => {
+  const dokter = dataPengajuan.find((dokter) => dokter.id === parseInt(id));
+  const [selectedDokter, setSelectedDokter] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [first, setFirst] = useState(0); // State untuk menangani index awal data yang ditampilkan
   const [rows, setRows] = useState(5); // State untuk menangani jumlah baris per halaman
+  const [styleStatus, setStatus] = useState("");
+  const navigation = useNavigate();
 
-  // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
-  const filteredData = data.filter((user) => {
+  const filteredData = data.filter((dokter) => {
     return (
-      user.userName.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
+      dokter.doctorName.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
     );
   });
+
+  useEffect(() => {
+    if (status === "Failed") {
+      setStatus("Gagal");
+    } else if (status === "Completed") {
+      setStatus("Disetujui");
+    } else if (status === "Pending") {
+      setStatus("Menunggu Persetujuan");
+    } else {
+      setStatus("");
+    }
+  }, []);
 
   const onPageChange = (event) => {
     setFirst(event.first);
     setRows(event.rows);
   };
 
-  const dokterBodyTemplate = (rowData) => {
+  const DokterBodyTemplate = (rowData) => {
     return (
-      <div className="d-flex align-items-center">
-        <img
-          src={rowData.image}
-          alt={rowData.userName}
-          height="32px"
-          className="me-2"
-        />
-        <span>{rowData.userName}</span>
-      </div>
+      <Link
+        className="doctor-name"
+        to={`/admin/manage/dokter/pengajuan/detail/${rowData.id}`}
+      >
+        <div className="d-flex align-items-center">
+          <img
+            src={rowData.image}
+            alt={rowData.doctorName}
+            height="32px"
+            className="me-2"
+          />
+          <span>{rowData.doctorName}</span>
+        </div>
+      </Link>
     );
   };
 
@@ -53,11 +75,11 @@ const UserTable = ({ data, searchValue }) => {
   ];
 
   const handleActionSelection = (action, rowData) => {
-    setSelectedUser(rowData);
+    setSelectedDokter(rowData);
 
     if (action === "view") {
       if (rowData) {
-        window.location.href = `/admin/manage/user/detail/${rowData.id}`;
+        window.location.href = `/admin/manage/dokter/pengajuan/detail/${rowData.id}`;
       }
     } else if (action === "deactivate") {
       setShowConfirmation(true);
@@ -74,6 +96,26 @@ const UserTable = ({ data, searchValue }) => {
     // Batal menonaktifkan akun
     setShowConfirmation(false);
   };
+
+  const dialogFooter = (
+    <div className="dialog-footer">
+      <button
+        onClick={() => handleActionSelection("Lihat detail akun")}
+        className="p-button p-button-text border-0 mb-2 ms-2 mt-2"
+      >
+        <img src={DetailAkun} alt="Detail Akun" className="me-2" /> Lihat detail
+        akun
+      </button>
+      <br />
+      <button
+        onClick={() => handleActionSelection("Non aktifkan akun")}
+        className="p-button p-button-text border-0 mb-2 ms-2"
+      >
+        <img src={NonAktifkanAkun} alt="Non Aktifkan Akun" className="me-2" />{" "}
+        Non aktifkan akun
+      </button>
+    </div>
+  );
 
   return (
     <div className="p-mt-4">
@@ -92,13 +134,13 @@ const UserTable = ({ data, searchValue }) => {
           totalRecords={data.length}
         >
           <Column
-            body={dokterBodyTemplate}
+            body={DokterBodyTemplate}
             header="Nama"
             headerClassName="table-header-border"
           />
           <Column
-            field="email"
-            header="Email"
+            field="spesialis"
+            header="Spesialis Dokter"
             headerClassName="table-header-border"
           />
           <Column
@@ -107,12 +149,12 @@ const UserTable = ({ data, searchValue }) => {
             headerClassName="table-header-border"
           />
           <Column
-            field="statusAkun"
-            header="Status Akun"
-            body={statusBodyTemplate}
+            className={styleStatus}
+            field={status}
+            header="Status Pengajuan"
             headerClassName="table-header-border"
           />
-          <Column
+          {/* <Column
             body={(rowData) => (
               <div className="dropdown">
                 <button
@@ -150,7 +192,7 @@ const UserTable = ({ data, searchValue }) => {
             )}
             header="Action"
             headerClassName="table-header-border"
-          />
+          /> */}
         </DataTable>
       ) : (
         <div className="text-center mt-4">
@@ -166,6 +208,20 @@ const UserTable = ({ data, searchValue }) => {
           </p>
         </div>
       )}
+
+      {/* Modal untuk menampilkan detail akun atau nonaktifkan akun */}
+      {/* <Dialog
+        visible={displayModal}
+        onHide={() => setDisplayModal(false)}
+        footer={dialogFooter}
+        modal
+      >
+        {selectedDokter && (
+          <div>
+            <p></p>
+          </div>
+        )}
+      </Dialog> */}
 
       {/* Modal konfirmasi nonaktifkan akun */}
       <div
@@ -247,4 +303,4 @@ const UserTable = ({ data, searchValue }) => {
   );
 };
 
-export default UserTable;
+export default PengajuanTable;

@@ -47,11 +47,9 @@ const TransaksiUser = () => {
             <div className="d-flex justify-content-center" >
               <Button className={'btn text-primary '} text={'Lihat Semua'} />
             </div>
-
           </div>
         </div>
       </section>
-
     </Layouts>
   )
 };

@@ -21,6 +21,8 @@ import PengalamanDokter from "../pages/DetailAkunDokter/Pengalaman/PengalamanDok
 import DokumenDokter from "../pages/DetailAkunDokter/Dokumen/DokumenDokter";
 import ArtikelDokter from "../pages/DetailAkunDokter/Artikel/ArtikelDokter";
 import NotFound from "../pages/NotFound404/NotFound";
+import DetailPengajuan from "../pages/DetailPengajuan/InformasiDokter/informasiDokter";
+import PengajuanPraktikDokter from "../pages/PengajuanPraktikDokter/PengajuanPraktikDokter";
 
 const Routing = () => {
   return (
@@ -56,6 +58,11 @@ const Routing = () => {
       <Route element={<DanaDokter />} path="/admin/dana/dokter" />
       <Route element={<ManageArtikel />} path="/admin/manage/artikel" />
       <Route element={<DetailArtikel />} path="/admin/manage/artikel/:id" />
+      <Route element={<PengajuanPraktikDokter />} path="/admin/manage/dokter/pengajuan" />
+      <Route
+        element={<DetailPengajuan />}
+        path="/admin/manage/dokter/pengajuan/detail/:id"
+      />
       <Route
         element={<TransaksiTertunda />}
         path="/admin/transaksi/user/tertunda"

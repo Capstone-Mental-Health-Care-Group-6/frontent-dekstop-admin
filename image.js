@@ -52,6 +52,10 @@ import iconPencil from "./src/assets/iconPencil.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
 import artikeldokter from "./src/assets/artikeldokter.png";
 import Gambar from "./src/assets/Gambar.png";
+import notifButton from "./src/assets/notif-button.png";
+import UnreadIndicator from "./src/assets/UnreadIndicator.png";
+import arrow from "./src/assets/arrow.png";
+import infoOutline from "./src/assets/info-outline.png";
 
 export {
   pendingArtikelAdmin,
@@ -108,4 +112,8 @@ export {
   konsultasiImage2,
   konsultasiImage3,
   Gambar,
+  notifButton,
+  UnreadIndicator,
+  arrow,
+  infoOutline
 };
