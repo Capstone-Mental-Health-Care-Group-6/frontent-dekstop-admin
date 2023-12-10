@@ -7,18 +7,28 @@ import { dataCardKonsultasi } from "../../components/DataComponents/dataComponen
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createBundle, deleleBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
 
 
 const PaketKonseling = () => {
-
+  const [bundle, setBundle] = useState([])
+  const [errorMsg, setErrorMsg] = useState('d-none')
   const [formData, setFormData] = useState({
-    image: null,
-    nama_paket: '',
-    harga: '',
-    jumlah_sesi: '',
-    keterangan_paket: ''
+    avatar: null,
+    name: '',
+    price: '',
+    sessions: '',
+    description: '',
+    active_priode: '1',
+    type: 'PREMIUM',
   })
+
+  useEffect(() => {
+    getAllBundle((res) => {
+      setBundle(res.data)
+    })
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -34,23 +44,61 @@ const PaketKonseling = () => {
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
-    setFormData({ ...formData, image: selectedImage })
+    setFormData({ ...formData, avatar: selectedImage })
   };
 
   const deleteState = () => {
     setFormData({
-      image: null,
-      nama_paket: '',
-      harga: '',
-      jumlah_sesi: '',
-      keterangan_paket: ''
+      avatar: null,
+      name: '',
+      price: '',
+      sessions: '',
+      description: '',
+      active_priode: 1,
+      type: 'PREMIUM',
+    })
+    setErrorMsg('d-none')
+  }
+
+  const formDataKeys = ['avatar', 'name', 'price', 'sessions', 'description', 'active_priode', 'type'];
+  const apiData = new FormData();
+  formDataKeys.forEach((key) => {
+    const value = key === 'price' ? parseFloat(formData[key]) : key === 'sessions' || key === 'active_priode' ? parseInt(formData[key]) : formData[key];
+    apiData.append(key, value);
+  });
+
+  const handleDelete = (id) => {
+    deleleBundle(id)
+    setBundle(bundle.filter((item) => item.id !== id))
+  }
+
+
+  const handleUpdateBundle = async (id) => {
+    await updateBundle(id, apiData)
+    deleteState()
+
+    getAllBundle((res) => {
+      setBundle(res.data)
     })
   }
 
-  console.log(formData);
+  const handleCreateBundle = async (e) => {
+    e.preventDefault()
+    await createBundle(apiData, (status, res) => {
+      if (status) {
+        console.log(res);
+        deleteState()
+        getAllBundle((res) => {
+          setBundle(res.data)
+        })
+      } else {
+        setErrorMsg('d-block')
+      }
+    })
+  }
 
   return (
-    <Layouts titlePage={"Manage Dokter"}>
+    <Layouts titlePage={"Paket Konseling"}>
       <section className="paket-konseling" id="paket-konseling" >
 
         <section className="add-konseling mt-4">
@@ -62,15 +110,15 @@ const PaketKonseling = () => {
             <ModalAlert id={'modal-add'} >
               <div className="d-flex justify-content-between p-3 text-black fw-semibold">
                 Paket Konseling Premium
-                <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
+                <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
               </div>
 
-              <form onSubmit={handleSubmit} className="p-3">
+              <form className="p-3" >
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
-                    {formData.image ? (
-                      <img src={URL.createObjectURL(formData.image)} />
+                    {formData.avatar ? (
+                      <img src={URL.createObjectURL(formData.avatar)} />
                     ) : (
                       <img src={defaultImageKonseling} />
                     )}
@@ -84,24 +132,25 @@ const PaketKonseling = () => {
                   </div>
                 </div>
 
-                <InputForm htmlFor={'nama_paket'} value={formData.nama_paket} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
-                <InputForm htmlFor={'harga'} value={formData.harga} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
-                <InputForm htmlFor={'jumlah_sesi'} value={formData.jumlah_sesi} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+                <InputForm htmlFor={'name'} value={formData.name} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
+                <InputForm htmlFor={'price'} value={formData.price} type={'number'} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                <InputForm htmlFor={'sessions'} value={formData.sessions} type={'number'} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
 
-                <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
+                <label htmlFor="description" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                 <div className="form-floating ">
                   <textarea
                     className="form-control p-2"
                     placeholder="Masukan Penjelasan Paket"
                     style={{ height: 200 }}
-                    name="keterangan_paket"
-                    value={formData.keterangan_paket}
+                    name="description"
+                    value={formData.description}
                     onChange={handleChange}
                   />
                 </div>
+                <p className={`text-danger ${errorMsg}`} >Tolong masukan data dengan benar</p>
                 <div className="d-flex gap-2 float-end">
                   <Button className={'btn'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                  <Button className={'btn bg-primary text-white'} text="Simpan" />
+                  <Button className={'btn bg-primary text-white'} text="Simpan" type={'submit'} onClick={handleCreateBundle} />
                 </div>
               </form>
             </ModalAlert>
@@ -111,40 +160,45 @@ const PaketKonseling = () => {
         <section className="all-konseling mt-4" >
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-            {dataCardKonsultasi.map((item, index) => (
+            {bundle.map((item, index) => (
               <div className="col " key={index}>
 
                 <div className="card bg-white " >
                   <div className="card-header border-0">
                     <div className="d-flex align-items-center justify-content-between">
                       <div className=" d-flex gap-3 align-items-center ">
-                        <img className="image-konsultasi" src={item.image} />
+                        <img className="image-konsultasi" src={item.avatar} />
                         <div>
-                          <h6 className="m-0 text-black fw-medium" >{item.paket}</h6>
-                          <h5 className="m-0 fw-bold" >{item.sesi}</h5>
+                          <h6 className="m-0 text-black fw-medium" >{item.name} </h6>
+                          <h5 className="m-0 fw-bold">
+                            {new Intl.NumberFormat('id-ID', {
+                              style: 'currency',
+                              currency: 'IDR',
+                            }).format(item.price)} / {item.sessions} Sesi
+                          </h5>
                         </div>
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
-                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target="#modal-edit" > Edit </button> </li>
-                        <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target="#alert-delete"  > Hapus </button> </li>
+                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} > Edit </button> </li>
+                        <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target={`#alert-delete${item.id}`}  > Hapus </button> </li>
                       </ul>
 
                     </div>
                   </div>
 
-                  <ModalAlert id={'modal-edit'} >
+                  <ModalAlert id={`modal-edit${item.id}`} >
                     <div className="d-flex justify-content-between p-3 text-black fw-semibold">
-                      Edit Paket Konseling Premium
-                      <Button className={'btn-close border-0 '} bsDismiss={'modal'} />
+                      Edit Paket Konseling Premiums
+                      <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
                     </div>
 
                     <form onSubmit={handleSubmit} className="p-3">
 
                       <div className="position-relative mx-auto">
                         <div className="image d-flex justify-content-center ">
-                          {formData.image ? (
-                            <img src={URL.createObjectURL(formData.image)} />
+                          {formData.avatar ? (
+                            <img src={URL.createObjectURL(formData.avatar)} />
                           ) : (
                             <img src={defaultImageKonseling} />
                           )}
@@ -158,47 +212,47 @@ const PaketKonseling = () => {
                         </div>
                       </div>
 
-                      <InputForm htmlFor={'nama_paket'} value={formData.nama_paket} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
-                      <InputForm htmlFor={'harga'} value={formData.harga} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
-                      <InputForm htmlFor={'jumlah_sesi'} value={formData.jumlah_sesi} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
+                      <InputForm htmlFor={'name'} value={formData.name} title={'Nama Paket'} placeholder={'Masukan Nama'} onChange={handleChange} />
+                      <InputForm htmlFor={'price'} value={formData.price} title={'Harga'} placeholder={'Masukan Harga'} onChange={handleChange} />
+                      <InputForm htmlFor={'sessions'} value={formData.sessions} title={'Banyak Sesi'} placeholder={'Masukan Jumlah Sesi'} onChange={handleChange} />
 
-                      <label htmlFor="keterangan_paket" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
+                      <label htmlFor="description" className="fw-semibold mt-2 mb-2" >Keterangan Paket</label>
                       <div className="form-floating ">
                         <textarea
                           className="form-control p-2"
                           placeholder="Masukan Penjelasan Paket"
                           style={{ height: 200 }}
-                          name="keterangan_paket"
-                          value={formData.keterangan_paket}
+                          name="description"
+                          value={formData.description}
                           onChange={handleChange}
                         />
                       </div>
                       <div className="d-flex gap-2 float-end">
                         <Button className={'btn border-primary text-primary fw-medium'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" />
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle(item.id)} />
                       </div>
                     </form>
                   </ModalAlert>
 
-                  <ModalAlert id={'alert-delete'} >
+                  <ModalAlert id={`alert-delete${item.id}`} >
                     <div className="alert-modal-delete p-3">
                       <div className="d-flex flex-column justify-content-center align-items-center mb-3">
                         <img className='mb-4 mt-4' src={alertMessageBlue} alt="" />
                         <div className="text-center">
-                          <h5 className="fw-bold" >Hapus Data Paket?</h5>
+                          <h5 className="fw-bold" >Hapus Data Paket? </h5>
                           <span>Tindakan ini akan menghapus data pada paket konseling ini, data yang dihapus tidak dapat dikembalikan</span>
                         </div>
                       </div>
                       <div className="d-flex gap-2 justify-content-end">
                         <Button className={'btn bg-primary text-white fw-medium'} text="Batal" bsDismiss={'modal'} />
-                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} />
+                        <Button className={'btn border-primary text-primary fw-medium'} text="Ya" bsDismiss={'modal'} onClick={() => handleDelete(item.id)} />
                       </div>
                     </div>
                   </ModalAlert>
 
                   <div className="card-body">
                     <span>
-                      {item.information}
+                      {item.description}
                     </span>
                   </div>
                 </div>
