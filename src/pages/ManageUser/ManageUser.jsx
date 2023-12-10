@@ -26,11 +26,11 @@ const ManageUser = () => {
 
   const [patientData, setPatientData] = useState(null);
 
-  // useEffect(() => {
-  //   getAllPatient((data) => {
-  //     setPatientData(data);
-  //   });
-  // }, []);
+  useEffect(() => {
+    getAllPatient((data) => {
+      setPatientData(data.data);
+    });
+  }, []);
 
   const cardManageUsers = [
     {
