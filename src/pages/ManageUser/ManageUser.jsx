@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import { dataUsers } from "../../components/DataUsers/dataUsers";
-import { cardManageUsers } from "../../components/DataUsers/dataUsers";
+// import { cardManageUsers } from "../../components/DataUsers/dataUsers";
 import { Link } from "react-router-dom";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { LuFilter } from "react-icons/lu";
 import UserTable from "../../components/Fragments/userTable/UserTable";
 import "./ManageUser.style.css";
+import {
+  iconTotalUser,
+  iconUserAktif,
+  iconUserBaru,
+  iconUserTidakAktif,
+} from "../../../image";
+import { getAllPatient } from "../../service/patient";
 
 const ManageUser = () => {
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
@@ -17,19 +24,52 @@ const ManageUser = () => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
 
+  const [patientData, setPatientData] = useState(null);
+
+  // useEffect(() => {
+  //   getAllPatient((data) => {
+  //     setPatientData(data);
+  //   });
+  // }, []);
+
+  const cardManageUsers = [
+    {
+      location: "/",
+      image: iconTotalUser,
+      text: "Total User",
+      total: patientData?.total_user || "0",
+    },
+    {
+      location: "/",
+      image: iconUserBaru,
+      text: "User Baru",
+      total: patientData?.total_user_baru || "0",
+    },
+    {
+      location: "/",
+      image: iconUserAktif,
+      text: "User Aktif",
+      total: patientData?.total_user_active || "0",
+    },
+    {
+      location: "/",
+      image: iconUserTidakAktif,
+      text: "User Tidak Aktif",
+      total: patientData?.total_user_inactive || "0",
+    },
+  ];
+
   return (
     <Layouts titlePage={"Manage User"}>
       <section className="manage-user ms-3" id="manage-user">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {cardManageUsers.map((item, index) => (
             <div className="col" key={index}>
-              {/* <Link to={item.location} className="text-decoration-none"> */}
               <Card
                 src={item.image}
                 cardSubtitle={item.text}
                 cardTitle={item.total}
               ></Card>
-              {/* </Link> */}
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import "./Dashboard.styles.css";
 import {
@@ -13,8 +13,16 @@ import {
 import Card from "../../components/Fragments/card/Card";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
 import { useLogin } from "../../hooks/useLogin";
+import { getAllPatient } from "../../service/patient";
 
 const Dashboard = () => {
+  const [totalUser, setTotalUser] = useState(null);
+
+  // useEffect(() => {
+  //   getAllPatient((data) => {
+  //     setTotalUser(data.data.total_user);
+  //   });
+  // }, []);
 
   return (
     <Layouts titlePage={"Dashboard"}>
@@ -45,7 +53,7 @@ const Dashboard = () => {
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
-              cardTitle="17.000"
+              cardTitle={totalUser !== null ? totalUser : "0"}
               src={iconCardUser}
             />
             <Card
