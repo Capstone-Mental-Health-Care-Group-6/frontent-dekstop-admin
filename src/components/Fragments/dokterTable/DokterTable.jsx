@@ -198,22 +198,6 @@ const DokterTable = ({ data, id, searchValue }) => {
           </p>
         </div>
       )}
-
-      {/* Modal untuk menampilkan detail akun atau nonaktifkan akun */}
-      {/* <Dialog
-        visible={displayModal}
-        onHide={() => setDisplayModal(false)}
-        footer={dialogFooter}
-        modal
-      >
-        {selectedDokter && (
-          <div>
-            <p></p>
-          </div>
-        )}
-      </Dialog> */}
-
-      {/* Modal konfirmasi nonaktifkan akun */}
       <div
         className={`modal ${showConfirmation ? "show" : ""}`}
         style={{ display: showConfirmation ? "block" : "none" }}

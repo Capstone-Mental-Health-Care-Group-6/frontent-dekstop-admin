@@ -27,17 +27,7 @@ const PengajuanTable = ({ data, id, searchValue, status }) => {
     );
   });
 
-  useEffect(() => {
-    if (status === "Failed") {
-      setStatus("Gagal");
-    } else if (status === "Completed") {
-      setStatus("Disetujui");
-    } else if (status === "Pending") {
-      setStatus("Menunggu Persetujuan");
-    } else {
-      setStatus("");
-    }
-  }, []);
+  
 
   const onPageChange = (event) => {
     setFirst(event.first);

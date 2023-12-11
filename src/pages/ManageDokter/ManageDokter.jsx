@@ -47,7 +47,10 @@ const ManageDokter = ({ location }) => {
             src={captivePortal}
           />
 
-          <Link className="card-pengajuan" to={`/admin/manage/dokter/pengajuan`}>
+          <Link
+            className="card-pengajuan"
+            to={`/admin/manage/dokter/pengajuan`}
+          >
             {/* <Card
               cardSubtitle="Pengajuan Dokter"
               cardTitle="12"

@@ -1,13 +1,13 @@
 import React from "react";
 import Layouts from "../../../Layouts/Layouts";
-import LayoutDetailDokter from "../../../Layouts/LayoutDetailDokter/LayoutDetailDokter";
+import LayoutDetailPengajuan from "../LayoutDetailPengajuan";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
 
-const DokumenDokter = () => {
+const DokumenPengajuan = () => {
   return (
     <>
       <Layouts titlePage={"Detail Akun Dokter"}>
-        <LayoutDetailDokter>
+        <LayoutDetailPengajuan>
           <DetailDokterCard>
             <div>
               <div classNameName="title-card">
@@ -63,10 +63,10 @@ const DokumenDokter = () => {
               </div>
             </div>
           </DetailDokterCard>
-        </LayoutDetailDokter>
+        </LayoutDetailPengajuan>
       </Layouts>
     </>
   );
 };
 
-export default DokumenDokter;
+export default DokumenPengajuan;

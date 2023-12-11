@@ -1,7 +1,7 @@
 import React from "react";
 import Layouts from "../../../Layouts/Layouts";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
-import "./informasiDokter.style.css";
+import "./DetailPengajuan.style.css";
 import { useParams } from "react-router-dom";
 import { dataPengajuan } from "../../../components/DataDokter/DataPengajuan/dataPengajuan";
 import LayoutDetailPengajuan from "../LayoutDetailPengajuan";

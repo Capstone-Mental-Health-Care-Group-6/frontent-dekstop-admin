@@ -115,17 +115,17 @@ const LayoutDetailPengajuan = ({ children }) => {
                     <DetailDokterItem
                       img={icon1}
                       title="Informasi Dokter"
-                      location={`/admin/manage/dokter/detail/${id}`}
+                      location={`/admin/manage/dokter/pengajuan/detail/${id}`}
                     />
                     <DetailDokterItem
                       img={icon2}
                       title="Dokumen"
-                      location={`/admin/manage/dokter/detail/dokumen/${id}`}
+                      location={`/admin/manage/dokter/pengajuan/detail/dokumen/${id}`}
                     />
                     <DetailDokterItem
                       img={icon3}
                       title="Pengalaman"
-                      location={`/admin/manage/dokter/detail/pengalaman/${id}`}
+                      location={`/admin/manage/dokter/pengajuan/detail/pengalaman/${id}`}
                     />
                   </ul>
                 </div>
