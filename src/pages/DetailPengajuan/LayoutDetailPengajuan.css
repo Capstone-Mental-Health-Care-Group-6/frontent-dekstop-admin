@@ -47,6 +47,18 @@
   border-radius: 15px;
 }
 
+.modal-dialog .modal-content .modal-header .modal-title {
+  font-size: 14px;
+}
+
+.iconModalRejection {
+  width: 50px;
+}
+
+.menu-reject {
+  font-size: 12px;
+}
+
 @media screen and (max-width: 436px) {
   .profile-card {
     width: 75vw;

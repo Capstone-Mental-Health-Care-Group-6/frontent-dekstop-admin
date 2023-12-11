@@ -27,8 +27,6 @@ const PengajuanTable = ({ data, id, searchValue, status }) => {
     );
   });
 
-  
-
   const onPageChange = (event) => {
     setFirst(event.first);
     setRows(event.rows);
@@ -144,45 +142,6 @@ const PengajuanTable = ({ data, id, searchValue, status }) => {
             header="Status Pengajuan"
             headerClassName="table-header-border"
           />
-          {/* <Column
-            body={(rowData) => (
-              <div className="dropdown">
-                <button
-                  className="btn"
-                  type="button"
-                  id={`dropdownMenuButton-${rowData.id}`}
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span className="action-symbol fw-bold">...</span>
-                </button>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby={`dropdownMenuButton-${rowData.id}`}
-                >
-                  {actionItems.map((item, index) => (
-                    <li key={index}>
-                      <button
-                        className="dropdown-item"
-                        onClick={() =>
-                          handleActionSelection(item.action, rowData)
-                        }
-                      >
-                        <img
-                          src={item.icon}
-                          alt={item.label}
-                          className="icon-before-label me-2"
-                        />{" "}
-                        {item.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            header="Action"
-            headerClassName="table-header-border"
-          /> */}
         </DataTable>
       ) : (
         <div className="text-center mt-4">

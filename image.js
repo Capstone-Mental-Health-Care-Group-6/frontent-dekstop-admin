@@ -56,6 +56,7 @@ import notifButton from "./src/assets/notif-button.png";
 import UnreadIndicator from "./src/assets/UnreadIndicator.png";
 import arrow from "./src/assets/arrow.png";
 import infoOutline from "./src/assets/info-outline.png";
+import iconModalRejection from "./src/assets/iconModalRejection.png";
 
 export {
   pendingArtikelAdmin,
@@ -115,5 +116,6 @@ export {
   notifButton,
   UnreadIndicator,
   arrow,
-  infoOutline
+  infoOutline,
+  iconModalRejection,
 };
