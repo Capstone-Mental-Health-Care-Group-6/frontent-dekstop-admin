@@ -97,6 +97,7 @@ const PaketKonseling = () => {
     })
   }
 
+  console.log(formData);
   return (
     <Layouts titlePage={"Paket Konseling"}>
       <section className="paket-konseling" id="paket-konseling" >
@@ -117,7 +118,7 @@ const PaketKonseling = () => {
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
-                    {formData.avatar ? (
+                    {formData.avatar && formData.avatar instanceof Blob ? (
                       <img src={URL.createObjectURL(formData.avatar)} />
                     ) : (
                       <img src={defaultImageKonseling} />
@@ -180,7 +181,7 @@ const PaketKonseling = () => {
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
-                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} > Edit </button> </li>
+                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} onClick={() => setFormData(item)} > Edit </button> </li>
                         <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target={`#alert-delete${item.id}`}  > Hapus </button> </li>
                       </ul>
 
@@ -197,8 +198,10 @@ const PaketKonseling = () => {
 
                       <div className="position-relative mx-auto">
                         <div className="image d-flex justify-content-center ">
-                          {formData.avatar ? (
+                          {formData.avatar && formData.avatar instanceof Blob ? (
                             <img src={URL.createObjectURL(formData.avatar)} />
+                          ) : item.avatar ? (
+                            <img src={item.avatar} alt="Avatar from API" />
                           ) : (
                             <img src={defaultImageKonseling} />
                           )}
