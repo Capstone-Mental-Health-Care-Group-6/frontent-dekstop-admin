@@ -13,6 +13,7 @@ import {
   konsultasiImage2,
   konsultasiImage3,
   paymentFailed,
+  searchFailed,
 } from "../../../image";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -276,7 +277,7 @@ export const CustomerService = {
 };
 
 export const emptyMessageTransaksiTertunda = (custumers) => {
-  if (custumers.length < 1) {
+  if (custumers.length < 0) {
     return (
       <div className="d-grid justify-content-center">
         <div className="w-50 d-grid justify-content-center mx-auto">
