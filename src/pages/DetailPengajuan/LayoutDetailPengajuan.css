@@ -59,6 +59,9 @@
   font-size: 12px;
 }
 
+.modal-dialog .modal-content .modal-header .text-black {
+  font-size: 18px;
+}
 @media screen and (max-width: 436px) {
   .profile-card {
     width: 75vw;

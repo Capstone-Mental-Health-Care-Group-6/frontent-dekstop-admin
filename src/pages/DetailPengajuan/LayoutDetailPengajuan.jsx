@@ -19,24 +19,11 @@ import { dataPengajuan } from "../../components/DataDokter/DataPengajuan/dataPen
 const LayoutDetailPengajuan = ({ children }) => {
   const { id } = useParams();
   const dokter = dataPengajuan.find((dokter) => dokter.id === parseInt(id));
-  const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showRejection, setShowRejection] = useState(false);
-  const [showConfirmSubmission, setConfirmSubmission] = useState(false);
-
-  const handleInfoHover = () => {
-    setShowInfo(true);
-  };
-
-  const handleInfoLeave = () => {
-    setShowInfo(false);
-  };
-
-  const handleSwitchToggle = () => {
-    // Menampilkan modal konfirmasi ketika tombol switch diubah
-    setShowConfirmation(true);
-  };
+  const [showConfirmSubmission, setShowConfirmSubmission] = useState(false);
+  const [showSuccessConfirmation, setShowSuccessConfirmation] = useState(false);
 
   const cancelRejection = () => {
     // Fungsi untuk membatalkan nonaktifkan akun (tutup modal konfirmasi)
@@ -60,7 +47,22 @@ const LayoutDetailPengajuan = ({ children }) => {
   };
 
   const handleConfirmation = () => {
-    setConfirmSubmission(true);
+    setShowConfirmSubmission(true);
+  };
+
+  const cancelConfirmation = () => {
+    setShowConfirmSubmission(false);
+  };
+
+  const confirmSubmission = () => {
+    // Fungsi untuk menonaktifkan akun setelah konfirmasi
+    setShowConfirmSubmission(false);
+
+    // Setelah berhasil menonaktifkan, tampilkan modal sukses
+    setShowSuccessConfirmation(true);
+    setTimeout(() => {
+      setShowSuccessConfirmation(false);
+    }, 3000);
   };
 
   return (
@@ -184,39 +186,19 @@ const LayoutDetailPengajuan = ({ children }) => {
         >
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
-              <div className="d-flex justify-content-center">
-                <img
-                  className="iconModalRejection my-3"
-                  src={iconModalRejection}
-                />
-              </div>
-              <div className="modal-header border-bottom-0 d-flex justify-content-center">
-                <h1
-                  className="modal-title text-center fw-semibold"
-                  id="exampleModalLabel"
-                >
-                  Apakah kamu yakin ingin Tolak Pengajuan Praktik Dokter? <br />
-                  beri alasan yang akan diberikan ke Dokter
-                </h1>
-              </div>
-              <div className="modal-body px-5">
-                <div className="d-flex flex-column gap-2">
-                  <div className="row d-flex gap-2">
-                    <button className="menu-reject col-7 bg-white border border-2 border-light-subtlet px-2 py-2 rounded text-center">
-                      Surat Ijin Praktik Dokter Ilegal
-                    </button>
-                    <button className="menu-reject col bg-white border border-2 border-light-subtlet  py-2 rounded text-center">
-                      Manipulasi Ijazah
-                    </button>
-                  </div>
-                  <div className="row d-flex gap-2">
-                    <button className="menu-reject col-8 bg-white border border-2 border-light-subtlet px-2 py-2 rounded">
-                      Terdapat Ketidaksesuaian Antar Dokumen
-                    </button>
-                    <button className="menu-reject col-3 bg-white border border-2 border-light-subtlet px-3 py-2 rounded text-center">
-                      Alasan Lain
-                    </button>
-                  </div>
+              <div className="modal-header border-bottom-0 d-flex justify-content-center"></div>
+              <div className="modal-body">
+                <div className="d-flex align-items-center">
+                  <h1
+                    className="modal-title text-start text-black fw-bold px-3 pt-3"
+                    id="exampleModalLabel"
+                  >
+                    Yakin ingin terima pengajuan izin parktik dokter?
+                  </h1>
+                </div>
+                <div className="d-flex text-start text-body-secondary  px-3 pt-3 ">
+                  Dengan ini dokter akan mendapat akses untuk praktik di
+                  EmphatiCare
                 </div>
               </div>
               <div className="modal-footer border-top-0">
@@ -224,16 +206,16 @@ const LayoutDetailPengajuan = ({ children }) => {
                   type="button"
                   className="btn text-primary"
                   data-bs-dismiss="modal"
-                  onClick={cancelRejection}
+                  onClick={cancelConfirmation}
                 >
                   Batal
                 </button>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={confirmRejection}
+                  onClick={confirmSubmission}
                 >
-                  Tolak Pengajuan
+                  Terima
                 </button>
               </div>
             </div>
@@ -261,6 +243,37 @@ const LayoutDetailPengajuan = ({ children }) => {
                       Pengajuan Praktik Dokter berhasil ditolak. Informasi ini
                       akan disampaikan ke Dokter terkait.
                     </div>
+                  </div>
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={() => setShowSuccessModal(false)}
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Modal Confirmation Success */}
+        <div
+          className={`modal ${showSuccessConfirmation ? "show" : ""}`}
+          style={{ display: showSuccessConfirmation ? "block" : "none" }}
+          id="successModal"
+          tabIndex="-1"
+          aria-labelledby="successModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog fixed-bottom fixed-left modal-success">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="successModalLabel">
+                  <div className="d-flex">
+                    <div className="d-flex align-items-center">
+                      <img src={Success} alt="" className="me-2" />
+                    </div>
+                    <div>Pengajuan Praktik Dokter Berhasil Diterima</div>
                   </div>
                 </h5>
                 <button
