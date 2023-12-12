@@ -7,10 +7,11 @@ import ModalDanaPencairan from "../modal/ModalDanaPencairan";
 const TablePencairanSaldo = ({ data, searchValue }) => {
   const [selectedRowData, setSelectedRowData] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState(null);
+
+  const [selectedStatusMap, setSelectedStatusMap] = useState({});
 
   const filterData = data.filter((dokter) => {
-    return dokter.nama_dokter.toLowerCase().includes(searchValue.toLowerCase());
+    return dokter.doctor_name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
   const statusOptions = [
@@ -19,9 +20,21 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
     { label: "Sukses", value: "Sukses" },
   ];
 
-  // const handleStatusChange = (e) => {
-  //   setSelectedStatus(e.value);
-  // };
+  const handleStatusChange = (id, newStatus) => {
+    setSelectedStatusMap((prevMap) => ({
+      ...prevMap,
+      [id]: newStatus,
+    }));
+    updateStatusInDataTable(id, newStatus); // memperbarui status di tabel data
+  };
+
+  const updateStatusInDataTable = (id, newStatus) => {
+    // Implementasi logika untuk memperbarui status di tabel data
+    setSelectedStatusMap((prevMap) => ({
+      ...prevMap,
+      [id]: newStatus,
+    }));
+  };
 
   const userStatusTemplate = (rowData) => {
     return (
@@ -29,7 +42,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
         <button
           className="btn"
           type="button"
-          id={`dropdownMenuButton-${rowData.nama_dokter}`}
+          id={`dropdownMenuButton-${rowData.doctor_name}`}
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
@@ -41,7 +54,12 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
         >
           {statusOptions.map((item, index) => (
             <li key={index}>
-              <button className="dropdown-item">{item.label}</button>
+              <button
+                className="dropdown-item"
+                onClick={() => handleStatusChange(rowData.id, item.value)}
+              >
+                {item.label}
+              </button>
             </li>
           ))}
         </ul>
@@ -55,7 +73,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
         className="nama__dokter d-flex align-items-center"
         onClick={() => handleRowClick(rowData)}
       >
-        <span>{rowData.nama_dokter}</span>
+        <span>{rowData.doctor_name}</span>
       </div>
     );
   };
@@ -63,20 +81,31 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
   const statusBodyTemplate = (rowData) => {
     let statusClassName;
 
-    if (rowData.status === "Sukses") {
+    // Menggunakan selectedStatusMap jika ada, jika tidak, menggunakan rowData.status
+    const currentStatus = selectedStatusMap[rowData.id] || rowData.status;
+
+    if (currentStatus === "Sukses") {
       statusClassName = "success-status";
-    } else if (rowData.status === "Proses") {
+    } else if (currentStatus === "Proses") {
       statusClassName = "process-status";
     } else {
       statusClassName = "insuccess-status";
     }
 
-    return <span className={statusClassName}>{rowData.status}</span>;
+    return <span className={statusClassName}>{currentStatus}</span>;
+  };
+
+  const setSelectedStatus = (id, status) => {
+    setSelectedStatusMap((prevMap) => ({
+      ...prevMap,
+      [id]: status,
+    }));
   };
 
   const handleRowClick = (rowData) => {
     setSelectedRowData(rowData);
     setIsModalVisible(true);
+    setSelectedStatus(rowData.id, rowData.status); // Mengatur status awal saat menampilkan modal
   };
 
   const handleModalClose = () => {
@@ -101,25 +130,27 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
               headerClassName="table-header-border"
             />
 
-            <Column
+            {/* <Column
               header="ID Transaksi"
               field="idtransaksi"
               headerClassName="table-header-border"
-            />
+            /> */}
             <Column
               header="Date"
-              field="date"
+              field="date_confirmed"
               headerClassName="table-header-border"
             />
             <Column
               header="Saldo Cair"
-              field="saldoCair"
+              field="balance_req"
               headerClassName="table-header-border"
             />
             <Column
               header="Status"
               field="status"
-              body={statusBodyTemplate}
+              body={(rowData) =>
+                statusBodyTemplate(rowData, handleStatusChange)
+              }
               headerClassName="table-header-border"
             />
             <Column
@@ -135,6 +166,8 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
               visible={isModalVisible}
               onClose={handleModalClose}
               rowData={selectedRowData}
+              selectedStatusMap={selectedStatusMap}
+              updateStatusInDataTable={updateStatusInDataTable}
             />
           )}
         </>
