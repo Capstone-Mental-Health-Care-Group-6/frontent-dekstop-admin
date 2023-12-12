@@ -11,26 +11,27 @@ import { dataColumnsTertunda } from "../../components/DataComponents/dataCompone
 import Table from "../../components/Fragments/tabel/Table";
 import { LuFilter } from "react-icons/lu";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
+import { getAllTransaction } from "../../service/transaction";
 
 function TransaksiTertunda() {
   const [customers, setCustomers] = useState([]);
   const [filteredCustomers, setFilteredCustomers] = useState([]);
   const [transaksiManualClicked, setTransaksiManualClicked] = useState(true);
-  const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] =
-    useState(false);
+  const [transaksiOtomatisClicked, setTransaksiOtomatisClicked] = useState(false);
   const [bgTransaction, setBgTransaction] = useState("manual");
   const [searchData, setSearchData] = useState("");
 
   useEffect(() => {
-    CustomerService.getCustomersMedium().then((data) => {
+    getAllTransaction((data) => {
+      console.log(data);
       if (transaksiManualClicked) {
         const filteredData = data.filter(
-          (customer) => customer.metode_pembayaran === "Manual"
+          (customer) => customer.payment_type === "manual"
         );
         setFilteredCustomers(filteredData);
       } else if (transaksiOtomatisClicked) {
         const filteredData = data.filter(
-          (customer) => customer.metode_pembayaran === "Otomatis"
+          (customer) => customer.payment_type !== "manual"
         );
         setFilteredCustomers(filteredData);
       } else {
@@ -39,17 +40,20 @@ function TransaksiTertunda() {
     });
   }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
+
   const handleSearch = (e) => {
     setSearchData(e.target.value);
   };
 
   const filteredData = customers.filter((item) => {
-    return item.name.toLowerCase().includes(searchData.toLowerCase());
+    return item.payment_type.toLowerCase().includes(searchData.toLowerCase());
   });
 
   const filteredOtomatisManual = filteredCustomers.filter((item) => {
-    return item.name.toLowerCase().includes(searchData.toLowerCase());
+    return item.payment_type.toLowerCase().includes(searchData.toLowerCase());
   });
+
+  //ganti payment type nanti dengan nama user
 
   const handleClick = (transactionType) => {
     setBgTransaction(transactionType);
@@ -69,9 +73,8 @@ function TransaksiTertunda() {
               <div className="d-flex gap-4 mb-3">
                 <div className=" col  d-flex  filtering-data-manual ">
                   <h4
-                    className={`px-2 ${
-                      bgTransaction === "manual" ? "active" : ""
-                    }`}
+                    className={`px-2 ${bgTransaction === "manual" ? "active" : ""
+                      }`}
                     onClick={() => {
                       setTransaksiManualClicked(true);
                       setTransaksiOtomatisClicked(false);
@@ -139,20 +142,9 @@ function TransaksiTertunda() {
               </div>
             </div>
 
-            <Table
-              value={
-                transaksiManualClicked || transaksiOtomatisClicked
-                  ? filteredOtomatisManual
-                  : filteredData
-              }
-              emptyMessage={emptyMessageTransaksiTertunda(customers)}
-            >
+            <Table value={transaksiManualClicked || transaksiOtomatisClicked ? filteredOtomatisManual : filteredData} emptyMessage={emptyMessageTransaksiTertunda(customers)}  >
               {dataColumnsTertunda.map((item, index) => (
-                <ColumnTable
-                  key={index}
-                  header={item.header}
-                  field={item.field}
-                  body={item.body}
+                <ColumnTable key={index} header={item.header} field={item.field} body={item.body}
                 />
               ))}
             </Table>

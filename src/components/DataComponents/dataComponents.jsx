@@ -355,6 +355,8 @@ const styleStatus = (rowData) => {
     }
   });
 
+  //logic status pembayaran ada di sini 
+
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -371,19 +373,19 @@ export const dataColumnsTertunda = [
     body: styleName,
   },
   {
-    field: "id_transaksi",
+    field: "transaction_id",
     header: "ID Transaksi",
   },
   {
-    field: "harga",
+    field: "price_result",
     header: "Harga",
   },
   {
-    field: "paket_langganan",
+    field: "payment_type",
     header: "Paket Langganan",
   },
   {
-    field: "status_pembayaran",
+    field: "payment_status",
     header: "Status Pembayaran",
     body: styleStatus,
   },
