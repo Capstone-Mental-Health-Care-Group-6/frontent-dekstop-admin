@@ -9,11 +9,12 @@ import Button from '../../components/Elements/button/Button'
 import InputForm from "../../components/Fragments/inputForm/InputForm";
 import { useState, useEffect } from "react";
 import { createBundle, deleleBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
+import toast from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 
 const PaketKonseling = () => {
   const [bundle, setBundle] = useState([])
-  const [errorMsg, setErrorMsg] = useState('d-none')
   const [formData, setFormData] = useState({
     avatar: null,
     name: '',
@@ -57,7 +58,6 @@ const PaketKonseling = () => {
       active_priode: 1,
       type: 'PREMIUM',
     })
-    setErrorMsg('d-none')
   }
 
   const formDataKeys = ['avatar', 'name', 'price', 'sessions', 'description', 'active_priode', 'type'];
@@ -76,7 +76,7 @@ const PaketKonseling = () => {
   const handleUpdateBundle = async (id) => {
     await updateBundle(id, apiData)
     deleteState()
-
+    updateKonseling()
     getAllBundle((res) => {
       setBundle(res.data)
     })
@@ -91,15 +91,53 @@ const PaketKonseling = () => {
         getAllBundle((res) => {
           setBundle(res.data)
         })
+        addKonseling()
       } else {
-        setErrorMsg('d-block')
+        rejectKonseling()
       }
     })
   }
+  const addKonseling = () => toast.success('Paket konseling berhasil di tambahkan ✨🚀', {
+    duration: 4000,
+    position: 'position="bottom-center',
+    className: 'custom-toast-payment',
 
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+  const rejectKonseling = () => toast.error('Paket konseling gagal ditambah tolong periksa dan masukan data yang sesuai ', {
+    duration: 5000,
+    position: 'position="bottom-center',
+    className: 'custom-toast-payment',
+
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+
+  const updateKonseling = () => toast.success('Paket konseling berhasil update ✨🚀', {
+    duration: 4000,
+    position: 'position="bottom-center',
+    className: 'custom-toast-payment',
+
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+
+
+
+  console.log(formData);
   return (
     <Layouts titlePage={"Paket Konseling"}>
-      <section className="paket-konseling" id="paket-konseling" >
+      <section className="paket-konseling position-relative" id="paket-konseling" >
 
         <section className="add-konseling mt-4">
           <div className="d-flex align-items-center justify-content-between p-4 rounded-3 bg-white flex-md-row flex-column">
@@ -117,7 +155,7 @@ const PaketKonseling = () => {
 
                 <div className="position-relative mx-auto">
                   <div className="image d-flex justify-content-center ">
-                    {formData.avatar ? (
+                    {formData.avatar && formData.avatar instanceof Blob ? (
                       <img src={URL.createObjectURL(formData.avatar)} />
                     ) : (
                       <img src={defaultImageKonseling} />
@@ -147,10 +185,9 @@ const PaketKonseling = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <p className={`text-danger ${errorMsg}`} >Tolong masukan data dengan benar</p>
                 <div className="d-flex gap-2 float-end">
                   <Button className={'btn'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                  <Button className={'btn bg-primary text-white'} text="Simpan" type={'submit'} onClick={handleCreateBundle} />
+                  <Button className={'btn bg-primary text-white'} text="Simpan" type={'submit'} onClick={handleCreateBundle} bsDismiss={'modal'} />
                 </div>
               </form>
             </ModalAlert>
@@ -180,7 +217,7 @@ const PaketKonseling = () => {
                       </div>
                       <button className="btn border-0" data-bs-toggle="dropdown">{<BsThreeDots />}</button>
                       <ul className="dropdown-menu px-1">
-                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} > Edit </button> </li>
+                        <li > <button className="btn w-100 fw-semibold mb-2" data-bs-toggle="modal" data-bs-target={`#modal-edit${item.id}`} onClick={() => setFormData(item)} > Edit </button> </li>
                         <li > <button className="btn w-100 fw-semibold " data-bs-toggle="modal" data-bs-target={`#alert-delete${item.id}`}  > Hapus </button> </li>
                       </ul>
 
@@ -189,7 +226,7 @@ const PaketKonseling = () => {
 
                   <ModalAlert id={`modal-edit${item.id}`} >
                     <div className="d-flex justify-content-between p-3 text-black fw-semibold">
-                      Edit Paket Konseling Premiums
+                      Edit Paket Konseling Premium
                       <Button className={'btn-close border-0 '} bsDismiss={'modal'} onClick={deleteState} />
                     </div>
 
@@ -197,8 +234,10 @@ const PaketKonseling = () => {
 
                       <div className="position-relative mx-auto">
                         <div className="image d-flex justify-content-center ">
-                          {formData.avatar ? (
+                          {formData.avatar && formData.avatar instanceof Blob ? (
                             <img src={URL.createObjectURL(formData.avatar)} />
+                          ) : item.avatar ? (
+                            <img src={item.avatar} alt="Avatar from API" />
                           ) : (
                             <img src={defaultImageKonseling} />
                           )}
@@ -229,7 +268,7 @@ const PaketKonseling = () => {
                       </div>
                       <div className="d-flex gap-2 float-end">
                         <Button className={'btn border-primary text-primary fw-medium'} text="Batal" bsTogle={'modal'} bsTarget={'#modal-batal-edit'} />
-                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle(item.id)} />
+                        <Button className={'btn bg-primary text-white fw-medium'} text="Simpan" onClick={() => handleUpdateBundle(item.id)} bsDismiss={'modal'} />
                       </div>
                     </form>
                   </ModalAlert>
@@ -278,7 +317,7 @@ const PaketKonseling = () => {
 
           </div>
         </section>
-
+        <Toaster />
       </section>
     </Layouts>
   )
