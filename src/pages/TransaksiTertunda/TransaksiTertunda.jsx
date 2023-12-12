@@ -23,21 +23,28 @@ function TransaksiTertunda() {
 
   useEffect(() => {
     getAllTransaction((data) => {
-      console.log(data);
-      if (transaksiManualClicked) {
-        const filteredData = data.filter(
-          (customer) => customer.payment_type === "manual"
-        );
-        setFilteredCustomers(filteredData);
-      } else if (transaksiOtomatisClicked) {
-        const filteredData = data.filter(
-          (customer) => customer.payment_type !== "manual"
-        );
-        setFilteredCustomers(filteredData);
-      } else {
-        setCustomers(data);
-      }
+      setCustomers(data);
+      const filteredData = data.filter(
+        (customer) => customer.payment_type === "manual"
+      );
+      setFilteredCustomers(filteredData);
     });
+  }, []);
+
+  useEffect(() => {
+    if (transaksiManualClicked) {
+      const filteredData = customers.filter(
+        (customer) => customer.payment_type === "manual"
+      );
+      setFilteredCustomers(filteredData);
+    } else if (transaksiOtomatisClicked) {
+      const filteredData = customers.filter(
+        (customer) => customer.payment_type !== "manual"
+      );
+      setFilteredCustomers(filteredData);
+    } else {
+      setCustomers(customers);
+    }
   }, [transaksiManualClicked, transaksiOtomatisClicked]);
 
 
