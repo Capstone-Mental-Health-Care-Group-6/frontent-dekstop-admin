@@ -72,6 +72,11 @@
     border-radius: 14px 14px 0px 0px;
 }
 
+.paket-konseling .custom-toast-payment {
+    margin-top: 20px;
+    min-width: max-content;
+}
+
 @media screen and (min-width:1400px) {
     .paket-konseling .all-konseling .row .col .card-header .d-flex h6 {
         font-size: 17px;
