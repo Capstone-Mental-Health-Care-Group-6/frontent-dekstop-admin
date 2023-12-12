@@ -345,23 +345,28 @@ const styleName = (rowData) => {
 
 const styleStatus = (rowData) => {
   const [changeItemStatus, setChangeItemStatus] = useState("");
+  const [paymentText, setPaymentText] = useState("");
 
   useEffect(() => {
-    if (rowData.status_pembayaran === "sudah bayar") {
+    // Update changeItemStatus based on payment_status
+    if (rowData.payment_status === 2) {
       setChangeItemStatus("changeItemStatusBayar");
-    } else if (rowData.status_pembayaran === "belum bayar") {
+      setPaymentText("Accept");
+    } else if (rowData.payment_status === 5) {
       setChangeItemStatus("changeItemStatusBelum");
+      setPaymentText("Pending");
     } else {
       setChangeItemStatus("");
+      setPaymentText("Failed");
     }
-  });
+  },);
 
   //logic status pembayaran ada di sini 
 
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <div className={changeItemStatus}>{rowData.status_pembayaran}</div>
+        <div className={changeItemStatus}>{paymentText}</div>
       </div>
     </>
   );

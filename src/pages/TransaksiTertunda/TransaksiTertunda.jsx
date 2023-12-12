@@ -23,6 +23,7 @@ function TransaksiTertunda() {
 
   useEffect(() => {
     getAllTransaction((data) => {
+      console.log('ter render sekali', data);
       setCustomers(data);
       const filteredData = data.filter(
         (customer) => customer.payment_type === "manual"
