@@ -7,27 +7,43 @@ import { riwayatTransaksi1 } from "../../components/DataComponents/dataComponent
 import RiwayatTransaksi from "../../components/Fragments/riwayat-transaksi-user/RiwayatTransaksi";
 import Button from "../../components/Elements/button/Button";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
+import { useEffect, useState } from "react";
+import { getAllTransaction } from "../../service/transaction";
 
 
 const TransaksiUser = () => {
+
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    getAllTransaction((data) => {
+      setCustomers(data);
+    });
+  }, []);
+
+  const paymentStatusCount = customers.reduce((acc, transaction) => {
+    const status = transaction.payment_status;
+    acc[status] = (acc[status] || 0) + 1;
+    return acc;
+  }, {});
 
   return (
     <Layouts titlePage={"Transaksi User"}>
       <section className="transaksi-user" id="transaksi-user">
         <div className="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
           <div className="col" >
-            <Card src={iconTransaksiCard} cardSubtitle={'Total Berhasil'} cardTitle={'24.000'} />
+            <Card src={iconTransaksiCard} cardSubtitle={'Total Berhasil'} cardTitle={paymentStatusCount[2] || 0} />
           </div>
           <div className="col" >
-            <Card src={iconBerhasilCard} cardSubtitle={'Transaksi Berhasil'} cardTitle={'20.000'} />
+            <Card src={iconBerhasilCard} cardSubtitle={'Transaksi Berhasil'} cardTitle={paymentStatusCount[2] || 0} />
           </div>
           <div className="col" >
             <Link to={'/admin/transaksi/user/tertunda'}>
-              <Card src={iconTertundaCard} cardSubtitle={'Transaksi Tertunda'} cardTitle={'39.000'} />
+              <Card src={iconTertundaCard} cardSubtitle={'Transaksi Tertunda'} cardTitle={paymentStatusCount[5] || 0} />
             </Link>
           </div>
           <div className="col" >
-            <Card src={iconFGagalCard} cardSubtitle={'Transaksi Gagal'} cardTitle={'39.000'} />
+            <Card src={iconFGagalCard} cardSubtitle={'Transaksi Gagal'} cardTitle={paymentStatusCount[4] || 0} />
           </div>
         </div>
       </section>
