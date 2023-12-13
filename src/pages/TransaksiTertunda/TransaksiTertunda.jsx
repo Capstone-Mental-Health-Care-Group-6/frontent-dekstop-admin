@@ -67,6 +67,74 @@ function TransaksiTertunda() {
     setBgTransaction(transactionType);
   };
 
+
+  const [selectedFilter, setSelectedFilter] = useState('');
+
+  useEffect(() => {
+
+    if (selectedFilter === 'Transaksi Terbaru') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        const createdAtDate = new Date(item.created_at);
+        const threeDaysAgo = new Date();
+        threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+        return createdAtDate >= threeDaysAgo;
+      }));
+    } else if (selectedFilter === '7 Hari Terakhir') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        const createdAtDate = new Date(item.created_at);
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        return createdAtDate >= sevenDaysAgo;
+      }));
+    } else if (selectedFilter === '30 Hari Terakhir') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        const createdAtDate = new Date(item.created_at);
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        return createdAtDate >= thirtyDaysAgo;
+      }));
+    } else if (selectedFilter === 'Semua Tanggal') {
+      resetFilter()
+    } else if (selectedFilter === 'Sudah Bayar') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        return item.payment_status === 2;
+      }));
+    } else if (selectedFilter === 'Belum Bayar') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        return item.payment_status === 5;
+      }));
+
+    } else if (selectedFilter === 'Konseling Instan') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        return item.counseling_type === 'A';
+      }));
+    } else if (selectedFilter === 'Konseling Premium') {
+      setFilteredCustomers(filteredCustomers.filter(item => {
+        return item.counseling_type === 'B';
+      }));
+    }
+  }, [selectedFilter]);
+
+
+  console.log(filteredCustomers);
+
+  const handleFilterChange = (event) => {
+    setSelectedFilter(event.target.value);
+  };
+
+  const resetFilter = () => {
+    getAllTransaction((data) => {
+      setCustomers(data);
+      const filteredData = data.filter(
+        (customer) => customer.payment_type === "manual"
+      );
+      setFilteredCustomers(filteredData);
+    });
+    setTransaksiManualClicked(true)
+    setTransaksiOtomatisClicked(false)
+    setBgTransaction('manual')
+  }
+
   return (
     <Layouts titlePage={"Transaksi Tertunda"}>
       <section className="transaksi-tertunda mb-2" id="transaksi-tertunda">
@@ -123,28 +191,27 @@ function TransaksiTertunda() {
                   <ul className="dropdown-menu">
                     <div className="d-flex justify-content-between fw-semibold p-3">
                       <span>Filter</span>
-                      <button className="text-primary btn border-0 m-0 p-0 fw-semibold">
+                      <button className="text-primary btn border-0 m-0 p-0 fw-semibold" onClick={resetFilter}>
                         Reset
                       </button>
                     </div>
                     <span className="p-3 fw-semibold">Waktu transaksi : </span>
-                    <FilterList title={"Transaksi Terbaru"} type={"radio"} />
-                    <FilterList title={"7 Hari Terakhir"} type={"radio"} />
-                    <FilterList title={"30 Hari Terakhir"} type={"radio"} />
-                    <FilterList title={"30 Hari Terakhir"} type={"radio"} />
-                    <FilterList title={"Semua Tanggal"} type={"radio"} />
+                    <FilterList title={"Transaksi Terbaru"} value={'Transaksi Terbaru'} type={"radio"} checked={selectedFilter === 'Transaksi Terbaru'} onChange={handleFilterChange} />
+                    <FilterList title={"7 Hari Terakhir"} value={'7 Hari Terakhir'} type={"radio"} checked={selectedFilter === '7 Hari Terakhir'} onChange={handleFilterChange} />
+                    <FilterList title={"30 Hari Terakhir"} value={'30 Hari Terakhir'} type={"radio"} checked={selectedFilter === '30 Hari Terakhir'} onChange={handleFilterChange} />
+                    <FilterList title={"Semua Tanggal"} value={'Semua Tanggal'} type={"radio"} checked={selectedFilter === 'Semua Tanggal'} onChange={handleFilterChange} />
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
                     <span className="p-3 fw-semibold">status transaksi : </span>
-                    <FilterList title={"Sudah Bayar"} type={"checkbox"} />
-                    <FilterList title={"Belum Bayar"} type={"checkbox"} />
+                    <FilterList title={"Sudah Bayar"} type={"checkbox"} value={'Sudah Bayar'} checked={selectedFilter === 'Sudah Bayar'} onChange={handleFilterChange} />
+                    <FilterList title={"Belum Bayar"} type={"checkbox"} value={'Belum Bayar'} checked={selectedFilter === 'Belum Bayar'} onChange={handleFilterChange} />
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
                     <span className="p-3 fw-semibold">Paket: </span>
-                    <FilterList title={"Konseling Instan"} type={"checkbox"} />
-                    <FilterList title={"Konseling Premium"} type={"checkbox"} />
+                    <FilterList title={"Konseling Instan"} type={"checkbox"} value={'Konseling Instan'} checked={selectedFilter === 'Konseling Instan'} onChange={handleFilterChange} />
+                    <FilterList title={"Konseling Premium"} type={"checkbox"} value={'Konseling Premium'} checked={selectedFilter === 'Konseling Premium'} onChange={handleFilterChange} />
                   </ul>
                 </div>
               </div>
