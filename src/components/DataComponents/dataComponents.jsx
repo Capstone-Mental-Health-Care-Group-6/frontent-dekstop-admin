@@ -356,13 +356,13 @@ const styleStatus = (rowData) => {
   useEffect(() => {
     // Update changeItemStatus based on payment_status
     if (rowData.payment_status === 2) {
-      setChangeItemStatus("changeItemStatusBayar");
+      setChangeItemStatus("changeItemStatusAccept");
       setPaymentText("Accept");
     } else if (rowData.payment_status === 5) {
-      setChangeItemStatus("changeItemStatusBelum");
+      setChangeItemStatus("changeItemStatusPending");
       setPaymentText("Pending");
     } else {
-      setChangeItemStatus("");
+      setChangeItemStatus("changeItemStatusFailed");
       setPaymentText("Failed");
     }
   },);
