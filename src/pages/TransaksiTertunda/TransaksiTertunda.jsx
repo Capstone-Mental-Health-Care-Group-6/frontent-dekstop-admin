@@ -54,11 +54,11 @@ function TransaksiTertunda() {
   };
 
   const filteredData = customers.filter((item) => {
-    return item.payment_type.toLowerCase().includes(searchData.toLowerCase());
+    return item.patient_name.toLowerCase().includes(searchData.toLowerCase());
   });
 
   const filteredOtomatisManual = filteredCustomers.filter((item) => {
-    return item.payment_type.toLowerCase().includes(searchData.toLowerCase());
+    return item.patient_name.toLowerCase().includes(searchData.toLowerCase());
   });
 
   //ganti payment type nanti dengan nama user

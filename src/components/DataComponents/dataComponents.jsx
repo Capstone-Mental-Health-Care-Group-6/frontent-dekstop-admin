@@ -14,6 +14,7 @@ import {
   konsultasiImage3,
   paymentFailed,
   searchFailed,
+  patientProfile,
 } from "../../../image";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -315,28 +316,33 @@ const getValue = (object, path) => {
 const styleName = (rowData) => {
   return (
     <>
-      <img
-        src={rowData.image}
-        style={{ width: "50px", height: "50px", marginRight: "10px" }}
-      />
-
-      {rowData.metode_pembayaran === "Otomatis" ? (
-        <Link
-          to={`/admin/transaksi/user/tertunda/otomatis/${getValue(
-            rowData,
-            "id"
-          )}`}
-        >
-          {rowData.name}
-        </Link>
+      {rowData.patient_avatar ? (
+        <img
+          src={rowData.patient_avatar}
+          style={{ width: "50px", height: "50px", marginRight: "10px" }}
+        />
       ) : (
+        <img src={patientProfile} alt="" style={{ width: "50px", height: "50px", marginRight: "10px" }} />
+      )}
+
+
+      {rowData.payment_type === "manual" ? (
         <Link
           to={`/admin/transaksi/user/tertunda/detail/${getValue(
             rowData,
-            "id"
+            "transaction_id"
           )}`}
         >
-          {rowData.name}
+          {rowData.patient_name}
+        </Link>
+      ) : (
+        <Link
+          to={`/admin/transaksi/user/tertunda/otomatis/${getValue(
+            rowData,
+            "transaction_id"
+          )}`}
+        >
+          {rowData.patient_name}
         </Link>
       )}
     </>
@@ -374,7 +380,7 @@ const styleStatus = (rowData) => {
 
 export const dataColumnsTertunda = [
   {
-    field: "name",
+    field: "patient_name",
     header: "Name",
     body: styleName,
   },
@@ -383,7 +389,7 @@ export const dataColumnsTertunda = [
     header: "ID Transaksi",
   },
   {
-    field: "price_result",
+    field: "price_counseling",
     header: "Harga",
   },
   {
