@@ -319,10 +319,10 @@ const styleName = (rowData) => {
       {rowData.patient_avatar ? (
         <img
           src={rowData.patient_avatar}
-          style={{ width: "50px", height: "50px", marginRight: "10px" }}
+          style={{ width: "50px", height: "50px", marginRight: "10px", borderRadius: "50%" }}
         />
       ) : (
-        <img src={patientProfile} alt="" style={{ width: "50px", height: "50px", marginRight: "10px" }} />
+        <img src={patientProfile} alt="" style={{ width: "50px", height: "50px", marginRight: "10px", borderRadius: "50%" }} />
       )}
 
 
@@ -378,6 +378,26 @@ const styleStatus = (rowData) => {
   );
 };
 
+const styleConselingType = (rowData) => {
+  const [conselingType, setConselingType] = useState("");
+
+  useEffect(() => {
+    if (rowData.counseling_type === "A") {
+      setConselingType('Paket Konsultasi Premium')
+    } else {
+      setConselingType('Paket Konsultasi Instan')
+    }
+  },);
+
+  return (
+    <>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div>{conselingType}</div>
+      </div>
+    </>
+  );
+}
+
 export const dataColumnsTertunda = [
   {
     field: "patient_name",
@@ -393,8 +413,9 @@ export const dataColumnsTertunda = [
     header: "Harga",
   },
   {
-    field: "payment_type",
+    field: "counseling_type",
     header: "Paket Langganan",
+    body: styleConselingType,
   },
   {
     field: "payment_status",
