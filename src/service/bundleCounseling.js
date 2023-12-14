@@ -9,14 +9,21 @@ export const getAllBundle = (callback) => {
         });
 }
 
-export const createBundle = (formBundle, callback) => {
-    axiosInterceptor.post('/bundle', formBundle)
+export const createBundle = async (formBundle, callback) => {
+    await axiosInterceptor.post('/bundle', formBundle, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
         .then((res) => {
-            callback(true, res.data)
-        }).catch((err) => {
+            callback(true, res.data);
+        })
+        .catch((err) => {
             console.log(err);
+            callback(false, err.message);
         });
-}
+};
+
 
 export const detailBundle = (id, callback) => {
     axiosInterceptor.get(`/bundle/${id}`)
@@ -27,8 +34,8 @@ export const detailBundle = (id, callback) => {
         });
 }
 
-export const updateBundle = (id, formBundle) => {
-    axiosInterceptor.put(`/bundle/${id}`, formBundle)
+export const updateBundle = async (id, formBundle) => {
+    await axiosInterceptor.put(`/bundle/${id}`, formBundle)
         .then((res) => {
             console.log(res);
         })

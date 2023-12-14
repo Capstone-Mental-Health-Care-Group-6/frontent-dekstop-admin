@@ -40,6 +40,8 @@ function DetailTransaksiUser() {
         }
     };
 
+    
+
     const terimaToast = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
         duration: 4000,
         position: 'position="bottom-center',
@@ -51,17 +53,17 @@ function DetailTransaksiUser() {
             'aria-live': 'polite',
         },
     });
-    const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
-        duration: 4000,
-        position: 'position="bottom-center',
-        className: 'custom-toast-payment',
+        const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
+            duration: 4000,
+            position: 'position="bottom-center',
+            className: 'custom-toast-payment',
 
-        // Aria
-        ariaProps: {
-            role: 'status',
-            'aria-live': 'polite',
-        },
-    });
+            // Aria
+            ariaProps: {
+                role: 'status',
+                'aria-live': 'polite',
+            },
+        });
 
 
     return (
