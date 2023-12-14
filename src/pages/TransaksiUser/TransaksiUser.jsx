@@ -17,7 +17,8 @@ const TransaksiUser = () => {
 
   useEffect(() => {
     getAllTransaction((data) => {
-      setCustomers(data);
+      const shuffledCustomers = shuffleArray(data);
+      setCustomers(shuffledCustomers);
     });
   }, []);
 
@@ -27,8 +28,45 @@ const TransaksiUser = () => {
     return acc;
   }, {});
 
+  const shuffleArray = (array) => {
+    let currentIndex = array.length;
+    let temporaryValue, randomIndex;
 
-  console.log('user', customers);
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  };
+
+  const formatDate = (isoDate) => {
+    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    const formattedDate = new Date(isoDate).toLocaleDateString('id-ID', options);
+    return formattedDate;
+  };
+
+  // ini adalah result data random dari customerr
+  const displayedCustomers = customers.slice(0, 4);
+  console.log(displayedCustomers);
+
+  const styleText = ((status) => {
+    if (status === 'A') {
+      return 'Paket  Premium'
+    } else if (status === 'B') {
+      return 'Paket  Instan'
+    } else if (status === 2) {
+      return 'Accept'
+    } else if (status === 5) {
+      return 'Pending'
+    } else {
+      return 'Failed'
+    }
+  })
+
 
   return (
     <Layouts titlePage={"Transaksi User"}>
@@ -64,10 +102,10 @@ const TransaksiUser = () => {
           <div className="riwayat-transaksi p-4">
             <h4>Riwayat Transaksi</h4>
 
-            {riwayatTransaksi1.map((item, index) => (
+            {displayedCustomers.map((item, index) => (
               <div className="d-grid" key={index}>
-                <RiwayatTransaksi key={index} name={item.name} date={item.date} paket={item.paket} doctor={item.doctor}
-                  status={item.status} image={item.image} />
+                <RiwayatTransaksi key={index} name={item.patient_name} date={formatDate(item.created_at)} paket={styleText(item.counseling_type)} doctor={item.doctor_name}
+                  status={styleText(item.payment_status)} image={item.patient_avatar} />
               </div>
             ))}
             <div className="d-flex justify-content-center" >

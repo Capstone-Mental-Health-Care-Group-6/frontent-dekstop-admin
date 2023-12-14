@@ -50,7 +50,7 @@ function DetailTransaksiUser() {
         if (status === 'A') {
             return 'Paket Konsultasi Premium'
         } else if (status === 'B') {
-            return 'Paket Konsultasi Premium Instan'
+            return 'Paket Konsultasi Instan'
         } else if (status === 2) {
             return 'Accept'
         } else if (status === 5) {
