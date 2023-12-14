@@ -8,3 +8,12 @@ export const getAllTransaction = (callback) => {
             console.log(err);
         });
 }
+
+export const getDetailTransaction = (id, callback) => {
+    axiosInterceptor.get(`/transaksi/check/${id}`)
+        .then((res) => {
+            callback(res.data)
+        }).catch((err) => {
+            console.log(err);
+        });
+}

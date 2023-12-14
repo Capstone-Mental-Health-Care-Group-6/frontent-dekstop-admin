@@ -1,10 +1,10 @@
 import React from 'react'
 
-function ItemDataTransaksi({ title, text }) {
+function ItemDataTransaksi({ title, text, className }) {
     return (
         <>
             <span>{title}</span>
-            <p>{text}</p>
+            <p className={className} >{text}</p>
         </>
     )
 }
