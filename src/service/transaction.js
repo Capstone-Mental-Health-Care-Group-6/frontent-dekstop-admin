@@ -18,8 +18,8 @@ export const getDetailTransaction = (id, callback) => {
         });
 }
 
-export const updateTransaction = (id, fromTransaction, callback) => {
-    axiosInterceptor.put(`/transaksi/${id}`, fromTransaction)
+export const updateTransaction = async (id, fromTransaction, callback) => {
+    await axiosInterceptor.put(`/transaksi/${id}`, fromTransaction)
         .then((res) => {
             callback(res.data)
         })

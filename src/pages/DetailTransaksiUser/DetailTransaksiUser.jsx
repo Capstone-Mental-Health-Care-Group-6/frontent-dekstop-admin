@@ -61,14 +61,17 @@ function DetailTransaksiUser() {
     })
 
 
-    const acceptPayment = () => {
+    const acceptPayment = async () => {
         const accept = { payment_status: 2 };
-        updateTransaction(idString, accept, (status, res) => {
+        await updateTransaction(idString, accept, (status, res) => {
             if (status) {
                 terimaToast();
                 console.log(res);
+                getDetailTransaction(idString, (data) => {
+                    setDetailTransaction(data.data)
+                })
             } else {
-                console.log('error asw', res);
+                console.log(res);
             }
         });
     }
