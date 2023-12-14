@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import "./TransaksiOtomatis.styles.css"
 import ItemDataTransaksi from '../../components/Fragments/item-data-transaksi/ItemDataTransaksi'
 import { getDetailTransaction } from '../../service/transaction'
-import { detailDataTransaksi } from '../../components/DataComponents/dataComponents'
 
 
 function TransaksiOtomatis() {

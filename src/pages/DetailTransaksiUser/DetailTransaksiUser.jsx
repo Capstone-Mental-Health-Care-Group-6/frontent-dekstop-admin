@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./DetailTransaksiUser.style.css";
 import Layouts from '../../Layouts/Layouts'
 import { useParams } from 'react-router-dom';
@@ -11,13 +11,22 @@ import 'react-photoswipe/lib/photoswipe.css';
 import ModalAlert from '../../components/Fragments/modal-alert/ModalAlert';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
+import { getDetailTransaction } from '../../service/transaction';
 
 
 function DetailTransaksiUser() {
     const id = useParams()
-    console.log(id);
-
+    const idString = String(id.id)
+    const [detailTransaction, setDetailTransaction] = useState([])
     const [isOpen, setIsOpen] = useState(false);
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [modalTextArea, setModalTextArea] = useState('d-none');
+
+    useEffect(() => {
+        getDetailTransaction(idString, (data) => {
+            setDetailTransaction(data.data)
+        })
+    }, [id]);
 
     const openPhotoSwipe = () => {
         setIsOpen(true);
@@ -26,10 +35,6 @@ function DetailTransaksiUser() {
     const handleClose = () => {
         setIsOpen(false);
     };
-
-    const [selectedButton, setSelectedButton] = useState(null);
-    const [modalTextArea, setModalTextArea] = useState('d-none');
-
 
     const handleButtonClick = (id) => {
         setSelectedButton(id);
@@ -40,7 +45,20 @@ function DetailTransaksiUser() {
         }
     };
 
-    
+
+    const styleText = ((status) => {
+        if (status === 'A') {
+            return 'Paket Konsultasi Premium'
+        } else if (status === 'B') {
+            return 'Paket Konsultasi Premium Instan'
+        } else if (status === 2) {
+            return 'Accept'
+        } else if (status === 5) {
+            return 'Pending'
+        } else {
+            return 'Failed'
+        }
+    })
 
     const terimaToast = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
         duration: 4000,
@@ -53,17 +71,17 @@ function DetailTransaksiUser() {
             'aria-live': 'polite',
         },
     });
-        const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
-            duration: 4000,
-            position: 'position="bottom-center',
-            className: 'custom-toast-payment',
+    const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
+        duration: 4000,
+        position: 'position="bottom-center',
+        className: 'custom-toast-payment',
 
-            // Aria
-            ariaProps: {
-                role: 'status',
-                'aria-live': 'polite',
-            },
-        });
+        // Aria
+        ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+        },
+    });
 
 
     return (
@@ -71,17 +89,17 @@ function DetailTransaksiUser() {
             <section className='detail-transaksi' id='detail-transaksi' >
                 <p className='routes' > <span> Transaksi / Transaksi Tertunda /</span> Detail Transaksi User</p>
 
-                {detailDataTransaksi.map((item, index) => (
+                {detailTransaction.map((item, index) => (
                     <div key={index} className="row detail-wrapper row-cols-lg-2 row-cols-1">
                         <div className="col d-flex flex-column justify-content-between ">
-                            <ItemDataTransaksi title={'Nama User'} text={item.name} />
-                            <ItemDataTransaksi title={'Paket Konseling'} text={item.paket} />
-                            <ItemDataTransaksi title={'Metode Pembayaran'} text={item.metode_pembayaran} />
-                            <ItemDataTransaksi title={'Status Pembayaran'} text={item.status_pembayaran} />
-                            <ItemDataTransaksi title={'ID Transaksi'} text={item.id_Transaksi} />
-                            <ItemDataTransaksi title={'Harga'} text={item.harga} />
-                            <ItemDataTransaksi title={'Nama Dokter'} text={item.nama_dokter} />
-                            <ItemDataTransaksi title={'Durasi Konseling'} text={item.durasi_Konseling} />
+                            <ItemDataTransaksi title={'Nama User'} text={item.patient_name} />
+                            <ItemDataTransaksi title={'Paket Konseling'} text={styleText(item.counseling_type)} />
+                            <ItemDataTransaksi title={'Metode Pembayaran'} text={item.payment_type} />
+                            <ItemDataTransaksi title={'Status Pembayaran'} text={styleText(item.payment_status)} />
+                            <ItemDataTransaksi title={'ID Transaksi'} text={item.transaction_id} />
+                            <ItemDataTransaksi title={'Harga'} text={item.price_counseling} />
+                            <ItemDataTransaksi title={'Nama Dokter'} text={item.doctor_name} />
+                            <ItemDataTransaksi title={'Durasi Konseling'} text={item.duration_name} />
                             <div className="button-pembayaran">
                                 <div className="d-flex flex-md-row flex-column  gap-2">
                                     <Button className='btn btn-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
@@ -167,13 +185,13 @@ function DetailTransaksiUser() {
                             <p>Bukti Transfer : </p>
                             <div className="bukti-transfer">
                                 <img
-                                    src={item.buktiTransfer}
+                                    src={item.payment_proof}
                                     onClick={() => openPhotoSwipe()}
                                 />
 
                                 <PhotoSwipe
                                     isOpen={isOpen}
-                                    items={[{ w: 500, h: 500, src: item.buktiTransfer }]}
+                                    items={[{ w: 500, h: 500, src: item.payment_proof }]}
                                     options={{ bgOpacity: 0.7, }}
                                     onClose={handleClose}
                                 />
