@@ -28,6 +28,7 @@ const TransaksiUser = () => {
     return acc;
   }, {});
 
+  //untuk random array
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     let temporaryValue, randomIndex;
@@ -49,9 +50,8 @@ const TransaksiUser = () => {
     return formattedDate;
   };
 
-  // ini adalah result data random dari customerr
+  // ini adalah result data random dari customerr dan di batas jadi 4
   const displayedCustomers = customers.slice(0, 4);
-  console.log(displayedCustomers);
 
   const styleText = ((status) => {
     if (status === 'A') {
