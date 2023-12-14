@@ -78,14 +78,14 @@ const LayoutDetailPengajuan = ({ children }) => {
 
         {/* card-pengajuan */}
         <div className="card-detail-pengajuan py-5 mb-5 d-flex gap-3 border border-2 border-primary">
-          <div>
+          <div className="icon-alert">
             <img src={infoOutline} className="info-icon" />
           </div>
           <div className="d-flex flex-column gap-3">
             <div className="fw-bold fs-4">
               Pengajuan izin praktik dokter di EmphatiCare
             </div>
-            <div>
+            <div className="card-detail-text">
               dr. Lika Angelina telah mengajukan untuk bergabung sebagai
               praktisi di platform EmpathiCare. <br />
               Cek profilnya dan pastikan semuanya sesuai dengan standar
