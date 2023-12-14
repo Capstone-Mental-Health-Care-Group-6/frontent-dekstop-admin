@@ -66,7 +66,6 @@ function DetailTransaksiUser() {
         await updateTransaction(idString, accept, (status, res) => {
             if (status) {
                 terimaToast();
-                console.log(res);
                 getDetailTransaction(idString, (data) => {
                     setDetailTransaction(data.data)
                 })
@@ -76,11 +75,14 @@ function DetailTransaksiUser() {
         });
     }
 
-    const rejectPayment = () => {
+    const rejectPayment = async () => {
         const reject = { payment_status: 4 };
-        updateTransaction(idString, reject, (status, res) => {
+        await updateTransaction(idString, reject, (status, res) => {
             if (status) {
                 tolakToast();
+                getDetailTransaction(idString, (data) => {
+                    setDetailTransaction(data.data)
+                })
             } else {
                 console.log('error asw', res);
             }
