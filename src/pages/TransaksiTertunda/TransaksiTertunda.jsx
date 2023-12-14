@@ -106,11 +106,11 @@ function TransaksiTertunda() {
 
     } else if (selectedFilter === 'Konseling Instan') {
       setFilteredCustomers(filteredCustomers.filter(item => {
-        return item.counseling_type === 'A';
+        return item.counseling_type === 'B' || item.counseling_type === '';
       }));
     } else if (selectedFilter === 'Konseling Premium') {
       setFilteredCustomers(filteredCustomers.filter(item => {
-        return item.counseling_type === 'B';
+        return item.counseling_type === 'A';
       }));
     }
   }, [selectedFilter]);
