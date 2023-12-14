@@ -11,7 +11,7 @@ import 'react-photoswipe/lib/photoswipe.css';
 import ModalAlert from '../../components/Fragments/modal-alert/ModalAlert';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
-import { getDetailTransaction } from '../../service/transaction';
+import { getDetailTransaction, updateTransaction } from '../../service/transaction';
 
 
 function DetailTransaksiUser() {
@@ -60,6 +60,30 @@ function DetailTransaksiUser() {
         }
     })
 
+
+    const acceptPayment = () => {
+        const accept = { payment_status: 2 };
+        updateTransaction(idString, accept, (status, res) => {
+            if (status) {
+                terimaToast();
+                console.log(res);
+            } else {
+                console.log('error asw', res);
+            }
+        });
+    }
+
+    const rejectPayment = () => {
+        const reject = { payment_status: 4 };
+        updateTransaction(idString, reject, (status, res) => {
+            if (status) {
+                tolakToast();
+            } else {
+                console.log('error asw', res);
+            }
+        });
+    }
+
     const terimaToast = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
         duration: 4000,
         position: 'position="bottom-center',
@@ -102,11 +126,10 @@ function DetailTransaksiUser() {
                             <ItemDataTransaksi title={'Durasi Konseling'} text={item.duration_name} />
                             <div className="button-pembayaran">
                                 <div className="d-flex flex-md-row flex-column  gap-2">
-                                    <Button className='btn btn-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
-                                    <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
+                                    <Button className={`btn btn-primary w-100 fw-medium ${item.payment_status === 2 || item.payment_status === 4 ? 'd-none' : 'd-block'}`} bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
+                                    <Button className={`btn text-primary border-primary w-100 fw-medium ${item.payment_status === 2 || item.payment_status === 4 ? 'd-none' : 'd-block'}`} bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
                                 </div>
                             </div>
-
                             <ModalAlert id={'modal-accept-payment'} >
                                 <div className="modal-content">
                                     <div className="modal-body">
@@ -114,7 +137,7 @@ function DetailTransaksiUser() {
                                         <p className='mt-3 mb-5' >Yakin ingin terima pembayaran User?</p>
                                         <div className="d-flex gap-2 justify-content-end">
                                             <Button className={'btn text-primary fw-semibold'} bsDismiss={'modal'} text={'Batal'} />
-                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={terimaToast} bsDismiss={'modal'} />
+                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={acceptPayment} bsDismiss={'modal'} />
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +195,7 @@ function DetailTransaksiUser() {
                                     <div className="d-flex justify-content-end me-3 gap-3 mb-3">
                                         <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
                                         <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}
-                                            data-bs-dismiss="modal" onClick={tolakToast}>Tolak Pembayaran</button>
+                                            data-bs-dismiss="modal" onClick={rejectPayment}>Tolak Pembayaran</button>
                                     </div>
                                 </div>
                             </ModalAlert>

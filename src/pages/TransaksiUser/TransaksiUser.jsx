@@ -27,6 +27,9 @@ const TransaksiUser = () => {
     return acc;
   }, {});
 
+
+  console.log('user', customers);
+
   return (
     <Layouts titlePage={"Transaksi User"}>
       <section className="transaksi-user" id="transaksi-user">

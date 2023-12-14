@@ -17,3 +17,13 @@ export const getDetailTransaction = (id, callback) => {
             console.log(err);
         });
 }
+
+export const updateTransaction = (id, fromTransaction, callback) => {
+    axiosInterceptor.put(`/transaksi/${id}`, fromTransaction)
+        .then((res) => {
+            callback(res.data)
+        })
+        .catch((err) => {
+            callback(false, err);
+        })
+}
