@@ -109,7 +109,9 @@ const TransaksiUser = () => {
               </div>
             ))}
             <div className="d-flex justify-content-center" >
-              <Button className={'btn text-primary '} text={'Lihat Semua'} />
+              <Link to={'/admin/transaksi/user/tertunda'}>
+                <Button className={'btn text-primary '} text={'Lihat Semua'} />
+              </Link>
             </div>
 
           </div>
