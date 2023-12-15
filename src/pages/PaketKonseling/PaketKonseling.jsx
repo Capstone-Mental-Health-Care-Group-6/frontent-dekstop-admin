@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { createBundle, deleleBundle, getAllBundle, updateBundle } from "../../service/bundleCounseling";
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
-import KonselingLoader from "../../components/Loader/KonselingLoader";
+import KonselingLoader from "../../components/Fragments/konseling-skeleton/KonselingLoader";
 
 
 const PaketKonseling = () => {
@@ -134,7 +134,6 @@ const PaketKonseling = () => {
       'aria-live': 'polite',
     },
   });
-
 
 
   console.log(formData);
