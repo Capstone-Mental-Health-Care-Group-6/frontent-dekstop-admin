@@ -74,7 +74,7 @@ const LoginForm = () => {
     if (email && password) {
       login(formLogin, (status, res) => {
         if (status) {
-          navigate("/admin/dashboard");
+          window.location.href = "/admin/dashboard";
           localStorage.setItem("token", res.data.token.access_token);
         } else {
           setAlertLogin("d-block");
@@ -164,9 +164,6 @@ const LoginForm = () => {
           <p className={`text-start text-danger m-0 fw-medium ${alertLogin}`}>
             Email atau Password tidak valid{" "}
           </p>
-          <Link to="/forgot-password" className="text-end mt-1 forgot-password">
-            Forgot Password?
-          </Link>
 
           <Button
             type="submit"
