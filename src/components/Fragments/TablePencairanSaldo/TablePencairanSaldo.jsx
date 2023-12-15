@@ -11,6 +11,12 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
 
   const [selectedStatusMap, setSelectedStatusMap] = useState({});
 
+  const formatDate = (date) => {
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    const formattedDate = new Date(date).toLocaleDateString("id-ID", options);
+    return formattedDate.replace(".", ""); // Menghapus titik setelah singkatan bulan
+  };
+
   const filterData = data.filter((dokter) => {
     return dokter.doctor_name.toLowerCase().includes(searchValue.toLowerCase());
   });
@@ -138,6 +144,8 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
             <Column
               header="Date"
               field="date_confirmed"
+              body={(rowData) =>
+                <span>{formatDate(rowData.date_confirmed)}</span>}
               headerClassName="table-header-border"
             />
             <Column
