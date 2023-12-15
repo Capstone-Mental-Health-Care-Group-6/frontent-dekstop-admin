@@ -15,7 +15,6 @@ import { FaMoneyBills } from "react-icons/fa6";
 import Dropdown from "../components/Elements/Dropdown/Dropdown";
 import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
-
 function Layouts({ children, titlePage }) {
   const navigate = useNavigate();
 
@@ -124,4 +123,4 @@ function Layouts({ children, titlePage }) {
   );
 }
 
-export default Layouts;
+export default Layouts; 
