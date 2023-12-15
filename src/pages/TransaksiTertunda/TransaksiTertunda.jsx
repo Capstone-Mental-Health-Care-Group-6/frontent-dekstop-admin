@@ -12,6 +12,7 @@ import Table from "../../components/Fragments/tabel/Table";
 import { LuFilter } from "react-icons/lu";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { getAllTransaction } from "../../service/transaction";
+import TransaksiUserLoader from "../../components/Fragments/transaksiUserSkeleton/TransaksiUserLoader";
 
 function TransaksiTertunda() {
   const [customers, setCustomers] = useState([]);
@@ -142,7 +143,6 @@ function TransaksiTertunda() {
           {" "}
           <span>Transaksi</span> / Transaksi Tertunda{" "}
         </p>
-
         <div className="transaksi-tertunda-content d-grid align-items-center">
           <div className="card">
             <div className="d-flex row row-cols-lg-2 row-cols-1 justify-content-between">
