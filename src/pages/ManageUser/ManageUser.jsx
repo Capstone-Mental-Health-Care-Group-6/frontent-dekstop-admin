@@ -15,6 +15,7 @@ import {
   iconUserTidakAktif,
 } from "../../../image";
 import { getAllPatient } from "../../service/patient";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const ManageUser = () => {
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
@@ -23,11 +24,16 @@ const ManageUser = () => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
 
-  const [patientData, setPatientData] = useState(null);
+  const [patientData, setPatientData] = useState(0);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     getAllPatient((data) => {
       setPatientData(data.data);
+      setLoading(false);
     });
   }, []);
 
@@ -36,25 +42,41 @@ const ManageUser = () => {
       location: "/",
       image: iconTotalUser,
       text: "Total User",
-      total: patientData?.total_user || "0",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user
+      ),
     },
     {
       location: "/",
       image: iconUserBaru,
       text: "User Baru",
-      total: patientData?.total_user_baru || "0",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_baru
+      ),
     },
     {
       location: "/",
       image: iconUserAktif,
       text: "User Aktif",
-      total: patientData?.total_user_active || "0",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_active
+      ),
     },
     {
       location: "/",
       image: iconUserTidakAktif,
       text: "User Tidak Aktif",
-      total: patientData?.total_user_inactive || "0",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_inactive
+      ),
     },
   ];
 
