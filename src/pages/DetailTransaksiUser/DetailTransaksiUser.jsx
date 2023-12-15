@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./DetailTransaksiUser.style.css";
 import Layouts from '../../Layouts/Layouts'
 import { useParams } from 'react-router-dom';
@@ -11,13 +11,22 @@ import 'react-photoswipe/lib/photoswipe.css';
 import ModalAlert from '../../components/Fragments/modal-alert/ModalAlert';
 import toast from 'react-hot-toast';
 import { Toaster } from 'react-hot-toast';
+import { getDetailTransaction, updateTransaction } from '../../service/transaction';
 
 
 function DetailTransaksiUser() {
     const id = useParams()
-    console.log(id);
-
+    const idString = String(id.id)
+    const [detailTransaction, setDetailTransaction] = useState([])
     const [isOpen, setIsOpen] = useState(false);
+    const [selectedButton, setSelectedButton] = useState(null);
+    const [modalTextArea, setModalTextArea] = useState('d-none');
+
+    useEffect(() => {
+        getDetailTransaction(idString, (data) => {
+            setDetailTransaction(data.data)
+        })
+    }, [id]);
 
     const openPhotoSwipe = () => {
         setIsOpen(true);
@@ -26,10 +35,6 @@ function DetailTransaksiUser() {
     const handleClose = () => {
         setIsOpen(false);
     };
-
-    const [selectedButton, setSelectedButton] = useState(null);
-    const [modalTextArea, setModalTextArea] = useState('d-none');
-
 
     const handleButtonClick = (id) => {
         setSelectedButton(id);
@@ -40,7 +45,49 @@ function DetailTransaksiUser() {
         }
     };
 
-    
+
+    const styleText = ((status) => {
+        if (status === 'A') {
+            return 'Paket Konsultasi Premium'
+        } else if (status === 'B') {
+            return 'Paket Konsultasi Instan'
+        } else if (status === 2) {
+            return 'Accept'
+        } else if (status === 5) {
+            return 'Pending'
+        } else {
+            return 'Failed'
+        }
+    })
+
+
+    const acceptPayment = async () => {
+        const accept = { payment_status: 2 };
+        await updateTransaction(idString, accept, (status, res) => {
+            if (status) {
+                terimaToast();
+                getDetailTransaction(idString, (data) => {
+                    setDetailTransaction(data.data)
+                })
+            } else {
+                console.log(res);
+            }
+        });
+    }
+
+    const rejectPayment = async () => {
+        const reject = { payment_status: 4 };
+        await updateTransaction(idString, reject, (status, res) => {
+            if (status) {
+                tolakToast();
+                getDetailTransaction(idString, (data) => {
+                    setDetailTransaction(data.data)
+                })
+            } else {
+                console.log('error asw', res);
+            }
+        });
+    }
 
     const terimaToast = () => toast.success('Pembayaran berhasil diterima. Informasi ini akan disampaikan ke user', {
         duration: 4000,
@@ -53,17 +100,17 @@ function DetailTransaksiUser() {
             'aria-live': 'polite',
         },
     });
-        const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
-            duration: 4000,
-            position: 'position="bottom-center',
-            className: 'custom-toast-payment',
+    const tolakToast = () => toast.success('Pembayaran berhasil ditolak. Informasi ini akan disampaikan ke user', {
+        duration: 4000,
+        position: 'position="bottom-center',
+        className: 'custom-toast-payment',
 
-            // Aria
-            ariaProps: {
-                role: 'status',
-                'aria-live': 'polite',
-            },
-        });
+        // Aria
+        ariaProps: {
+            role: 'status',
+            'aria-live': 'polite',
+        },
+    });
 
 
     return (
@@ -71,24 +118,23 @@ function DetailTransaksiUser() {
             <section className='detail-transaksi' id='detail-transaksi' >
                 <p className='routes' > <span> Transaksi / Transaksi Tertunda /</span> Detail Transaksi User</p>
 
-                {detailDataTransaksi.map((item, index) => (
+                {detailTransaction.map((item, index) => (
                     <div key={index} className="row detail-wrapper row-cols-lg-2 row-cols-1">
                         <div className="col d-flex flex-column justify-content-between ">
-                            <ItemDataTransaksi title={'Nama User'} text={item.name} />
-                            <ItemDataTransaksi title={'Paket Konseling'} text={item.paket} />
-                            <ItemDataTransaksi title={'Metode Pembayaran'} text={item.metode_pembayaran} />
-                            <ItemDataTransaksi title={'Status Pembayaran'} text={item.status_pembayaran} />
-                            <ItemDataTransaksi title={'ID Transaksi'} text={item.id_Transaksi} />
-                            <ItemDataTransaksi title={'Harga'} text={item.harga} />
-                            <ItemDataTransaksi title={'Nama Dokter'} text={item.nama_dokter} />
-                            <ItemDataTransaksi title={'Durasi Konseling'} text={item.durasi_Konseling} />
+                            <ItemDataTransaksi title={'Nama User'} text={item.patient_name} />
+                            <ItemDataTransaksi title={'Paket Konseling'} text={styleText(item.counseling_type)} />
+                            <ItemDataTransaksi title={'Metode Pembayaran'} text={item.payment_type} />
+                            <ItemDataTransaksi title={'Status Pembayaran'} text={styleText(item.payment_status)} />
+                            <ItemDataTransaksi title={'ID Transaksi'} text={item.transaction_id} />
+                            <ItemDataTransaksi title={'Harga'} text={item.price_counseling} />
+                            <ItemDataTransaksi title={'Nama Dokter'} text={item.doctor_name} />
+                            <ItemDataTransaksi title={'Durasi Konseling'} text={item.duration_name} />
                             <div className="button-pembayaran">
                                 <div className="d-flex flex-md-row flex-column  gap-2">
-                                    <Button className='btn btn-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
-                                    <Button className='btn text-primary border-primary w-100 fw-medium' bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
+                                    <Button className={`btn btn-primary w-100 fw-medium ${item.payment_status === 2 || item.payment_status === 4 ? 'd-none' : 'd-block'}`} bsTogle={'modal'} bsTarget={'#modal-accept-payment'} text={'Terima Pembayaran '} />
+                                    <Button className={`btn text-primary border-primary w-100 fw-medium ${item.payment_status === 2 || item.payment_status === 4 ? 'd-none' : 'd-block'}`} bsTogle={'modal'} bsTarget={'#modal-reject-payment'} text={'Tolak  Pembayaran'} />
                                 </div>
                             </div>
-
                             <ModalAlert id={'modal-accept-payment'} >
                                 <div className="modal-content">
                                     <div className="modal-body">
@@ -96,7 +142,7 @@ function DetailTransaksiUser() {
                                         <p className='mt-3 mb-5' >Yakin ingin terima pembayaran User?</p>
                                         <div className="d-flex gap-2 justify-content-end">
                                             <Button className={'btn text-primary fw-semibold'} bsDismiss={'modal'} text={'Batal'} />
-                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={terimaToast} bsDismiss={'modal'} />
+                                            <Button className={'btn btn-primary fw-medium'} text={'Terima'} onClick={acceptPayment} bsDismiss={'modal'} />
                                         </div>
                                     </div>
                                 </div>
@@ -154,7 +200,7 @@ function DetailTransaksiUser() {
                                     <div className="d-flex justify-content-end me-3 gap-3 mb-3">
                                         <button type="button" className="btn border-secondary-subtle" data-bs-dismiss="modal">Batal</button>
                                         <button type="button" className={`btn ${selectedButton > 0 ? 'btn-primary' : 'btn-secondary'}`}
-                                            data-bs-dismiss="modal" onClick={tolakToast}>Tolak Pembayaran</button>
+                                            data-bs-dismiss="modal" onClick={rejectPayment}>Tolak Pembayaran</button>
                                     </div>
                                 </div>
                             </ModalAlert>
@@ -167,13 +213,13 @@ function DetailTransaksiUser() {
                             <p>Bukti Transfer : </p>
                             <div className="bukti-transfer">
                                 <img
-                                    src={item.buktiTransfer}
+                                    src={item.payment_proof}
                                     onClick={() => openPhotoSwipe()}
                                 />
 
                                 <PhotoSwipe
                                     isOpen={isOpen}
-                                    items={[{ w: 500, h: 500, src: item.buktiTransfer }]}
+                                    items={[{ w: 500, h: 500, src: item.payment_proof }]}
                                     options={{ bgOpacity: 0.7, }}
                                     onClose={handleClose}
                                 />
