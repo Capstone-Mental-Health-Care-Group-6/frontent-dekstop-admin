@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import "./DanaDokter.style.css";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
 import TablePencairanSaldo from "../../components/Fragments/TablePencairanSaldo/TablePencairanSaldo";
 import { dataTableDanaDokter } from "../../components/DataComponents/dataComponents";
 import { searchFailed } from "../../../image";
-// import Search from "../../components/Elements/search/Search";
+import { getAllWithDraw } from "../../service/withDraw";
 
 const DanaDokter = () => {
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
+
+  const [dataTableDanaDokter, setDataTableDanaDokter] = useState([]);
+
+  useEffect(() => {
+    getAllWithDraw((data) => {
+      setDataTableDanaDokter(data.data);
+    });
+  }, []);
+
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
