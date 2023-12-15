@@ -3,6 +3,7 @@ import { DataTable } from "primereact/datatable";
 import React, { useState } from "react";
 import { searchFailed } from "../../../../image";
 import ModalDanaPencairan from "../modal/ModalDanaPencairan";
+import { updateStatusWithDraw } from "../../../service/withDraw";
 
 const TablePencairanSaldo = ({ data, searchValue }) => {
   const [selectedRowData, setSelectedRowData] = useState(null);
@@ -15,9 +16,8 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
   });
 
   const statusOptions = [
-    { label: "Pending", value: "Pending" },
-    { label: "Proses", value: "Proses" },
-    { label: "Sukses", value: "Sukses" },
+    { label: "PENDING", value: "PENDING" },
+    { label: "DONE", value: "DONE" },
   ];
 
   const handleStatusChange = (id, newStatus) => {
@@ -25,6 +25,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
       ...prevMap,
       [id]: newStatus,
     }));
+    updateStatusWithDraw(id, { status: newStatus });
     updateStatusInDataTable(id, newStatus); // memperbarui status di tabel data
   };
 
@@ -37,6 +38,7 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
   };
 
   const userStatusTemplate = (rowData) => {
+    const currentStatus = selectedStatusMap[rowData.id] || rowData.status;
     return (
       <div className="dropdown">
         <button
@@ -84,11 +86,9 @@ const TablePencairanSaldo = ({ data, searchValue }) => {
     // Menggunakan selectedStatusMap jika ada, jika tidak, menggunakan rowData.status
     const currentStatus = selectedStatusMap[rowData.id] || rowData.status;
 
-    if (currentStatus === "Sukses") {
+    if (currentStatus === "DONE") {
       statusClassName = "success-status";
-    } else if (currentStatus === "Proses") {
-      statusClassName = "process-status";
-    } else {
+    } else if (currentStatus === "PENDING") {
       statusClassName = "insuccess-status";
     }
 

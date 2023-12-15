@@ -38,25 +38,21 @@ const ModalDanaPencairan = ({
 
   let statusClassName;
 
-  if (status === "Sukses") {
+  if (status === "DONE") {
     statusClassName = "success-status";
-  } else if (status === "Proses") {
-    statusClassName = "process-status";
-  } else {
+  } else if (status === "PENDING") {
     statusClassName = "insuccess-status";
   }
 
   const getBackgroundClass = (status) => {
-    if (status === "Sukses") {
+    if (status === "DONE") {
       return "success-background";
-    } else if (status === "Proses") {
-      return "process-background";
-    } else {
+    } else if (status === "PENDING") {
       return "insuccess-background";
     }
   };
 
-  const uniqueOptions = Array.from(new Set(["Sukses", "Proses", "Pending"]));
+  const uniqueOptions = Array.from(new Set(["DONE", "PENDING"]));
 
   return (
     <div
@@ -79,7 +75,7 @@ const ModalDanaPencairan = ({
             <h5 className="fw-semibold">Detail Pencairan Dana Dokter</h5>
           </div>
           <div className="modal-body d-flex flex-column">
-            <p className="d-flex flex-column gap-2">
+            {/* <p className="d-flex flex-column gap-2">
               Status{" "}
               <span>
                 <InputSelect
@@ -92,7 +88,7 @@ const ModalDanaPencairan = ({
                   className={`fw-semibold select__status__pencairan ${statusClassName} ${backgroundClass}`}
                 />
               </span>{" "}
-            </p>
+            </p> */}
 
             <p className="d-flex flex-column gap-2">
               Nama Dokter{" "}
