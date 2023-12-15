@@ -222,10 +222,14 @@ const PaketKonseling = () => {
                           <div>
                             <h6 className="m-0 text-black fw-medium" >{item.name} </h6>
                             <h5 className="m-0 fw-bold">
-                              {new Intl.NumberFormat('id-ID', {
-                                style: 'currency',
-                                currency: 'IDR',
-                              }).format(item.price)} / {item.sessions} Sesi
+                              {(() => {
+                                const formattedPrice = new Intl.NumberFormat('id-ID', {
+                                  style: 'currency',
+                                  currency: 'IDR',
+                                }).format(item.price);
+
+                                return formattedPrice.replace(/,00$/, '');
+                              })()} / {item.sessions} Sesi
                             </h5>
                           </div>
                         </div>

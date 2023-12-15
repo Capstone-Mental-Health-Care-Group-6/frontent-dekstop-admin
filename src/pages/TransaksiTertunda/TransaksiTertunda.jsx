@@ -12,7 +12,6 @@ import Table from "../../components/Fragments/tabel/Table";
 import { LuFilter } from "react-icons/lu";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { getAllTransaction } from "../../service/transaction";
-import TransaksiUserLoader from "../../components/Fragments/transaksiUserSkeleton/TransaksiUserLoader";
 
 function TransaksiTertunda() {
   const [customers, setCustomers] = useState([]);
