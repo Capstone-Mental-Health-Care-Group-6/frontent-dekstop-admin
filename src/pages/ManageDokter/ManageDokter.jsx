@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import "./ManageDokter.styles.css";
@@ -15,15 +15,24 @@ import { LuFilter } from "react-icons/lu";
 import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { getAllDoctor } from "../../service/doctor";
 
 const ManageDokter = ({ location }) => {
-  const [searchValue, setSearchValue] = useState("");
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
+
+  const [searchValue, setSearchValue] = useState("");
+  const [totalDokter, setTotalDokter] = useState(null);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
+
+  useEffect(() => {
+    getAllDoctor((data) => {
+      setTotalDokter(data.data.length);
+    });
+  });
 
   return (
     <>
@@ -31,7 +40,7 @@ const ManageDokter = ({ location }) => {
         <div className="cardDokter d-flex gap-2">
           <Card
             cardSubtitle="Total Dokter"
-            cardTitle="17.000"
+            cardTitle={totalDokter !== null ? totalDokter : "0"}
             src={iconCardUser}
           />
 
