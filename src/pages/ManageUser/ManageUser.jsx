@@ -14,7 +14,7 @@ import {
   iconUserBaru,
   iconUserTidakAktif,
 } from "../../../image";
-import { getAllPatient } from "../../service/patient";
+import { getAllManageUser, getAllPatient } from "../../service/patient";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const ManageUser = () => {
@@ -23,6 +23,8 @@ const ManageUser = () => {
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
+
+  const [dataUsers, setDataUsers] = useState([]);
 
   const [patientData, setPatientData] = useState(0);
 
@@ -34,6 +36,10 @@ const ManageUser = () => {
     getAllPatient((data) => {
       setPatientData(data.data);
       setLoading(false);
+    });
+
+    getAllManageUser((data) => {
+      setDataUsers(data.data);
     });
   }, []);
 
