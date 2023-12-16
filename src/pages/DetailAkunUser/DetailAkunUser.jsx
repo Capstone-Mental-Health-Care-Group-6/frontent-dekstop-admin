@@ -16,6 +16,7 @@ const DetailUser = () => {
   const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [updatedUserData, setUpdatedUserData] = useState(null);
 
   const handleInfoHover = () => {
     setShowInfo(true);
@@ -39,8 +40,8 @@ const DetailUser = () => {
     // Fungsi untuk menonaktifkan akun setelah konfirmasi
     setShowConfirmation(false);
 
-    updateStatusAkunPatient(id, (res) => {
-      if (res.data) {
+    updateStatusAkunPatient(id, "Inactive", (res) => {
+      if (res && res.data) {
         // Setelah berhasil menonaktifkan, tampilkan modal sukses
         setShowSuccessModal(true);
         setTimeout(() => {

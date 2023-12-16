@@ -38,7 +38,7 @@ export const updateStatusAkunPatient = (id, status, callback) => {
     .put(`/patient/update/${id}/status`, { status })
     .then((res) => {
       console.log(res);
-      callback();
+      callback(res);
     })
     .catch((err) => {
       console.log(err);

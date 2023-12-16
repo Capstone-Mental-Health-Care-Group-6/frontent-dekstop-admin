@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "./UserTable.style.css";
@@ -6,7 +6,7 @@ import { NonAktifkanAkun, DetailAkun, Success } from "../../../../image";
 import { searchFailed } from "../../../../image";
 import { updateStatusAkunPatient } from "../../../service/patient";
 
-const UserTable = ({ data, searchValue }) => {
+const UserTable = ({ data, searchValue, statusFilter }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -18,11 +18,17 @@ const UserTable = ({ data, searchValue }) => {
 
   // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
   const filteredData = data.filter((user) => {
+    // const isStatusMatch =
+    //   (!statusFilter.aktif && !statusFilter.nonAktif) ||
+    //   (statusFilter.aktif && user.status === "Active") ||
+    //   (statusFilter.nonAktif && user.status === "Inactive");
+
     return (
-      user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.phone_number.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.status.toLowerCase().includes(searchValue.toLowerCase())
+      (user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.phone_number.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.status.toLowerCase().includes(searchValue.toLowerCase())) &&
+      (statusFilter === "" || user.status === statusFilter)
     );
   });
 
@@ -60,8 +66,6 @@ const UserTable = ({ data, searchValue }) => {
       statusClassName = "inactive-status";
     }
 
-    // const statusClassName =
-    //   rowData.status === "Active" ? "active-status" : "inactive-status";
     return <span className={statusClassName}>{rowData.status}</span>;
   };
 
@@ -127,7 +131,7 @@ const UserTable = ({ data, searchValue }) => {
           paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 15]}
-          totalRecords={data.length}
+          totalRecords={filteredData.length}
         >
           <Column
             body={userBodyTemplate}
