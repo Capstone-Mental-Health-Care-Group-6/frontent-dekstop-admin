@@ -27,6 +27,8 @@ const TransaksiUser = () => {
     acc[status] = (acc[status] || 0) + 1;
     return acc;
   }, {});
+  const allPayment = paymentStatusCount[2] + paymentStatusCount[4] + paymentStatusCount[5]
+
 
   //untuk random array
   const shuffleArray = (array) => {
@@ -73,7 +75,7 @@ const TransaksiUser = () => {
       <section className="transaksi-user" id="transaksi-user">
         <div className="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4">
           <div className="col" >
-            <Card src={iconTransaksiCard} cardSubtitle={'Total Berhasil'} cardTitle={paymentStatusCount[2] || 0} />
+            <Card src={iconTransaksiCard} cardSubtitle={'Total Berhasil'} cardTitle={allPayment || 0} />
           </div>
           <div className="col" >
             <Card src={iconBerhasilCard} cardSubtitle={'Transaksi Berhasil'} cardTitle={paymentStatusCount[2] || 0} />

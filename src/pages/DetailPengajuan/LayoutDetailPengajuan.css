@@ -1,0 +1,96 @@
+.profile-card {
+  width: 20vw;
+}
+
+.img-detailDokter {
+  width: 60px;
+}
+
+.detail-dokter-item {
+  background-color: #ffffff;
+  height: 50vh;
+  width: 20vw;
+  margin-bottom: 30px;
+  transition: left 0.5s ease-out;
+  font-family: "Inter", sans-serif;
+}
+
+.detail-dokter-item .menu .sidebar-link {
+  align-items: center;
+  border-radius: 0.5rem;
+  color: black;
+  display: block;
+  display: flex;
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  transition: all 0.5s;
+  font-weight: 600;
+}
+
+.offcanvas-body {
+  height: 10vh;
+}
+
+.wrap-detail-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.children-wrap {
+  margin-left: 20px;
+}
+
+.card-detail-pengajuan {
+  width: 71vw;
+  background: #e0eefc;
+  border-radius: 15px;
+}
+
+.modal-dialog .modal-content .modal-header .modal-title {
+  font-size: 14px;
+}
+
+.iconModalRejection {
+  width: 50px;
+}
+
+.menu-reject {
+  font-size: 12px;
+}
+
+.modal-dialog .modal-content .modal-header .text-black {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 436px) {
+  .profile-card {
+    width: 75vw;
+  }
+
+  .detail-dokter-item {
+    width: 75vw;
+  }
+
+  .wrap-detail-card {
+    flex-direction: column;
+  }
+
+  .children-wrap {
+    margin-left: 0;
+  }
+
+  .card-detail-pengajuan .icon-alert {
+    /* display: none; */
+    display: none;
+  }
+
+  .card-detail-pengajuan {
+    padding: 15px 15px;
+  }
+
+  .card-detail-pengajuan .icon-alert {
+    /* display: none; */
+    display: none;
+  }
+}
