@@ -22,9 +22,7 @@ const ManageUser = () => {
   const [dataUsers, setDataUsers] = useState([]);
   const [patientData, setPatientData] = useState(0);
   const [loading, setLoading] = useState(false);
-
   const [statusFilter, setStatusFilter] = useState("");
-
   console.log(statusFilter);
 
   const resetFilter = () => {

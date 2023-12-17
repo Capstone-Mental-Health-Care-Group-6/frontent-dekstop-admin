@@ -9,11 +9,13 @@ import {
   getDetailPatient,
   updateStatusAkunPatient,
 } from "../../service/patient";
+import { Link } from "react-router-dom";
 
 const DetailUser = () => {
   const { id } = useParams();
   const [userData, setUserData] = useState({});
   const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
+  const [toggleStatus, setToggleStatus] = useState('Active'); // State untuk status toggle di halaman detail user
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState(null);
@@ -27,8 +29,13 @@ const DetailUser = () => {
   };
 
   const handleSwitchToggle = () => {
-    // Menampilkan modal konfirmasi ketika tombol switch diubah
-    setShowConfirmation(true);
+    if (toggleStatus === 'Active') {
+      // Jika status saat ini adalah "Active", tampilkan modal konfirmasi untuk menonaktifkan akun
+      setShowConfirmation(true);
+    } else {
+      // Jika status saat ini adalah "Inactive", tampilkan modal konfirmasi untuk mengaktifkan akun
+      setShowConfirmation(true);
+    }
   };
 
   const cancelNonAktifkan = () => {
@@ -36,26 +43,45 @@ const DetailUser = () => {
     setShowConfirmation(false);
   };
 
-  const confirmNonAktifkan = () => {
-    // Fungsi untuk menonaktifkan akun setelah konfirmasi
-    setShowConfirmation(false);
-
-    updateStatusAkunPatient(id, "Inactive", (res) => {
+  const updateStatus = (newStatus) => {
+    updateStatusAkunPatient(id, newStatus, (res) => {
       if (res && res.data) {
-        // Setelah berhasil menonaktifkan, tampilkan modal sukses
         setShowSuccessModal(true);
         setTimeout(() => {
           setShowSuccessModal(false);
         }, 3000);
+        updateToggleStatus(newStatus);
+        setUpdatedUserData(res.data); // Jika diperlukan, simpan data terupdate ke state
       } else {
-        console.log("gagal update status akun");
+        console.log("Gagal update status akun");
       }
     });
+  };
+
+  const confirmAction = (newStatus) => {
+    setShowConfirmation(false);
+    updateStatus(newStatus);
+  };
+
+  const confirmNonAktifkan = () => {
+    confirmAction('Inactive');
+  };
+
+  const confirmAktifkan = () => {
+    confirmAction('Active');
+  };
+
+  // Fungsi untuk mengubah status toggle
+  const updateToggleStatus = (newStatus) => {
+    setToggleStatus(newStatus);
   };
 
   useEffect(() => {
     getDetailPatient(id, (data) => {
       setUserData(data.data);
+      if (data.data.status === "Inactive") {
+        updateToggleStatus("Inactive");
+      }
     });
   }, [id]);
 
@@ -63,7 +89,11 @@ const DetailUser = () => {
     <Layouts titlePage={"Detail Akun User"}>
       <section className="detail-user" id="detail-user">
         <p className="routes">
-          <span> Manage User / </span> Detail Akun User
+          <span>
+            <Link to={'/admin/manage/user'} className="link-back">
+              Manage User /
+            </Link>
+          </span> Detail Akun User
         </p>
       </section>
 
@@ -121,7 +151,7 @@ const DetailUser = () => {
                       <label className="switch">
                         <input
                           type="checkbox"
-                          defaultChecked={true}
+                          checked={toggleStatus === "Active" ? true : false}
                           onChange={handleSwitchToggle}
                         />
                         <span className="slider round"></span>
@@ -162,7 +192,7 @@ const DetailUser = () => {
           <div className="modal-content">
             <div className="modal-header border-bottom-0">
               <h1 className="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                Yakin ingin menonaktifkan akun ini?
+                {toggleStatus === 'Active' ? 'Yakin ingin menonaktifkan akun ini?' : 'Yakin ingin mengaktifkan akun ini?'}
               </h1>
               <button
                 type="button"
@@ -174,8 +204,7 @@ const DetailUser = () => {
             </div>
             <div className="modal-body">
               <p className="fs-6">
-                Akun ini tidak dapat melakukan segala aktifitas jika
-                dinonaktfkan
+                {toggleStatus === 'Active' ? 'Akun ini tidak dapat melakukan segala aktifitas jika dinonaktfkan' : 'Akun ini dapat melakukan segala aktifitas jika diaktifkan.'}
               </p>
             </div>
             <div className="modal-footer border-top-0">
@@ -190,7 +219,7 @@ const DetailUser = () => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={confirmNonAktifkan}
+                onClick={toggleStatus === 'Active' ? confirmNonAktifkan : confirmAktifkan}
               >
                 Yakin
               </button>
@@ -213,7 +242,7 @@ const DetailUser = () => {
             <div className="modal-header">
               <h5 className="modal-title" id="successModalLabel">
                 <img src={Success} alt="" className="me-2" />
-                Akun Berhasil dinonaktifkan
+                {toggleStatus === 'Active' ? 'Akun Berhasil diaktifkan' : 'Akun Berhasil dinonaktifkan'}
               </h5>
               <button
                 type="button"
@@ -225,7 +254,7 @@ const DetailUser = () => {
           </div>
         </div>
       </div>
-    </Layouts>
+    </Layouts >
   );
 };
 

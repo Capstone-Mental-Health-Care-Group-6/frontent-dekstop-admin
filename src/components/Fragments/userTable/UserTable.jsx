@@ -18,11 +18,6 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
 
   // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
   const filteredData = data.filter((user) => {
-    // const isStatusMatch =
-    //   (!statusFilter.aktif && !statusFilter.nonAktif) ||
-    //   (statusFilter.aktif && user.status === "Active") ||
-    //   (statusFilter.nonAktif && user.status === "Inactive");
-
     return (
       (user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
         user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
