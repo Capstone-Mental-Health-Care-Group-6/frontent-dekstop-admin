@@ -14,19 +14,32 @@ import {
   iconUserBaru,
   iconUserTidakAktif,
 } from "../../../image";
-import { getAllPatient } from "../../service/patient";
+import { getAllManageUser, getAllPatient } from "../../service/patient";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const ManageUser = () => {
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
+  const [dataUsers, setDataUsers] = useState([]);
+  const [patientData, setPatientData] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [statusFilter, setStatusFilter] = useState("");
+  console.log(statusFilter);
+
+  const resetFilter = () => {
+    setStatusFilter("");
+
+    getAllManageUser((data) => {
+      setDataUsers(data.data);
+    });
+  };
+
+  const handleFilterChange = (event) => {
+    setStatusFilter(event.target.value);
+  };
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
-
-  const [patientData, setPatientData] = useState(0);
-
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -34,6 +47,10 @@ const ManageUser = () => {
     getAllPatient((data) => {
       setPatientData(data.data);
       setLoading(false);
+    });
+
+    getAllManageUser((data) => {
+      setDataUsers(data.data);
     });
   }, []);
 
@@ -125,23 +142,37 @@ const ManageUser = () => {
                   <ul className="dropdown-menu">
                     <div className="d-flex justify-content-between fw-semibold p-3">
                       <span>Filter</span>
-                      <span className="text-primary">Reset</span>
+                      <button
+                        className="btn text-primary fw-semibold"
+                        onClick={resetFilter}
+                      >
+                        Reset
+                      </button>
                     </div>
                     <span className="p-3 fw-medium">Status Akun : </span>
-                    <FilterList title={"Aktif"} type={"checkbox"} />
-                    <FilterList title={"Non Aktif"} type={"checkbox"} />
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <span className="p-3 fw-medium">Paket : </span>
-                    <FilterList title={"Konseling Instan"} type={"checkbox"} />
-                    <FilterList title={"Konseling Premium"} type={"checkbox"} />
-                    <FilterList title={"Non Aktif"} type={"checkbox"} />
+                    <FilterList
+                      title={"Aktif"}
+                      type={"checkbox"}
+                      value={"Active"}
+                      checked={statusFilter === "Active"}
+                      onChange={handleFilterChange}
+                    />
+                    <FilterList
+                      title={"Non Aktif"}
+                      type={"checkbox"}
+                      value={"Inactive"}
+                      checked={statusFilter === "Inactive"}
+                      onChange={handleFilterChange}
+                    />
                   </ul>
                 </div>
               </div>
             </div>
-            <UserTable data={dataUsers} searchValue={searchValue} />{" "}
+            <UserTable
+              data={dataUsers}
+              searchValue={searchValue}
+              statusFilter={statusFilter}
+            />{" "}
             {/* Meneruskan nilai pencarian ke UserTable */}
           </div>
         </div>

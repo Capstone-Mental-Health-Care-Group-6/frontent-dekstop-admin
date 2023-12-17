@@ -1,26 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import "./UserTable.style.css";
 import { NonAktifkanAkun, DetailAkun, Success } from "../../../../image";
 import { searchFailed } from "../../../../image";
+import { updateStatusAkunPatient } from "../../../service/patient";
 
-const UserTable = ({ data, searchValue }) => {
+const UserTable = ({ data, searchValue, statusFilter }) => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [updatedUserData, setUpdatedUserData] = useState(null);
+  const [selectedStatusMap, setSelectedStatusMap] = useState({});
+
   const [first, setFirst] = useState(0); // State untuk menangani index awal data yang ditampilkan
   const [rows, setRows] = useState(5); // State untuk menangani jumlah baris per halaman
 
   // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
   const filteredData = data.filter((user) => {
     return (
-      user.userName.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
-      user.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
+      (user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.phone_number.toLowerCase().includes(searchValue.toLowerCase()) ||
+        user.status.toLowerCase().includes(searchValue.toLowerCase())) &&
+      (statusFilter === "" || user.status === statusFilter)
     );
   });
+
+  const displayedData = updatedUserData
+    ? [...filteredData, updatedUserData]
+    : filteredData;
 
   const onPageChange = (event) => {
     setFirst(event.first);
@@ -31,25 +40,33 @@ const UserTable = ({ data, searchValue }) => {
     return (
       <div className="d-flex align-items-center">
         <img
-          src={rowData.image}
-          alt={rowData.userName}
+          src={rowData.avatar}
+          alt={rowData.name}
           height="32px"
           className="me-2"
         />
-        <span>{rowData.userName}</span>
+        <span>{rowData.name}</span>
       </div>
     );
   };
 
   const statusBodyTemplate = (rowData) => {
-    const statusClassName =
-      rowData.statusAkun === "Aktif" ? "active-status" : "inactive-status";
-    return <span className={statusClassName}>{rowData.statusAkun}</span>;
+    let statusClassName;
+
+    const currentStatus = selectedStatusMap[rowData.id] || rowData.status;
+
+    if (currentStatus === "Active") {
+      statusClassName = "active-status";
+    } else {
+      statusClassName = "inactive-status";
+    }
+
+    return <span className={statusClassName}>{rowData.status}</span>;
   };
 
   const actionItems = [
     { icon: DetailAkun, label: "Lihat detail akun", action: "view" },
-    { icon: NonAktifkanAkun, label: "Non aktifkan akun", action: "deactivate" },
+    { icon: NonAktifkanAkun, label: "Non aktifkan akun", action: "Inactive" },
   ];
 
   const handleActionSelection = (action, rowData) => {
@@ -57,9 +74,9 @@ const UserTable = ({ data, searchValue }) => {
 
     if (action === "view") {
       if (rowData) {
-        window.location.href = `/admin/manage/user/detail/${rowData.id}`;
+        window.location.href = `/admin/manage/user/detail/${rowData.ID}`;
       }
-    } else if (action === "deactivate") {
+    } else if (action === "Inactive" && rowData.status === "Active") {
       setShowConfirmation(true);
     }
   };
@@ -67,7 +84,27 @@ const UserTable = ({ data, searchValue }) => {
   const confirmNonAktifkan = () => {
     // Lakukan tindakan untuk menonaktifkan akun
     setShowConfirmation(false);
+
+    updateStatusAkunPatient(selectedUser.ID, "Inactive", () => {
+      // Simpan data pengguna yang diperbarui ke state
+      setUpdatedUserData({
+        ...selectedUser,
+        status: "Inactive",
+      });
+    });
+
+    // Perbarui status di tabel langsung
+    updateStatusInDataTable(selectedUser.ID, "Inactive");
+
     setShowSuccessModal(true); //menampilkan modal sukses setelah menonaktifkan akun
+  };
+
+  const updateStatusInDataTable = (id, newStatus) => {
+    // Implementasi logika untuk memperbarui status di tabel data
+    setSelectedStatusMap((prevMap) => ({
+      ...prevMap,
+      [id]: newStatus,
+    }));
   };
 
   const cancelNonAktifkan = () => {
@@ -80,7 +117,7 @@ const UserTable = ({ data, searchValue }) => {
       {filteredData.length > 0 ? (
         <DataTable
           // value={data}
-          value={filteredData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
+          value={displayedData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
           className="p-datatable-sm"
           rowClassName="table-row-height"
           first={first}
@@ -89,7 +126,7 @@ const UserTable = ({ data, searchValue }) => {
           paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 15]}
-          totalRecords={data.length}
+          totalRecords={filteredData.length}
         >
           <Column
             body={userBodyTemplate}
@@ -102,12 +139,12 @@ const UserTable = ({ data, searchValue }) => {
             headerClassName="table-header-border"
           />
           <Column
-            field="telephone"
+            field="phone_number"
             header="No. Telp"
             headerClassName="table-header-border"
           />
           <Column
-            field="statusAkun"
+            field="status"
             header="Status Akun"
             body={statusBodyTemplate}
             headerClassName="table-header-border"
@@ -118,7 +155,7 @@ const UserTable = ({ data, searchValue }) => {
                 <button
                   className="btn"
                   type="button"
-                  id={`dropdownMenuButton-${rowData.id}`}
+                  id={`dropdownMenuButton-${rowData.ID}`}
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
@@ -126,7 +163,7 @@ const UserTable = ({ data, searchValue }) => {
                 </button>
                 <ul
                   className="dropdown-menu"
-                  aria-labelledby={`dropdownMenuButton-${rowData.id}`}
+                  aria-labelledby={`dropdownMenuButton-${rowData.ID}`}
                 >
                   {actionItems.map((item, index) => (
                     <li key={index}>
