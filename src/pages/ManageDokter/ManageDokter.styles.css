@@ -8,9 +8,6 @@
   padding: 32px 16px;
 }
 
-.cardDokter .link .card {
-}
-
 .cardDokter .card h6 {
   color: #a7a7a7;
   font-size: 18px;
@@ -24,22 +21,16 @@
   color: #323232;
 }
 
-.card-pengajuan {
-  text-decoration: none;
-}
-
 @media screen and (max-width: 550px) {
   .cardDokter {
     width: 100%;
     flex-direction: column;
     justify-content: center;
-    text-decoration: none;
   }
 
   .cardDokter .card {
     border-radius: 12px;
     width: 286px;
     height: 186px;
-    text-decoration: none;
   }
 }

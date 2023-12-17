@@ -1,3 +1,41 @@
+/* Gaya untuk status Aktif */
+.active-status {
+  display: inline-block;
+  text-align: center;
+  background-color: #d4f1dd;
+  color: #1b7a37;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 10px;
+  height: 30px;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+/* style untuk status Tidak Aktif */
+.inactive-status {
+  display: inline-block;
+  text-align: center;
+  background-color: #ffdfd7;
+  color: #aa3e24;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 10px;
+  height: 30px;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
 /* style untuk border atas dan bawah pada header tabel */
 .table-header-border {
   border-top: 1px solid #dcdcdc;
@@ -31,7 +69,8 @@
 }
 
 .modal-dialog {
-  width: 420px;
+    width: 420px;
+
 }
 
 .doctor-name {

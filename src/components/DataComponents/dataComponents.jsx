@@ -13,72 +13,82 @@ import {
   konsultasiImage2,
   konsultasiImage3,
   paymentFailed,
+  searchFailed,
+  patientProfile,
 } from "../../../image";
 import { useState } from "react";
 import { useEffect } from "react";
 
 export const dataTableDanaDokter = [
   {
-    nama_dokter: "dr. Darlene Robertson",
+    id: 1,
+    doctor_name: "dr. Darlene Robertson",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 200.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 200.000",
     status: "Pending",
     action: "...",
   },
   {
-    nama_dokter: "dr. Albert Flores",
+    id: 2,
+    doctor_name: "dr. Albert Flores",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 1.500.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 1.500.000",
     status: "Pending",
     action: "...",
   },
   {
-    nama_dokter: "dr. Bessie Cooper",
+    id: 3,
+    doctor_name: "dr. Bessie Cooper",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 2.000.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 2.000.000",
     status: "Sukses",
     action: "...",
   },
   {
-    nama_dokter: "dr. Marvin McKinney",
+    id: 4,
+    doctor_name: "dr. Marvin McKinney",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 340.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 340.000",
     status: "Proses",
     action: "...",
   },
   {
-    nama_dokter: "dr. Ralph Edwards",
+    id: 5,
+    doctor_name: "dr. Ralph Edwards",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 640.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 640.000",
     status: "Sukses",
     action: "...",
   },
   {
-    nama_dokter: "dr. Esther Howard",
+    id: 6,
+    doctor_name: "dr. Esther Howard",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 2.000.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 2.000.000",
     status: "Sukses",
     action: "...",
   },
   {
-    nama_dokter: "dr. Darrell Steward",
+    id: 7,
+    doctor_name: "dr. Darrell Steward",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 250.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 250.000",
     status: "Sukses",
     action: "...",
   },
   {
-    nama_dokter: "dr. Alika Angelina",
+    id: 8,
+    doctor_name: "dr. Alika Angelina",
     idtransaksi: "#1232",
-    date: "20/05/2023",
-    saldoCair: "Rp 340.000",
+    date_confirmed: "20/05/2023",
+    balance_req: "Rp 340.000",
     status: "Sukses",
     action: "...",
   },
@@ -263,10 +273,10 @@ export const CustomerService = {
   getCustomers(params) {
     const queryParams = params
       ? Object.keys(params)
-        .map(
-          (k) => encodeURIComponent(k) + "=" + encodeURIComponent(params[k])
-        )
-        .join("&")
+          .map(
+            (k) => encodeURIComponent(k) + "=" + encodeURIComponent(params[k])
+          )
+          .join("&")
       : "";
 
     return fetch(
@@ -314,28 +324,33 @@ const getValue = (object, path) => {
 const styleName = (rowData) => {
   return (
     <>
-      <img
-        src={rowData.image}
-        style={{ width: "50px", height: "50px", marginRight: "10px" }}
-      />
-
-      {rowData.metode_pembayaran === "Otomatis" ? (
-        <Link
-          to={`/admin/transaksi/user/tertunda/otomatis/${getValue(
-            rowData,
-            "id"
-          )}`}
-        >
-          {rowData.name}
-        </Link>
+      {rowData.patient_avatar ? (
+        <img
+          src={rowData.patient_avatar}
+          style={{ width: "50px", height: "50px", marginRight: "10px", borderRadius: "50%" }}
+        />
       ) : (
+        <img src={patientProfile} alt="" style={{ width: "50px", height: "50px", marginRight: "10px", borderRadius: "50%" }} />
+      )}
+
+
+      {rowData.payment_type === "manual" ? (
         <Link
           to={`/admin/transaksi/user/tertunda/detail/${getValue(
             rowData,
-            "id"
+            "transaction_id"
           )}`}
         >
-          {rowData.name}
+          {rowData.patient_name}
+        </Link>
+      ) : (
+        <Link
+          to={`/admin/transaksi/user/tertunda/otomatis/${getValue(
+            rowData,
+            "transaction_id"
+          )}`}
+        >
+          {rowData.patient_name}
         </Link>
       )}
     </>
@@ -344,46 +359,74 @@ const styleName = (rowData) => {
 
 const styleStatus = (rowData) => {
   const [changeItemStatus, setChangeItemStatus] = useState("");
+  const [paymentText, setPaymentText] = useState("");
 
   useEffect(() => {
-    if (rowData.status_pembayaran === "sudah bayar") {
-      setChangeItemStatus("changeItemStatusBayar");
-    } else if (rowData.status_pembayaran === "belum bayar") {
-      setChangeItemStatus("changeItemStatusBelum");
+    // Update changeItemStatus based on payment_status
+    if (rowData.payment_status === 2) {
+      setChangeItemStatus("changeItemStatusAccept");
+      setPaymentText("Accept");
+    } else if (rowData.payment_status === 5) {
+      setChangeItemStatus("changeItemStatusPending");
+      setPaymentText("Pending");
     } else {
-      setChangeItemStatus("");
+      setChangeItemStatus("changeItemStatusFailed");
+      setPaymentText("Failed");
     }
-  });
+  },);
+
+  //logic status pembayaran ada di sini 
 
   return (
     <>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <div className={changeItemStatus}>{rowData.status_pembayaran}</div>
+        <div className={changeItemStatus}>{paymentText}</div>
       </div>
     </>
   );
 };
 
+const styleConselingType = (rowData) => {
+  const [conselingType, setConselingType] = useState("");
+
+  useEffect(() => {
+    if (rowData.counseling_type === "A") {
+      setConselingType('Paket Konsultasi Premium')
+    } else {
+      setConselingType('Paket Konsultasi Instan')
+    }
+  },);
+
+  return (
+    <>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div>{conselingType}</div>
+      </div>
+    </>
+  );
+}
+
 export const dataColumnsTertunda = [
   {
-    field: "name",
+    field: "patient_name",
     header: "Name",
     body: styleName,
   },
   {
-    field: "id_transaksi",
+    field: "transaction_id",
     header: "ID Transaksi",
   },
   {
-    field: "harga",
+    field: "price_counseling",
     header: "Harga",
   },
   {
-    field: "paket_langganan",
+    field: "counseling_type",
     header: "Paket Langganan",
+    body: styleConselingType,
   },
   {
-    field: "status_pembayaran",
+    field: "payment_status",
     header: "Status Pembayaran",
     body: styleStatus,
   },

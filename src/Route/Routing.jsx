@@ -14,15 +14,14 @@ import EditProfile from "../pages/EditProfile/EditProfile";
 import LoginForm from "../pages/Login/Login";
 import DetailArtikel from "../pages/DetailArtikel/DetailArtikel";
 import TransaksiOtomatis from "../pages/DetailTransaksiOtomatis/TransaksiOtomatis";
-import ForgotPw from "../pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "../pages/AturSandi/AturSandi";
 import DetailAkunDokter from "../pages/DetailAkunDokter/InformasiDokter/informasiDokter";
 import PengalamanDokter from "../pages/DetailAkunDokter/Pengalaman/PengalamanDokter";
 import DokumenDokter from "../pages/DetailAkunDokter/Dokumen/DokumenDokter";
 import ArtikelDokter from "../pages/DetailAkunDokter/Artikel/ArtikelDokter";
 import NotFound from "../pages/NotFound404/NotFound";
-import DetailPengajuan from "../pages/DetailPengajuan/InformasiDokter/DetailPengajuan";
 import PengajuanPraktikDokter from "../pages/PengajuanPraktikDokter/PengajuanPraktikDokter";
+import DetailPengajuan from "../pages/DetailPengajuan/InformasiDokter/DetailPengajuan";
 import DokumenPengajuan from "../pages/DetailPengajuan/Dokumen/DokumenPengajuan";
 import PengalamanPengajuan from "../pages/DetailPengajuan/Pengalaman/PengalamanPengajuan";
 
@@ -31,7 +30,6 @@ const Routing = () => {
     <Routes>
       <Route element={<LoginForm />} path="/" />
       <Route element={<Dashboard />} path="/admin/dashboard" />
-      <Route element={<ForgotPw />} path="/forgot-password" />
       <Route element={<ResetPassword />} path="/reset-password/:id" />
       <Route element={<ManageUser />} path="/admin/manage/user" />
       <Route

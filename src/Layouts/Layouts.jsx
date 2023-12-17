@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SidebarItem from "../components/Elements/SidebarItem/SidebarItem";
 import "./Layout.styles.css";
 import { IoNotifications } from "react-icons/io5";
-import {
-  UnreadIndicator,
-  arrow,
-  avatar8,
-  iconFace,
-  logoEmpathiCare,
-  logoEmpathiCareMobile,
-  notifButton,
-} from "../../image";
+import { iconFace, logoEmpathiCare, logoEmpathiCareMobile } from "../../image";
 import { BsArrowRight, BsFileEarmarkText, BsGrid } from "react-icons/bs";
 import {
   LuFolderHeart,
@@ -23,7 +15,6 @@ import { FaMoneyBills } from "react-icons/fa6";
 import Dropdown from "../components/Elements/Dropdown/Dropdown";
 import { BsFillPersonFill, BsPerson, BsBoxArrowRight } from "react-icons/bs";
 import ModalLogout from "../components/Fragments/modal/ModalLogout";
-
 function Layouts({ children, titlePage }) {
   const navigate = useNavigate();
 
@@ -102,47 +93,7 @@ function Layouts({ children, titlePage }) {
         >
           <h2 className="fw-semibold">{titlePage}</h2>
           <div className="d-flex align-items-center gap-2">
-            <Dropdown
-              className="notif-icon"
-              imageSrc={notifButton}
-              dropdownContent={
-                <>
-                  <div className="notifikasi">
-                    <div>Notifikasi</div>
-                    <hr />
-                    <Link
-                      className="link-notification"
-                      to="/admin/manage/dokter/pengajuan/detail/8"
-                    >
-                      <div className="d-flex align-items-center gap-3">
-                        <div><img className="img-notification" src={avatar8} alt="" /></div>
-                        <div className="d-flex flex-column gap-1">
-                          <div className="fw-bold"> dr. Lika Angelika</div>
-                          <div className="title-notification">
-                            {" "}
-                            Pengajuan izin praktik dokter di <br /> EmphatiCare
-                          </div>
-                          <div className="time-notification fw-light">
-                            {" "}
-                            15 min ago
-                          </div>
-                        </div>
-                        <div className="">
-                          <div className="d-flex gap-3 ">
-                            <div>
-                              <img src={UnreadIndicator} />
-                            </div>
-                            <div>
-                              <img src={arrow} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                </>
-              }
-            />
+            <IoNotifications className="notif-icon" />
             <Dropdown
               className="iconNavbar"
               imageSrc={iconFace}
@@ -172,4 +123,4 @@ function Layouts({ children, titlePage }) {
   );
 }
 
-export default Layouts;
+export default Layouts; 

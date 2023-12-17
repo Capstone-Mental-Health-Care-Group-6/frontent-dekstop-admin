@@ -27,7 +27,7 @@ const UserTable = ({ data, searchValue }) => {
     setRows(event.rows);
   };
 
-  const dokterBodyTemplate = (rowData) => {
+  const userBodyTemplate = (rowData) => {
     return (
       <div className="d-flex align-items-center">
         <img
@@ -92,7 +92,7 @@ const UserTable = ({ data, searchValue }) => {
           totalRecords={data.length}
         >
           <Column
-            body={dokterBodyTemplate}
+            body={userBodyTemplate}
             header="Nama"
             headerClassName="table-header-border"
           />

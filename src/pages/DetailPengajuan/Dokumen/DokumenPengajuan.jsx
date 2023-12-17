@@ -11,7 +11,7 @@ const DokumenPengajuan = () => {
           <DetailDokterCard>
             <div>
               <div classNameName="title-card">
-                <p>Dokumen</p>
+                <p className="fw-semibold">Dokumen</p>
               </div>
 
               <div>

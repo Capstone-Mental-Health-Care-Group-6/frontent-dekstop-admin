@@ -27,8 +27,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 2,
@@ -47,8 +45,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 3,
@@ -67,8 +63,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 4,
@@ -87,8 +81,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 5,
@@ -107,8 +99,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 6,
@@ -127,8 +117,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 7,
@@ -147,8 +135,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Menunggu Persetujuan"
   },
   {
     id: 8,
@@ -167,8 +153,6 @@ export const dataDokter = [
     university: "Universitas Indonesia",
     departement: "S1 - Psikologi",
     period: "2020-2024",
-    spesialis: "Psikologi",
-    status: "Pending"
   },
 ];
 

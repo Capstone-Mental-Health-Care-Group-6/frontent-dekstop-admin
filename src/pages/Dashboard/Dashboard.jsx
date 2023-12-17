@@ -17,31 +17,40 @@ import { getAllPatient } from "../../service/patient";
 import { getAllDoctor } from "../../service/doctor";
 import { getAllArticle } from "../../service/article";
 import { getAllWithDraw } from "../../service/withDraw";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Dashboard = () => {
-  const [totalUser, setTotalUser] = useState(null);
+  const [totalUser, setTotalUser] = useState(0);
 
-  const [totalDokter, setTotalDokter] = useState(null);
+  const [totalDokter, setTotalDokter] = useState(0);
 
-  const [totalArticle, setTotalArticle] = useState(null);
+  const [totalArticle, setTotalArticle] = useState(0);
 
-  const [totalTransaksi, setTotalTransaksi] = useState(null);
+  const [totalTransaksi, setTotalTransaksi] = useState(0);
+
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
+
     getAllPatient((data) => {
       setTotalUser(data.data.total_user);
+      setLoading(false);
     });
 
     getAllDoctor((data) => {
       setTotalDokter(data.data.length);
+      setLoading(false);
     });
 
     getAllArticle((data) => {
       setTotalArticle(data.data.length);
+      setLoading(false);
     });
 
     getAllWithDraw((data) => {
       setTotalTransaksi(data.data.length);
+      setLoading(false);
     });
   }, []);
 
@@ -74,24 +83,48 @@ const Dashboard = () => {
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
-              cardTitle={totalUser !== null ? totalUser : "0"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalUser
+                )
+              }
               src={iconCardUser}
             />
             <Card
               cardSubtitle="Total Dokter"
-              cardTitle={totalDokter !== null ? totalDokter : "0"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalDokter
+                )
+              }
               src={iconCardDokter}
             />
           </div>
           <div className="d-flex gap-3">
             <Card
               cardSubtitle={"Total Artikel"}
-              cardTitle={totalArticle !== null ? totalArticle : "0"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalArticle
+                )
+              }
               src={iconCardArtikel}
             />
             <Card
               cardSubtitle={"Total Transaksi"}
-              cardTitle={totalTransaksi !== null ? totalTransaksi : "0"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalTransaksi
+                )
+              }
               src={iconCardTotalTransaksi}
             />
           </div>

@@ -6,7 +6,7 @@ import { Success } from "../../../../image";
 import "./DokterTable.style.css";
 import { NonAktifkanAkun, DetailAkun } from "../../../../image";
 import { Link, useNavigate } from "react-router-dom";
-import { dataDokter } from "../../DataDokter/dataDokter";
+import { dataDokter } from "../../../components/DataDokter/dataDokter";
 import { searchFailed } from "../../../../image";
 
 const DokterTable = ({ data, id, searchValue }) => {
@@ -110,6 +110,88 @@ const DokterTable = ({ data, id, searchValue }) => {
 
   return (
     <div className="p-mt-4">
+      {/* <DataTable
+        // value={data}
+        value={filteredData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
+        className="p-datatable-sm"
+        rowClassName="table-row-height"
+        first={first}
+        rows={rows}
+        paginator // Mengaktifkan pagination
+        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+        onPage={onPageChange}
+        rowsPerPageOptions={[5, 10, 15]}
+        totalRecords={data.length}
+        // onSelect={navigation("/")}
+      >
+        <Column
+          body={DokterBodyTemplate}
+          header="Nama"
+          headerClassName="table-header-border"
+        />
+        <Column
+          field="email"
+          header="Email"
+          headerClassName="table-header-border"
+        />
+        <Column
+          field="telephone"
+          header="No. Telp"
+          headerClassName="table-header-border"
+        />
+        <Column
+          field="workTime"
+          header="Total Jam Kerja"
+          headerClassName="table-header-border"
+        />
+
+        <Column
+          body={(rowData) => (
+            // <button
+            //   className="border-0 bg-light fw-bold"
+            //   onClick={() => handleActionClick(rowData)}
+            // >
+            //   ...
+            // </button>
+
+            <div className="dropdown">
+              <button
+                className="btn"
+                type="button"
+                id={`dropdownMenuButton-${rowData.id}`}
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span className="action-symbol fw-bold">...</span>
+              </button>
+              <ul
+                className="dropdown-menu"
+                aria-labelledby={`dropdownMenuButton-${rowData.id}`}
+              >
+                {actionItems.map((item, index) => (
+                  <li key={index}>
+                    <button
+                      className="dropdown-item"
+                      onClick={() =>
+                        handleActionSelection(item.action, rowData)
+                      }
+                    >
+                      <img
+                        src={item.icon}
+                        alt={item.label}
+                        className="icon-before-label me-2"
+                      />{" "}
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          header="Action"
+          headerClassName="table-header-border"
+        />
+      </DataTable> */}
       {filteredData.length > 0 ? (
         <DataTable
           // value={data}
@@ -198,6 +280,22 @@ const DokterTable = ({ data, id, searchValue }) => {
           </p>
         </div>
       )}
+
+      {/* Modal untuk menampilkan detail akun atau nonaktifkan akun */}
+      {/* <Dialog
+        visible={displayModal}
+        onHide={() => setDisplayModal(false)}
+        footer={dialogFooter}
+        modal
+      >
+        {selectedDokter && (
+          <div>
+            <p></p>
+          </div>
+        )}
+      </Dialog> */}
+
+      {/* Modal konfirmasi nonaktifkan akun */}
       <div
         className={`modal ${showConfirmation ? "show" : ""}`}
         style={{ display: showConfirmation ? "block" : "none" }}

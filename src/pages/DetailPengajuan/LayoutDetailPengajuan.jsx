@@ -7,7 +7,7 @@ import {
   icon2,
   icon3,
   icon4,
-  iconModalRejection,
+  iconRejection,
   infoOutline,
 } from "../../../image";
 import info from "../../../src/assets/info.svg";
@@ -120,10 +120,7 @@ const LayoutDetailPengajuan = ({ children }) => {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="d-flex justify-content-center">
-                <img
-                  className="iconModalRejection my-3"
-                  src={iconModalRejection}
-                />
+                <img className="iconRejection my-3" src={iconRejection} />
               </div>
               <div className="modal-header border-bottom-0 d-flex justify-content-center">
                 <h1
