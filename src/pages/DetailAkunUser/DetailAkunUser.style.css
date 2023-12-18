@@ -6,6 +6,11 @@
   color: #959595;
 }
 
+#detail-user .routes span .link-back {
+  text-decoration: none;
+  color: #959595;
+}
+
 /* style card-1 username dan avatar */
 .detail-user-id .row .col-4 .row .col-12 .card {
   font-family: "Montserrat", sans-serif;

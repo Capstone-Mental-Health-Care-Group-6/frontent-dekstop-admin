@@ -1,21 +1,101 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import Card from "../../components/Fragments/card/Card";
 import { dataUsers } from "../../components/DataUsers/dataUsers";
-import { cardManageUsers } from "../../components/DataUsers/dataUsers";
 import { Link } from "react-router-dom";
 import Search from "../../components/Elements/SearchManageUser/SearchManageUser";
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { LuFilter } from "react-icons/lu";
-import UserTable from "../../components/Fragments/userTable/userTable";
+import UserTable from "../../components/Fragments/userTable/UserTable";
 import "./ManageUser.style.css";
+import {
+  iconTotalUser,
+  iconUserAktif,
+  iconUserBaru,
+  iconUserTidakAktif,
+} from "../../../image";
+import { getAllManageUser, getAllPatient } from "../../service/patient";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const ManageUser = () => {
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
+  const [dataUsers, setDataUsers] = useState([]);
+  const [patientData, setPatientData] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [statusFilter, setStatusFilter] = useState("");
+  console.log(statusFilter);
+
+  const resetFilter = () => {
+    setStatusFilter("");
+
+    getAllManageUser((data) => {
+      setDataUsers(data.data);
+    });
+  };
+
+  const handleFilterChange = (event) => {
+    setStatusFilter(event.target.value);
+  };
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
+
+  useEffect(() => {
+    setLoading(true);
+
+    getAllPatient((data) => {
+      setPatientData(data.data);
+      setLoading(false);
+    });
+
+    getAllManageUser((data) => {
+      setDataUsers(data.data);
+    });
+  }, []);
+
+  const cardManageUsers = [
+    {
+      location: "/",
+      image: iconTotalUser,
+      text: "Total User",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user
+      ),
+    },
+    {
+      location: "/",
+      image: iconUserBaru,
+      text: "User Baru",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_baru
+      ),
+    },
+    {
+      location: "/",
+      image: iconUserAktif,
+      text: "User Aktif",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_active
+      ),
+    },
+    {
+      location: "/",
+      image: iconUserTidakAktif,
+      text: "User Tidak Aktif",
+      total: loading ? (
+        <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+      ) : (
+        patientData?.total_user_inactive
+      ),
+    },
+  ];
 
   return (
     <Layouts titlePage={"Manage User"}>
@@ -23,13 +103,11 @@ const ManageUser = () => {
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
           {cardManageUsers.map((item, index) => (
             <div className="col" key={index}>
-              {/* <Link to={item.location} className="text-decoration-none"> */}
               <Card
                 src={item.image}
                 cardSubtitle={item.text}
                 cardTitle={item.total}
               ></Card>
-              {/* </Link> */}
             </div>
           ))}
         </div>
@@ -64,23 +142,37 @@ const ManageUser = () => {
                   <ul className="dropdown-menu">
                     <div className="d-flex justify-content-between fw-semibold p-3">
                       <span>Filter</span>
-                      <span className="text-primary">Reset</span>
+                      <button
+                        className="btn text-primary fw-semibold"
+                        onClick={resetFilter}
+                      >
+                        Reset
+                      </button>
                     </div>
                     <span className="p-3 fw-medium">Status Akun : </span>
-                    <FilterList title={"Aktif"} type={"checkbox"} />
-                    <FilterList title={"Non Aktif"} type={"checkbox"} />
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <span className="p-3 fw-medium">Paket : </span>
-                    <FilterList title={"Konseling Instan"} type={"checkbox"} />
-                    <FilterList title={"Konseling Premium"} type={"checkbox"} />
-                    <FilterList title={"Non Aktif"} type={"checkbox"} />
+                    <FilterList
+                      title={"Aktif"}
+                      type={"checkbox"}
+                      value={"Active"}
+                      checked={statusFilter === "Active"}
+                      onChange={handleFilterChange}
+                    />
+                    <FilterList
+                      title={"Non Aktif"}
+                      type={"checkbox"}
+                      value={"Inactive"}
+                      checked={statusFilter === "Inactive"}
+                      onChange={handleFilterChange}
+                    />
                   </ul>
                 </div>
               </div>
             </div>
-            <UserTable data={dataUsers} searchValue={searchValue} />{" "}
+            <UserTable
+              data={dataUsers}
+              searchValue={searchValue}
+              statusFilter={statusFilter}
+            />{" "}
             {/* Meneruskan nilai pencarian ke UserTable */}
           </div>
         </div>

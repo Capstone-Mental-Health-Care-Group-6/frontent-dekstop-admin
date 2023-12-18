@@ -6,7 +6,7 @@ import "./DetailArtikel.style.css";
 import Button from "../../components/Elements/button/Button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const DetailArtikel = () => {
   const [artikel, setArtikel] = useState([]);
@@ -28,7 +28,7 @@ const DetailArtikel = () => {
     }
   };
 
-  const terimaToast = () => toast.success('Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.', {
+  const terimaToast = () => toast .success('Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.', {
     duration: 4000,
     position: 'bottom-center',
     className: "terima-artikel-toast",

@@ -52,8 +52,12 @@ import iconPencil from "./src/assets/iconPencil.svg";
 import imgNotFound404 from "./src/assets/imgNotFound404.png";
 import artikeldokter from "./src/assets/artikeldokter.png";
 import Gambar from "./src/assets/Gambar.png";
+import patientProfile from "./src/assets/profileImage.png";
+import iconRejection from "./src/assets/iconModalRejection.png";
+import infoOutline from "./src/assets/info-outline.png";
 
 export {
+  patientProfile,
   pendingArtikelAdmin,
   tambahArtikelAdmin,
   iconArtikelAdmin,
@@ -108,4 +112,6 @@ export {
   konsultasiImage2,
   konsultasiImage3,
   Gambar,
+  iconRejection,
+  infoOutline,
 };

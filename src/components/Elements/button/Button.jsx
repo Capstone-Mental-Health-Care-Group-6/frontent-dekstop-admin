@@ -11,6 +11,7 @@ const Button = ({
   bsDismiss,
   disabled,
   ariaLabel,
+  onSubmit
 }) => {
   return (
     <>
@@ -24,6 +25,7 @@ const Button = ({
         data-bs-toggle={bsTogle}
         data-bs-target={bsTarget}
         data-bs-dismiss={bsDismiss}
+        onSubmit={onSubmit}
       >
         {text}
       </button>

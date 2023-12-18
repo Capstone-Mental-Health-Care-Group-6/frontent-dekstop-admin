@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../Layouts/Layouts";
 import "./Dashboard.styles.css";
 import {
@@ -13,8 +13,46 @@ import {
 import Card from "../../components/Fragments/card/Card";
 import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas";
 import { useLogin } from "../../hooks/useLogin";
+import { getAllPatient } from "../../service/patient";
+import { getAllDoctor } from "../../service/doctor";
+import { getAllArticle } from "../../service/article";
+import { getAllWithDraw } from "../../service/withDraw";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Dashboard = () => {
+  const [totalUser, setTotalUser] = useState(0);
+
+  const [totalDokter, setTotalDokter] = useState(0);
+
+  const [totalArticle, setTotalArticle] = useState(0);
+
+  const [totalTransaksi, setTotalTransaksi] = useState(0);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    getAllPatient((data) => {
+      setTotalUser(data.data.total_user);
+      setLoading(false);
+    });
+
+    getAllDoctor((data) => {
+      setTotalDokter(data.data.length);
+      setLoading(false);
+    });
+
+    getAllArticle((data) => {
+      setTotalArticle(data.data.length);
+      setLoading(false);
+    });
+
+    getAllWithDraw((data) => {
+      setTotalTransaksi(data.data.length);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <Layouts titlePage={"Dashboard"}>
@@ -45,24 +83,48 @@ const Dashboard = () => {
           <div className="d-flex gap-3">
             <Card
               cardSubtitle="Total User"
-              cardTitle="17.000"
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalUser
+                )
+              }
               src={iconCardUser}
             />
             <Card
               cardSubtitle="Total Dokter"
-              cardTitle="17.000"
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalDokter
+                )
+              }
               src={iconCardDokter}
             />
           </div>
           <div className="d-flex gap-3">
             <Card
               cardSubtitle={"Total Artikel"}
-              cardTitle={"1.500"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalArticle
+                )
+              }
               src={iconCardArtikel}
             />
             <Card
               cardSubtitle={"Total Transaksi"}
-              cardTitle={"24.000"}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  totalTransaksi
+                )
+              }
               src={iconCardTotalTransaksi}
             />
           </div>
