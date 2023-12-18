@@ -5,8 +5,10 @@ import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-c
 import "./informasiDokter.style.css";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../../components/DataDokter/dataDokter";
+import { useLogin } from "../../../hooks/useLogin";
 
 const DetailAkunDokter = () => {
+  useLogin();
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
 

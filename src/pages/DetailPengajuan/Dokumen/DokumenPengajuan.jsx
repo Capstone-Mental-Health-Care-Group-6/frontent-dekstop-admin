@@ -2,8 +2,10 @@ import React from "react";
 import Layouts from "../../../Layouts/Layouts";
 import LayoutDetailPengajuan from "../LayoutDetailPengajuan";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
+import { useLogin } from "../../../hooks/useLogin";
 
 const DokumenPengajuan = () => {
+  useLogin();
   return (
     <>
       <Layouts titlePage={"Detail Akun Dokter"}>

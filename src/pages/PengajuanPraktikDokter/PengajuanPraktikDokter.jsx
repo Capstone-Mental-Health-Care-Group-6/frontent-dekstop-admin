@@ -6,8 +6,10 @@ import Search from "../../components/Elements/SearchManageUser/SearchManageUser"
 import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { LuFilter } from "react-icons/lu";
 import "./PengajuanPraktikDokter.style.css";
+import { useLogin } from "../../hooks/useLogin";
 
 const PengajuanPraktikDokter = () => {
+  useLogin();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchChange = (event) => {
@@ -77,7 +79,10 @@ const PengajuanPraktikDokter = () => {
                     </div>
                   </div>
                 </div>
-                <PengajuanTable data={dataPengajuan} searchValue={searchValue} />{" "}
+                <PengajuanTable
+                  data={dataPengajuan}
+                  searchValue={searchValue}
+                />{" "}
               </div>
             </div>
           </section>

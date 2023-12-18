@@ -6,8 +6,10 @@ import ArtikelCard from "../../../components/Fragments/card/artikel-card/Artikel
 import { artikeldokter } from "../../../../image";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../../components/DataDokter/dataDokter";
+import { useLogin } from "../../../hooks/useLogin";
 
 const ArtikelDokter = () => {
+  useLogin();
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   return (
