@@ -7,6 +7,7 @@ import Button from "../../components/Elements/button/Button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import toast, { Toaster } from "react-hot-toast";
+import { useLogin } from "../../hooks/useLogin";
 
 const DetailArtikel = () => {
   useLogin();
