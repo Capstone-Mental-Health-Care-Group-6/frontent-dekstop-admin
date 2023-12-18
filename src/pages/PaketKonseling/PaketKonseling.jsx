@@ -60,6 +60,7 @@ const PaketKonseling = () => {
     })
   }
 
+
   const formDataKeys = ['avatar', 'name', 'price', 'sessions', 'description', 'active_priode', 'type'];
   const apiData = new FormData();
   formDataKeys.forEach((key) => {
