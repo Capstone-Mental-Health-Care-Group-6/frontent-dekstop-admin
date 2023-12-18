@@ -15,6 +15,7 @@ import {
   getDetailTransaction,
   updateTransaction,
 } from "../../service/transaction";
+import { useLogin } from "../../hooks/useLogin";
 
 function DetailTransaksiUser() {
   useLogin();
