@@ -137,7 +137,7 @@ const ManageArtikel = () => {
         <div className="col ">
           <Card
             src={iconArtikelAdmin}
-            cardTitle="17000"
+            cardTitle={artikel.length}
             cardSubtitle="Total Artikel"
           />
         </div>
@@ -145,14 +145,14 @@ const ManageArtikel = () => {
           <Card
             src={tambahArtikelAdmin}
             cardSubtitle="Artikel Baru"
-            cardTitle="250"
+            cardTitle={artikel.filter((artikel) => artikel.status === 'Publish').length}
           />
         </div>
         <div className="col">
           <Card
             src={pendingArtikelAdmin}
             cardSubtitle="Pengajuan Artikel"
-            cardTitle="12"
+            cardTitle={artikel.filter((artikel) => artikel.status === 'Pending').length}
           />
         </div>
       </div>
