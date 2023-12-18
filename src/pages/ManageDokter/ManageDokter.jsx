@@ -16,8 +16,10 @@ import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getAllDoctor } from "../../service/doctor";
+import { useLogin } from "../../hooks/useLogin";
 
 const ManageDokter = ({ location }) => {
+  useLogin();
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
 

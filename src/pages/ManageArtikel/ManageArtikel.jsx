@@ -18,6 +18,7 @@ import Input from "../../components/Elements/input/Input";
 import ColumnTable from "../../components/Elements/ColumnTable/ColumnTable";
 
 const ManageArtikel = () => {
+  useLogin();
   const [artikel, setArtikel] = useState(dataArtikel);
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();

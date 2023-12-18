@@ -20,6 +20,7 @@ import { getAllWithDraw } from "../../service/withDraw";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const Dashboard = () => {
+  useLogin();
   const [totalUser, setTotalUser] = useState(0);
 
   const [totalDokter, setTotalDokter] = useState(0);

@@ -9,6 +9,7 @@ import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import toast, { Toaster } from "react-hot-toast";
 
 const DetailArtikel = () => {
+  useLogin();
   const [artikel, setArtikel] = useState([]);
   const param = useParams();
 
@@ -28,21 +29,25 @@ const DetailArtikel = () => {
     }
   };
 
-  const terimaToast = () => toast.success('Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.', {
-    duration: 4000,
-    position: 'bottom-center',
-    className: "terima-artikel-toast",
+  const terimaToast = () =>
+    toast.success(
+      "Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.",
+      {
+        duration: 4000,
+        position: "bottom-center",
+        className: "terima-artikel-toast",
         style: {
           maxWidth: "700px",
           marginBottom: "5%",
         },
 
-    // Aria
-    ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-    },
-});
+        // Aria
+        ariaProps: {
+          role: "status",
+          "aria-live": "polite",
+        },
+      }
+    );
 
   const tolakToast = () =>
     toast.success(

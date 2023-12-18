@@ -5,8 +5,10 @@ import "./DetailPengajuan.style.css";
 import { useParams } from "react-router-dom";
 import { dataPengajuan } from "../../../components/DataDokter/DataPengajuan/dataPengajuan";
 import LayoutDetailPengajuan from "../LayoutDetailPengajuan";
+import { useLogin } from "../../../hooks/useLogin";
 
 const DetailPengajuan = () => {
+  useLogin();
   const { id } = useParams();
   const dokter = dataPengajuan.find((dokter) => dokter.id === parseInt(id));
 
