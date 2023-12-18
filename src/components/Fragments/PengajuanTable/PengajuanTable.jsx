@@ -1,82 +1,75 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import "./UserTable.style.css";
-import { NonAktifkanAkun, DetailAkun, Success } from "../../../../image";
+import { Success } from "../../../../image";
+import "./PengajuanTable.style.css";
+import { NonAktifkanAkun, DetailAkun } from "../../../../image";
+import { Link, useNavigate } from "react-router-dom";
+import { dataPengajuan } from "../../DataDokter/DataPengajuan/dataPengajuan";
 import { searchFailed } from "../../../../image";
-import { updateStatusAkunPatient } from "../../../service/patient";
 
-const UserTable = ({ data, searchValue, statusFilter }) => {
-  const [selectedUser, setSelectedUser] = useState(null);
+const PengajuanTable = ({ data, id, searchValue, status }) => {
+  const dokter = dataPengajuan.find((dokter) => dokter.id === parseInt(id));
+  const [selectedDokter, setSelectedDokter] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [updatedUserData, setUpdatedUserData] = useState(null);
-  const [selectedStatusMap, setSelectedStatusMap] = useState({});
-
   const [first, setFirst] = useState(0); // State untuk menangani index awal data yang ditampilkan
   const [rows, setRows] = useState(5); // State untuk menangani jumlah baris per halaman
+  const [styleStatus, setStatus] = useState("");
+  const navigation = useNavigate();
 
-  // Fungsi untuk melakukan pencarian berdasarkan nilai searchValue
-  const filteredData = data.filter((user) => {
+  const filteredData = data.filter((dokter) => {
     return (
-      (user.name.toLowerCase().includes(searchValue.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchValue.toLowerCase()) ||
-        user.phone_number.toLowerCase().includes(searchValue.toLowerCase()) ||
-        user.status.toLowerCase().includes(searchValue.toLowerCase())) &&
-      (statusFilter === "" || user.status === statusFilter)
+      dokter.doctorName.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.email.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.telephone.toLowerCase().includes(searchValue.toLowerCase()) ||
+      dokter.statusAkun.toLowerCase().includes(searchValue.toLowerCase())
     );
   });
-
-  const displayedData = updatedUserData
-    ? [...filteredData, updatedUserData]
-    : filteredData;
 
   const onPageChange = (event) => {
     setFirst(event.first);
     setRows(event.rows);
   };
 
-  const userBodyTemplate = (rowData) => {
+  const DokterBodyTemplate = (rowData) => {
     return (
-      <div className="d-flex align-items-center">
-        <img
-          src={rowData.avatar}
-          alt={rowData.name}
-          height="32px"
-          className="me-2"
-        />
-        <span>{rowData.name}</span>
-      </div>
+      <Link
+        className="doctor-name"
+        to={`/admin/manage/dokter/pengajuan/detail/${rowData.id}`}
+      >
+        <div className="d-flex align-items-center">
+          <img
+            src={rowData.image}
+            alt={rowData.doctorName}
+            height="32px"
+            className="me-2"
+          />
+          <span>{rowData.doctorName}</span>
+        </div>
+      </Link>
     );
   };
 
   const statusBodyTemplate = (rowData) => {
-    let statusClassName;
-
-    const currentStatus = selectedStatusMap[rowData.id] || rowData.status;
-
-    if (currentStatus === "Active") {
-      statusClassName = "active-status";
-    } else {
-      statusClassName = "inactive-status";
-    }
-
-    return <span className={statusClassName}>{rowData.status}</span>;
+    const statusClassName =
+      rowData.statusAkun === "Aktif" ? "active-status" : "inactive-status";
+    return <span className={statusClassName}>{rowData.statusAkun}</span>;
   };
 
   const actionItems = [
     { icon: DetailAkun, label: "Lihat detail akun", action: "view" },
-    { icon: NonAktifkanAkun, label: "Non aktifkan akun", action: "Inactive" },
+    { icon: NonAktifkanAkun, label: "Non aktifkan akun", action: "deactivate" },
   ];
 
   const handleActionSelection = (action, rowData) => {
-    setSelectedUser(rowData);
+    setSelectedDokter(rowData);
 
     if (action === "view") {
       if (rowData) {
-        window.location.href = `/admin/manage/user/detail/${rowData.ID}`;
+        window.location.href = `/admin/manage/dokter/pengajuan/detail/${rowData.id}`;
       }
-    } else if (action === "Inactive" && rowData.status === "Active") {
+    } else if (action === "deactivate") {
       setShowConfirmation(true);
     }
   };
@@ -84,27 +77,7 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
   const confirmNonAktifkan = () => {
     // Lakukan tindakan untuk menonaktifkan akun
     setShowConfirmation(false);
-
-    updateStatusAkunPatient(selectedUser.ID, "Inactive", () => {
-      // Simpan data pengguna yang diperbarui ke state
-      setUpdatedUserData({
-        ...selectedUser,
-        status: "Inactive",
-      });
-    });
-
-    // Perbarui status di tabel langsung
-    updateStatusInDataTable(selectedUser.ID, "Inactive");
-
     setShowSuccessModal(true); //menampilkan modal sukses setelah menonaktifkan akun
-  };
-
-  const updateStatusInDataTable = (id, newStatus) => {
-    // Implementasi logika untuk memperbarui status di tabel data
-    setSelectedStatusMap((prevMap) => ({
-      ...prevMap,
-      [id]: newStatus,
-    }));
   };
 
   const cancelNonAktifkan = () => {
@@ -112,12 +85,32 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
     setShowConfirmation(false);
   };
 
+  const dialogFooter = (
+    <div className="dialog-footer">
+      <button
+        onClick={() => handleActionSelection("Lihat detail akun")}
+        className="p-button p-button-text border-0 mb-2 ms-2 mt-2"
+      >
+        <img src={DetailAkun} alt="Detail Akun" className="me-2" /> Lihat detail
+        akun
+      </button>
+      <br />
+      <button
+        onClick={() => handleActionSelection("Non aktifkan akun")}
+        className="p-button p-button-text border-0 mb-2 ms-2"
+      >
+        <img src={NonAktifkanAkun} alt="Non Aktifkan Akun" className="me-2" />{" "}
+        Non aktifkan akun
+      </button>
+    </div>
+  );
+
   return (
     <div className="p-mt-4">
       {filteredData.length > 0 ? (
         <DataTable
           // value={data}
-          value={displayedData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
+          value={filteredData} // Menggunakan data yang sudah disaring berdasarkan nilai pencarian
           className="p-datatable-sm"
           rowClassName="table-row-height"
           first={first}
@@ -126,66 +119,27 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
           paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 15]}
-          totalRecords={filteredData.length}
+          totalRecords={data.length}
         >
           <Column
-            body={userBodyTemplate}
+            body={DokterBodyTemplate}
             header="Nama"
             headerClassName="table-header-border"
           />
           <Column
-            field="email"
-            header="Email"
+            field="spesialis"
+            header="Spesialis Dokter"
             headerClassName="table-header-border"
           />
           <Column
-            field="phone_number"
+            field="telephone"
             header="No. Telp"
             headerClassName="table-header-border"
           />
           <Column
-            field="status"
-            header="Status Akun"
-            body={statusBodyTemplate}
-            headerClassName="table-header-border"
-          />
-          <Column
-            body={(rowData) => (
-              <div className="dropdown">
-                <button
-                  className="btn"
-                  type="button"
-                  id={`dropdownMenuButton-${rowData.ID}`}
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span className="action-symbol fw-bold">...</span>
-                </button>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby={`dropdownMenuButton-${rowData.ID}`}
-                >
-                  {actionItems.map((item, index) => (
-                    <li key={index}>
-                      <button
-                        className="dropdown-item"
-                        onClick={() =>
-                          handleActionSelection(item.action, rowData)
-                        }
-                      >
-                        <img
-                          src={item.icon}
-                          alt={item.label}
-                          className="icon-before-label me-2"
-                        />{" "}
-                        {item.label}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            header="Action"
+            className={styleStatus}
+            field={status}
+            header="Status Pengajuan"
             headerClassName="table-header-border"
           />
         </DataTable>
@@ -203,6 +157,20 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
           </p>
         </div>
       )}
+
+      {/* Modal untuk menampilkan detail akun atau nonaktifkan akun */}
+      {/* <Dialog
+        visible={displayModal}
+        onHide={() => setDisplayModal(false)}
+        footer={dialogFooter}
+        modal
+      >
+        {selectedDokter && (
+          <div>
+            <p></p>
+          </div>
+        )}
+      </Dialog> */}
 
       {/* Modal konfirmasi nonaktifkan akun */}
       <div
@@ -284,4 +252,4 @@ const UserTable = ({ data, searchValue, statusFilter }) => {
   );
 };
 
-export default UserTable;
+export default PengajuanTable;

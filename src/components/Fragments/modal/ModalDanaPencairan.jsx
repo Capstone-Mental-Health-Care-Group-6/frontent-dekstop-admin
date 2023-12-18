@@ -1,46 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../Elements/button/Button";
 import InputSelect from "../../Elements/input/InputSelect";
 
-const ModalDanaPencairan = ({ visible, onClose, rowData }) => {
+const ModalDanaPencairan = ({
+  visible,
+  onClose,
+  rowData,
+  selectedStatusMap,
+  updateStatusInDataTable,
+}) => {
   const { id, size, status } = rowData;
 
   // State untuk menyimpan nilai status yang terpilih
-  const [selectedStatus, setSelectedStatus] = useState(status);
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const [backgroundClass, setBackgroundClass] = useState("");
 
+  // Efek samping untuk memastikan bahwa nilai status lokal selalu sinkron dengan properti rowData
+  useEffect(() => {
+    setSelectedStatus(selectedStatusMap[rowData.id] || status);
+  }, [rowData.id, selectedStatusMap, status]);
+
   // Fungsi handler ketika nilai InputSelect berubah
   const handleStatusChange = (e) => {
-    setSelectedStatus(e.target.value);
+    const newStatus = e.target.value;
 
     // Set class tambahan berdasarkan selectedStatus
-    setBackgroundClass(getBackgroundClass(e.target.value));
+    // setBackgroundClass(getBackgroundClass(e.target.value));
+    setSelectedStatus(newStatus);
+    setBackgroundClass(getBackgroundClass(newStatus));
 
-    console.log(e.target.value);
+    // Memperbarui status di tabel
+    updateStatusInDataTable(rowData.id, newStatus);
+
+    console.log(newStatus);
   };
 
   let statusClassName;
 
-  if (status === "Sukses") {
+  if (status === "DONE") {
     statusClassName = "success-status";
-  } else if (status === "Proses") {
-    statusClassName = "process-status";
-  } else {
+  } else if (status === "PENDING") {
     statusClassName = "insuccess-status";
   }
 
   const getBackgroundClass = (status) => {
-    if (status === "Sukses") {
+    if (status === "DONE") {
       return "success-background";
-    } else if (status === "Proses") {
-      return "process-background";
-    } else {
+    } else if (status === "PENDING") {
       return "insuccess-background";
     }
   };
 
-  const uniqueOptions = Array.from(new Set(["Sukses", "Proses", "Pending"]));
+  const uniqueOptions = Array.from(new Set(["DONE", "PENDING"]));
 
   return (
     <div
@@ -63,7 +75,7 @@ const ModalDanaPencairan = ({ visible, onClose, rowData }) => {
             <h5 className="fw-semibold">Detail Pencairan Dana Dokter</h5>
           </div>
           <div className="modal-body d-flex flex-column">
-            <p className="d-flex flex-column gap-2">
+            {/* <p className="d-flex flex-column gap-2">
               Status{" "}
               <span>
                 <InputSelect
@@ -71,39 +83,43 @@ const ModalDanaPencairan = ({ visible, onClose, rowData }) => {
                   id={"statusPencairan"}
                   title={rowData.status}
                   options={uniqueOptions}
-                  value={selectedStatus}
+                  value={selectedStatusMap[rowData.id] || selectedStatus}
                   onChange={handleStatusChange}
                   className={`fw-semibold select__status__pencairan ${statusClassName} ${backgroundClass}`}
                 />
               </span>{" "}
-            </p>
+            </p> */}
 
             <p className="d-flex flex-column gap-2">
               Nama Dokter{" "}
               <span className="fw-semibold text-black">
-                {rowData.nama_dokter}
+                {rowData.doctor_name}
               </span>{" "}
             </p>
 
             <p className="d-flex flex-column gap-2">
               Metode Pencairan{" "}
-              <span className="fw-semibold text-black">Bank BNI</span>{" "}
+              <span className="fw-semibold text-black">
+                {rowData.payment_method}
+              </span>{" "}
             </p>
 
             <p className="d-flex flex-column gap-2">
               No Rekening{" "}
-              <span className="fw-semibold text-black">872349322</span>{" "}
+              <span className="fw-semibold text-black">
+                {rowData.payment_number}
+              </span>{" "}
             </p>
 
-            <p className="d-flex flex-column gap-2">
+            {/* <p className="d-flex flex-column gap-2">
               ID Transaksi
               <span className="fw-semibold text-black">
                 {rowData.idtransaksi}
               </span>{" "}
-            </p>
+            </p> */}
             <p className="d-flex flex-column gap-2">
               Nominal Pencairan{" "}
-              <span className="fw-semibold nominal">{rowData.saldoCair}</span>{" "}
+              <span className="fw-semibold nominal">{rowData.balance_req}</span>{" "}
             </p>
           </div>
         </div>
