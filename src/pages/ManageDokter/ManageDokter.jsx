@@ -15,24 +15,44 @@ import { LuFilter } from "react-icons/lu";
 import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getAllDoctor } from "../../service/doctor";
+import { getAllDoctor, getDashboardDoctor } from "../../service/doctor";
+import Skeleton from "react-loading-skeleton";
 
-const ManageDokter = ({ location }) => {
+const ManageDokter = () => {
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
-
+  const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [dataTableManageDokter, setdataTableManageDokter] = useState([]);
   const [totalDokter, setTotalDokter] = useState(null);
+  const [totalDokterBaru, setTotalDokterBaru] = useState(0);
+  const [totalDokterAktif, setTotalDokterAktif] = useState(0);
+  const [totalPengajuan, setTotalPengajuan] = useState(0);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
 
   useEffect(() => {
+    setLoading(true);
+
     getAllDoctor((data) => {
       setTotalDokter(data.data.length);
+      setLoading(false);
     });
-  });
+
+    getDashboardDoctor((data) => {
+      setTotalDokterBaru(data.data.total_new_doctor);
+      setTotalDokterAktif(data.data.total_active_doctor);
+      setTotalPengajuan(data.data.total_pending_doctor);
+      setLoading(false);
+    });
+
+    getAllDoctor((data) => {
+      setdataTableManageDokter(data.data);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -46,13 +66,13 @@ const ManageDokter = ({ location }) => {
 
           <Card
             cardSubtitle="Dokter Baru"
-            cardTitle="250"
+            cardTitle={totalDokterBaru !== null ? totalDokterBaru : "0"}
             src={iconCardDokter}
           />
 
           <Card
             cardSubtitle="Dokter Aktif"
-            cardTitle="5.000"
+            cardTitle={totalDokterAktif !== null ? totalDokterAktif : "0"}
             src={captivePortal}
           />
 
@@ -60,17 +80,13 @@ const ManageDokter = ({ location }) => {
             className="card-pengajuan"
             to={`/admin/manage/dokter/pengajuan`}
           >
-            {/* <Card
-              cardSubtitle="Pengajuan Dokter"
-              cardTitle="12"
-              src={sandClock}
-            /> */}
-
             <div className="card bg-white border-white">
               <div className="card-body">
                 <img className="mb-2" src={sandClock} />
                 <h6 className="card-subtitle">Pengajuan Dokter</h6>
-                <h5 className="card-title">12</h5>
+                <h5 className="card-title">
+                  {totalPengajuan !== null ? totalPengajuan : "0"}
+                </h5>
               </div>
             </div>
           </Link>
@@ -127,7 +143,10 @@ const ManageDokter = ({ location }) => {
                   </div>
                 </div>
               </div>
-              <DokterTable data={dataDokter} searchValue={searchValue} />{" "}
+              <DokterTable
+                data={dataTableManageDokter}
+                searchValue={searchValue}
+              />{" "}
             </div>
           </div>
         </section>

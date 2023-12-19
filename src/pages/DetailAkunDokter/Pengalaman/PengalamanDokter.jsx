@@ -2,10 +2,12 @@ import React from "react";
 import Layouts from "../../../Layouts/Layouts";
 import LayoutDetailDokter from "../../../Layouts/LayoutDetailDokter/LayoutDetailDokter";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
+import { useLogin } from "../../../hooks/useLogin";
 // import { useParams } from "react-router-dom";
 // import { dataDokter } from "../../../components/DataDokter/dataDokter";
 
 const PengalamanDokter = () => {
+  useLogin();
   // const { id } = useParams();
   // const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   return (

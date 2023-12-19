@@ -2,8 +2,10 @@ import React from "react";
 import Layouts from "../../Layouts/Layouts";
 import { imgNotFound404 } from "../../../image";
 import "./NotFound.style.css";
+import { useLogin } from "../../hooks/useLogin";
 
 const NotFound = () => {
+  useLogin();
   return (
     <div>
       <Layouts titlePage={"Dashboard"}>

@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React, { Children, useEffect } from "react";
 import "./LayoutDetailDokter.css";
 import DetailDokterItem from "../../components/Elements/DetailDokterItem/DetailDokterItem";
 import { avatar1, icon1, icon2, icon3, icon4 } from "../../../image";
@@ -7,10 +7,15 @@ import { useState } from "react";
 import { Success } from "../../../image";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../components/DataDokter/dataDokter";
+import { useLogin } from "../../hooks/useLogin";
+import { getDoctorById } from "../../service/doctor";
 
 const LayoutDetailDokter = ({ children }) => {
+  useLogin();
   const { id } = useParams();
-  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
+  const [dataDokter, setdataDokter] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -44,6 +49,17 @@ const LayoutDetailDokter = ({ children }) => {
     }, 3000);
   };
 
+  useEffect(() => {
+    setLoading(true);
+    getDoctorById({
+      callback: (data) => {
+        setdataDokter(data.data);
+        setLoading(false); // Log the data after it has been set
+      },
+      id,
+    });
+  }, [id]);
+
   return (
     <>
       <div>
@@ -59,15 +75,18 @@ const LayoutDetailDokter = ({ children }) => {
               <div className="profile-card card py-4 border-0">
                 <div className="d-flex justify-items-center">
                   <div className="d-flex justify-items-center px-4">
-                    <img className="img-detailDokter" src={dokter.image} />
+                    <img
+                      className="img-detailDokter"
+                      src={dataDokter?.doctor_avatar}
+                    />
                   </div>
 
                   <div className="d-flex align-items-center">
                     <div className="grid gap-4">
                       <div className="nameDokter fw-semibold">
-                        {dokter.doctorName}
+                        {dataDokter?.doctor_name}
                       </div>
-                      <div className="titleDokter">{dokter.job}</div>
+                      <div className="titleDokter">Psikologi Klinis</div>
                     </div>
                   </div>
                 </div>
