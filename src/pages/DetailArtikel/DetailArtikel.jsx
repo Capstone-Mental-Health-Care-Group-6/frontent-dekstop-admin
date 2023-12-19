@@ -102,17 +102,6 @@ const DetailArtikel = () => {
 
   // console.log(artikel);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getAllArticle((res) => {
-  //     const filter = res.data.filter((item) => item.id == id);
-  //     const firstFilteredItem = filter.length > 0 ? filter[0] : null;
-  //     setArtikel(firstFilteredItem);
-  //     setImage(firstFilteredItem.thumbnail);
-  //   });
-  //   setLoading(false);
-  // }, []);
-
   return (
     <Layouts titlePage={"Detail Artikel"}>
       <div className="d-flex flex-row">
@@ -152,7 +141,7 @@ const DetailArtikel = () => {
                 text={"Terima"}
                 onClick={() => {
                   handleApproveArticle(id)
-                  // setNotifArtikel(false);
+                  setNotifArtikel(false);
                   terimaToast();
                 }}
                 bsDismiss={"modal"}
@@ -260,7 +249,7 @@ const DetailArtikel = () => {
                 disabled={selectedButton == null}
                 onClick={() => {
                   handleRejectArticle(id)
-                  // setNotifArtikel(false);
+                  setNotifArtikel(false);
                   tolakToast();
                 }}
                 bsDismiss={"modal"}

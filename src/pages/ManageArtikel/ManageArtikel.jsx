@@ -28,6 +28,7 @@ const ManageArtikel = () => {
     global: { value: null, matchMode: FilterMatchMode.CONTAINS },
     title: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     user_name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    status: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
   });
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const ManageArtikel = () => {
             placeholder="Search"
           />
         </span>
-        <div className="filter-dropdown mx-3  align-items-start">
+        {/* <div className="filter-dropdown mx-3  align-items-start">
           <button
             type="button"
             className="btn border-secondary-subtle dropdown-toggle"
@@ -94,7 +95,7 @@ const ManageArtikel = () => {
               <FilterList title={"Umum"} type={"checkbox"} />
             </div>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   };
@@ -124,7 +125,13 @@ const ManageArtikel = () => {
   console.log(artikel)
 
   const tanggalBodyTemplate = (rowData) => {
-    return <span className="tanggal-text-template">{rowData.status}</span>;
+    if (rowData.status === 'Reject'){
+      return <span className="tanggal-text-template text-danger fw-bold">{rowData.status}</span>;
+    } else if (rowData.status === 'Publish') {
+      return <span className="tanggal-text-template fw-bold" style={{color: "#32CD32"}}>{rowData.status}</span>;
+    } else {
+      return <span className="tanggal-text-template fw-bold text-warning">{rowData.status}</span>;
+    }
   };
 
   const judulBodyTemplate = (rowData) => {
@@ -167,7 +174,7 @@ const ManageArtikel = () => {
                 selectionMode="single"
                 dataKey="id"
                 selection={selected}
-                globalFilterFields={["title", "user_name", 'category_name']}
+                globalFilterFields={["title", "user_name", 'category_name', 'status']}
                 onRowSelect={(selected) => {
                   // console.log(selected.data.id)
                   navigate(`/admin/manage/artikel/${selected.data.id}`);
