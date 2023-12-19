@@ -7,11 +7,17 @@ import Button from "../../components/Elements/button/Button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
 import toast, { Toaster } from "react-hot-toast";
-import { approveArticle, getAllArticle, rejectArticle } from "../../service/article";
+import {
+  approveArticle,
+  getAllArticle,
+  rejectArticle,
+} from "../../service/article";
 import HtmlParser from "react-html-parser";
 import Skeleton from "react-loading-skeleton";
+import { useLogin } from "../../hooks/useLogin";
 
 const DetailArtikel = () => {
+  useLogin();
   const [artikel, setArtikel] = useState([]);
   const [loading, setLoading] = useState(false);
   const param = useParams();
@@ -78,10 +84,10 @@ const DetailArtikel = () => {
       const filter = res.data.filter((item) => item.id == id);
       const firstFilteredItem = filter.length > 0 ? filter[0] : null;
       setArtikel(firstFilteredItem);
-      if (filter[0].status === 'Pending'){
-        setNotifArtikel(true)
+      if (filter[0].status === "Pending") {
+        setNotifArtikel(true);
       } else {
-        setNotifArtikel(false)
+        setNotifArtikel(false);
       }
     });
     setLoading(false);
@@ -93,12 +99,12 @@ const DetailArtikel = () => {
   };
 
   const handleApproveArticle = async (id) => {
-    await approveArticle(id)
-  }
+    await approveArticle(id);
+  };
 
   const handleRejectArticle = async (id) => {
-    await rejectArticle(id)
-  }
+    await rejectArticle(id);
+  };
 
   // console.log(artikel);
 
@@ -140,7 +146,7 @@ const DetailArtikel = () => {
               <Button
                 text={"Terima"}
                 onClick={() => {
-                  handleApproveArticle(id)
+                  handleApproveArticle(id);
                   setNotifArtikel(false);
                   terimaToast();
                 }}
@@ -248,7 +254,7 @@ const DetailArtikel = () => {
                 text={"Tolak Pengajuan"}
                 disabled={selectedButton == null}
                 onClick={() => {
-                  handleRejectArticle(id)
+                  handleRejectArticle(id);
                   setNotifArtikel(false);
                   tolakToast();
                 }}
@@ -312,20 +318,27 @@ const DetailArtikel = () => {
       <div className="card">
         {!loading ? (
           <div className="card-body m-4">
-            <h4 className="fw-bold">{artikel.title ? artikel.title : <Skeleton/> }</h4>
+            <h4 className="fw-bold">
+              {artikel.title ? artikel.title : <Skeleton />}
+            </h4>
             <div className=" details d-flex my-4  ">
               <div className="me-2 kategori-div ">
                 <div className="d-inline-block">
                   <div className="kategori-div-template-detail">
                     <p className="kategori-text-template-detail m-0">
-                      {artikel.category_name ? artikel.category_name : <Skeleton/>}
+                      {artikel.category_name ? (
+                        artikel.category_name
+                      ) : (
+                        <Skeleton />
+                      )}
                     </p>
                   </div>
                 </div>
               </div>
               <div className="author-div mx-2 d-flex align-items-center">
                 <p className="subtitle-text ">
-                  Ditinjau oleh {artikel.user_name ? artikel.user_name : <Skeleton/>}
+                  Ditinjau oleh{" "}
+                  {artikel.user_name ? artikel.user_name : <Skeleton />}
                 </p>
               </div>
               {/* <div className="tanggal-div  d-flex align-items-center ">
@@ -334,7 +347,7 @@ const DetailArtikel = () => {
             </div>
             <img
               className="w-100"
-              src={artikel.thumbnail ? artikel.thumbnail : <Skeleton/>}
+              src={artikel.thumbnail ? artikel.thumbnail : <Skeleton />}
               alt={`gambar-${artikel.title}`}
             />
             <p className="my-5 ">{parseData(artikel.content)}</p>

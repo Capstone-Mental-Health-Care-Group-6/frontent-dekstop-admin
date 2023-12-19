@@ -10,12 +10,14 @@ import {
   updateStatusAkunPatient,
 } from "../../service/patient";
 import { Link } from "react-router-dom";
+import { useLogin } from "../../hooks/useLogin";
 
 const DetailUser = () => {
+  useLogin();
   const { id } = useParams();
   const [userData, setUserData] = useState({});
   const [showInfo, setShowInfo] = useState(false); // State untuk menampilkan info saat hover
-  const [toggleStatus, setToggleStatus] = useState('Active'); // State untuk status toggle di halaman detail user
+  const [toggleStatus, setToggleStatus] = useState("Active"); // State untuk status toggle di halaman detail user
   const [showConfirmation, setShowConfirmation] = useState(false); // State untuk menampilkan modal konfirmasi
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [updatedUserData, setUpdatedUserData] = useState(null);
@@ -29,7 +31,7 @@ const DetailUser = () => {
   };
 
   const handleSwitchToggle = () => {
-    if (toggleStatus === 'Active') {
+    if (toggleStatus === "Active") {
       // Jika status saat ini adalah "Active", tampilkan modal konfirmasi untuk menonaktifkan akun
       setShowConfirmation(true);
     } else {
@@ -64,11 +66,11 @@ const DetailUser = () => {
   };
 
   const confirmNonAktifkan = () => {
-    confirmAction('Inactive');
+    confirmAction("Inactive");
   };
 
   const confirmAktifkan = () => {
-    confirmAction('Active');
+    confirmAction("Active");
   };
 
   // Fungsi untuk mengubah status toggle
@@ -90,10 +92,11 @@ const DetailUser = () => {
       <section className="detail-user" id="detail-user">
         <p className="routes">
           <span>
-            <Link to={'/admin/manage/user'} className="link-back">
+            <Link to={"/admin/manage/user"} className="link-back">
               Manage User /
             </Link>
-          </span> Detail Akun User
+          </span>{" "}
+          Detail Akun User
         </p>
       </section>
 
@@ -192,7 +195,9 @@ const DetailUser = () => {
           <div className="modal-content">
             <div className="modal-header border-bottom-0">
               <h1 className="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                {toggleStatus === 'Active' ? 'Yakin ingin menonaktifkan akun ini?' : 'Yakin ingin mengaktifkan akun ini?'}
+                {toggleStatus === "Active"
+                  ? "Yakin ingin menonaktifkan akun ini?"
+                  : "Yakin ingin mengaktifkan akun ini?"}
               </h1>
               <button
                 type="button"
@@ -204,7 +209,9 @@ const DetailUser = () => {
             </div>
             <div className="modal-body">
               <p className="fs-6">
-                {toggleStatus === 'Active' ? 'Akun ini tidak dapat melakukan segala aktifitas jika dinonaktfkan' : 'Akun ini dapat melakukan segala aktifitas jika diaktifkan.'}
+                {toggleStatus === "Active"
+                  ? "Akun ini tidak dapat melakukan segala aktifitas jika dinonaktfkan"
+                  : "Akun ini dapat melakukan segala aktifitas jika diaktifkan."}
               </p>
             </div>
             <div className="modal-footer border-top-0">
@@ -219,7 +226,11 @@ const DetailUser = () => {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={toggleStatus === 'Active' ? confirmNonAktifkan : confirmAktifkan}
+                onClick={
+                  toggleStatus === "Active"
+                    ? confirmNonAktifkan
+                    : confirmAktifkan
+                }
               >
                 Yakin
               </button>
@@ -242,7 +253,9 @@ const DetailUser = () => {
             <div className="modal-header">
               <h5 className="modal-title" id="successModalLabel">
                 <img src={Success} alt="" className="me-2" />
-                {toggleStatus === 'Active' ? 'Akun Berhasil diaktifkan' : 'Akun Berhasil dinonaktifkan'}
+                {toggleStatus === "Active"
+                  ? "Akun Berhasil diaktifkan"
+                  : "Akun Berhasil dinonaktifkan"}
               </h5>
               <button
                 type="button"
@@ -254,7 +267,7 @@ const DetailUser = () => {
           </div>
         </div>
       </div>
-    </Layouts >
+    </Layouts>
   );
 };
 

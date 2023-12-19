@@ -16,10 +16,12 @@ import FilterList from "../../components/Fragments/filter-list/FilterList";
 import { FilterMatchMode } from "primereact/api";
 import Input from "../../components/Elements/input/Input";
 import ColumnTable from "../../components/Elements/ColumnTable/ColumnTable";
+import { useLogin } from "../../hooks/useLogin";
 import { getAllArticle } from "../../service/article";
 
 const ManageArtikel = () => {
-  const [artikel, setArtikel] = useState([]);
+  useLogin();
+  const [artikel, setArtikel] = useState(dataArtikel);
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);

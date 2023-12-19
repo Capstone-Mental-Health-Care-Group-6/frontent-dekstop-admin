@@ -6,8 +6,10 @@ import TablePencairanSaldo from "../../components/Fragments/TablePencairanSaldo/
 import { dataTableDanaDokter } from "../../components/DataComponents/dataComponents";
 import { searchFailed } from "../../../image";
 import { getAllWithDraw } from "../../service/withDraw";
+import { useLogin } from "../../hooks/useLogin";
 
 const DanaDokter = () => {
+  useLogin();
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
 
   const [dataTableDanaDokter, setDataTableDanaDokter] = useState([]);

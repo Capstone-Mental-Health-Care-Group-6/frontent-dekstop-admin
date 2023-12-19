@@ -7,8 +7,10 @@ import "./EditProfile.styles.css";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useNavigate } from "react-router";
 import { Gambar } from "../../../image";
+import { useLogin } from "../../hooks/useLogin";
 
 const EditProfile = () => {
+  useLogin();
   const navigate = useNavigate();
 
   const [inputForm, setInputForm] = useState({

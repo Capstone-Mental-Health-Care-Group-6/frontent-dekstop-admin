@@ -16,8 +16,10 @@ import {
 } from "../../../image";
 import { getAllManageUser, getAllPatient } from "../../service/patient";
 import PulseLoader from "react-spinners/PulseLoader";
+import { useLogin } from "../../hooks/useLogin";
 
 const ManageUser = () => {
+  useLogin();
   const [searchValue, setSearchValue] = useState(""); // State untuk nilai pencarian
   const [dataUsers, setDataUsers] = useState([]);
   const [patientData, setPatientData] = useState(0);
