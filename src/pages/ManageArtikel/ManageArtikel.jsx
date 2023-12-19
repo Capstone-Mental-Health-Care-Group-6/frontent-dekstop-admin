@@ -4,6 +4,7 @@ import { LuFilter } from "react-icons/lu";
 import {
   iconArtikelAdmin,
   pendingArtikelAdmin,
+  searchFailed,
   tambahArtikelAdmin,
 } from "../../../image";
 import Card from "../../components/Fragments/card/Card";
@@ -62,42 +63,6 @@ const ManageArtikel = () => {
             placeholder="Search"
           />
         </span>
-        {/* <div className="filter-dropdown mx-3  align-items-start">
-          <button
-            type="button"
-            className="btn border-secondary-subtle dropdown-toggle"
-            data-bs-toggle="dropdown"
-          >
-            <LuFilter />
-            <span> Filter </span>
-          </button>
-          <ul className="dropdown-menu px-3">
-            <div className="d-flex justify-content-between fw-semibold p-3">
-              <span>Filter</span>
-              <span className="text-primary">Reset</span>
-            </div>
-            <p className="fw-medium">Waktu transaksi : </p>
-            <div className="fw-normal">
-              <FilterList title={"Publikasi Terbaru"} type={"radio"} />
-              <FilterList title={"7 Hari Terakhir"} type={"radio"} />
-              <FilterList title={"30 Hari Terakhir"} type={"radio"} />
-              <FilterList title={"Semua Tanggal"} type={"radio"} />
-            </div>
-            <li>
-              <hr className="dropdown-divider" />
-            </li>
-            <p className="pt-2 fw-medium">Kategori : </p>
-            <div className="fw-normal">
-              <FilterList title={"Anxiety"} type={"checkbox"} />
-              <FilterList title={"Depresi"} type={"checkbox"} />
-              <FilterList title={"Emosi"} type={"checkbox"} />
-              <FilterList title={"Kecemasan"} type={"checkbox"} />
-              <FilterList title={"Stress"} type={"checkbox"} />
-              <FilterList title={"Tips"} type={"checkbox"} />
-              <FilterList title={"Umum"} type={"checkbox"} />
-            </div>
-          </ul>
-        </div> */}
       </div>
     );
   };
@@ -115,24 +80,39 @@ const ManageArtikel = () => {
   };
 
   const kategoriBodyTemplate = (rowData) => {
-    return(
+    return (
       <div className="d-inline-block">
         <div className="kategori-div-template">
           <p className="kategori-text-template">{rowData.category_name}</p>
         </div>
       </div>
-        )
+    );
   };
 
-  console.log(artikel)
+  console.log(artikel);
 
   const tanggalBodyTemplate = (rowData) => {
-    if (rowData.status === 'Reject'){
-      return <span className="tanggal-text-template text-danger fw-bold">{rowData.status}</span>;
-    } else if (rowData.status === 'Publish') {
-      return <span className="tanggal-text-template fw-bold" style={{color: "#32CD32"}}>{rowData.status}</span>;
+    if (rowData.status === "Reject") {
+      return (
+        <span className="tanggal-text-template text-danger fw-bold">
+          {rowData.status}
+        </span>
+      );
+    } else if (rowData.status === "Publish") {
+      return (
+        <span
+          className="tanggal-text-template fw-bold"
+          style={{ color: "#32CD32" }}
+        >
+          {rowData.status}
+        </span>
+      );
     } else {
-      return <span className="tanggal-text-template fw-bold text-warning">{rowData.status}</span>;
+      return (
+        <span className="tanggal-text-template fw-bold text-warning">
+          {rowData.status}
+        </span>
+      );
     }
   };
 
@@ -154,14 +134,18 @@ const ManageArtikel = () => {
           <Card
             src={tambahArtikelAdmin}
             cardSubtitle="Artikel Baru"
-            cardTitle={artikel.filter((artikel) => artikel.status === 'Publish').length}
+            cardTitle={
+              artikel.filter((artikel) => artikel.status === "Publish").length
+            }
           />
         </div>
         <div className="col">
           <Card
             src={pendingArtikelAdmin}
             cardSubtitle="Pengajuan Artikel"
-            cardTitle={artikel.filter((artikel) => artikel.status === 'Pending').length}
+            cardTitle={
+              artikel.filter((artikel) => artikel.status === "Pending").length
+            }
           />
         </div>
       </div>
@@ -176,15 +160,27 @@ const ManageArtikel = () => {
                 selectionMode="single"
                 dataKey="id"
                 selection={selected}
-                globalFilterFields={["title", "user_name", 'category_name', 'status']}
+                globalFilterFields={[
+                  "title",
+                  "user_name",
+                  "category_name",
+                  "status",
+                ]}
                 onRowSelect={(selected) => {
                   // console.log(selected.data.id)
                   navigate(`/admin/manage/artikel/${selected.data.id}`);
                 }}
                 onSelectionChange={(e) => setSelected(e.value)}
                 emptyMessage={
-                  <div className="text-center">
-                    <p>Tidak ada data yang sesuai</p>
+                  <div className="text-center mt-4">
+                    <img
+                      src={searchFailed}
+                      className="img-search-failed"
+                      alt="No data found"
+                    />
+                    <h2 className="h2-search-failed">
+                      Tidak Ada Data Artikel Ditemukan
+                    </h2>
                   </div>
                 }
               >
@@ -215,8 +211,13 @@ const ManageArtikel = () => {
               </Table>
             </div>
           ) : (
-            <div>
-              <p>data kosong</p>
+            <div className="text-center mt-4">
+              <img
+                src={searchFailed}
+                className="img-search-failed"
+                alt="No data found"
+              />
+              <h2 className="h2-search-failed">Tidak ada data Artikel</h2>
             </div>
           )}
         </div>
