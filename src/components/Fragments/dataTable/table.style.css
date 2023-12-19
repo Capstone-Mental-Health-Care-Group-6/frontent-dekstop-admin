@@ -1,0 +1,9 @@
+.searchbar {
+  padding: 0 14px 0 14px;
+  margin: 0 14px 0 14px;
+}
+
+.d-flex .header p{
+  color: black;
+  font-size: 20px;
+}

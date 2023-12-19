@@ -1,0 +1,152 @@
+.subtitle-text {
+  font-size: 12px;
+  align-items: center;
+  /* margin-left: 5px; */
+  margin: 0;
+
+  color: rgb(137, 137, 137);
+}
+
+.button-tolak-pengajuan {
+  background-color: white;
+  width: 100%;
+  font-size: 14px;
+  height: 60px;
+}
+
+.button-pilihan-tolak-biru{
+  background-color: #e5f2ff ;
+  border-color: #3ba0fe!important;
+  width: 100%;
+  font-size: 14px;
+  height: 60px;
+  border-style: solid;
+  color: #0059AA;
+}
+
+.button-tolak-pengajuan:hover {
+  color: rgb(50, 50, 50);
+  background-color: rgb(246, 246, 246);
+  font-size: 14px;
+  height: 60px;
+}
+
+.button-terima-pengajuan-artikel {
+  background-color: #0085ff;
+  border-width: 0 !important;
+  color: white;
+  width: 100%;
+}
+
+.button-terima-pengajuan-artikel-modal {
+  background-color: #0085ff;
+  border-width: 0 !important;
+  color: white;
+}
+
+.button-terima-pengajuan-artikel:hover {
+  background-color: #0074e0;
+  border-width: 0 !important;
+  color: white;
+  width: 100%;
+}
+
+.button-tolak-pengajuan-artikel {
+  background-color: transparent;
+  /* border-width: 0 !important; */
+  width: 100%;
+  border-color: #0085ff;
+  border-style: solid;
+}
+
+.button-terima-pengajuan-artikel-modal:disabled{
+  background-color: #54acff;
+}
+
+.button-tolak-pengajuan-artikel-modal {
+  background-color: transparent;
+  /* border-width: 0 !important; */
+  color: #0085ff;
+  border-color: #0085ff;
+  border-style: solid;
+}
+
+.button-tolak-pengajuan-artikel:hover {
+  background-color: rgb(224, 238, 252);
+  /* border-width: 0 !important; */
+  color: rgb(72, 72, 72);
+  width: 100%;
+  border-color: #0085ff;
+  border-style: solid;
+}
+
+.kategori-text-template-detail {
+  font-size: 12px;
+  padding: 4px 8px 4px 8px;
+  color: #065dac;
+  text-align: center;
+  font-weight: bold;
+}
+
+.kategori-div-template-detail {
+  background-color: #e5f2ff;
+  border-radius: 20px;
+  margin: 0 3px 0 3px;
+}
+
+.div-pengajuan {
+  background-color: #e0eefc;
+  border-color: #3ba0fe;
+  border-style: solid;
+}
+
+@media screen and (max-width: 1080px) {
+  .kategori-div-template-detail {
+    background-color: #e5f2ff;
+    border-radius: 20px;
+  }
+
+  .kategori-text-template-detail {
+    font-size: 12px;
+    padding: 4px 8px 4px 8px;
+    color: #065dac;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .kategori-div {
+    display: flex;
+    /* margin: 2% 0; */
+  }
+
+  /* .author-div, .tanggal-div{
+    display: block;
+  } */
+}
+
+@media screen and (max-width: 768px) {
+  /* .details {
+    display: flex;
+    flex-direction: column;
+  } */
+  /* .card .card-body .details {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .subtitle-text {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .author-div {
+    margin-top: 4%;
+    margin-bottom: 2%;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+}
