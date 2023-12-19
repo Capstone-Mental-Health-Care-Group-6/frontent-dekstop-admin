@@ -17,15 +17,21 @@ import PaketTeratas from "../../components/Fragments/paket-teratas/PaketTeratas"
 import { useEffect, useState } from "react";
 import { getAllTransaction } from "../../service/transaction";
 import { useLogin } from "../../hooks/useLogin";
+import PulseLoader from "react-spinners/PulseLoader";
+import Skeleton from "react-loading-skeleton";
+import RiwayatLoader from "../../components/Fragments/Riwayat-skeleton/RiwayatLoader";
 
 const TransaksiUser = () => {
   useLogin();
   const [customers, setCustomers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     getAllTransaction((data) => {
       const shuffledCustomers = shuffleArray(data);
       setCustomers(shuffledCustomers);
+      setLoading(false);
     });
   }, []);
 
@@ -87,14 +93,26 @@ const TransaksiUser = () => {
             <Card
               src={iconTransaksiCard}
               cardSubtitle={"Total Berhasil"}
-              cardTitle={allPayment || 0}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  allPayment || 0
+                )
+              }
             />
           </div>
           <div className="col">
             <Card
               src={iconBerhasilCard}
               cardSubtitle={"Transaksi Berhasil"}
-              cardTitle={paymentStatusCount[2] || 0}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  paymentStatusCount[2] || 0
+                )
+              }
             />
           </div>
           <div className="col">
@@ -102,7 +120,13 @@ const TransaksiUser = () => {
               <Card
                 src={iconTertundaCard}
                 cardSubtitle={"Transaksi Tertunda"}
-                cardTitle={paymentStatusCount[5] || 0}
+                cardTitle={
+                  loading ? (
+                    <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                  ) : (
+                    paymentStatusCount[5] || 0
+                  )
+                }
               />
             </Link>
           </div>
@@ -110,7 +134,13 @@ const TransaksiUser = () => {
             <Card
               src={iconFGagalCard}
               cardSubtitle={"Transaksi Gagal"}
-              cardTitle={paymentStatusCount[4] || 0}
+              cardTitle={
+                loading ? (
+                  <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                ) : (
+                  paymentStatusCount[4] || 0
+                )
+              }
             />
           </div>
         </div>
@@ -142,19 +172,23 @@ const TransaksiUser = () => {
           <div className="riwayat-transaksi p-4">
             <h4>Riwayat Transaksi</h4>
 
-            {displayedCustomers.map((item, index) => (
-              <div className="d-grid" key={index}>
-                <RiwayatTransaksi
-                  key={index}
-                  name={item.patient_name}
-                  date={formatDate(item.created_at)}
-                  paket={styleText(item.counseling_type)}
-                  doctor={item.doctor_name}
-                  status={styleText(item.payment_status)}
-                  image={item.patient_avatar}
-                />
-              </div>
-            ))}
+            {!loading ? (
+              displayedCustomers.map((item, index) => (
+                <div className="d-grid" key={index}>
+                  <RiwayatTransaksi
+                    key={index}
+                    name={item.patient_name}
+                    date={formatDate(item.created_at)}
+                    paket={styleText(item.counseling_type)}
+                    doctor={item.doctor_name}
+                    status={styleText(item.payment_status)}
+                    image={item.patient_avatar}
+                  />
+                </div>
+              ))
+            ) : (
+              <RiwayatLoader riwayat={4} />
+            )}
             <div className="d-flex justify-content-center">
               <Link to={"/admin/transaksi/user/tertunda"}>
                 <Button className={"btn text-primary "} text={"Lihat Semua"} />
