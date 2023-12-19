@@ -6,6 +6,7 @@ import LayoutDetailPengajuan from "../LayoutDetailPengajuan";
 // import { dataDokter } from "../../../components/DataDokter/dataDokter";
 
 const PengalamanPengajuan = () => {
+  useLogin();
   // const { id } = useParams();
   // const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
   return (

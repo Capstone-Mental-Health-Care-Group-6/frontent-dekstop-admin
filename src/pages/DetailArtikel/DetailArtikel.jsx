@@ -6,9 +6,11 @@ import "./DetailArtikel.style.css";
 import Button from "../../components/Elements/button/Button";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import ModalAlert from "../../components/Fragments/modal-alert/ModalAlert";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+import { useLogin } from "../../hooks/useLogin";
 
 const DetailArtikel = () => {
+  useLogin();
   const [artikel, setArtikel] = useState([]);
   const param = useParams();
 
@@ -28,21 +30,25 @@ const DetailArtikel = () => {
     }
   };
 
-  const terimaToast = () => toast .success('Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.', {
-    duration: 4000,
-    position: 'bottom-center',
-    className: "terima-artikel-toast",
+  const terimaToast = () =>
+    toast.success(
+      "Artikel sukses dipublikasikan dan siap dinikmati oleh banyak pembaca.",
+      {
+        duration: 4000,
+        position: "bottom-center",
+        className: "terima-artikel-toast",
         style: {
           maxWidth: "700px",
           marginBottom: "5%",
         },
 
-    // Aria
-    ariaProps: {
-        role: 'status',
-        'aria-live': 'polite',
-    },
-});
+        // Aria
+        ariaProps: {
+          role: "status",
+          "aria-live": "polite",
+        },
+      }
+    );
 
   const tolakToast = () =>
     toast.success(
@@ -326,7 +332,7 @@ const DetailArtikel = () => {
             eaque earum recusandae nemo perferendis quod sed facere reiciendis?
             Impedit aliquam numquam molestiae. Ab, temporibus aliquid quisquam
             quos odio fuga corrupti velit sint expedita vero incidunt atque
-            tempore officia recusandae eius cumque illo blanditiis. Laudantium
+            tempore officia recusandae eius cumque illo blanditiis. Laudantium``
             cumque dolorum culpa iure amet facere reprehenderit ex est ipsam
             veritatis atque perferendis, nihil nesciunt vero provident esse
             vitae eum quis similique. Asperiores eos quas minus voluptatibus
