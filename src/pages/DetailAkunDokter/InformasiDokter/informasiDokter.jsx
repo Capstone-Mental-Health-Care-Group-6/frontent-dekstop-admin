@@ -6,6 +6,7 @@ import "./informasiDokter.style.css";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../../components/DataDokter/dataDokter";
 import { useLogin } from "../../../hooks/useLogin";
+import { getAllDoctor, getDoctorById } from "../../../service/doctor";
 
 const DetailAkunDokter = () => {
   useLogin();

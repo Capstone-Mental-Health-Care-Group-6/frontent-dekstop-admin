@@ -149,7 +149,6 @@ const ManageArtikel = () => {
           />
         </div>
       </div>
-
       <div className="card">
         <div className="card-body">
           {!loading ? (
