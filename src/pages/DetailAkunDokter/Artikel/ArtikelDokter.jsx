@@ -7,7 +7,6 @@ import { artikeldokter } from "../../../../image";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../../components/DataDokter/dataDokter";
 import { useLogin } from "../../../hooks/useLogin";
-import { getAllArticle } from "../../../service/article";
 
 const ArtikelDokter = () => {
   useLogin();
