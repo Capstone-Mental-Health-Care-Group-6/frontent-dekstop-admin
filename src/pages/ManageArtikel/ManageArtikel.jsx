@@ -19,6 +19,8 @@ import Input from "../../components/Elements/input/Input";
 import ColumnTable from "../../components/Elements/ColumnTable/ColumnTable";
 import { useLogin } from "../../hooks/useLogin";
 import { getAllArticle } from "../../service/article";
+import Skeleton from "react-loading-skeleton";
+import { PulseLoader } from "react-spinners";
 
 const ManageArtikel = () => {
   useLogin();
@@ -38,8 +40,8 @@ const ManageArtikel = () => {
     setLoading(true);
     getAllArticle((res) => {
       setArtikel(res.data);
+      setLoading(false);
     });
-    setLoading(false);
   }, []);
 
   // buat search
@@ -126,7 +128,13 @@ const ManageArtikel = () => {
         <div className="col ">
           <Card
             src={iconArtikelAdmin}
-            cardTitle={artikel.length}
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                artikel.length
+              )
+            }
             cardSubtitle="Total Artikel"
           />
         </div>
@@ -135,7 +143,11 @@ const ManageArtikel = () => {
             src={tambahArtikelAdmin}
             cardSubtitle="Artikel Baru"
             cardTitle={
-              artikel.filter((artikel) => artikel.status === "Publish").length
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                artikel.filter((artikel) => artikel.status === "Publish").length
+              )
             }
           />
         </div>
@@ -144,7 +156,11 @@ const ManageArtikel = () => {
             src={pendingArtikelAdmin}
             cardSubtitle="Pengajuan Artikel"
             cardTitle={
-              artikel.filter((artikel) => artikel.status === "Pending").length
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                artikel.filter((artikel) => artikel.status === "Pending").length
+              )
             }
           />
         </div>
@@ -211,14 +227,7 @@ const ManageArtikel = () => {
               </Table>
             </div>
           ) : (
-            <div className="text-center mt-4">
-              <img
-                src={searchFailed}
-                className="img-search-failed"
-                alt="No data found"
-              />
-              <h2 className="h2-search-failed">Tidak ada data Artikel</h2>
-            </div>
+            <Skeleton height={60} count={6} />
           )}
         </div>
       </div>

@@ -17,6 +17,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getAllDoctor, getDashboardDoctor } from "../../service/doctor";
 import Skeleton from "react-loading-skeleton";
+import { PulseLoader } from "react-spinners";
 
 const ManageDokter = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const ManageDokter = () => {
   const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [dataTableManageDokter, setdataTableManageDokter] = useState([]);
-  const [totalDokter, setTotalDokter] = useState(null);
+  const [totalDokter, setTotalDokter] = useState(0);
   const [totalDokterBaru, setTotalDokterBaru] = useState(0);
   const [totalDokterAktif, setTotalDokterAktif] = useState(0);
   const [totalPengajuan, setTotalPengajuan] = useState(0);
@@ -60,19 +61,37 @@ const ManageDokter = () => {
         <div className="cardDokter d-flex gap-2">
           <Card
             cardSubtitle="Total Dokter"
-            cardTitle={totalDokter !== null ? totalDokter : "0"}
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokter
+              )
+            }
             src={iconCardUser}
           />
 
           <Card
             cardSubtitle="Dokter Baru"
-            cardTitle={totalDokterBaru !== null ? totalDokterBaru : "0"}
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokterBaru
+              )
+            }
             src={iconCardDokter}
           />
 
           <Card
             cardSubtitle="Dokter Aktif"
-            cardTitle={totalDokterAktif !== null ? totalDokterAktif : "0"}
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokterAktif
+              )
+            }
             src={captivePortal}
           />
 
@@ -85,7 +104,11 @@ const ManageDokter = () => {
                 <img className="mb-2" src={sandClock} />
                 <h6 className="card-subtitle">Pengajuan Dokter</h6>
                 <h5 className="card-title">
-                  {totalPengajuan !== null ? totalPengajuan : "0"}
+                  {loading ? (
+                    <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                  ) : (
+                    totalPengajuan
+                  )}
                 </h5>
               </div>
             </div>
@@ -143,10 +166,14 @@ const ManageDokter = () => {
                   </div>
                 </div>
               </div>
-              <DokterTable
-                data={dataTableManageDokter}
-                searchValue={searchValue}
-              />{" "}
+              {!loading ? (
+                <DokterTable
+                  data={dataTableManageDokter}
+                  searchValue={searchValue}
+                />
+              ) : (
+                <Skeleton height={60} count={6} />
+              )}
             </div>
           </div>
         </section>
