@@ -43,4 +43,3 @@ export const rejectArticle = async (id) => {
       console.log(err);
     });
 };
-
