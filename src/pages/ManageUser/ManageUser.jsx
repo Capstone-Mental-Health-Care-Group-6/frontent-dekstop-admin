@@ -17,6 +17,7 @@ import {
 import { getAllManageUser, getAllPatient } from "../../service/patient";
 import PulseLoader from "react-spinners/PulseLoader";
 import { useLogin } from "../../hooks/useLogin";
+import Skeleton from "react-loading-skeleton";
 
 const ManageUser = () => {
   useLogin();
@@ -25,7 +26,6 @@ const ManageUser = () => {
   const [patientData, setPatientData] = useState(0);
   const [loading, setLoading] = useState(false);
   const [statusFilter, setStatusFilter] = useState("");
-  console.log(statusFilter);
 
   const resetFilter = () => {
     setStatusFilter("");
@@ -53,6 +53,7 @@ const ManageUser = () => {
 
     getAllManageUser((data) => {
       setDataUsers(data.data);
+      setLoading(false);
     });
   }, []);
 
@@ -170,11 +171,15 @@ const ManageUser = () => {
                 </div>
               </div>
             </div>
-            <UserTable
-              data={dataUsers}
-              searchValue={searchValue}
-              statusFilter={statusFilter}
-            />{" "}
+            {!loading ? (
+              <UserTable
+                data={dataUsers}
+                searchValue={searchValue}
+                statusFilter={statusFilter}
+              />
+            ) : (
+              <Skeleton height={60} count={6} />
+            )}
             {/* Meneruskan nilai pencarian ke UserTable */}
           </div>
         </div>

@@ -15,26 +15,45 @@ import { LuFilter } from "react-icons/lu";
 import DokterTable from "../../components/Fragments/dokterTable/DokterTable";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { getAllDoctor } from "../../service/doctor";
-import { useLogin } from "../../hooks/useLogin";
+import { getAllDoctor, getDashboardDoctor } from "../../service/doctor";
+import Skeleton from "react-loading-skeleton";
+import { PulseLoader } from "react-spinners";
 
-const ManageDokter = ({ location }) => {
-  useLogin();
+const ManageDokter = () => {
   const { id } = useParams();
   const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
-
+  const [loading, setLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [totalDokter, setTotalDokter] = useState(null);
+  const [dataTableManageDokter, setdataTableManageDokter] = useState([]);
+  const [totalDokter, setTotalDokter] = useState(0);
+  const [totalDokterBaru, setTotalDokterBaru] = useState(0);
+  const [totalDokterAktif, setTotalDokterAktif] = useState(0);
+  const [totalPengajuan, setTotalPengajuan] = useState(0);
 
   const handleSearchChange = (event) => {
     setSearchValue(event.target.value); // Fungsi untuk menangani perubahan input pencarian
   };
 
   useEffect(() => {
+    setLoading(true);
+
     getAllDoctor((data) => {
       setTotalDokter(data.data.length);
+      setLoading(false);
     });
-  });
+
+    getDashboardDoctor((data) => {
+      setTotalDokterBaru(data.data.total_new_doctor);
+      setTotalDokterAktif(data.data.total_active_doctor);
+      setTotalPengajuan(data.data.total_pending_doctor);
+      setLoading(false);
+    });
+
+    getAllDoctor((data) => {
+      setdataTableManageDokter(data.data);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <>
@@ -42,19 +61,37 @@ const ManageDokter = ({ location }) => {
         <div className="cardDokter d-flex gap-2">
           <Card
             cardSubtitle="Total Dokter"
-            cardTitle={totalDokter !== null ? totalDokter : "0"}
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokter
+              )
+            }
             src={iconCardUser}
           />
 
           <Card
             cardSubtitle="Dokter Baru"
-            cardTitle="250"
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokterBaru
+              )
+            }
             src={iconCardDokter}
           />
 
           <Card
             cardSubtitle="Dokter Aktif"
-            cardTitle="5.000"
+            cardTitle={
+              loading ? (
+                <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+              ) : (
+                totalDokterAktif
+              )
+            }
             src={captivePortal}
           />
 
@@ -62,17 +99,17 @@ const ManageDokter = ({ location }) => {
             className="card-pengajuan"
             to={`/admin/manage/dokter/pengajuan`}
           >
-            {/* <Card
-              cardSubtitle="Pengajuan Dokter"
-              cardTitle="12"
-              src={sandClock}
-            /> */}
-
             <div className="card bg-white border-white">
               <div className="card-body">
                 <img className="mb-2" src={sandClock} />
                 <h6 className="card-subtitle">Pengajuan Dokter</h6>
-                <h5 className="card-title">12</h5>
+                <h5 className="card-title">
+                  {loading ? (
+                    <PulseLoader color="#D5E0DE" size={8} loading={loading} />
+                  ) : (
+                    totalPengajuan
+                  )}
+                </h5>
               </div>
             </div>
           </Link>
@@ -129,7 +166,14 @@ const ManageDokter = ({ location }) => {
                   </div>
                 </div>
               </div>
-              <DokterTable data={dataDokter} searchValue={searchValue} />{" "}
+              {!loading ? (
+                <DokterTable
+                  data={dataTableManageDokter}
+                  searchValue={searchValue}
+                />
+              ) : (
+                <Skeleton height={60} count={6} />
+              )}
             </div>
           </div>
         </section>

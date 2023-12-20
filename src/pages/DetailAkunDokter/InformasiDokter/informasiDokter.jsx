@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layouts from "../../../Layouts/Layouts";
 import LayoutDetailDokter from "../../../Layouts/LayoutDetailDokter/LayoutDetailDokter";
 import DetailDokterCard from "../../../components/Fragments/card/detail-dokter-card/DetailDokterCard";
@@ -6,11 +6,26 @@ import "./informasiDokter.style.css";
 import { useParams } from "react-router-dom";
 import { dataDokter } from "../../../components/DataDokter/dataDokter";
 import { useLogin } from "../../../hooks/useLogin";
+import { getAllDoctor, getDoctorById } from "../../../service/doctor";
 
 const DetailAkunDokter = () => {
   useLogin();
   const { id } = useParams();
-  const dokter = dataDokter.find((dokter) => dokter.id === parseInt(id));
+  const [dataDokter, setdataDokter] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // const data = dataDokter.find((item) => item.id === parseInt(id));
+  // const data = [];
+  useEffect(() => {
+    setLoading(true);
+    getDoctorById({
+      callback: (data) => {
+        setdataDokter(data.data);
+        setLoading(false); // Log the data after it has been set
+      },
+      id,
+    });
+  }, [id]);
 
   return (
     <div>
@@ -26,37 +41,49 @@ const DetailAkunDokter = () => {
                 <div className="informasi-umum1 d-flex flex-column gap-3">
                   <div className="">
                     ID Akun <br />
-                    <span className="fw-semibold">{dokter.id}</span>
+                    <span className="fw-semibold">{dataDokter?.id}</span>
                   </div>
                   <div>
                     Nama Lengkap <br />
-                    <span className="fw-semibold">{dokter.doctorName}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_name}
+                    </span>
                   </div>
                   <div>
                     No Telp <br />
-                    <span className="fw-semibold">{dokter.telephone}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_number_phone}
+                    </span>
                   </div>
-                  <div>
+                  {/* <div>
                     Email <br />
-                    <span className="fw-semibold">{dokter.email}</span>
-                  </div>
+                    <span className="fw-semibold">{dokterEmail}</span>
+                  </div> */}
                 </div>
                 <div className="informasi-umum2 d-flex flex-column gap-3">
                   <div>
                     NIK <br />
-                    <span className="fw-semibold">{dokter.nik}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_nik}
+                    </span>
                   </div>
                   <div>
                     Tanggal Lahir <br />
-                    <span className="fw-semibold">{dokter.birth}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_dob}
+                    </span>
                   </div>
                   <div>
                     Asal Kota <br />
-                    <span className="fw-semibold">{dokter.hometown}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_kota}
+                    </span>
                   </div>
                   <div>
                     Jenis Kelamin <br />
-                    <span className="fw-semibold">{dokter.gender}</span>
+                    <span className="fw-semibold">
+                      {dataDokter?.doctor_gender}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -73,18 +100,30 @@ const DetailAkunDokter = () => {
 
               <div>
                 <div className="informasi-umum1 d-flex flex-column gap-3">
-                  <div className="">
-                    Nama Universitas <br />
-                    <span className="fw-semibold">{dokter.university}</span>
-                  </div>
-                  <div className="">
-                    Jurusan <br />
-                    <span className="fw-semibold">{dokter.departement}</span>
-                  </div>
-                  <div className="">
-                    Periode <br />
-                    <span className="fw-semibold">{dokter.period}</span>
-                  </div>
+                  {dataDokter?.education?.map((v, i) => {
+                    return (
+                      <>
+                        <div className="">
+                          Nama Universitas <br />
+                          <span className="fw-semibold">
+                            {v.doctor_university}
+                          </span>
+                        </div>
+                        <div className="">
+                          Jurusan <br />
+                          <span className="fw-semibold">
+                            {v.doctor_study_program}
+                          </span>
+                        </div>
+                        <div className="">
+                          Periode <br />
+                          <span className="fw-semibold">
+                            {v.doctor_enroll_year}
+                          </span>
+                        </div>
+                      </>
+                    );
+                  })}
                 </div>
               </div>
             </div>

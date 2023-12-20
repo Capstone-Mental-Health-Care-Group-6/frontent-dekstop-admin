@@ -21,10 +21,8 @@ import {
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import KonselingLoader from "../../components/Fragments/konseling-skeleton/KonselingLoader";
-import { useLogin } from "../../hooks/useLogin";
 
 const PaketKonseling = () => {
-  useLogin();
   const [bundle, setBundle] = useState([]);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({

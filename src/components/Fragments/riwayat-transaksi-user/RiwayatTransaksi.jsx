@@ -19,7 +19,7 @@ function RiwayatTransaksi({ image, name, date, status, paket, doctor }) {
     return (
         <div className="row row-cols-md-1 row-cols-1  mb-4" >
             <div className="col col-lg-1 d-flex justify-content-center">
-                {image ? <img src={image} alt="" /> : <img src={patientProfile} alt="asu" />}
+                {image ? <img src={image} alt="" /> : <img src={patientProfile} alt="profile-patient" />}
             </div>
             <div className="col col-lg-11 d-grid">
                 <div className="line-1 d-flex justify-content-between align-items-center">
